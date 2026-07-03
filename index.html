@@ -346,9 +346,18 @@
                 deferredPrompt = null;
             } else {
                 // Alternativa informativa para navegadores donde no se dispara el prompt nativo directamente (ej. Safari en iOS)
-                alert('Para agregar a la pantalla de inicio:\n\n1. Presiona el botón de "Compartir" en tu navegador.\n2. Elige la opción "Agregar a inicio" o "Añadir a pantalla de inicio".');
+                alert(
+                    'CÓMO INSTALAR EN TU PANTALLA DE INICIO:\n\n' +
+                    '📱 En Android (Google Chrome / Edge):\n' +
+                    '1. Presiona el ícono de los tres puntos ( ⋮ ) en la esquina superior derecha del navegador.\n' +
+                    '2. Busca y selecciona la opción "Instalar aplicación" o "Agregar a la pantalla principal" ( 📲 ).\n\n' +
+                    '🍏 En iPhone / iPad (Safari):\n' +
+                    '1. Presiona el botón Compartir ( ⎋ o [↑] ) situado en la barra inferior del navegador.\n' +
+                    '2. Desplázate hacia abajo en las opciones y selecciona "Agregar a inicio" ( ➕ ).'
+                );
             }
         });
     </script>
 </body>
 </html>
+
