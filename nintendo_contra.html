@@ -510,7 +510,20 @@
             }
         }
 
+        // CANVAS STREAM KEEPER: Mantiene vivo el canvas pintando frames negros válidos antes de iniciar la ROM
+        function runCanvasKeeper() {
+            if (nes) return; // Si el emulador ya corre, él se encarga
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 256, 240);
+            requestAnimationFrame(runCanvasKeeper);
+        }
+
         function initNetplay() {
+            // Inicializar contexto visual inmediato para evitar que el stream nazca muerto o congelado
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(0, 0, 256, 240);
+            runCanvasKeeper();
+
             let savedId = localStorage.getItem('retro_station_netplay_id');
             if (!savedId) {
                 let userInput = prompt("Ingresa un ID único para tu consola (Ej: retro-juan):");
@@ -535,11 +548,9 @@
 
             peer.on('call', (call) => {
                 activeCall = call;
-                // Inicializamos hostStream si no existía para garantizar la persistencia del canal multimedia
+                // Crear el MediaStream de forma inmediata con tracks reales del canvas despierto
                 if (!hostStream) {
-                    hostStream = new MediaStream();
-                    const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
-                    if (videoTrack) hostStream.addTrack(videoTrack);
+                    hostStream = canvas.captureStream(30);
                 }
                 if (streamDest && streamDest.stream.getAudioTracks().length > 0 && hostStream.getAudioTracks().length === 0) {
                     hostStream.addTrack(streamDest.stream.getAudioTracks()[0]);
@@ -566,7 +577,6 @@
             }
         }
 
-        // CONTROL EXCLUSIVO PRE-JUEGO DESDE EL BOTÓN DE LA PANTALLA PRINCIPAL
         function connectToPeerMenu() {
             const targetId = prompt("Ingresa el ID de la sesión de tu amigo (Jugador 1):");
             if (!targetId || targetId.trim().length === 0) return;
@@ -574,7 +584,6 @@
             isPlayer1 = false; 
             document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2 (CLIENTE)";
             
-            // Abrir la pantalla del emulador inmediatamente al iniciar la conexión
             document.getElementById('emulator-section').classList.remove('hidden');
             canvas.classList.add('hidden');
             video.classList.remove('hidden');
@@ -583,7 +592,6 @@
             conn = peer.connect(targetId.trim());
             setupNetworkListeners();
 
-            // Desencadenamos la recepción de datos y llamadas de video previas al inicio
             const fakeStream = new MediaStream(); 
             const call = peer.call(targetId.trim(), fakeStream);
             activeCall = call;
@@ -745,16 +753,12 @@
             initTouchJoystick();
             bindClientControls();
 
-            // Sincronización forzada de tracks de video activos para evitar pantallas congeladas en WebRTC
             if (activeCall && activeCall.peerConnection) {
                 const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
                 const senders = activeCall.peerConnection.getSenders();
                 const videoSender = senders.find(sender => sender.track && sender.track.kind === 'video');
                 if (videoSender) {
                     videoSender.replaceTrack(videoTrack);
-                } else if (hostStream) {
-                    // Si no había track previo, lo añadimos directamente al stream activo
-                    hostStream.addTrack(videoTrack);
                 }
             }
 
