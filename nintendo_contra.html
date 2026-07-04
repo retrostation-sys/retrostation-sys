@@ -256,7 +256,6 @@
         let currentVolume = 0.8;
         let streamDest = null; 
 
-        // NETPLAY POR STREAMING
         let peer = null;
         let conn = null;
         let activeCall = null; 
@@ -279,8 +278,6 @@
         ];
 
         let isMenuOpen = false;
-
-        // Stream dinámico global para asegurar la persistencia multimedia de WebRTC
         let hostStream = null;
 
         function togglePlatformsMenu() {
@@ -510,24 +507,17 @@
             }
         }
 
-        // CANVAS KEEPER: loop que dibuja en el canvas del host antes de que cargue el emulador
-        // Esto le garantiza a WebRTC un track de video activo con frames reales desde el primer segundo
         function runCanvasKeeper() {
-            if (nes) return; // Si el emulador ya corre, él se encarga del renderizado
+            if (nes) return;
             ctx.fillStyle = "#020617";
             ctx.fillRect(0, 0, 256, 240);
-            
-            // Dibujar un pequeño texto parpadeante o un punto para forzar cambios de píxeles
             ctx.fillStyle = (Math.floor(Date.now() / 500) % 2 === 0) ? "#020617" : "#0f172a";
             ctx.fillRect(0, 0, 1, 1); 
-
             requestAnimationFrame(runCanvasKeeper);
         }
 
         function initNetplay() {
-            // Inicializar el render pre-juego sobre el canvas
             runCanvasKeeper();
-
             let savedId = localStorage.getItem('retro_station_netplay_id');
             if (!savedId) {
                 let userInput = prompt("Ingresa un ID único para tu consola (Ej: retro-juan):");
@@ -552,26 +542,11 @@
 
             peer.on('call', (call) => {
                 activeCall = call;
-                
-                // Forzar la creación de tracks de video basados en el stream del canvas que ya está activo por el Canvas Keeper
-                if (!hostStream) {
-                    hostStream = canvas.captureStream(30);
-                }
-                
-                // Fusionar la pista de audio sintetizada si el emulador ya está listo
+                if (!hostStream) hostStream = canvas.captureStream(30);
                 if (streamDest && streamDest.stream.getAudioTracks().length > 0 && hostStream.getAudioTracks().length === 0) {
                     hostStream.addTrack(streamDest.stream.getAudioTracks()[0]);
                 }
-                
                 call.answer(hostStream); 
-            });
-            
-            peer.on('error', (err) => {
-                if (err.type === 'unavailable-id') {
-                    alert("El ID elegido ya está en uso. Elige otro.");
-                    localStorage.removeItem('retro_station_netplay_id');
-                    window.location.reload();
-                }
             });
         }
 
@@ -580,20 +555,18 @@
             if (userInput && userInput.trim().length > 0) {
                 let cleanId = userInput.trim().replace(/[^a-zA-Z0-9-_]/g, '');
                 localStorage.setItem('retro_station_netplay_id', cleanId);
-                alert("ID cambiado. La página se recargará para aplicar los cambios.");
+                alert("ID cambiado. La página se recargará.");
                 window.location.reload();
             }
         }
 
-        // CONTROL EXCLUSIVO PRE-JUEGO DESDE EL BOTÓN DE LA PANTALLA PRINCIPAL
         function connectToPeerMenu() {
-            const targetId = prompt("Ingresa el ID de la sesión de tu amigo (Jugador 1):");
+            const targetId = prompt("Ingresa el ID del Jugador 1:");
             if (!targetId || targetId.trim().length === 0) return;
 
             isPlayer1 = false; 
             document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2 (CLIENTE)";
             
-            // Abrir la pantalla del emulador inmediatamente al iniciar la conexión
             document.getElementById('emulator-section').classList.remove('hidden');
             canvas.classList.add('hidden');
             video.classList.remove('hidden');
@@ -602,37 +575,19 @@
             conn = peer.connect(targetId.trim());
             setupNetworkListeners();
 
-            const fakeStream = new MediaStream(); 
-            const call = peer.call(targetId.trim(), fakeStream);
+            const call = peer.call(targetId.trim(), new MediaStream());
             activeCall = call;
 
             call.on('stream', (remoteStream) => {
                 video.srcObject = remoteStream;
                 video.volume = currentVolume;
-                video.play().catch(e => console.log("Interacción requerida para audio"));
-                
+                video.play();
                 initTouchJoystick();
                 bindClientControls();
-                
-                const clientLoop = () => {
-                    runGamepadPolling();
-                    if(!document.getElementById('emulator-section').classList.contains('hidden')) {
-                        requestAnimationFrame(clientLoop);
-                    }
-                };
-                requestAnimationFrame(clientLoop);
             });
         }
 
         function setupNetworkListeners() {
-            conn.on('open', () => {
-                if(isPlayer1) {
-                    showSaveMsg("¡Jugador 2 conectado con éxito!");
-                } else {
-                    showSaveMsg("¡Conectado al Host con éxito!");
-                }
-            });
-
             conn.on('data', (data) => {
                 if (isPlayer1 && nes) {
                     if (data.type === 'press') nes.buttonDown(2, data.key);
@@ -659,7 +614,6 @@
             if (!el) return;
             const newEl = el.cloneNode(true);
             el.parentNode.replaceChild(newEl, el);
-
             newEl.addEventListener('touchstart', (e) => { sendInput('press', jnesButtonConst); e.preventDefault(); }, { passive: false });
             newEl.addEventListener('touchend', (e) => { sendInput('release', jnesButtonConst); e.preventDefault(); }, { passive: false });
         }
@@ -679,25 +633,20 @@
             const container = document.getElementById('touch-joystick');
             const knob = document.getElementById('joystick-knob');
             if (!container || !knob) return;
-
             let joystickActive = false; let startX = 0, startY = 0; let joystickTouchId = null; const maxRadius = 40; 
             let activeDirections = { up: false, down: false, left: false, right: false };
-
             function handleJoystickMove(currentX, currentY) {
                 let deltaX = currentX - startX, deltaY = currentY - startY;
                 let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
                 if (distance > maxRadius) { deltaX = (deltaX / distance) * maxRadius; deltaY = (deltaY / distance) * maxRadius; }
                 knob.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
-
                 const threshold = 15; 
                 const nextDirections = { up: deltaY < -threshold, down: deltaY > threshold, left: deltaX < -threshold, right: deltaX > threshold };
-
                 if (nextDirections.up !== activeDirections.up) { sendInput(nextDirections.up ? 'press' : 'release', jsnes.Controller.BUTTON_UP); activeDirections.up = nextDirections.up; }
                 if (nextDirections.down !== activeDirections.down) { sendInput(nextDirections.down ? 'press' : 'release', jsnes.Controller.BUTTON_DOWN); activeDirections.down = nextDirections.down; }
                 if (nextDirections.left !== activeDirections.left) { sendInput(nextDirections.left ? 'press' : 'release', jsnes.Controller.BUTTON_LEFT); activeDirections.left = nextDirections.left; }
                 if (nextDirections.right !== activeDirections.right) { sendInput(nextDirections.right ? 'press' : 'release', jsnes.Controller.BUTTON_RIGHT); activeDirections.right = nextDirections.right; }
             }
-
             function resetJoystick() {
                 joystickActive = false; joystickTouchId = null; knob.style.transform = 'translate(-50%, -50%)';
                 if (activeDirections.up) sendInput('release', jsnes.Controller.BUTTON_UP);
@@ -706,18 +655,15 @@
                 if (activeDirections.right) sendInput('release', jsnes.Controller.BUTTON_RIGHT);
                 activeDirections = { up: false, down: false, left: false, right: false };
             }
-
             container.addEventListener('touchstart', (e) => {
                 if (joystickActive) return; joystickActive = true; const touch = e.changedTouches[0]; joystickTouchId = touch.identifier;
                 const rect = container.getBoundingClientRect(); startX = rect.left + rect.width / 2; startY = rect.top + rect.height / 2;
                 handleJoystickMove(touch.clientX, touch.clientY); e.preventDefault();
             }, { passive: false });
-
             container.addEventListener('touchmove', (e) => {
                 if (!joystickActive) return; const touch = Array.from(e.touches).find(t => t.identifier === joystickTouchId);
                 if (touch) handleJoystickMove(touch.clientX, touch.clientY); e.preventDefault();
             }, { passive: false });
-
             container.addEventListener('touchend', (e) => {
                 if (!joystickActive) return; const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
                 if (touch) resetJoystick(); e.preventDefault();
@@ -726,18 +672,11 @@
 
         function playLocalROM() {
             fetch(ROM_FILE_URL)
-                .then(response => {
-                    if (!response.ok) throw new Error('No se pudo cargar el archivo txt');
-                    return response.text();
-                })
+                .then(response => response.text())
                 .then(base64Data => {
                     const cleanBase64 = base64Data.trim();
-                    if (!cleanBase64 || cleanBase64.length < 50) return;
+                    if (!cleanBase64) return;
                     startEmulatorLoop(atob(cleanBase64.includes(',') ? cleanBase64.split(',')[1] : cleanBase64));
-                })
-                .catch(err => {
-                    console.error("Error cargando la ROM desde txt:", err);
-                    alert("Error al cargar el archivo 'rom.txt'. Asegúrate de que esté en el mismo directorio.");
                 });
         }
 
@@ -775,33 +714,25 @@
             initTouchJoystick();
             bindClientControls();
 
-            // Sincronización WebRTC forzada en caliente de las pistas visuales activas
             if (activeCall && activeCall.peerConnection) {
                 const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
                 const senders = activeCall.peerConnection.getSenders();
                 const videoSender = senders.find(sender => sender.track && sender.track.kind === 'video');
-                if (videoSender) {
-                    videoSender.replaceTrack(videoTrack);
-                } else if (hostStream) {
-                    hostStream.addTrack(videoTrack);
-                }
+                if (videoSender) videoSender.replaceTrack(videoTrack);
             }
 
-            try {
-                nes.loadROM(romData);
-                const updateFrame = () => {
-                    if (!isMenuOpen) { nes.frame(); runGamepadPolling(); }
-                    animationFrameId = requestAnimationFrame(updateFrame);
-                };
+            nes.loadROM(romData);
+            const updateFrame = () => {
+                if (!isMenuOpen) { nes.frame(); runGamepadPolling(); }
                 animationFrameId = requestAnimationFrame(updateFrame);
-            } catch (err) { console.error(err); }
+            };
+            animationFrameId = requestAnimationFrame(updateFrame);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             initNetplay();
             document.getElementById('close-emulator').addEventListener('click', () => {
-                if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 window.location.reload();
             });
         });
