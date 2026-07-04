@@ -738,6 +738,16 @@
             initTouchJoystick();
             bindClientControls();
 
+            // Corregido: Actualizar el track de video del peer dinámicamente cuando el canvas cobra vida
+            if (activeCall && activeCall.peerConnection) {
+                const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
+                const senders = activeCall.peerConnection.getSenders();
+                const videoSender = senders.find(sender => sender.track && sender.track.kind === 'video');
+                if (videoSender) {
+                    videoSender.replaceTrack(videoTrack);
+                }
+            }
+
             try {
                 nes.loadROM(romData);
                 const updateFrame = () => {
@@ -759,4 +769,3 @@
     </script>
 </body>
 </html>
-
