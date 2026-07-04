@@ -254,6 +254,7 @@
         let peer = null;
         let conn = null;
         let isPlayer1 = true; 
+        let frameCount = 0; // Contador de frames para sincronizar de manera periódica
 
         // VARIABLES DE MAPEADO DE MANDO EXTERNO Y CONFIGURACIÓN (LISTA COMPLETA DE BOTONES Y PALANCAS)
         let isMappingGamepad = false;
@@ -594,6 +595,10 @@
                 if (nes) {
                     if (data.type === 'press') nes.buttonDown(data.player, data.key);
                     if (data.type === 'release') nes.buttonUp(data.player, data.key);
+                    // El Jugador 2 recibe y sobreescribe su estado local con el del Jugador 1
+                    if (data.type === 'sync' && !isPlayer1) {
+                        nes.fromJSON(data.state);
+                    }
                 }
             });
         }
@@ -787,6 +792,19 @@
                     if (!isMenuOpen) {
                         nes.frame();
                         runGamepadPolling();
+
+                        // NUEVO SISTEMA DE SINCRONIZACIÓN:
+                        // Si somos el Jugador 1 y hay una conexión activa, enviamos el estado completo cada 5 fotogramas
+                        if (conn && conn.open && isPlayer1) {
+                            frameCount++;
+                            if (frameCount >= 5) {
+                                conn.send({
+                                    type: 'sync',
+                                    state: nes.toJSON()
+                                });
+                                frameCount = 0;
+                            }
+                        }
                     }
                     animationFrameId = requestAnimationFrame(updateFrame);
                 };
