@@ -27,7 +27,26 @@
             background: #000;
         }
         #nes-canvas { z-index: 1; }
-        #netplay-video { z-index: 1; display: none; }
+        #netplay-video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    display:none;
+
+    object-fit:contain;
+
+    background:black;
+
+    image-rendering:auto;
+
+}
+
 
         .touch-zone { touch-action: none; -webkit-user-select: none; user-select: none; }
         .touch-btn:active { background-color: rgba(244, 63, 94, 0.4) !important; transform: scale(0.92); }
@@ -217,8 +236,51 @@
                 </div>
             
             <div class="w-full h-full bg-black flex items-center justify-center relative overflow-hidden">
-                <canvas id="nes-canvas" width="256" height="240"></canvas>
-                <video id="netplay-video" autoplay playsinline muted></video>
+                <div id="video-wrapper" class="absolute inset-0 w-full h-full">
+
+    <canvas id="nes-canvas"
+            width="256"
+            height="240">
+    </canvas>
+
+    <video id="netplay-video"
+           autoplay
+           playsinline
+           muted
+           style="display:none;">
+    </video>
+
+    <div id="video-play-overlay"
+         style="
+            display:none;
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,.55);
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            z-index:20;">
+
+        <div style="
+            width:90px;
+            height:90px;
+            border-radius:50%;
+            background:rgba(255,255,255,.2);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:54px;
+            color:white;
+            backdrop-filter:blur(8px);">
+
+            ▶
+
+        </div>
+
+    </div>
+
+</div>
+
 
                 <div id="wrapper-controls" style="opacity: 0.5;" class="absolute inset-0 pointer-events-none z-[110]">
                     <div id="container-left-touch" style="bottom: 24px;" class="absolute left-6 select-none pointer-events-auto flex items-center justify-center w-32 h-32">
@@ -292,6 +354,8 @@
 
         let isMenuOpen = false;
         let hostStream = null;
+        let hostVideoTrack = null;
+
 
         function togglePlatformsMenu() {
             const dropdown = document.getElementById('platforms-dropdown');
@@ -366,6 +430,17 @@
             if (audioGain) audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
             if (!isPlayer1) video.volume = currentVolume;
         }
+        
+        function startRemoteVideo(){
+
+    const overlay=document.getElementById("video-play-overlay");
+
+    overlay.style.display="none";
+
+    video.play().catch(console.error);
+
+}
+
 
         function saveGameState() {
             if (!nes || !isPlayer1) return;
@@ -554,14 +629,29 @@ Frame(runCanvasKeeper);
                 setupNetworkListeners();
             });
 
-            peer.on('call', (call) => {
-                activeCall = call;
-                if (!hostStream) hostStream = canvas.captureStream(30);
-                if (streamDest && streamDest.stream.getAudioTracks().length > 0 && hostStream.getAudioTracks().length === 0) {
-                    hostStream.addTrack(streamDest.stream.getAudioTracks()[0]);
-                }
-                call.answer(hostStream); 
-            });
+
+peer.on("call",(call)=>{
+
+    activeCall=call;
+
+    const esperar=()=>{
+
+        if(hostStream){
+
+            call.answer(hostStream);
+
+        }else{
+
+            setTimeout(esperar,100);
+
+        }
+
+    };
+
+    esperar();
+
+});
+
         }
 
         function changeNetplayID() {
@@ -581,26 +671,60 @@ Frame(runCanvasKeeper);
             isPlayer1 = false; 
             document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2 (CLIENTE)";
             
-            document.getElementById('emulator-section').classList.remove('hidden');
-            // ✅ CORRECCIÓN EXACTA: Jugador 2 oculta canvas y muestra video
-            canvas.style.display = 'none';
-            video.style.display = 'block';
-            if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+            document.getElementById("emulator-section")
+.classList.remove("hidden");
+
+canvas.style.display="none";
+
+video.style.display="block";
+
+document.getElementById("video-play-overlay")
+.style.display="flex";
+
+if(document.documentElement.requestFullscreen)
+    document.documentElement.requestFullscreen();
+
 
             conn = peer.connect(targetId.trim());
             setupNetworkListeners();
 
-            const call = peer.call(targetId.trim(), new MediaStream());
+            const call=peer.call(
+
+    targetId.trim(),
+
+    new MediaStream()
+
+);
+
+call.on("error",console.error);
+
+            video.srcObject=null;
+
+video.load();
+
             activeCall = call;
 
-            call.on('stream', (remoteStream) => {
-                video.srcObject = remoteStream;
-                video.volume = currentVolume;
-                video.play().catch(err => console.log("Error reproduciendo video:", err));
-                // ✅ Se inicializan controles para enviar entradas al host
-                initTouchJoystick();
-                bindClientControls();
-            });
+call.on("stream",(remoteStream)=>{
+
+    console.log("VIDEO RECIBIDO");
+
+    video.srcObject=remoteStream;
+
+    video.onloadedmetadata=()=>{
+
+        document
+        .getElementById("video-play-overlay")
+        .style.display="flex";
+
+    };
+
+    initTouchJoystick();
+
+    bindClientControls();
+
+});
+
+
         }
 
         function setupNetworkListeners() {
@@ -718,6 +842,9 @@ Frame(runCanvasKeeper);
             document.getElementById('emulator-section').classList.remove('hidden');
             canvas.style.display = 'block';
             video.style.display = 'none';
+            document.getElementById("video-play-overlay")
+.style.display="none";
+
             if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
             
             initAudioEngine();
@@ -740,14 +867,18 @@ Frame(runCanvasKeeper);
             initTouchJoystick();
             bindClientControls();
 
-            if (activeCall && activeCall.peerConnection) {
-                const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
-                const senders = activeCall.peerConnection.getSenders();
-                const videoSender = senders.find(sender => sender.track && sender.track.kind === 'video');
-                if (videoSender) videoSender.replaceTrack(videoTrack);
-            }
+            
 
             nes.loadROM(romData);
+            
+if(!hostStream){
+
+    hostStream=canvas.captureStream(60);
+
+    hostVideoTrack=hostStream.getVideoTracks()[0];
+
+}
+
             const updateFrame = () => {
                 if (!isMenuOpen) { nes.frame(); runGamepadPolling(); }
                 animationFrameId = requestAnimationFrame(updateFrame);
@@ -757,6 +888,10 @@ Frame(runCanvasKeeper);
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+            document
+.getElementById("video-play-overlay")
+.addEventListener("click",startRemoteVideo);
+
             initNetplay();
             document.getElementById('close-emulator').addEventListener('click', () => {
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
