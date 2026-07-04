@@ -13,17 +13,15 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
         .brand-font { font-family: 'Space Grotesk', sans-serif; }
         @media screen and (orientation: portrait) { .portrait-warning { display: flex !important; } }
-        #nes-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; }
+        #nes-canvas, #netplay-video { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; }
         .touch-zone { touch-action: none; -webkit-user-select: none; user-select: none; }
         .touch-btn:active { background-color: rgba(244, 63, 94, 0.4) !important; transform: scale(0.92); }
         .video-smooth { image-rendering: auto !important; }
         .screen-stretch { object-fit: fill !important; }
         
-        /* Estilos específicos para la palanca virtual */
         .joystick-container { width: 128px; height: 128px; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); border-radius: 50%; position: relative; touch-action: none; }
         .joystick-knob { width: 48px; height: 48px; background: rgba(225, 29, 72, 0.9); border: 2px solid #f1f5f9; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5); pointer-events: none; transition: background-color 0.1s; }
         
-        /* Estilos para la cruceta de flechas */
         .dpad-container { width: 130px; height: 130px; position: relative; }
         .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; items-center: center; justify-content: center; font-weight: bold; font-size: 14px; }
         .dpad-btn:active { background: rgba(244, 63, 94, 0.6) !important; }
@@ -200,6 +198,7 @@
             
             <div class="w-full h-full bg-black flex items-center justify-center relative overflow-hidden">
                 <canvas id="nes-canvas" width="256" height="240"></canvas>
+                <video id="netplay-video" class="hidden" autoplay playsinline></video>
 
                 <div id="wrapper-controls" style="opacity: 0.5;" class="absolute inset-0 pointer-events-none z-[110]">
                     <div id="container-left-touch" style="bottom: 24px;" class="absolute left-6 select-none pointer-events-auto flex items-center justify-center w-32 h-32">
@@ -234,6 +233,7 @@
 
         let nes;
         let canvas = document.getElementById('nes-canvas');
+        let video = document.getElementById('netplay-video');
         let ctx = canvas.getContext('2d');
         let imageData = ctx.createImageData(256, 240);
         let buffer = new ArrayBuffer(imageData.data.length);
@@ -241,7 +241,6 @@
         let framebuffer8 = new Uint8ClampedArray(buffer);
         let animationFrameId = null;
 
-        // VARIABLES GLOBALES DE AUDIO
         let audioCtx = null;
         let audioGain = null;
         let audioBufferSize = 4096;
@@ -249,34 +248,32 @@
         let audioWritePtr = 0;
         let audioReadPtr = 0;
         let currentVolume = 0.8;
+        let streamDest = null; // Nodo de captura de audio
 
-        // VARIABLES GLOBALES NETPLAY (P2P MULTIJUGADOR)
+        // NETPLAY POR STREAMING
         let peer = null;
         let conn = null;
+        let activeCall = null; 
         let isPlayer1 = true; 
-        let frameCount = 0; // Contador de frames para sincronizar de manera periódica
 
-        // VARIABLES DE MAPEADO DE MANDO EXTERNO Y CONFIGURACIÓN (LISTA COMPLETA DE BOTONES Y PALANCAS)
         let isMappingGamepad = false;
         let isWaitingRelease = false; 
         let currentMappingKeyIndex = 0;
         let lastInputRegisterTime = 0; 
         let gamepadConfig = { id: null, buttons: {}, axes: {} }; 
         const mappingKeysOrder = [
-            { id: jsnes.Controller.BUTTON_UP, label: 'MANDO VIRTUAL - PALANCA ARRIBA / MANDO EXTERNO - STICK ARRIBA / D-PAD' },
-            { id: jsnes.Controller.BUTTON_DOWN, label: 'MANDO VIRTUAL - PALANCA ABAJO / MANDO EXTERNO - STICK ABAJO / D-PAD' },
-            { id: jsnes.Controller.BUTTON_LEFT, label: 'MANDO VIRTUAL - PALANCA IZQUIERDA / MANDO EXTERNO - STICK IZQUIERDA / D-PAD' },
-            { id: jsnes.Controller.BUTTON_RIGHT, label: 'MANDO VIRTUAL - PALANCA DERECHA / MANDO EXTERNO - STICK DERECHA / D-PAD' },
-            { id: jsnes.Controller.BUTTON_A, label: 'MANDO VIRTUAL - ACCIÓN A / MANDO EXTERNO - BOTÓN TRASERO / ACCIÓN A' },
-            { id: jsnes.Controller.BUTTON_B, label: 'MANDO VIRTUAL - ACCIÓN B / MANDO EXTERNO - BOTÓN TRASERO / ACCIÓN B' },
-            { id: jsnes.Controller.BUTTON_SELECT, label: 'MANDO VIRTUAL - SELECT / MANDO EXTERNO - SELECT / BACK / SHARE' },
-            { id: jsnes.Controller.BUTTON_START, label: 'MANDO VIRTUAL - START / MANDO EXTERNO - START / OPTIONS / MENU' }
+            { id: jsnes.Controller.BUTTON_UP, label: 'PALANCA ARRIBA / D-PAD ARRIBA' },
+            { id: jsnes.Controller.BUTTON_DOWN, label: 'PALANCA ABAJO / D-PAD ABAJO' },
+            { id: jsnes.Controller.BUTTON_LEFT, label: 'PALANCA IZQUIERDA / D-PAD IZQUIERDA' },
+            { id: jsnes.Controller.BUTTON_RIGHT, label: 'PALANCA DERECHA / D-PAD DERECHA' },
+            { id: jsnes.Controller.BUTTON_A, label: 'BOTÓN RETRO ACCIÓN A' },
+            { id: jsnes.Controller.BUTTON_B, label: 'BOTÓN RETRO ACCIÓN B' },
+            { id: jsnes.Controller.BUTTON_SELECT, label: 'SELECT / SHARE / BACK' },
+            { id: jsnes.Controller.BUTTON_START, label: 'START / OPTIONS / MENU' }
         ];
 
-        // LOGICA DE REANUDACIÓN / PAUSA DINÁMICA DE LA ANIMACIÓN
         let isMenuOpen = false;
 
-        // LOGICA PARA MOSTRAR / OCULTAR EL MENU DE PLATAFORMAS
         function togglePlatformsMenu() {
             const dropdown = document.getElementById('platforms-dropdown');
             dropdown.classList.toggle('hidden');
@@ -287,7 +284,7 @@
             menu.classList.toggle('hidden');
             isMenuOpen = !menu.classList.contains('hidden');
             
-            if (nes) {
+            if (nes && isPlayer1) {
                 if (isMenuOpen) {
                     if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 } else {
@@ -303,16 +300,17 @@
 
         function changeFilter() {
             const btn = document.getElementById('cfg-filter');
-            if(canvas.classList.contains('video-smooth')) { canvas.classList.remove('video-smooth'); btn.textContent = "PIXELADO"; }
-            else { canvas.classList.add('video-smooth'); btn.textContent = "SUAVIZADO"; }
+            const target = isPlayer1 ? canvas : video;
+            if(target.classList.contains('video-smooth')) { target.classList.remove('video-smooth'); btn.textContent = "PIXELADO"; }
+            else { target.classList.add('video-smooth'); btn.textContent = "SUAVIZADO"; }
         }
         function changeScreen() {
             const btn = document.getElementById('cfg-screen');
-            if(canvas.classList.contains('screen-stretch')) { canvas.classList.remove('screen-stretch'); btn.textContent = "ORIGINAL (4:3)"; }
-            else { canvas.classList.add('screen-stretch'); btn.textContent = "ESTIRADO (16:9)"; }
+            const target = isPlayer1 ? canvas : video;
+            if(target.classList.contains('screen-stretch')) { target.classList.remove('screen-stretch'); btn.textContent = "ORIGINAL (4:3)"; }
+            else { target.classList.add('screen-stretch'); btn.textContent = "ESTIRADO (16:9)"; }
         }
         
-        // ALTERNAR ENTRE JOYSTICK Y FLECHAS NATIVAS
         function toggleControlStyle() {
             const btn = document.getElementById('cfg-ctrl-style');
             const joystick = document.getElementById('touch-joystick');
@@ -329,7 +327,6 @@
             }
         }
 
-        // CAMBIAR POSICIÓN VERTICAL DE LOS PANELES DE CONTROL TÁCTIL
         function changeControlPosition(side, val) {
             if (side === 'left') {
                 document.getElementById('container-left-touch').style.bottom = val + "px";
@@ -348,33 +345,27 @@
             currentVolume = val / 100;
             document.getElementById('cfg-volume-val').textContent = val + "%";
             if (audioGain) audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
+            if (!isPlayer1) video.volume = currentVolume;
         }
 
-        // FUNCIONALIDADES DE GESTIÓN DE ESTADO (SAVE/LOAD)
         function saveGameState() {
-            if (!nes) return;
+            if (!nes || !isPlayer1) return;
             try {
                 const state = nes.toJSON();
                 localStorage.setItem('retro_station_save_state', JSON.stringify(state));
                 showSaveMsg('¡Partida guardada con éxito!');
-            } catch (e) {
-                showSaveMsg('Error al guardar partida.');
-            }
+            } catch (e) { showSaveMsg('Error al guardar partida.'); }
         }
 
         function loadGameState() {
-            if (!nes) return;
+            if (!nes || !isPlayer1) return;
             try {
                 const savedData = localStorage.getItem('retro_station_save_state');
                 if (savedData) {
                     nes.fromJSON(JSON.parse(savedData));
                     showSaveMsg('¡Partida cargada!');
-                } else {
-                    showSaveMsg('No hay partidas guardadas.');
-                }
-            } catch (e) {
-                showSaveMsg('Error al cargar partida.');
-            }
+                } else { showSaveMsg('No hay partidas guardadas.'); }
+            } catch (e) { showSaveMsg('Error al cargar partida.'); }
         }
 
         function showSaveMsg(msg) {
@@ -383,11 +374,9 @@
             setTimeout(() => el.textContent = '', 3000);
         }
 
-        // FUNCIONALIDADES DE MAPEADO DE MANDO EXTERNO (GAMEPAD API MEJORADA)
         function updateMappingUI() {
             const labelContainer = document.getElementById('gamepad-mapping-label');
             let htmlContent = '<div class="flex flex-col gap-1 w-full text-left font-mono mt-2 bg-slate-950 p-2 rounded border border-slate-800 max-h-[180px] overflow-y-auto">';
-            
             mappingKeysOrder.forEach((item, index) => {
                 if (index === currentMappingKeyIndex) {
                     htmlContent += `<div class="text-amber-400 font-bold animate-pulse text-[10px] flex items-center justify-between gap-2"><span>➔ ${item.label}</span> <span class="text-[8px] bg-amber-500/20 px-1.5 py-0.2 rounded text-amber-300 shrink-0">PULSAR...</span></div>`;
@@ -405,98 +394,58 @@
             const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
             const activeGamepad = Array.from(gamepads).find(g => g !== null);
             const labelContainer = document.getElementById('gamepad-mapping-label');
-
             if (!activeGamepad) {
                 labelContainer.textContent = "¡Presiona un botón del mando!";
                 setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2500);
                 return;
             }
-
-            isMappingGamepad = true;
-            isWaitingRelease = false;
-            currentMappingKeyIndex = 0;
-            lastInputRegisterTime = 0;
+            isMappingGamepad = true; isWaitingRelease = false; currentMappingKeyIndex = 0; lastInputRegisterTime = 0;
             gamepadConfig = { id: activeGamepad.id, buttons: {}, axes: {} };
             updateMappingUI();
         }
 
-        // AUTOMAPEADO DIRECTO BASADO EN EL ESPACIO DE BOTONES ESTÁNDAR DE GAMEPAD API
         function autoMapExternalController() {
             const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
             const activeGamepad = Array.from(gamepads).find(g => g !== null);
             const labelContainer = document.getElementById('gamepad-mapping-label');
-
             if (!activeGamepad) {
                 labelContainer.textContent = "¡Conecta o presiona un botón del mando!";
                 setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2500);
                 return;
             }
-
             isMappingGamepad = false; 
             gamepadConfig = {
                 id: activeGamepad.id,
-                buttons: {
-                    0: jsnes.Controller.BUTTON_B,      // Botón Sur (X / A) -> Mapeado a B en NES por ergonomía retro
-                    1: jsnes.Controller.BUTTON_A,      // Botón Este (O / B) -> Mapeado a A en NES
-                    2: jsnes.Controller.BUTTON_B,      // Botón Oeste (🔲 / X) -> Alternativo B
-                    3: jsnes.Controller.BUTTON_A,      // Botón Norte (🔺 / Y) -> Alternativo A
-                    8: jsnes.Controller.BUTTON_SELECT, // Select / Share
-                    9: jsnes.Controller.BUTTON_START,  // Start / Options
-                    12: jsnes.Controller.BUTTON_UP,    // D-Pad Arriba
-                    13: jsnes.Controller.BUTTON_DOWN,  // D-Pad Abajo
-                    14: jsnes.Controller.BUTTON_LEFT,  // D-Pad Izquierda
-                    15: jsnes.Controller.BUTTON_RIGHT  // D-Pad Derecha
-                },
-                axes: {
-                    "0_-1": jsnes.Controller.BUTTON_LEFT,  // Stick Izquierdo - Izquierda
-                    "0_1": jsnes.Controller.BUTTON_RIGHT,  // Stick Izquierdo - Derecha
-                    "1_-1": jsnes.Controller.BUTTON_UP,    // Stick Izquierdo - Arriba
-                    "1_1": jsnes.Controller.BUTTON_DOWN    // Stick Izquierdo - Abajo
-                }
+                buttons: { 0: jsnes.Controller.BUTTON_B, 1: jsnes.Controller.BUTTON_A, 2: jsnes.Controller.BUTTON_B, 3: jsnes.Controller.BUTTON_A, 8: jsnes.Controller.BUTTON_SELECT, 9: jsnes.Controller.BUTTON_START, 12: jsnes.Controller.BUTTON_UP, 13: jsnes.Controller.BUTTON_DOWN, 14: jsnes.Controller.BUTTON_LEFT, 15: jsnes.Controller.BUTTON_RIGHT },
+                axes: { "0_-1": jsnes.Controller.BUTTON_LEFT, "0_1": jsnes.Controller.BUTTON_RIGHT, "1_-1": jsnes.Controller.BUTTON_UP, "1_1": jsnes.Controller.BUTTON_DOWN }
             };
-
             labelContainer.innerHTML = `<span class="text-emerald-400 font-bold tracking-widest uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> AUTOMAPEADO OK</span>`;
             lucide.createIcons();
             setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2000);
         }
 
-        // Habilitar íconos internos del menú desplegable de plataformas
         const observer = new MutationObserver(() => { lucide.createIcons(); });
         observer.observe(document.getElementById('platforms-dropdown'), { attributes: true, childList: true });
 
         function runGamepadPolling() {
-            if (!nes) return;
             const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
             const gp = Array.from(gamepads).find(g => g && (gamepadConfig.id ? g.id === gamepadConfig.id : true));
             if (!gp) return;
 
             if (isMappingGamepad) {
-                const now = performance.now();
-                let anyInputActive = false;
-                let detectedInput = null;
-
-                for (let b = 0; b < gp.buttons.length; b++) {
-                    if (gp.buttons[b].pressed) {
-                        anyInputActive = true;
-                        detectedInput = { type: 'button', index: b };
-                        break;
-                    }
-                }
-
+                const now = performance.now(); let anyInputActive = false; let detectedInput = null;
+                for (let b = 0; b < gp.buttons.length; b++) { if (gp.buttons[b].pressed) { anyInputActive = true; detectedInput = { type: 'button', index: b }; break; } }
                 if (!anyInputActive) {
                     for (let a = 0; a < gp.axes.length; a++) {
                         if (gp.axes[a] < -0.6) { anyInputActive = true; detectedInput = { type: 'axis', index: a, dir: -1 }; break; }
                         if (gp.axes[a] > 0.6) { anyInputActive = true; detectedInput = { type: 'axis', index: a, dir: 1 }; break; }
                     }
                 }
-
                 if (isWaitingRelease) {
                     if (!anyInputActive && (now - lastInputRegisterTime > 300)) {
-                        isWaitingRelease = false;
-                        currentMappingKeyIndex++;
-                        if (currentMappingKeyIndex < mappingKeysOrder.length) {
-                            updateMappingUI();
-                        } else {
+                        isWaitingRelease = false; currentMappingKeyIndex++;
+                        if (currentMappingKeyIndex < mappingKeysOrder.length) { updateMappingUI(); } 
+                        else {
                             isMappingGamepad = false;
                             document.getElementById('gamepad-mapping-label').innerHTML = `<span class="text-emerald-400 font-bold tracking-widest uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> MANDO MAPEADO</span>`;
                             lucide.createIcons();
@@ -505,41 +454,21 @@
                     }
                 } else if (detectedInput && (now - lastInputRegisterTime > 300)) {
                     const currentNesKey = mappingKeysOrder[currentMappingKeyIndex].id;
-                    if (detectedInput.type === 'button') {
-                        gamepadConfig.buttons[detectedInput.index] = currentNesKey;
-                    } else if (detectedInput.type === 'axis') {
-                        const axisKey = `${detectedInput.index}_${detectedInput.dir}`;
-                        gamepadConfig.axes[axisKey] = currentNesKey;
-                    }
-                    isWaitingRelease = true; 
-                    lastInputRegisterTime = now;
+                    if (detectedInput.type === 'button') gamepadConfig.buttons[detectedInput.index] = currentNesKey;
+                    else if (detectedInput.type === 'axis') gamepadConfig.axes[`${detectedInput.index}_${detectedInput.dir}`] = currentNesKey;
+                    isWaitingRelease = true; lastInputRegisterTime = now;
                 }
                 return; 
             }
 
             for (let b = 0; b < gp.buttons.length; b++) {
                 const mappedNesKey = gamepadConfig.buttons[b];
-                if (mappedNesKey !== undefined) {
-                    if (gp.buttons[b].pressed) {
-                        sendInput('press', mappedNesKey);
-                    } else {
-                        sendInput('release', mappedNesKey);
-                    }
-                }
+                if (mappedNesKey !== undefined) { sendInput(gp.buttons[b].pressed ? 'press' : 'release', mappedNesKey); }
             }
-
             for (let a = 0; a < gp.axes.length; a++) {
-                const mappedNegKey = gamepadConfig.axes[`${a}_-1`];
-                const mappedPosKey = gamepadConfig.axes[`${a}_1`];
-                
-                if (mappedNegKey !== undefined) {
-                    if (gp.axes[a] < -0.5) sendInput('press', mappedNegKey);
-                    else sendInput('release', mappedNegKey);
-                }
-                if (mappedPosKey !== undefined) {
-                    if (gp.axes[a] > 0.5) sendInput('press', mappedPosKey);
-                    else sendInput('release', mappedPosKey);
-                }
+                const mappedNegKey = gamepadConfig.axes[`${a}_-1`], mappedPosKey = gamepadConfig.axes[`${a}_1`];
+                if (mappedNegKey !== undefined) sendInput(gp.axes[a] < -0.5 ? 'press' : 'release', mappedNegKey);
+                if (mappedPosKey !== undefined) sendInput(gp.axes[a] > 0.5 ? 'press' : 'release', mappedPosKey);
             }
         }
 
@@ -556,96 +485,154 @@
                     if (audioReadPtr !== audioWritePtr) {
                         output[i] = audioSamples[audioReadPtr];
                         audioReadPtr = (audioReadPtr + 1) % audioBufferSize;
-                    } else {
-                        output[i] = 0;
-                    }
+                    } else { output[i] = 0; }
                 }
             };
             scriptProcessor.connect(audioGain);
             audioGain.connect(audioCtx.destination);
+
+            // Permitir que el stream capture el audio procesado
+            if (audioCtx.createMediaStreamDestination) {
+                streamDest = audioCtx.createMediaStreamDestination();
+                scriptProcessor.connect(streamDest);
+            }
         }
 
         function initNetplay() {
-            // Buscamos si el usuario ya guardó un ID en este navegador
             let savedId = localStorage.getItem('retro_station_netplay_id');
-            
-            // Si es la primera vez que entra, le preguntamos qué ID quiere usar
             if (!savedId) {
-                let userInput = prompt("Ingresa un ID único y personalizado para tu consola (Ej: retro-estacion-1):");
+                let userInput = prompt("Ingresa un ID único para tu consola (Ej: retro-juan):");
                 if (userInput && userInput.trim().length > 0) {
-                    savedId = userInput.trim().replace(/[^a-zA-Z0-9-_]/g, ''); // Limpiar caracteres raros
+                    savedId = userInput.trim().replace(/[^a-zA-Z0-9-_]/g, '');
                     localStorage.setItem('retro_station_netplay_id', savedId);
                 }
             }
+            peer = savedId ? new Peer(savedId) : new Peer();
 
-            // Si definió un ID lo usamos fijamente, de lo contrario PeerJS usará uno aleatorio como respaldo
-            if (savedId) {
-                peer = new Peer(savedId);
-            } else {
-                peer = new Peer();
-            }
-
-            peer.on('open', (id) => {
-                document.getElementById('netplay-id').textContent = "Tu ID: " + id;
-            });
+            peer.on('open', (id) => { document.getElementById('netplay-id').textContent = "Tu ID: " + id; });
+            
+            // EL HOST (JUGADOR 1) RECIBE LA CONEXIÓN DE CONTROL
             peer.on('connection', (connection) => {
                 conn = connection;
                 isPlayer1 = true; 
-                document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 1";
+                document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 1 (HOST)";
                 setupNetworkListeners();
             });
+
+            // EL HOST CORRE EL JUEGO LOCALMENTE Y TRANSMITE EL STREAM AL JUGADOR 2 CUANDO ESTE LLAMA
+            peer.on('call', (call) => {
+                activeCall = call;
+                // Capturar video del canvas a 30fps + track de audio sintetizado
+                const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
+                const mediaStream = new MediaStream([videoTrack]);
+                if (streamDest && streamDest.stream.getAudioTracks().length > 0) {
+                    mediaStream.addTrack(streamDest.stream.getAudioTracks()[0]);
+                }
+                call.answer(mediaStream); 
+            });
             
-            // Manejador en caso de que el ID personalizado ya esté en uso en el servidor
             peer.on('error', (err) => {
                 if (err.type === 'unavailable-id') {
-                    alert("El ID elegido ya está en uso por otro jugador. Por favor elige otro.");
+                    alert("El ID elegido ya está en uso. Elige otro.");
                     localStorage.removeItem('retro_station_netplay_id');
                     window.location.reload();
                 }
             });
         }
 
+        // EL JUGADOR 2 SE CONECTA AL HOST
         function connectToPeer() {
             const targetId = document.getElementById('netplay-join-id').value.trim();
             if (!targetId) return;
-            conn = peer.connect(targetId);
+
             isPlayer1 = false; 
-            document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2";
+            document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2 (CLIENTE)";
+            
+            // 1. Conexión de datos para enviar inputs
+            conn = peer.connect(targetId);
             setupNetworkListeners();
+
+            // 2. Llamar para recibir el streaming de video/audio sin mandar cámara propia
+            const fakeStream = new MediaStream(); 
+            const call = peer.call(targetId, fakeStream);
+            activeCall = call;
+
+            call.on('stream', (remoteStream) => {
+                // Configurar interfaz de terminal de streaming
+                document.getElementById('emulator-section').classList.remove('hidden');
+                canvas.classList.add('hidden');
+                video.classList.remove('hidden');
+                video.srcObject = remoteStream;
+                video.volume = currentVolume;
+                video.play().catch(e => console.log("Interacción requerida para audio"));
+                
+                initTouchJoystick();
+                bindClientControls();
+                
+                // Activar recolección de mandos externos en el cliente
+                const clientLoop = () => {
+                    runGamepadPolling();
+                    if(!document.getElementById('emulator-section').classList.contains('hidden')) {
+                        requestAnimationFrame(clientLoop);
+                    }
+                };
+                requestAnimationFrame(clientLoop);
+            });
         }
 
         function setupNetworkListeners() {
             conn.on('open', () => {
-                toggleConfigMenu();
+                if(isPlayer1) {
+                    showSaveMsg("¡Jugador 2 conectado!");
+                } else {
+                    toggleConfigMenu();
+                }
             });
+
             conn.on('data', (data) => {
-                if (nes) {
-                    if (data.type === 'press') nes.buttonDown(data.player, data.key);
-                    if (data.type === 'release') nes.buttonUp(data.player, data.key);
-                    // El Jugador 2 recibe y sobreescribe su estado local con el del Jugador 1
-                    if (data.type === 'sync' && !isPlayer1) {
-                        nes.fromJSON(data.state);
-                    }
+                // El Jugador 1 (Host) recibe los botones del Jugador 2 y los ejecuta localmente
+                if (isPlayer1 && nes) {
+                    if (data.type === 'press') nes.buttonDown(2, data.key);
+                    if (data.type === 'release') nes.buttonUp(2, data.key);
                 }
             });
         }
 
         function sendInput(type, key) {
-            const activeRole = isPlayer1 ? 1 : 2;
-            if (nes) {
-                if (type === 'press') nes.buttonDown(activeRole, key);
-                else nes.buttonUp(activeRole, key);
-            }
-            if (conn && conn.open) {
-                conn.send({ type: type, player: activeRole, key: key });
+            if (isPlayer1) {
+                // Jugador 1 afecta su emulador local directamente
+                if (nes) {
+                    if (type === 'press') nes.buttonDown(1, key);
+                    else nes.buttonUp(1, key);
+                }
+            } else {
+                // Jugador 2 envía por WebRTC sus pulsaciones al Host de forma inmediata
+                if (conn && conn.open) {
+                    conn.send({ type: type, key: key });
+                }
             }
         }
 
         function bindTouchControl(elementId, jnesButtonConst) {
             const el = document.getElementById(elementId);
             if (!el) return;
-            el.addEventListener('touchstart', (e) => { sendInput('press', jnesButtonConst); e.preventDefault(); }, { passive: false });
-            el.addEventListener('touchend', (e) => { sendInput('release', jnesButtonConst); e.preventDefault(); }, { passive: false });
+            // Clonar nodos para limpiar listeners previos
+            const newEl = el.cloneNode(true);
+            el.parentNode.replaceChild(newEl, el);
+
+            newEl.addEventListener('touchstart', (e) => { sendInput('press', jnesButtonConst); e.preventDefault(); }, { passive: false });
+            newEl.addEventListener('touchend', (e) => { sendInput('release', jnesButtonConst); e.preventDefault(); }, { passive: false });
+        }
+
+        function bindClientControls() {
+            bindTouchControl('touch-a', jsnes.Controller.BUTTON_A);
+            bindTouchControl('touch-b', jsnes.Controller.BUTTON_B);
+            bindTouchControl('touch-select', jsnes.Controller.BUTTON_SELECT);
+            bindTouchControl('touch-start', jsnes.Controller.BUTTON_START);
+            bindTouchControl('dpad-u', jsnes.Controller.BUTTON_UP);
+            bindTouchControl('dpad-d', jsnes.Controller.BUTTON_DOWN);
+            bindTouchControl('dpad-l', jsnes.Controller.BUTTON_LEFT);
+            bindTouchControl('dpad-r', jsnes.Controller.BUTTON_RIGHT);
         }
 
         function initTouchJoystick() {
@@ -653,106 +640,47 @@
             const knob = document.getElementById('joystick-knob');
             if (!container || !knob) return;
 
-            let joystickActive = false;
-            let startX = 0, startY = 0;
-            let joystickTouchId = null; 
-            const maxRadius = 40; 
-
+            let joystickActive = false; let startX = 0, startY = 0; let joystickTouchId = null; const maxRadius = 40; 
             let activeDirections = { up: false, down: false, left: false, right: false };
 
             function handleJoystickMove(currentX, currentY) {
-                let deltaX = currentX - startX;
-                let deltaY = currentY - startY;
+                let deltaX = currentX - startX, deltaY = currentY - startY;
                 let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-                if (distance > maxRadius) {
-                    deltaX = (deltaX / distance) * maxRadius;
-                    deltaY = (deltaY / distance) * maxRadius;
-                    distance = maxRadius;
-                }
-
+                if (distance > maxRadius) { deltaX = (deltaX / distance) * maxRadius; deltaY = (deltaY / distance) * maxRadius; }
                 knob.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
 
                 const threshold = 15; 
-                const nextDirections = {
-                    up: deltaY < -threshold,
-                    down: deltaY > threshold,
-                    left: deltaX < -threshold,
-                    right: deltaX > threshold
-                };
+                const nextDirections = { up: deltaY < -threshold, down: deltaY > threshold, left: deltaX < -threshold, right: deltaX > threshold };
 
-                if (nextDirections.up !== activeDirections.up) {
-                    sendInput(nextDirections.up ? 'press' : 'release', jsnes.Controller.BUTTON_UP);
-                    activeDirections.up = nextDirections.up;
-                }
-                if (nextDirections.down !== activeDirections.down) {
-                    sendInput(nextDirections.down ? 'press' : 'release', jsnes.Controller.BUTTON_DOWN);
-                    activeDirections.down = nextDirections.down;
-                }
-                if (nextDirections.left !== activeDirections.left) {
-                    sendInput(nextDirections.left ? 'press' : 'release', jsnes.Controller.BUTTON_LEFT);
-                    activeDirections.left = nextDirections.left;
-                }
-                if (nextDirections.right !== activeDirections.right) {
-                    sendInput(nextDirections.right ? 'press' : 'release', jsnes.Controller.BUTTON_RIGHT);
-                    activeDirections.right = nextDirections.right;
-                }
+                if (nextDirections.up !== activeDirections.up) { sendInput(nextDirections.up ? 'press' : 'release', jsnes.Controller.BUTTON_UP); activeDirections.up = nextDirections.up; }
+                if (nextDirections.down !== activeDirections.down) { sendInput(nextDirections.down ? 'press' : 'release', jsnes.Controller.BUTTON_DOWN); activeDirections.down = nextDirections.down; }
+                if (nextDirections.left !== activeDirections.left) { sendInput(nextDirections.left ? 'press' : 'release', jsnes.Controller.BUTTON_LEFT); activeDirections.left = nextDirections.left; }
+                if (nextDirections.right !== activeDirections.right) { sendInput(nextDirections.right ? 'press' : 'release', jsnes.Controller.BUTTON_RIGHT); activeDirections.right = nextDirections.right; }
             }
 
             function resetJoystick() {
-                joystickActive = false;
-                joystickTouchId = null;
-                knob.style.transform = 'translate(-50%, -50%)';
-                
+                joystickActive = false; joystickTouchId = null; knob.style.transform = 'translate(-50%, -50%)';
                 if (activeDirections.up) sendInput('release', jsnes.Controller.BUTTON_UP);
                 if (activeDirections.down) sendInput('release', jsnes.Controller.BUTTON_DOWN);
                 if (activeDirections.left) sendInput('release', jsnes.Controller.BUTTON_LEFT);
                 if (activeDirections.right) sendInput('release', jsnes.Controller.BUTTON_RIGHT);
-
                 activeDirections = { up: false, down: false, left: false, right: false };
             }
 
             container.addEventListener('touchstart', (e) => {
-                if (joystickActive) return; 
-                
-                joystickActive = true;
-                const touch = e.changedTouches[0];
-                joystickTouchId = touch.identifier; 
-
-                const rect = container.getBoundingClientRect();
-                startX = rect.left + rect.width / 2;
-                startY = rect.top + rect.height / 2;
-                
-                handleJoystickMove(touch.clientX, touch.clientY);
-                e.preventDefault();
+                if (joystickActive) return; joystickActive = true; const touch = e.changedTouches[0]; joystickTouchId = touch.identifier;
+                const rect = container.getBoundingClientRect(); startX = rect.left + rect.width / 2; startY = rect.top + rect.height / 2;
+                handleJoystickMove(touch.clientX, touch.clientY); e.preventDefault();
             }, { passive: false });
 
             container.addEventListener('touchmove', (e) => {
-                if (!joystickActive) return;
-                
-                const touch = Array.from(e.touches).find(t => t.identifier === joystickTouchId);
-                if (touch) {
-                    handleJoystickMove(touch.clientX, touch.clientY);
-                }
-                e.preventDefault();
+                if (!joystickActive) return; const touch = Array.from(e.touches).find(t => t.identifier === joystickTouchId);
+                if (touch) handleJoystickMove(touch.clientX, touch.clientY); e.preventDefault();
             }, { passive: false });
 
             container.addEventListener('touchend', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
-                if (touch) {
-                    resetJoystick();
-                }
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchcancel', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
-                if (touch) {
-                    resetJoystick();
-                }
-                e.preventDefault();
+                if (!joystickActive) return; const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
+                if (touch) resetJoystick(); e.preventDefault();
             }, { passive: false });
         }
 
@@ -762,18 +690,17 @@
         }
 
         function loadUserROM(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
+            const file = event.target.files[0]; if (!file) return;
             const reader = new FileReader();
-            reader.onload = function(e) {
-                startEmulatorLoop(e.target.result);
-            };
+            reader.onload = function(e) { startEmulatorLoop(e.target.result); };
             reader.readAsBinaryString(file);
         }
 
         function startEmulatorLoop(romData) {
+            isPlayer1 = true;
             document.getElementById('emulator-section').classList.remove('hidden');
+            video.classList.add('hidden');
+            canvas.classList.remove('hidden');
             if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
             
             initAudioEngine();
@@ -782,57 +709,24 @@
                 onFrame: (bufferPPU) => {
                     var i = 0;
                     for (var y = 0; y < 240; y++) {
-                        for (var x = 0; x < 256; x++) {
-                            framebuffer24[i] = bufferPPU[i] | 0xFF000000;
-                            i++;
-                        }
+                        for (var x = 0; x < 256; x++) { framebuffer24[i] = bufferPPU[i] | 0xFF000000; i++; }
                     }
-                    imageData.data.set(framebuffer8);
-                    ctx.putImageData(imageData, 0, 0);
+                    imageData.data.set(framebuffer8); ctx.putImageData(imageData, 0, 0);
                 },
                 onAudioSample: (left, right) => {
                     if (!audioCtx) return;
-                    audioSamples[audioWritePtr] = left;
-                    audioWritePtr = (audioWritePtr + 1) % audioBufferSize;
+                    audioSamples[audioWritePtr] = left; audioWritePtr = (audioWritePtr + 1) % audioBufferSize;
                 },
                 sampleRate: 44100
             });
 
             initTouchJoystick();
-            
-            // Vincular botones de acción normales
-            bindTouchControl('touch-a', jsnes.Controller.BUTTON_A);
-            bindTouchControl('touch-b', jsnes.Controller.BUTTON_B);
-            bindTouchControl('touch-select', jsnes.Controller.BUTTON_SELECT);
-            bindTouchControl('touch-start', jsnes.Controller.BUTTON_START);
-            
-            // Vincular la nueva Cruceta D-Pad física alternativa
-            bindTouchControl('dpad-u', jsnes.Controller.BUTTON_UP);
-            bindTouchControl('dpad-d', jsnes.Controller.BUTTON_DOWN);
-            bindTouchControl('dpad-l', jsnes.Controller.BUTTON_LEFT);
-            bindTouchControl('dpad-r', jsnes.Controller.BUTTON_RIGHT);
+            bindClientControls();
 
             try {
                 nes.loadROM(romData);
-
                 const updateFrame = () => {
-                    if (!isMenuOpen) {
-                        nes.frame();
-                        runGamepadPolling();
-
-                        // NUEVO SISTEMA DE SINCRONIZACIÓN:
-                        // Si somos el Jugador 1 y hay una conexión activa, enviamos el estado completo cada 5 fotogramas
-                        if (conn && conn.open && isPlayer1) {
-                            frameCount++;
-                            if (frameCount >= 5) {
-                                conn.send({
-                                    type: 'sync',
-                                    state: nes.toJSON()
-                                });
-                                frameCount = 0;
-                            }
-                        }
-                    }
+                    if (!isMenuOpen) { nes.frame(); runGamepadPolling(); }
                     animationFrameId = requestAnimationFrame(updateFrame);
                 };
                 animationFrameId = requestAnimationFrame(updateFrame);
@@ -842,21 +736,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             initNetplay();
-            const closeAction = () => {
+            document.getElementById('close-emulator').addEventListener('click', () => {
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 window.location.reload();
-            };
-            document.getElementById('close-emulator').addEventListener('click', closeAction);
-
-            window.addEventListener('touchend', () => {
-                if (!document.fullscreenElement && window.innerHeight < window.innerWidth) {
-                    if (document.documentElement.requestFullscreen) {
-                        document.documentElement.requestFullscreen().catch(() => {});
-                    }
-                }
-            }, { passive: true });
+            });
         });
     </script>
 </body>
 </html>
-
