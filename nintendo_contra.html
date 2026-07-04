@@ -235,7 +235,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsnes/1.2.1/jsnes.min.js"></script>
 
     <script>
-        const ROM_BASE64 = 'PEGAR_AQUI';
+        const ROM_FILE_URL = 'nintendo_contra_b64.txt';
 
         let nes;
         let canvas = document.getElementById('nes-canvas');
@@ -725,8 +725,20 @@
         }
 
         function playLocalROM() {
-            if (!ROM_BASE64 || ROM_BASE64.length < 50) return;
-            startEmulatorLoop(atob(ROM_BASE64.includes(',') ? ROM_BASE64.split(',')[1] : ROM_BASE64));
+            fetch(ROM_FILE_URL)
+                .then(response => {
+                    if (!response.ok) throw new Error('No se pudo cargar el archivo txt');
+                    return response.text();
+                })
+                .then(base64Data => {
+                    const cleanBase64 = base64Data.trim();
+                    if (!cleanBase64 || cleanBase64.length < 50) return;
+                    startEmulatorLoop(atob(cleanBase64.includes(',') ? cleanBase64.split(',')[1] : cleanBase64));
+                })
+                .catch(err => {
+                    console.error("Error cargando la ROM desde txt:", err);
+                    alert("Error al cargar el archivo 'rom.txt'. Asegúrate de que esté en el mismo directorio.");
+                });
         }
 
         function loadUserROM(event) {
@@ -796,5 +808,3 @@
     </script>
 </body>
 </html>
-
-    
