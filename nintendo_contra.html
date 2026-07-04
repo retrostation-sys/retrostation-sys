@@ -566,7 +566,25 @@
         }
 
         function initNetplay() {
-            peer = new Peer();
+            // Buscamos si el usuario ya guardó un ID en este navegador
+            let savedId = localStorage.getItem('retro_station_netplay_id');
+            
+            // Si es la primera vez que entra, le preguntamos qué ID quiere usar
+            if (!savedId) {
+                let userInput = prompt("Ingresa un ID único y personalizado para tu consola (Ej: retro-estacion-1):");
+                if (userInput && userInput.trim().length > 0) {
+                    savedId = userInput.trim().replace(/[^a-zA-Z0-9-_]/g, ''); // Limpiar caracteres raros
+                    localStorage.setItem('retro_station_netplay_id', savedId);
+                }
+            }
+
+            // Si definió un ID lo usamos fijamente, de lo contrario PeerJS usará uno aleatorio como respaldo
+            if (savedId) {
+                peer = new Peer(savedId);
+            } else {
+                peer = new Peer();
+            }
+
             peer.on('open', (id) => {
                 document.getElementById('netplay-id').textContent = "Tu ID: " + id;
             });
@@ -575,6 +593,15 @@
                 isPlayer1 = true; 
                 document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 1";
                 setupNetworkListeners();
+            });
+            
+            // Manejador en caso de que el ID personalizado ya esté en uso en el servidor
+            peer.on('error', (err) => {
+                if (err.type === 'unavailable-id') {
+                    alert("El ID elegido ya está en uso por otro jugador. Por favor elige otro.");
+                    localStorage.removeItem('retro_station_netplay_id');
+                    window.location.reload();
+                }
             });
         }
 
@@ -832,3 +859,4 @@
     </script>
 </body>
 </html>
+
