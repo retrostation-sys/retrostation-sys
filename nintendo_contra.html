@@ -9,11 +9,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&family=Space+Grotesk:wght=700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght=700&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
         .brand-font { font-family: 'Space Grotesk', sans-serif; }
         @media screen and (orientation: portrait) { .portrait-warning { display: flex !important; } }
-        #nes-canvas, #netplay-video { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; }
+        
+        /* ✅ CORRECCIÓN: Ambos elementos posicionados correctamente */
+        #nes-canvas, #netplay-video { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            image-rendering: pixelated; 
+            image-rendering: crisp-edges;
+            background: #000;
+        }
+        #nes-canvas { z-index: 1; }
+        #netplay-video { z-index: 1; display: none; }
+
         .touch-zone { touch-action: none; -webkit-user-select: none; user-select: none; }
         .touch-btn:active { background-color: rgba(244, 63, 94, 0.4) !important; transform: scale(0.92); }
         .video-smooth { image-rendering: auto !important; }
@@ -23,7 +38,7 @@
         .joystick-knob { width: 48px; height: 48px; background: rgba(225, 29, 72, 0.9); border: 2px solid #f1f5f9; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5); pointer-events: none; transition: background-color 0.1s; }
         
         .dpad-container { width: 130px; height: 130px; position: relative; }
-        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; items-center: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
         .dpad-btn:active { background: rgba(244, 63, 94, 0.6) !important; }
         .dpad-up { top: 0; left: 44px; width: 42px; height: 46px; border-radius: 6px 6px 0 0; border-bottom: none; }
         .dpad-down { bottom: 0; left: 44px; width: 42px; height: 46px; border-radius: 0 0 6px 6px; border-top: none; }
@@ -104,7 +119,6 @@
         </div>
         <div class="p-2 border-t border-slate-800 text-center"><span class="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">PRES-ARCHIVE SYSTEM</span></div>
     </aside>
-
     <main class="flex-1 flex flex-col h-1/2 md:h-full overflow-hidden relative bg-slate-950">
         <div class="w-full h-full p-4 flex flex-col items-center justify-center bg-slate-950">
             <span class="text-[10px] text-slate-600 font-bold tracking-widest uppercase mb-2">Espacio Publicitario</span>
@@ -204,7 +218,7 @@
             
             <div class="w-full h-full bg-black flex items-center justify-center relative overflow-hidden">
                 <canvas id="nes-canvas" width="256" height="240"></canvas>
-                <video id="netplay-video" class="hidden" autoplay playsinline></video>
+                <video id="netplay-video" autoplay playsinline muted></video>
 
                 <div id="wrapper-controls" style="opacity: 0.5;" class="absolute inset-0 pointer-events-none z-[110]">
                     <div id="container-left-touch" style="bottom: 24px;" class="absolute left-6 select-none pointer-events-auto flex items-center justify-center w-32 h-32">
@@ -233,7 +247,6 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsnes/1.2.1/jsnes.min.js"></script>
-
     <script>
         const ROM_FILE_URL = 'nintendo_contra_b64.txt';
 
@@ -513,7 +526,8 @@
             ctx.fillRect(0, 0, 256, 240);
             ctx.fillStyle = (Math.floor(Date.now() / 500) % 2 === 0) ? "#020617" : "#0f172a";
             ctx.fillRect(0, 0, 1, 1); 
-            requestAnimationFrame(runCanvasKeeper);
+            requestAnimation
+Frame(runCanvasKeeper);
         }
 
         function initNetplay() {
@@ -568,8 +582,9 @@
             document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2 (CLIENTE)";
             
             document.getElementById('emulator-section').classList.remove('hidden');
-            canvas.classList.add('hidden');
-            video.classList.remove('hidden');
+            // ✅ CORRECCIÓN EXACTA: Jugador 2 oculta canvas y muestra video
+            canvas.style.display = 'none';
+            video.style.display = 'block';
             if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
 
             conn = peer.connect(targetId.trim());
@@ -581,7 +596,8 @@
             call.on('stream', (remoteStream) => {
                 video.srcObject = remoteStream;
                 video.volume = currentVolume;
-                video.play();
+                video.play().catch(err => console.log("Error reproduciendo video:", err));
+                // ✅ Se inicializan controles para enviar entradas al host
                 initTouchJoystick();
                 bindClientControls();
             });
@@ -594,6 +610,7 @@
                     if (data.type === 'release') nes.buttonUp(2, data.key);
                 }
             });
+            conn.on('error', (err) => console.log("Error de conexión:", err));
         }
 
         function sendInput(type, key) {
@@ -603,6 +620,7 @@
                     else nes.buttonUp(1, key);
                 }
             } else {
+                // ✅ Jugador 2 envía todos sus controles al Jugador 1
                 if (conn && conn.open) {
                     conn.send({ type: type, key: key });
                 }
@@ -616,6 +634,7 @@
             el.parentNode.replaceChild(newEl, el);
             newEl.addEventListener('touchstart', (e) => { sendInput('press', jnesButtonConst); e.preventDefault(); }, { passive: false });
             newEl.addEventListener('touchend', (e) => { sendInput('release', jnesButtonConst); e.preventDefault(); }, { passive: false });
+            newEl.addEventListener('touchcancel', (e) => { sendInput('release', jnesButtonConst); e.preventDefault(); }, { passive: false });
         }
 
         function bindClientControls() {
@@ -668,30 +687,37 @@
                 if (!joystickActive) return; const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
                 if (touch) resetJoystick(); e.preventDefault();
             }, { passive: false });
+            container.addEventListener('touchcancel', (e) => { if (joystickActive) resetJoystick(); e.preventDefault(); }, { passive: false });
         }
 
         function playLocalROM() {
             fetch(ROM_FILE_URL)
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) throw new Error("No se encontró el archivo de ROM");
+                    return response.text();
+                })
                 .then(base64Data => {
                     const cleanBase64 = base64Data.trim();
                     if (!cleanBase64) return;
                     startEmulatorLoop(atob(cleanBase64.includes(',') ? cleanBase64.split(',')[1] : cleanBase64));
-                });
+                })
+                .catch(err => alert("Error cargando ROM local: " + err.message));
         }
 
         function loadUserROM(event) {
             const file = event.target.files[0]; if (!file) return;
+            if (!file.name.endsWith('.nes')) { alert("Selecciona un archivo .nes válido"); return; }
             const reader = new FileReader();
             reader.onload = function(e) { startEmulatorLoop(e.target.result); };
+            reader.onerror = () => alert("Error leyendo el archivo");
             reader.readAsBinaryString(file);
         }
 
         function startEmulatorLoop(romData) {
             isPlayer1 = true;
             document.getElementById('emulator-section').classList.remove('hidden');
-            video.classList.add('hidden');
-            canvas.classList.remove('hidden');
+            canvas.style.display = 'block';
+            video.style.display = 'none';
             if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
             
             initAudioEngine();
@@ -733,8 +759,13 @@
             lucide.createIcons();
             initNetplay();
             document.getElementById('close-emulator').addEventListener('click', () => {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                if (conn) conn.close();
+                if (activeCall) activeCall.close();
                 window.location.reload();
             });
+            // Reanudar audio al interactuar (bloqueo de navegadores)
+            document.addEventListener('click', () => { if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); }, { once: true });
         });
     </script>
 </body>
