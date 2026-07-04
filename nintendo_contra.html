@@ -280,6 +280,9 @@
 
         let isMenuOpen = false;
 
+        // Stream dinámico global para asegurar la persistencia multimedia de WebRTC
+        let hostStream = null;
+
         function togglePlatformsMenu() {
             const dropdown = document.getElementById('platforms-dropdown');
             dropdown.classList.toggle('hidden');
@@ -532,12 +535,16 @@
 
             peer.on('call', (call) => {
                 activeCall = call;
-                const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
-                const mediaStream = new MediaStream([videoTrack]);
-                if (streamDest && streamDest.stream.getAudioTracks().length > 0) {
-                    mediaStream.addTrack(streamDest.stream.getAudioTracks()[0]);
+                // Inicializamos hostStream si no existía para garantizar la persistencia del canal multimedia
+                if (!hostStream) {
+                    hostStream = new MediaStream();
+                    const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
+                    if (videoTrack) hostStream.addTrack(videoTrack);
                 }
-                call.answer(mediaStream); 
+                if (streamDest && streamDest.stream.getAudioTracks().length > 0 && hostStream.getAudioTracks().length === 0) {
+                    hostStream.addTrack(streamDest.stream.getAudioTracks()[0]);
+                }
+                call.answer(hostStream); 
             });
             
             peer.on('error', (err) => {
@@ -738,13 +745,16 @@
             initTouchJoystick();
             bindClientControls();
 
-            // Corregido: Actualizar el track de video del peer dinámicamente cuando el canvas cobra vida
+            // Sincronización forzada de tracks de video activos para evitar pantallas congeladas en WebRTC
             if (activeCall && activeCall.peerConnection) {
                 const videoTrack = canvas.captureStream(30).getVideoTracks()[0];
                 const senders = activeCall.peerConnection.getSenders();
                 const videoSender = senders.find(sender => sender.track && sender.track.kind === 'video');
                 if (videoSender) {
                     videoSender.replaceTrack(videoTrack);
+                } else if (hostStream) {
+                    // Si no había track previo, lo añadimos directamente al stream activo
+                    hostStream.addTrack(videoTrack);
                 }
             }
 
