@@ -653,7 +653,7 @@
 
         async function playLocalROM() {
             try {
-                const response = await fetch('AdventureIsland.txt');
+                const response = await fetch('romNintendo/AdventureIsland.txt');
                 if (!response.ok) throw new Error("No se pudo cargar rom.txt");
                 const romData = await response.text();
                 startEmulatorLoop(atob(romData.trim()));
