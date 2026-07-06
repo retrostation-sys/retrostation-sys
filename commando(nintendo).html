@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <title>Retro Station Commando nes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&family=Space+Grotesk:wght=700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
+        .brand-font { font-family: 'Space Grotesk', sans-serif; }
+        @media screen and (orientation: portrait) { .portrait-warning { display: flex !important; } }
+        #nes-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; }
+        .touch-zone { touch-action: none; -webkit-user-select: none; user-select: none; }
+        .touch-btn:active { background-color: rgba(244, 63, 94, 0.4) !important; transform: scale(0.92); }
+        .video-smooth { image-rendering: auto !important; }
+        .screen-stretch { object-fit: fill !important; }
+        
+        .joystick-container { width: 128px; height: 128px; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); border-radius: 50%; position: relative; touch-action: none; }
+        .joystick-knob { width: 48px; height: 48px; background: rgba(225, 29, 72, 0.9); border: 2px solid #f1f5f9; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5); pointer-events: none; transition: background-color 0.1s; }
+        
+        .dpad-container { width: 130px; height: 130px; position: relative; }
+        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; items-center: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .dpad-btn:active { background: rgba(244, 63, 94, 0.6) !important; }
+        .dpad-up { top: 0; left: 44px; width: 42px; height: 46px; border-radius: 6px 6px 0 0; border-bottom: none; }
+        .dpad-down { bottom: 0; left: 44px; width: 42px; height: 46px; border-radius: 0 0 6px 6px; border-top: none; }
+        .dpad-left { top: 44px; left: 0; width: 46px; height: 42px; border-radius: 6px 0 0 6px; border-right: none; }
+        .dpad-right { top: 44px; right: 0; width: 46px; height: 42px; border-radius: 0 6px 6px 0; border-left: none; }
+        .dpad-center { top: 44px; left: 44px; width: 42px; height: 42px; background: rgba(30, 41, 59, 0.8); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row antialiased select-none overflow-hidden">
+
+    <div class="portrait-warning fixed inset-0 bg-slate-950 z-[100] hidden flex-col items-center justify-between p-6 text-center bg-cover bg-center bg-no-repeat" 
+         style="background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23334155%22 stroke-width=%221%22><rect x=%225%22 y=%222%22 width=%2214%22 height=%2220%22 rx=%222%22/></svg>');">
+        
+        <div class="w-full bg-slate-900/60 border border-slate-800 rounded-lg p-1 text-center text-[10px] text-slate-500 max-h-[60px] overflow-hidden flex flex-col items-center justify-center">
+            <span class="text-[8px] text-slate-600 block">Espacio Publicitario</span>
+            <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="flex flex-col items-center my-auto">
+            <div class="w-16 h-16 bg-rose-600 rounded-full flex items-center justify-center animate-bounce mb-4 shadow-lg shadow-rose-600/50">
+                <i data-lucide="rotate-cw" class="w-8 h-8 text-white"></i>
+            </div>
+            <h2 class="brand-font text-xl font-bold text-white tracking-wider">GIRA TU DISPOSITIVO</h2>
+            <p class="text-slate-300 text-xs mt-2 max-w-xs">Por favor rota tu pantalla a modo horizontal.</p>
+        </div>
+
+        <div class="w-full bg-slate-900/60 border border-slate-800 rounded-lg p-1 text-center text-[10px] text-slate-500 max-h-[60px] overflow-hidden flex flex-col items-center justify-center">
+            <span class="text-[8px] text-slate-600 block">Espacio Publicitario</span>
+            <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <aside class="w-full md:w-80 bg-slate-900 border-b md:border-b-0 md:border-r border-slate-800 flex flex-col justify-between shrink-0 h-1/2 md:h-full z-10 p-3">
+        <div class="p-2 flex items-center gap-3 border-b border-slate-800/60 bg-slate-950/40 rounded-t-xl shrink-0">
+            <div class="w-7 h-7 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg"><i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i></div>
+            <div>
+                <h1 class="brand-font text-xs font-black tracking-wider text-rose-500">RETRO STATION<br>Commando</h1>
+                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">SINGLE ARCHIVE v8.5 NETPLAY</p>
+            </div>
+        </div>
+
+        <div class="flex-1 my-3 bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-lg flex flex-col justify-between relative">
+        
+            <div id="main-card-content" class="relative w-full flex-1 bg-cover bg-center flex flex-col justify-between p-4" style="background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.9)), url('https://drive.google.com/thumbnail?id=1QCzPyLUofSfdDcL4CcKoIFsAdpY-4c8M');">
+            </div>
+            
+            <div id="platforms-dropdown" class="hidden absolute inset-0 bg-slate-950/95 p-4 z-20 flex flex-col gap-2 overflow-y-auto">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-1">
+                    <span class="text-[10px] font-extrabold tracking-widest uppercase text-emerald-400">PLATAFORMAS</span>
+                    <button onclick="togglePlatformsMenu()" class="text-slate-400 hover:text-rose-500"><i data-lucide="x" class="w-4 h-4"></i></button>
+                </div>
+                <a href="atari.html" class="w-full text-left py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded text-[10px] font-bold tracking-wider uppercase text-slate-200 transition-colors flex items-center justify-between">ATARI <i data-lucide="chevron-right" class="w-3 h-3 text-slate-500"></i></a>
+                <a href="nintendo.html" class="w-full text-left py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded text-[10px] font-bold tracking-wider uppercase text-slate-200 transition-colors flex items-center justify-between">NINTENDO <i data-lucide="chevron-right" class="w-3 h-3 text-slate-500"></i></a>
+                <a href="supernintendo.html" class="w-full text-left py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded text-[10px] font-bold tracking-wider uppercase text-slate-200 transition-colors flex items-center justify-between">SUPER NINTENDO <i data-lucide="chevron-right" class="w-3 h-3 text-slate-500"></i></a>
+            </div>
+
+            <div class="p-3 bg-slate-900 border-t border-slate-800/60 flex flex-col gap-2">
+                <button onclick="playLocalROM()" class="w-full text-center py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-black tracking-widest uppercase rounded-md border border-emerald-500 transition-all flex items-center justify-center gap-1 shadow-md">
+                    <i data-lucide="play" class="w-3 h-3 fill-white"></i> PLAY JUEGO
+                </button>
+                <input type="file" id="rom-file-input" accept=".nes" class="hidden" onchange="loadUserROM(event)">
+                
+                <div class="grid grid-cols-2 text-center pt-1">
+                    <span onclick="togglePlatformsMenu()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors border-r border-slate-800 block">Plataformas</span>
+                    <span onclick="document.getElementById('rom-file-input').click()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors block">cargar Rom</span>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 border-t border-slate-800 text-center"><span class="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">PRES-ARCHIVE SYSTEM</span></div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-1/2 md:h-full overflow-hidden relative bg-slate-950">
+        <div class="w-full h-full p-4 flex flex-col items-center justify-center bg-slate-950">
+            <span class="text-[10px] text-slate-600 font-bold tracking-widest uppercase mb-2">Espacio Publicitario</span>
+            <div class="w-full h-full max-w-4xl max-h-[85%] bg-slate-900/40 border border-slate-800/80 rounded-2xl p-4 flex items-center justify-center overflow-hidden shadow-inner relative">
+                <ins class="adsbygoogle" style="display:block; width:100%; height:100%;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+
+        <section id="emulator-section" class="hidden fixed inset-0 bg-black z-[99] flex flex-col justify-between w-screen h-screen touch-zone">
+            
+            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none" id="player-role-tag">NES LOCAL</span>
+            
+            <div class="absolute top-3 right-4 z-[100] flex gap-2">
+                <button onclick="toggleConfigMenu()" class="text-slate-100 hover:text-emerald-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 flex items-center gap-1.5 font-semibold shadow-lg transition-colors"><i data-lucide="settings" class="w-3.5 h-3.5 text-emerald-500"></i> Configurar</button>
+                <button id="close-emulator" class="text-slate-100 hover:text-rose-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 font-semibold shadow-lg transition-colors flex items-center gap-1"><i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-500"></i> Salir al Menú</button>
+            </div>
+
+            <div id="config-menu" class="hidden absolute top-14 left-1/2 -translate-x-1/2 w-[22rem] max-h-[82vh] overflow-y-auto bg-slate-900/95 border border-slate-800/80 rounded-xl p-4 z-[150] shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-md flex flex-col gap-4 text-slate-200">
+                
+                <div class="bg-slate-950 border border-slate-850/80 rounded-lg p-2 flex flex-col items-center justify-center min-h-[65px] overflow-hidden">
+                    <span class="text-[8px] text-slate-500 font-extrabold tracking-widest uppercase mb-1.5 flex items-center gap-1"><i data-lucide="info" class="w-2.5 h-2.5 text-slate-500"></i> Juego Pausado - Publicidad</span>
+                    <ins class="adsbygoogle" style="display:inline-block;width:250px;height:50px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-500"></i> Video y Controles</h3>
+                    <div class="flex flex-col gap-2.5 text-xs">
+                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
+                            <span class="text-slate-300 font-medium">Filtro de Pantalla</span>
+                            <button onclick="changeFilter()" id="cfg-filter" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">PIXELADO</button>
+                        </div>
+                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
+                            <span class="text-slate-300 font-medium">Relación de Aspecto</span>
+                            <button onclick="changeScreen()" id="cfg-screen" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">ORIGINAL (4:3)</button>
+                        </div>
+                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
+                            <span class="text-slate-300 font-medium">Tipo Control Izquierdo</span>
+                            <button onclick="toggleControlStyle()" id="cfg-ctrl-style" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">JOYSTICK</button>
+                        </div>
+                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
+                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Posición Control Izquierdo</span><span id="cfg-pos-left-val" class="font-mono text-emerald-400 font-bold">Abajo</span></div>
+                            <input type="range" min="16" max="250" value="24" step="8" oninput="changeControlPosition('left', this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                        </div>
+                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
+                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Posición Botones A/B</span><span id="cfg-pos-right-val" class="font-mono text-emerald-400 font-bold">Abajo</span></div>
+                            <input type="range" min="16" max="250" value="40" step="8" oninput="changeControlPosition('right', this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                        </div>
+                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
+                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Opacidad Botones</span><span id="cfg-opacity-val" class="font-mono text-emerald-400 font-bold">50%</span></div>
+                            <input type="range" min="10" max="100" value="50" step="10" oninput="changeOpacity(this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                        </div>
+                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
+                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Volumen Audio</span><span id="cfg-volume-val" class="font-mono text-rose-400 font-bold">80%</span></div>
+                            <input type="range" min="0" max="100" value="80" step="10" oninput="changeVolume(this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="save" class="w-3.5 h-3.5 text-amber-500"></i> Gestión de Partidas</h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="saveGameState()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-amber-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="download" class="w-3.5 h-3.5"></i> Guardar</button>
+                        <button onclick="loadGameState()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-emerald-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="upload" class="w-3.5 h-3.5"></i> Cargar</button>
+                    </div>
+                    <div id="save-status-msg" class="text-[9px] text-amber-400 mt-0.5 text-center font-bold tracking-wide h-3"></div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="gamepad" class="w-3.5 h-3.5 text-purple-500"></i> Mando Externo</h3>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="mapExternalController()" id="gamepad-mapping-btn" class="w-full bg-slate-950 hover:bg-slate-900 active:scale-[0.98] border border-slate-700 p-2.5 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex flex-col items-center justify-center gap-1.5 shadow transition-all">
+                            <span id="gamepad-mapping-label" class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles</span>
+                        </button>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="autoMapExternalController()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Auto Mapear</button>
+                            <button onclick="autoMapExternalController()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Mapear Automát.</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5 text-sky-500"></i> Multijugador en Línea</h3>
+                    <div class="flex flex-col gap-2 text-[11px]">
+                        <div class="bg-slate-950 p-2 rounded-lg border border-slate-850 font-mono text-[9px] break-all select-all flex justify-between items-center text-sky-400 font-bold shadow-inner">
+                            <span id="netplay-id">Generando código...</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="netplay-join-id" placeholder="Pegar código del Amigo" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500 font-medium text-[10px] shadow-inner">
+                            <button onclick="connectToPeer()" class="bg-sky-600 hover:bg-sky-500 active:scale-95 text-white px-3.5 rounded-lg font-extrabold uppercase text-[10px] tracking-wider transition-all">Unirse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full h-full bg-black flex items-center justify-center relative overflow-hidden">
+                <canvas id="nes-canvas" width="256" height="240"></canvas>
+
+                <div id="wrapper-controls" style="opacity: 0.5;" class="absolute inset-0 pointer-events-none z-[110]">
+                    <div id="container-left-touch" style="bottom: 24px;" class="absolute left-6 select-none pointer-events-auto flex items-center justify-center w-32 h-32">
+                        <div id="touch-joystick" class="joystick-container">
+                            <div id="joystick-knob" class="joystick-knob"></div>
+                        </div>
+                        <div id="touch-dpad" class="dpad-container hidden">
+                            <div id="dpad-u" class="dpad-btn dpad-up">▲</div>
+                            <div id="dpad-l" class="dpad-btn dpad-left">◀</div>
+                            <div id="dpad-c" class="dpad-center"></div>
+                            <div id="dpad-r" class="dpad-btn dpad-right">▶</div>
+                            <div id="dpad-d" class="dpad-btn dpad-down">▼</div>
+                        </div>
+                    </div>
+                    <div id="container-right-touch" style="bottom: 40px;" class="absolute right-6 flex gap-4 select-none pointer-events-auto">
+                        <div id="touch-b" class="touch-btn w-14 h-14 bg-rose-700/90 border-2 border-slate-300 rounded-full flex items-center justify-center font-black text-white text-lg shadow-xl">B</div>
+                        <div id="touch-a" class="touch-btn w-14 h-14 bg-rose-600/90 border-2 border-slate-300 rounded-full flex items-center justify-center font-black text-white text-lg shadow-xl">A</div>
+                    </div>
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-6 select-none pointer-events-auto">
+                        <div id="touch-select" class="touch-btn px-4 py-1.5 bg-slate-800/90 border border-slate-700 rounded text-[9px] font-bold text-slate-200 tracking-wider uppercase shadow">SELECT</div>
+                        <div id="touch-start" class="touch-btn px-4 py-1.5 bg-slate-800/90 border border-slate-700 rounded text-[9px] font-bold text-slate-200 tracking-wider uppercase shadow">START</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsnes/1.2.1/jsnes.min.js"></script>
+
+    <script>
+        let nes;
+        let canvas = document.getElementById('nes-canvas');
+        let ctx = canvas.getContext('2d');
+        let imageData = ctx.createImageData(256, 240);
+        let buffer = new ArrayBuffer(imageData.data.length);
+        let framebuffer24 = new Uint32Array(buffer);
+        let framebuffer8 = new Uint8ClampedArray(buffer);
+        let animationFrameId = null;
+
+        let audioCtx = null;
+        let audioGain = null;
+        let audioBufferSize = 4096;
+        let audioSamples = new Float32Array(audioBufferSize);
+        let audioWritePtr = 0;
+        let audioReadPtr = 0;
+        let currentVolume = 0.8;
+
+        let peer = null;
+        let conn = null;
+        let isPlayer1 = true; 
+
+        let isMappingGamepad = false;
+        let isWaitingRelease = false; 
+        let currentMappingKeyIndex = 0;
+        let lastInputRegisterTime = 0; 
+        let gamepadConfig = { id: null, buttons: {}, axes: {} }; 
+        const mappingKeysOrder = [
+            { id: jsnes.Controller.BUTTON_UP, label: 'MANDO VIRTUAL - PALANCA ARRIBA / MANDO EXTERNO - STICK ARRIBA / D-PAD' },
+            { id: jsnes.Controller.BUTTON_DOWN, label: 'MANDO VIRTUAL - PALANCA ABAJO / MANDO EXTERNO - STICK ABAJO / D-PAD' },
+            { id: jsnes.Controller.BUTTON_LEFT, label: 'MANDO VIRTUAL - PALANCA IZQUIERDA / MANDO EXTERNO - STICK IZQUIERDA / D-PAD' },
+            { id: jsnes.Controller.BUTTON_RIGHT, label: 'MANDO VIRTUAL - PALANCA DERECHA / MANDO EXTERNO - STICK DERECHA / D-PAD' },
+            { id: jsnes.Controller.BUTTON_A, label: 'MANDO VIRTUAL - ACCIÓN A / MANDO EXTERNO - BOTÓN TRASERO / ACCIÓN A' },
+            { id: jsnes.Controller.BUTTON_B, label: 'MANDO VIRTUAL - ACCIÓN B / MANDO EXTERNO - BOTÓN TRASERO / ACCIÓN B' },
+            { id: jsnes.Controller.BUTTON_SELECT, label: 'MANDO VIRTUAL - SELECT / MANDO EXTERNO - SELECT / BACK / SHARE' },
+            { id: jsnes.Controller.BUTTON_START, label: 'MANDO VIRTUAL - START / MANDO EXTERNO - START / OPTIONS / MENU' }
+        ];
+
+        let isMenuOpen = false;
+
+        function togglePlatformsMenu() {
+            const dropdown = document.getElementById('platforms-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function toggleConfigMenu() { 
+            const menu = document.getElementById('config-menu');
+            menu.classList.toggle('hidden');
+            isMenuOpen = !menu.classList.contains('hidden');
+            
+            if (nes) {
+                if (isMenuOpen) {
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                } else {
+                    const updateFrame = () => {
+                        nes.frame();
+                        runGamepadPolling();
+                        animationFrameId = requestAnimationFrame(updateFrame);
+                    };
+                    animationFrameId = requestAnimationFrame(updateFrame);
+                }
+            }
+        }
+
+        function changeFilter() {
+            const btn = document.getElementById('cfg-filter');
+            if(canvas.classList.contains('video-smooth')) { canvas.classList.remove('video-smooth'); btn.textContent = "PIXELADO"; }
+            else { canvas.classList.add('video-smooth'); btn.textContent = "SUAVIZADO"; }
+        }
+        function changeScreen() {
+            const btn = document.getElementById('cfg-screen');
+            if(canvas.classList.contains('screen-stretch')) { canvas.classList.remove('screen-stretch'); btn.textContent = "ORIGINAL (4:3)"; }
+            else { canvas.classList.add('screen-stretch'); btn.textContent = "ESTIRADO (16:9)"; }
+        }
+        
+        function toggleControlStyle() {
+            const btn = document.getElementById('cfg-ctrl-style');
+            const joystick = document.getElementById('touch-joystick');
+            const dpad = document.getElementById('touch-dpad');
+            
+            if (joystick.classList.contains('hidden')) {
+                joystick.classList.remove('hidden');
+                dpad.classList.add('hidden');
+                btn.textContent = "JOYSTICK";
+            } else {
+                joystick.classList.add('hidden');
+                dpad.classList.remove('hidden');
+                btn.textContent = "FLECHAS";
+            }
+        }
+
+        function changeControlPosition(side, val) {
+            if (side === 'left') {
+                document.getElementById('container-left-touch').style.bottom = val + "px";
+                document.getElementById('cfg-pos-left-val').textContent = val + "px";
+            } else if (side === 'right') {
+                document.getElementById('container-right-touch').style.bottom = val + "px";
+                document.getElementById('cfg-pos-right-val').textContent = val + "px";
+            }
+        }
+
+        function changeOpacity(val) {
+            document.getElementById('cfg-opacity-val').textContent = val + "%";
+            document.getElementById('wrapper-controls').style.opacity = val / 100;
+        }
+        function changeVolume(val) {
+            currentVolume = val / 100;
+            document.getElementById('cfg-volume-val').textContent = val + "%";
+            if (audioGain) audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
+        }
+
+        function saveGameState() {
+            if (!nes) return;
+            try {
+                const state = nes.toJSON();
+                localStorage.setItem('retro_station_save_state', JSON.stringify(state));
+                showSaveMsg('¡Partida guardada con éxito!');
+            } catch (e) {
+                showSaveMsg('Error al guardar partida.');
+            }
+        }
+
+        function loadGameState() {
+            if (!nes) return;
+            try {
+                const savedData = localStorage.getItem('retro_station_save_state');
+                if (savedData) {
+                    nes.fromJSON(JSON.parse(savedData));
+                    showSaveMsg('¡Partida cargada!');
+                } else {
+                    showSaveMsg('No hay partidas guardadas.');
+                }
+            } catch (e) {
+                showSaveMsg('Error al cargar partida.');
+            }
+        }
+
+        function showSaveMsg(msg) {
+            const el = document.getElementById('save-status-msg');
+            el.textContent = msg;
+            setTimeout(() => el.textContent = '', 3000);
+        }
+
+        function updateMappingUI() {
+            const labelContainer = document.getElementById('gamepad-mapping-label');
+            let htmlContent = '<div class="flex flex-col gap-1 w-full text-left font-mono mt-2 bg-slate-950 p-2 rounded border border-slate-800 max-h-[180px] overflow-y-auto">';
+            
+            mappingKeysOrder.forEach((item, index) => {
+                if (index === currentMappingKeyIndex) {
+                    htmlContent += `<div class="text-amber-400 font-bold animate-pulse text-[10px] flex items-center justify-between gap-2"><span>➔ ${item.label}</span> <span class="text-[8px] bg-amber-500/20 px-1.5 py-0.2 rounded text-amber-300 shrink-0">PULSAR...</span></div>`;
+                } else if (index < currentMappingKeyIndex) {
+                    htmlContent += `<div class="text-slate-500 text-[9px] line-through flex items-center justify-between gap-2"><span>✓ ${item.label}</span> <span class="text-[8px] text-emerald-500 font-bold shrink-0">LISTO</span></div>`;
+                } else {
+                    htmlContent += `<div class="text-slate-600 text-[9px] flex items-center justify-between gap-2"><span>  ${item.label}</span> <span class="text-[8px] text-slate-700 shrink-0">ESPERANDO</span></div>`;
+                }
+            });
+            htmlContent += '</div>';
+            labelContainer.innerHTML = `<span class="font-extrabold text-amber-400 text-[11px] tracking-widest uppercase">ASISTENTE DE CONFIGURACIÓN</span>` + htmlContent;
+        }
+
+        function mapExternalController() {
+            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+            const activeGamepad = Array.from(gamepads).find(g => g !== null);
+            const labelContainer = document.getElementById('gamepad-mapping-label');
+
+            if (!activeGamepad) {
+                labelContainer.textContent = "¡Presiona un botón del mando!";
+                setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2500);
+                return;
+            }
+
+            isMappingGamepad = true;
+            isWaitingRelease = false;
+            currentMappingKeyIndex = 0;
+            lastInputRegisterTime = 0;
+            gamepadConfig = { id: activeGamepad.id, buttons: {}, axes: {} };
+            updateMappingUI();
+        }
+
+        function autoMapExternalController() {
+            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+            const activeGamepad = Array.from(gamepads).find(g => g !== null);
+            const labelContainer = document.getElementById('gamepad-mapping-label');
+
+            if (!activeGamepad) {
+                labelContainer.textContent = "¡Conecta o presiona un botón del mando!";
+                setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2500);
+                return;
+            }
+
+            isMappingGamepad = false; 
+            gamepadConfig = {
+                id: activeGamepad.id,
+                buttons: { 0: jsnes.Controller.BUTTON_B, 1: jsnes.Controller.BUTTON_A, 2: jsnes.Controller.BUTTON_B, 3: jsnes.Controller.BUTTON_A, 8: jsnes.Controller.BUTTON_SELECT, 9: jsnes.Controller.BUTTON_START, 12: jsnes.Controller.BUTTON_UP, 13: jsnes.Controller.BUTTON_DOWN, 14: jsnes.Controller.BUTTON_LEFT, 15: jsnes.Controller.BUTTON_RIGHT },
+                axes: { "0_-1": jsnes.Controller.BUTTON_LEFT, "0_1": jsnes.Controller.BUTTON_RIGHT, "1_-1": jsnes.Controller.BUTTON_UP, "1_1": jsnes.Controller.BUTTON_DOWN }
+            };
+
+            labelContainer.innerHTML = `<span class="text-emerald-400 font-bold tracking-widest uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> AUTOMAPEADO OK</span>`;
+            lucide.createIcons();
+            setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2000);
+        }
+
+        const observer = new MutationObserver(() => { lucide.createIcons(); });
+        observer.observe(document.getElementById('platforms-dropdown'), { attributes: true, childList: true });
+
+        function runGamepadPolling() {
+            if (!nes) return;
+            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
+            const gp = Array.from(gamepads).find(g => g && (gamepadConfig.id ? g.id === gamepadConfig.id : true));
+            if (!gp) return;
+
+            if (isMappingGamepad) {
+                const now = performance.now();
+                let anyInputActive = false;
+                let detectedInput = null;
+
+                for (let b = 0; b < gp.buttons.length; b++) {
+                    if (gp.buttons[b].pressed) {
+                        anyInputActive = true;
+                        detectedInput = { type: 'button', index: b };
+                        break;
+                    }
+                }
+
+                if (!anyInputActive) {
+                    for (let a = 0; a < gp.axes.length; a++) {
+                        if (gp.axes[a] < -0.6) { anyInputActive = true; detectedInput = { type: 'axis', index: a, dir: -1 }; break; }
+                        if (gp.axes[a] > 0.6) { anyInputActive = true; detectedInput = { type: 'axis', index: a, dir: 1 }; break; }
+                    }
+                }
+
+                if (isWaitingRelease) {
+                    if (!anyInputActive && (now - lastInputRegisterTime > 300)) {
+                        isWaitingRelease = false;
+                        currentMappingKeyIndex++;
+                        if (currentMappingKeyIndex < mappingKeysOrder.length) {
+                            updateMappingUI();
+                        } else {
+                            isMappingGamepad = false;
+                            document.getElementById('gamepad-mapping-label').innerHTML = `<span class="text-emerald-400 font-bold tracking-widest uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> MANDO MAPEADO</span>`;
+                            lucide.createIcons();
+                            setTimeout(() => { document.getElementById('gamepad-mapping-label').innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2000);
+                        }
+                    }
+                } else if (detectedInput && (now - lastInputRegisterTime > 300)) {
+                    const currentNesKey = mappingKeysOrder[currentMappingKeyIndex].id;
+                    if (detectedInput.type === 'button') {
+                        gamepadConfig.buttons[detectedInput.index] = currentNesKey;
+                    } else if (detectedInput.type === 'axis') {
+                        const axisKey = `${detectedInput.index}_${detectedInput.dir}`;
+                        gamepadConfig.axes[axisKey] = currentNesKey;
+                    }
+                    isWaitingRelease = true; 
+                    lastInputRegisterTime = now;
+                }
+                return; 
+            }
+
+            for (let b = 0; b < gp.buttons.length; b++) {
+                const mappedNesKey = gamepadConfig.buttons[b];
+                if (mappedNesKey !== undefined) {
+                    if (gp.buttons[b].pressed) sendInput('press', mappedNesKey);
+                    else sendInput('release', mappedNesKey);
+                }
+            }
+
+            for (let a = 0; a < gp.axes.length; a++) {
+                const mappedNegKey = gamepadConfig.axes[`${a}_-1`];
+                const mappedPosKey = gamepadConfig.axes[`${a}_1`];
+                if (mappedNegKey !== undefined) {
+                    if (gp.axes[a] < -0.5) sendInput('press', mappedNegKey);
+                    else sendInput('release', mappedNegKey);
+                }
+                if (mappedPosKey !== undefined) {
+                    if (gp.axes[a] > 0.5) sendInput('press', mappedPosKey);
+                    else sendInput('release', mappedPosKey);
+                }
+            }
+        }
+
+        function initAudioEngine() {
+            if (audioCtx) return;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 44100 });
+            audioGain = audioCtx.createGain();
+            audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
+
+            let scriptProcessor = audioCtx.createScriptProcessor(2048, 0, 1);
+            scriptProcessor.onaudioprocess = (e) => {
+                let output = e.outputBuffer.getChannelData(0);
+                for (let i = 0; i < output.length; i++) {
+                    if (audioReadPtr !== audioWritePtr) {
+                        output[i] = audioSamples[audioReadPtr];
+                        audioReadPtr = (audioReadPtr + 1) % audioBufferSize;
+                    } else {
+                        output[i] = 0;
+                    }
+                }
+            };
+            scriptProcessor.connect(audioGain);
+            audioGain.connect(audioCtx.destination);
+        }
+
+        function initNetplay() {
+            peer = new Peer();
+            peer.on('open', (id) => {
+                document.getElementById('netplay-id').textContent = "Tu ID: " + id;
+            });
+            peer.on('connection', (connection) => {
+                conn = connection;
+                isPlayer1 = true; 
+                document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 1";
+                setupNetworkListeners();
+            });
+        }
+
+        function connectToPeer() {
+            const targetId = document.getElementById('netplay-join-id').value.trim();
+            if (!targetId) return;
+            conn = peer.connect(targetId);
+            isPlayer1 = false; 
+            document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2";
+            setupNetworkListeners();
+        }
+
+        function setupNetworkListeners() {
+            conn.on('open', () => { toggleConfigMenu(); });
+            conn.on('data', (data) => {
+                if (nes) {
+                    if (data.type === 'press') nes.buttonDown(data.player, data.key);
+                    if (data.type === 'release') nes.buttonUp(data.player, data.key);
+                }
+            });
+        }
+
+        function sendInput(type, key) {
+            const activeRole = isPlayer1 ? 1 : 2;
+            if (nes) {
+                if (type === 'press') nes.buttonDown(activeRole, key);
+                else nes.buttonUp(activeRole, key);
+            }
+            if (conn && conn.open) conn.send({ type: type, player: activeRole, key: key });
+        }
+
+        function bindTouchControl(elementId, jnesButtonConst) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.addEventListener('touchstart', (e) => { sendInput('press', jnesButtonConst); e.preventDefault(); }, { passive: false });
+            el.addEventListener('touchend', (e) => { sendInput('release', jnesButtonConst); e.preventDefault(); }, { passive: false });
+        }
+
+        function initTouchJoystick() {
+            const container = document.getElementById('touch-joystick');
+            const knob = document.getElementById('joystick-knob');
+            if (!container || !knob) return;
+
+            let joystickActive = false;
+            let startX = 0, startY = 0;
+            let joystickTouchId = null; 
+            const maxRadius = 40; 
+            let activeDirections = { up: false, down: false, left: false, right: false };
+
+            function handleJoystickMove(currentX, currentY) {
+                let deltaX = currentX - startX;
+                let deltaY = currentY - startY;
+                let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                if (distance > maxRadius) {
+                    deltaX = (deltaX / distance) * maxRadius;
+                    deltaY = (deltaY / distance) * maxRadius;
+                    distance = maxRadius;
+                }
+                knob.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
+                const threshold = 15; 
+                const nextDirections = { up: deltaY < -threshold, down: deltaY > threshold, left: deltaX < -threshold, right: deltaX > threshold };
+
+                if (nextDirections.up !== activeDirections.up) { sendInput(nextDirections.up ? 'press' : 'release', jsnes.Controller.BUTTON_UP); activeDirections.up = nextDirections.up; }
+                if (nextDirections.down !== activeDirections.down) { sendInput(nextDirections.down ? 'press' : 'release', jsnes.Controller.BUTTON_DOWN); activeDirections.down = nextDirections.down; }
+                if (nextDirections.left !== activeDirections.left) { sendInput(nextDirections.left ? 'press' : 'release', jsnes.Controller.BUTTON_LEFT); activeDirections.left = nextDirections.left; }
+                if (nextDirections.right !== activeDirections.right) { sendInput(nextDirections.right ? 'press' : 'release', jsnes.Controller.BUTTON_RIGHT); activeDirections.right = nextDirections.right; }
+            }
+
+            function resetJoystick() {
+                joystickActive = false;
+                joystickTouchId = null;
+                knob.style.transform = 'translate(-50%, -50%)';
+                if (activeDirections.up) sendInput('release', jsnes.Controller.BUTTON_UP);
+                if (activeDirections.down) sendInput('release', jsnes.Controller.BUTTON_DOWN);
+                if (activeDirections.left) sendInput('release', jsnes.Controller.BUTTON_LEFT);
+                if (activeDirections.right) sendInput('release', jsnes.Controller.BUTTON_RIGHT);
+                activeDirections = { up: false, down: false, left: false, right: false };
+            }
+
+            container.addEventListener('touchstart', (e) => {
+                if (joystickActive) return; 
+                joystickActive = true;
+                const touch = e.changedTouches[0];
+                joystickTouchId = touch.identifier; 
+                const rect = container.getBoundingClientRect();
+                startX = rect.left + rect.width / 2;
+                startY = rect.top + rect.height / 2;
+                handleJoystickMove(touch.clientX, touch.clientY);
+                e.preventDefault();
+            }, { passive: false });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!joystickActive) return;
+                const touch = Array.from(e.touches).find(t => t.identifier === joystickTouchId);
+                if (touch) handleJoystickMove(touch.clientX, touch.clientY);
+                e.preventDefault();
+            }, { passive: false });
+
+            container.addEventListener('touchend', (e) => {
+                if (!joystickActive) return;
+                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
+                if (touch) resetJoystick();
+                e.preventDefault();
+            }, { passive: false });
+
+            container.addEventListener('touchcancel', (e) => {
+                if (!joystickActive) return;
+                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
+                if (touch) resetJoystick();
+                e.preventDefault();
+            }, { passive: false });
+        }
+
+        async function playLocalROM() {
+            try {
+                const response = await fetch('commando(nintendo).txt');
+                if (!response.ok) throw new Error("No se pudo cargar rom.txt");
+                const romData = await response.text();
+                startEmulatorLoop(atob(romData.trim()));
+            } catch (err) {
+                alert("Error: Asegúrate de que exista el archivo rom.txt en el servidor.");
+            }
+        }
+
+        function loadUserROM(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) { startEmulatorLoop(e.target.result); };
+            reader.readAsBinaryString(file);
+        }
+
+        function startEmulatorLoop(romData) {
+            document.getElementById('emulator-section').classList.remove('hidden');
+            if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+            initAudioEngine();
+
+            nes = new jsnes.NES({
+                onFrame: (bufferPPU) => {
+                    var i = 0;
+                    for (var y = 0; y < 240; y++) {
+                        for (var x = 0; x < 256; x++) {
+                            framebuffer24[i] = bufferPPU[i] | 0xFF000000;
+                            i++;
+                        }
+                    }
+                    imageData.data.set(framebuffer8);
+                    ctx.putImageData(imageData, 0, 0);
+                },
+                onAudioSample: (left, right) => {
+                    if (!audioCtx) return;
+                    audioSamples[audioWritePtr] = left;
+                    audioWritePtr = (audioWritePtr + 1) % audioBufferSize;
+                },
+                sampleRate: 44100
+            });
+
+            initTouchJoystick();
+            bindTouchControl('touch-a', jsnes.Controller.BUTTON_A);
+            bindTouchControl('touch-b', jsnes.Controller.BUTTON_B);
+            bindTouchControl('touch-select', jsnes.Controller.BUTTON_SELECT);
+            bindTouchControl('touch-start', jsnes.Controller.BUTTON_START);
+            bindTouchControl('dpad-u', jsnes.Controller.BUTTON_UP);
+            bindTouchControl('dpad-d', jsnes.Controller.BUTTON_DOWN);
+            bindTouchControl('dpad-l', jsnes.Controller.BUTTON_LEFT);
+            bindTouchControl('dpad-r', jsnes.Controller.BUTTON_RIGHT);
+
+            try {
+                nes.loadROM(romData);
+                const updateFrame = () => {
+                    if (!isMenuOpen) {
+                        nes.frame();
+                        runGamepadPolling();
+                    }
+                    animationFrameId = requestAnimationFrame(updateFrame);
+                };
+                animationFrameId = requestAnimationFrame(updateFrame);
+            } catch (err) { console.error(err); }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initNetplay();
+            document.getElementById('close-emulator').addEventListener('click', () => {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                window.location.reload();
+            });
+            window.addEventListener('touchend', () => {
+                if (!document.fullscreenElement && window.innerHeight < window.innerWidth) {
+                    if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
