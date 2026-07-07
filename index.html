@@ -2,362 +2,153 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RETRO STATION | ACCESO VIP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="manifest" href="/manifest.json"> 
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas en Vivo - Salas Personalizadas</title>
+    <script src="https://unpkg.com"></script>
     <style>
-        :root {
-            --primary-blue: #007aff;
-            --secondary-blue: #00d4ff;
-            --accent-cyan: #00f2ff;
-            --dark-bg: #020617;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto; /* Modificado para permitir el scroll vertical */
-            background-color: var(--dark-bg);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: white;
-        }
-
-        /* Fondo de Partículas */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* Layout Principal */
-        .viewport {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: radial-gradient(circle at center, rgba(10, 25, 47, 0.8) 0%, rgba(2, 6, 23, 0.9) 100%);
-        }
-
-        /* Animaciones de Entrada */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .logo-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2vh;
-        }
-
-        .logo-box {
-            width: clamp(70px, 15vw, 90px);
-            height: clamp(70px, 15vw, 90px);
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            border-radius: 22px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 30px rgba(0, 122, 255, 0.4);
-            position: relative;
-        }
-
-        .logo-box svg {
-            width: 40%;
-            height: 40%;
-            fill: white;
-        }
-
-        .logo-glow {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: var(--primary-blue);
-            filter: blur(35px);
-            opacity: 0.2;
-            border-radius: 50%;
-            animation: pulse 3s infinite;
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 10vw, 4.5rem);
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(to bottom, #ffffff 60%, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-top: 15px;
-        }
-
-        .subtitle {
-            font-size: clamp(0.6rem, 2.5vw, 0.9rem);
-            color: var(--accent-cyan);
-            font-weight: 800;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 4vh;
-        }
-
-        /* Card de Información */
-        .info-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: clamp(1.5rem, 5vw, 2.5rem);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            margin-bottom: 5vh;
-        }
-
-        .info-card h2 {
-            font-size: clamp(1.1rem, 4vw, 1.4rem);
-            margin-bottom: 10px;
-        }
-
-        .info-card p {
-            font-size: clamp(0.9rem, 3.5vw, 1rem);
-            color: #94a3b8;
-            line-height: 1.5;
-        }
-
-        .blue-text {
-            color: var(--secondary-blue);
-            font-weight: 600;
-        }
-
-        /* Botón Adaptable */
-        .cta-btn {
-            width: 100%;
-            max-width: 320px;
-            padding: 18px 0;
-            background: #ffffff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 18px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            display: block;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        .cta-btn:active {
-            transform: scale(0.95);
-            background: var(--primary-blue);
-            color: #fff;
-        }
-
-        /* Estilo para el span llamativo de instalación */
-        .pwa-btn {
-            display: inline-block;
-            margin-top: 3vh;
-            color: #ffe600;
-            font-weight: 800;
-            font-size: clamp(0.75rem, 3vw, 0.95rem);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-decoration: underline;
-            cursor: pointer;
-            text-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
-            transition: transform 0.2s ease;
-            text-align: center;
-            padding: 5px 10px;
-        }
-
-        .pwa-btn:active {
-            transform: scale(0.95);
-        }
-
-        .footer {
-            margin-top: 2vh;
-            font-size: 0.65rem;
-            color: #475569;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Animaciones */
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.2; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-
-        /* Ajuste para pantallas muy pequeñas o paisajes */
-        @media (max-height: 600px) {
-            .viewport { justify-content: flex-start; padding-top: 20px; overflow-y: auto; }
-            .subtitle { margin-bottom: 15px; }
-            .info-card { padding: 1rem; margin-bottom: 15px; }
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f0f2f5; color: #333; margin: 0; padding: 20px; }
+        .box { background: white; max-width: 550px; margin: 20px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .flex-section { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
+        input { padding: 10px; font-size: 16px; border: 2px solid #ddd; border-radius: 6px; width: 80px; text-align: center; font-weight: bold; }
+        .btn { padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .btn-green { background: #28a745; } .btn-green:hover { background: #218838; }
+        .btn-blue { background: #007bff; } .btn-blue:hover { background: #0069d9; }
+        canvas, video { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; }
+        #status { font-weight: bold; color: #666; margin: 15px 0; padding: 8px; background: #e9ecef; border-radius: 5px; display: inline-block; }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <h2>Transmisión de Canvas P2P</h2>
+    <div id="status">Selecciona una opción abajo para empezar</div>
 
-    <div class="viewport">
-        
-        <div class="logo-section fade-in" style="animation-delay: 0.1s;">
-            <div class="logo-box">
-                <div class="logo-glow"></div>
-                <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2Zm-11 7H8v2H7v-2H5v-1h2v-2h1v2h2v1Zm4.5 1.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5Zm3.5-2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5Z"/></svg>
+    <!-- PANEL DE CONTROL PRINCIPAL -->
+    <div id="panelControl" class="box">
+        <div class="flex-section" style="border-bottom: 1px solid #eee; padding-bottom: 20px;">
+            <h3>OPCIÓN A: Transmitir mi Canvas</h3>
+            <p>Crea un ID numérico para tu sala (ej: 4567):</p>
+            <div>
+                <input type="number" id="idEmisor" value="1234">
+                <button class="btn btn-green" onclick="iniciarTransmision()">Iniciar Transmisión</button>
             </div>
-            <h1>RETRO STATION</h1>
-            <div class="subtitle">Premium Access</div>
         </div>
 
-        <div class="info-card fade-in" style="animation-delay: 0.3s;">
-            <h2>Entretenimiento VIP</h2>
-            <p>
-                Disfruta de los mejores <br /> <span class="blue-text">VIDEO JUEGOS RETRO</span><br>
-                sin saturar la memoria de tu dispositivo<br>no requiere espacio de almacenamiento<br><br><br>
-                * * * * * * * * * *<br> <span class="blue-text">PLAY ONLINE</span><br>sin descargas
-                
-            </p>
+        <div class="flex-section">
+            <h3>OPCIÓN B: Ver el Canvas de otra persona</h3>
+            <p>Introduce el ID de la sala a la que te quieres conectar:</p>
+            <div>
+                <input type="number" id="idReceptor" value="1234">
+                <button class="btn btn-blue" onclick="conectarseATransmision()">Ver Transmisión</button>
+            </div>
         </div>
+    </div>
 
-        <a href="atari.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
-            ATARI
-        </a><br>
-        <a href="nintendo.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
-            NINTENDO
-        </a><br>
-        <a href="supernintendo.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
-            SUPER NINTENDO
-        </a><br>
-        <a href="nintendo64.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
-            NINTENDO 64
-        </a>
+    <!-- ÁREA DE TRANSMISIÓN (EMISOR) -->
+    <div id="zonaEmisor" class="box" style="display: none;">
+        <h3>Tu Canvas (Dibuja con el mouse)</h3>
+        <canvas id="miCanvas" width="500" height="380"></canvas>
+    </div>
 
-        <span id="install-btn" class="pwa-btn fade-in" style="animation-delay: 0.6s;">
-            agregar a la pantalla de inicio de tu dispositivo
-        </span>
-
-        <div class="footer fade-in" style="animation-delay: 0.7s;">
-            Servidor Seguro • Alta Disponibilidad
-        </div>
-
+    <!-- ÁREA DE VISUALIZACIÓN (RECEPTOR) -->
+    <div id="zonaReceptor" class="box" style="display: none;">
+        <h3>Video en Tiempo Real</h3>
+        <video id="videoCanvas" autoplay playsinline width="500" height="380"></video>
     </div>
 
     <script>
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+        let peer = null;
+        const statusDiv = document.getElementById('status');
 
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
-        }
+        // PREFIX de seguridad para evitar colisiones globales con otros usuarios de PeerJS
+        const PREFIX = "canvas-room-xyz-";
 
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * 0.4 - 0.2;
-                this.life = Math.random() * 0.5 + 0.2;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-            draw() {
-                ctx.fillStyle = `rgba(0, 122, 255, ${this.life})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+        // ==========================================
+        // 1. LÓGICA PARA EL EMISOR (EL QUE COMPARTE)
+        // ==========================================
+        function iniciarTransmision() {
+            const salaId = document.getElementById('idEmisor').value;
+            if(!salaId) return alert("Por favor ingresa un número de ID");
 
-        function initParticles() {
-            const count = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 100);
-            particles = [];
-            for (let i = 0; i < count; i++) particles.push(new Particle());
-        }
+            statusDiv.innerText = "Configurando sala...";
+            
+            // Creamos el nodo Peer con el ID personalizado
+            peer = new Peer(PREFIX + salaId);
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+            peer.on('open', (id) => {
+                document.getElementById('panelControl').style.display = 'none';
+                document.getElementById('zonaEmisor').style.display = 'block';
+                statusDiv.innerText = `Transmitiendo en la sala: ${salaId}. Pídele a tu amigo que ingrese este número.`;
+                configurarCanvas();
             });
-            requestAnimationFrame(animate);
+
+            peer.on('error', (err) => {
+                if (err.type === 'unavailable-id') {
+                    statusDiv.innerText = "Error: Ese ID de sala ya está ocupado. Intenta con otro número.";
+                } else {
+                    statusDiv.innerText = "Error de conexión: " + err.type;
+                }
+            });
         }
 
-        window.addEventListener('resize', resize);
-        resize();
-        animate();
+        function configurarCanvas() {
+            const canvas = document.getElementById('miCanvas');
+            const ctx = canvas.getContext('2d');
+            let dibujando = false;
 
-        // Lógica de captura para instalación en pantalla de inicio
-        let deferredPrompt;
-        const installBtn = document.getElementById('install-btn');
+            ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.strokeStyle = '#007bff';
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Previene la barra por defecto del navegador
-            e.preventDefault();
-            // Guarda el evento para ejecutarlo cuando se presione el span
-            deferredPrompt = e;
-        });
+            canvas.addEventListener('mousedown', () => dibujando = true);
+            canvas.addEventListener('mouseup', () => { dibujando = false; ctx.beginPath(); });
+            canvas.addEventListener('mousemove', (e) => {
+                if (!dibujando) return;
+                const rect = canvas.getBoundingClientRect();
+                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            });
 
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Muestra la ventana nativa de instalación
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-            } else {
-                // Alternativa informativa para navegadores donde no se dispara el prompt nativo directamente (ej. Safari en iOS)
-                alert(
-                    'CÓMO INSTALAR EN TU PANTALLA DE INICIO:\n\n' +
-                    '📱 En Android (Google Chrome / Edge):\n' +
-                    '1. Presiona el ícono de los tres puntos ( ⋮ ) en la esquina superior derecha del navegador.\n' +
-                    '2. Busca y selecciona la opción "Instalar aplicación" o "Agregar a la pantalla principal" ( 📲 ).\n\n' +
-                    '🍏 En iPhone / iPad (Safari):\n' +
-                    '1. Presiona el botón Compartir ( ⎋ o [↑] ) situado en la barra inferior del navegador.\n' +
-                    '2. Desplázate hacia abajo en las opciones y selecciona "Agregar a inicio" ( ➕ ).'
-                );
-            }
-        });
+            // Capturar flujo de video del canvas a 30 FPS
+            const stream = canvas.captureStream(30);
+
+            // Escuchar llamadas entrantes de los espectadores
+            peer.on('call', (call) => {
+                statusDiv.innerText = "¡Un espectador se ha conectado a tu pantalla!";
+                call.answer(stream); // Responder enviando el video
+            });
+        }
+
+        // ==========================================
+        // 2. LÓGICA PARA EL RECEPTOR (EL QUE MIRA)
+        // ==========================================
+        function conectarseATransmision() {
+            const salaId = document.getElementById('idReceptor').value;
+            if(!salaId) return alert("Por favor ingresa el número de ID de tu amigo");
+
+            statusDiv.innerText = "Conectando a la sala...";
+            
+            // Creamos un Peer con ID aleatorio para el espectador
+            peer = new Peer();
+
+            peer.on('open', () => {
+                document.getElementById('panelControl').style.display = 'none';
+                document.getElementById('zonaReceptor').style.display = 'block';
+
+                // Llamamos al emisor usando el ID de su sala
+                const call = peer.call(PREFIX + salaId, new MediaStream());
+
+                call.on('stream', (remoteStream) => {
+                    statusDiv.innerText = `Conectado exitosamente a la sala: ${salaId}`;
+                    const video = document.getElementById('videoCanvas');
+                    video.srcObject = remoteStream;
+                });
+            });
+
+            peer.on('error', (err) => {
+                statusDiv.innerText = "No se pudo conectar. Verifica que el ID sea correcto y que el emisor ya haya iniciado la transmisión.";
+                console.error(err);
+            });
+        }
     </script>
 </body>
 </html>
-
