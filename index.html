@@ -3,191 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Canvas en Vivo - Táctil y Estable</title>
-    <script src="https://cloudflare.com"></script>
+    <title>Canvas Compartido en Tiempo Real</title>
+    <!-- Cargamos la infraestructura en la nube de Metered para WebRTC estable -->
+    <script src="https://metered.ca"></script>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 15px; touch-action: manipulation; }
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 15px; }
         .box { background: white; max-width: 500px; margin: 15px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
         .flex-section { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
         input { padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 6px; width: 120px; text-align: center; font-weight: bold; }
         .btn { padding: 12px 24px; font-size: 16px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; }
         .btn-green { background: #28a745; }
         .btn-blue { background: #007bff; }
-        
-        /* IMPORTANTE: Evita que el celular haga scroll al dibujar en el canvas */
-        canvas { 
-            border: 3px solid #222; 
-            background: #fff; 
-            border-radius: 8px; 
-            margin-top: 15px; 
-            touch-action: none; /* Bloquea gestos del navegador sobre el lienzo */
-            max-width: 100%; /* Se adapta a pantallas móviles pequeñas */
-            height: auto;
-        }
+        canvas { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; touch-action: none; max-width: 100%; height: auto; }
         video { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; max-width: 100%; height: auto; }
         #status { font-weight: bold; color: #333; margin: 10px 0; padding: 10px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px; display: inline-block; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <h2>Transmisión Móvil/Táctil P2P</h2>
-    <div id="status">Esperando tu elección...</div>
+    <h2>Canvas P2P - Conexión de Alta Estabilidad</h2>
+    <div id="status">Por favor, introduce una sala para conectar...</div>
 
+    <!-- PANEL ÚNICO DE INGRESO -->
     <div id="panelControl" class="box">
-        <div class="flex-section" style="border-bottom: 1px solid #eee; padding-bottom: 20px;">
-            <h3>OPCIÓN A: Transmitir mi Canvas</h3>
-            <p>Escribe un número de sala (ej: 4455):</p>
-            <div>
-                <input type="number" id="idEmisor" pattern="[0-9]*" inputmode="numeric" value="4455">
-                <br><br>
-                <button class="btn btn-green" onclick="iniciarTransmision()">Iniciar Transmisión</button>
-            </div>
-        </div>
-
         <div class="flex-section">
-            <h3>OPCIÓN B: Ver Canvas ajeno</h3>
-            <p>Introduce el número de sala de tu amigo:</p>
+            <h3>Ingresar a una Sala</h3>
+            <p>Escribe el número de la sala (Ej: 2026). Si la sala no existe, se creará automáticamente para transmitir.</p>
             <div>
-                <input type="number" id="idReceptor" pattern="[0-9]*" inputmode="numeric" value="4455">
+                <input type="number" id="idSala" pattern="[0-9]*" inputmode="numeric" value="2026">
                 <br><br>
-                <button class="btn btn-blue" onclick="conectarseATransmision()">Ver Transmisión</button>
+                <button class="btn btn-green" onclick="conectarASala('emisor')">Transmitir mi Canvas</button>
+                <button class="btn btn-blue" onclick="conectarASala('receptor')">Solo ver Canvas</button>
             </div>
         </div>
     </div>
 
+    <!-- ÁREA DEL EMISOR -->
     <div id="zonaEmisor" class="box" style="display: none;">
         <h3>Usa tu dedo o mouse para dibujar</h3>
         <canvas id="miCanvas" width="400" height="400"></canvas>
     </div>
 
+    <!-- ÁREA DEL RECEPTOR -->
     <div id="zonaReceptor" class="box" style="display: none;">
-        <h3>Video en Tiempo Real</h3>
-        <video id="videoCanvas" autoplay playsinline muted width="400" height="400"></video>
+        <h3>Video en Vivo Recibido</h3>
+        <div id="contenedorVideo"></div>
     </div>
 
     <script>
-        let peer = null;
+        let mcu = null;
         const statusDiv = document.getElementById('status');
-        // Cambia este prefijo por algo completamente aleatorio para que nadie use tu misma sala
-        const PREFIX = "tactil-canvas-room-xyz11-"; 
 
-        const peerConfig = {
-            config: {
-                'iceServers': [
-                    { 'urls': 'stun:://google.com' },
-                    { 'urls': 'stun:://google.com' }
-                ]
-            }
-        };
-
-        function actualizarEstado(texto, tipo = 'info') {
+        function actualizarEstado(texto) {
             statusDiv.innerText = texto;
-            statusDiv.style.background = tipo === 'error' ? '#f8d7da' : '#fff3cd';
         }
 
-        // ==========================================
-        // EMISOR (EL QUE DIBUJA)
-        // ==========================================
-        function iniciarTransmision() {
-            const salaId = document.getElementById('idEmisor').value.trim();
-            if(!salaId) return alert("Ingresa un número de sala");
+        async function conectarASala(rol) {
+            const salaId = document.getElementById('idSala').value.trim();
+            if(!salaId) return alert("Por favor ingresa un número de sala");
 
-            actualizarEstado("Registrando sala en internet...");
-            peer = new Peer(PREFIX + salaId, peerConfig);
+            actualizarEstado("Conectando con la infraestructura en la nube segura...");
+            
+            // Creamos una instancia de conexión usando servidores globales públicos y gratuitos de Metered
+            mcu = new metered.MeteredMCU();
 
-            peer.on('open', () => {
+            try {
+                // Unirse a una sala común. Reemplaza 'test-room-' por algo propio si deseas mayor privacidad.
+                await mcu.join({
+                    roomName: "room-canvas-global-" + salaId,
+                    video: false,
+                    audio: false
+                });
+
                 document.getElementById('panelControl').style.display = 'none';
-                document.getElementById('zonaEmisor').style.display = 'block';
-                actualizarEstado(`Sala lista: ${salaId}. Pídele al espectador que use este número.`);
-                configurarCanvasTactil();
-            });
 
-            peer.on('error', (err) => {
-                console.error(err);
-                actualizarEstado("Error al crear sala. Intenta con otro número.", 'error');
-            });
+                if (rol === 'emisor') {
+                    document.getElementById('zonaEmisor').style.display = 'block';
+                    actualizarEstado(`Transmitiendo en vivo. Comparte el número ${salaId} con tu espectador.`);
+                    configurarCanvasYTransmision();
+                } else {
+                    document.getElementById('zonaReceptor').style.display = 'block';
+                    actualizarEstado(`Sincronizado a la sala ${salaId}. Esperando el video del emisor...`);
+                    configurarReceptor();
+                }
+
+            } catch (error) {
+                console.error(error);
+                actualizarEstado("Error al enlazar con el servidor. Inténtalo de nuevo.");
+            }
         }
 
-        function configurarCanvasTactil() {
+        // ==========================================
+        // CONFIGURACIÓN EMISOR (DIBUJO + ENVÍO)
+        // ==========================================
+        function configurarCanvasYTransmision() {
             const canvas = document.getElementById('miCanvas');
             const ctx = canvas.getContext('2d');
             let dibujando = false;
 
-            ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.strokeStyle = '#28a745';
+            ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.strokeStyle = '#007bff';
 
-            // Funciones de dibujo unificadas
-            function empezarDibujo(x, y) {
-                dibujando = true;
-                ctx.beginPath();
-                ctx.moveTo(x, y);
-            }
+            function empezar(x, y) { dibujando = true; ctx.beginPath(); ctx.moveTo(x, y); }
+            function mover(x, y) { if (!dibujando) return; ctx.lineTo(x, y); ctx.stroke(); }
+            function parar() { dibujando = false; ctx.beginPath(); }
 
-            function moverDibujo(x, y) {
-                if (!dibujando) return;
-                ctx.lineTo(x, y);
-                ctx.stroke();
-            }
+            // Eventos PC
+            canvas.addEventListener('mousedown', (e) => { const r = canvas.getBoundingClientRect(); empezar(e.clientX - r.left, e.clientY - r.top); });
+            canvas.addEventListener('mousemove', (e) => { const r = canvas.getBoundingClientRect(); mover(e.clientX - r.left, e.clientY - r.top); });
+            canvas.addEventListener('mouseup', parar);
 
-            function terminarDibujo() {
-                dibujando = false;
-                ctx.beginPath();
-            }
-
-            // --- EVENTOS DE MOUSE (PC) ---
-            canvas.addEventListener('mousedown', (e) => { const r = canvas.getBoundingClientRect(); empezarDibujo(e.clientX - r.left, e.clientY - r.top); });
-            canvas.addEventListener('mousemove', (e) => { const r = canvas.getBoundingClientRect(); moverDibujo(e.clientX - r.left, e.clientY - r.top); });
-            canvas.addEventListener('mouseup', terminarDibujo);
-
-            // --- EVENTOS TÁCTILES (MÓVIL) ---
+            // Eventos Táctiles Móviles
             canvas.addEventListener('touchstart', (e) => {
                 const r = canvas.getBoundingClientRect();
-                const touch = e.touches[0]; // Captura el primer dedo
-                empezarDibujo(touch.clientX - r.left, touch.clientY - r.top);
-                e.preventDefault(); // Detiene el scroll de la pantalla
+                const t = e.touches[0];
+                empezar(t.clientX - r.left, t.clientY - r.top);
+                e.preventDefault();
             }, { passive: false });
 
             canvas.addEventListener('touchmove', (e) => {
                 const r = canvas.getBoundingClientRect();
-                const touch = e.touches[0];
-                moverDibujo(touch.clientX - r.left, touch.clientY - r.top);
+                const t = e.touches[0];
+                mover(t.clientX - r.left, t.clientY - r.top);
                 e.preventDefault();
             }, { passive: false });
 
-            canvas.addEventListener('touchend', terminarDibujo);
+            canvas.addEventListener('touchend', parar);
 
-            // Capturar el stream a 30 FPS y transmitirlo
-            const stream = canvas.captureStream(30);
-            peer.on('call', (call) => {
-                actualizarEstado("¡Espectador conectado viendo en vivo!");
-                call.answer(stream);
-            });
+            // Capturar la imagen del Canvas como transmisión de video a 30 FPS
+            const streamCanvas = canvas.captureStream(30);
+            const videoTrack = streamCanvas.getVideoTracks()[0];
+
+            // Compartir el video del canvas en la sala de forma inmediata
+            mcu.startVideo(videoTrack);
         }
 
         // ==========================================
-        // RECEPTOR (EL QUE MIRA)
+        // CONFIGURACIÓN RECEPTOR (RECEPCIÓN DE VIDEO)
         // ==========================================
-        function conectarseATransmision() {
-            const salaId = document.getElementById('idReceptor').value.trim();
-            if(!salaId) return alert("Ingresa el número de sala de tu amigo");
-
-            actualizarEstado("Conectando con el emisor...");
-            peer = new Peer(peerConfig);
-
-            peer.on('open', () => {
-                document.getElementById('panelControl').style.display = 'none';
-                document.getElementById('zonaReceptor').style.display = 'block';
-
-                const call = peer.call(PREFIX + salaId, new MediaStream());
-
-                call.on('stream', (remoteStream) => {
-                    actualizarEstado(`Viendo la transmisión de la sala ${salaId}`);
-                    const video = document.getElementById('videoCanvas');
-                    video.srcObject = remoteStream;
-                });
+        function configurarReceptor() {
+            // Escuchar cuando un emisor comparta su video en la sala
+            mcu.on("remoteTrackStarted", (remoteTrack) => {
+                if (remoteTrack.type === "video") {
+                    actualizarEstado("¡Conexión establecida con éxito! Viendo en tiempo real.");
+                    
+                    // Metered crea el elemento de video optimizado automáticamente
+                    const elementoVideo = remoteTrack.createVideoElement();
+                    elementoVideo.setAttribute("playsinline", "true");
+                    elementoVideo.setAttribute("autoplay", "true");
+                    elementoVideo.style.width = "100%";
+                    elementoVideo.style.maxWidth = "400px";
+                    
+                    const contenedor = document.getElementById('contenedorVideo');
+                    contenedor.innerHTML = ""; // Limpiar esperas anteriores
+                    contenedor.appendChild(elementoVideo);
+                }
             });
 
-            peer.on('error', (err) => {
-                actualizarEstado("Sala no encontrada. Asegúrate de que el emisor haya iniciado primero.", 'error');
+            mcu.on("remoteTrackStopped", (remoteTrack) => {
+                if (remoteTrack.type === "video") {
+                    actualizarEstado("El emisor ha cerrado la sala o se desconectó.");
+                    document.getElementById('contenedorVideo').innerHTML = "";
+                }
             });
         }
     </script>
