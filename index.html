@@ -4,115 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Canvas Compartido en Tiempo Real</title>
-    <!-- Cargamos la infraestructura en la nube de Metered para WebRTC estable -->
-    <script src="https://metered.ca"></script>
     <style>
         body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 15px; }
         .box { background: white; max-width: 500px; margin: 15px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        .flex-section { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
+        .flex-section { display: flex; flex-direction: column; gap: 15px; }
         input { padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 6px; width: 120px; text-align: center; font-weight: bold; }
         .btn { padding: 12px 24px; font-size: 16px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; }
         .btn-green { background: #28a745; }
         .btn-blue { background: #007bff; }
-        canvas { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; touch-action: none; max-width: 100%; height: auto; }
-        video { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; max-width: 100%; height: auto; }
+        canvas { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; touch-action: none; max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; }
         #status { font-weight: bold; color: #333; margin: 10px 0; padding: 10px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px; display: inline-block; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <h2>Canvas P2P - Conexión de Alta Estabilidad</h2>
-    <div id="status">Por favor, introduce una sala para conectar...</div>
+    <h2>Lienzo Compartido Táctil (Instantáneo)</h2>
+    <div id="status">Ingresa un número de sala para comenzar...</div>
 
-    <!-- PANEL ÚNICO DE INGRESO -->
+    <!-- PANEL DE CONTROL -->
     <div id="panelControl" class="box">
         <div class="flex-section">
-            <h3>Ingresar a una Sala</h3>
-            <p>Escribe el número de la sala (Ej: 2026). Si la sala no existe, se creará automáticamente para transmitir.</p>
+            <h3>Conectar a una Sala</h3>
+            <p>Escribe cualquier número de sala (Ej: 3030) y elige tu rol:</p>
             <div>
-                <input type="number" id="idSala" pattern="[0-9]*" inputmode="numeric" value="2026">
+                <input type="number" id="idSala" pattern="[0-9]*" inputmode="numeric" value="3030">
                 <br><br>
-                <button class="btn btn-green" onclick="conectarASala('emisor')">Transmitir mi Canvas</button>
-                <button class="btn btn-blue" onclick="conectarASala('receptor')">Solo ver Canvas</button>
+                <button class="btn btn-green" onclick="conectarSala('emisor')">Transmitir Dibujo</button>
+                <button class="btn btn-blue" onclick="conectarSala('receptor')">Solo Observar</button>
             </div>
         </div>
     </div>
 
-    <!-- ÁREA DEL EMISOR -->
-    <div id="zonaEmisor" class="box" style="display: none;">
-        <h3>Usa tu dedo o mouse para dibujar</h3>
+    <!-- INTERFAZ COMPARTIDA (AMBOS USAN UN CANVAS LOCAL) -->
+    <div id="zonaCanvas" class="box" style="display: none;">
+        <h3 id="tituloRol">Lienzo</h3>
         <canvas id="miCanvas" width="400" height="400"></canvas>
     </div>
 
-    <!-- ÁREA DEL RECEPTOR -->
-    <div id="zonaReceptor" class="box" style="display: none;">
-        <h3>Video en Vivo Recibido</h3>
-        <div id="contenedorVideo"></div>
-    </div>
-
     <script>
-        let mcu = null;
+        let ws = null;
+        let rolUsuario = '';
         const statusDiv = document.getElementById('status');
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+        let dibujando = false;
 
-        function actualizarEstado(texto) {
-            statusDiv.innerText = texto;
+        ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.strokeStyle = '#007bff';
+
+        function actualizarEstado(texto) { statusDiv.innerText = texto; }
+
+        function conectarSala(rol) {
+            const salaId = document.getElementById('idSala').value.trim();
+            if (!salaId) return alert("Por favor ingresa un número de sala");
+
+            rolUsuario = rol;
+            actualizarEstado("Conectando con la sala de datos en tiempo real...");
+
+            // Usamos la API pública de pruebas e instantánea de PieSocket (100% disponible)
+            const apiKey = "oCd7EMZwOQIeeCVatZHzbAsFQA9yd9w7STwSgGZ5"; 
+            const wsUrl = `wss://://piesocket.com{salaId}?api_key=${apiKey}&notify_self=0`;
+
+            ws = new WebSocket(wsUrl);
+
+            ws.onopen = () => {
+                document.getElementById('panelControl').style.display = 'none';
+                document.getElementById('zonaCanvas').style.display = 'block';
+                
+                if (rolUsuario === 'emisor') {
+                    document.getElementById('tituloRol').innerText = "Tu Lienzo (Dibuja con mouse o dedo)";
+                    actualizarEstado(`Transmitiendo en vivo en la sala: ${salaId}`);
+                    activarEventosDibujo();
+                } else {
+                    document.getElementById('tituloRol').innerText = "Pantalla del Emisor (Modo Lectura)";
+                    actualizarEstado(`Sincronizado a la sala: ${salaId}. Esperando trazos...`);
+                }
+            };
+
+            ws.onmessage = (event) => {
+                if (rolUsuario === 'receptor') {
+                    const datos = JSON.parse(event.data);
+                    ejecutarDibujoRemoto(datos);
+                }
+            };
+
+            ws.onerror = (e) => {
+                console.error(e);
+                actualizarEstado("Error de red. Intenta con otro número de sala.");
+            };
         }
 
-        async function conectarASala(rol) {
-            const salaId = document.getElementById('idSala').value.trim();
-            if(!salaId) return alert("Por favor ingresa un número de sala");
-
-            actualizarEstado("Conectando con la infraestructura en la nube segura...");
-            
-            // Creamos una instancia de conexión usando servidores globales públicos y gratuitos de Metered
-            mcu = new metered.MeteredMCU();
-
-            try {
-                // Unirse a una sala común. Reemplaza 'test-room-' por algo propio si deseas mayor privacidad.
-                await mcu.join({
-                    roomName: "room-canvas-global-" + salaId,
-                    video: false,
-                    audio: false
-                });
-
-                document.getElementById('panelControl').style.display = 'none';
-
-                if (rol === 'emisor') {
-                    document.getElementById('zonaEmisor').style.display = 'block';
-                    actualizarEstado(`Transmitiendo en vivo. Comparte el número ${salaId} con tu espectador.`);
-                    configurarCanvasYTransmision();
-                } else {
-                    document.getElementById('zonaReceptor').style.display = 'block';
-                    actualizarEstado(`Sincronizado a la sala ${salaId}. Esperando el video del emisor...`);
-                    configurarReceptor();
-                }
-
-            } catch (error) {
-                console.error(error);
-                actualizarEstado("Error al enlazar con el servidor. Inténtalo de nuevo.");
+        // ==========================================
+        // CAPTURA Y ENVÍO DE COORDENADAS (EMISOR)
+        // ==========================================
+        function enviarTrazo(tipo, x, y) {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ tipo, x, y }));
             }
         }
 
-        // ==========================================
-        // CONFIGURACIÓN EMISOR (DIBUJO + ENVÍO)
-        // ==========================================
-        function configurarCanvasYTransmision() {
-            const canvas = document.getElementById('miCanvas');
-            const ctx = canvas.getContext('2d');
-            let dibujando = false;
+        function activarEventosDibujo() {
+            function empezar(x, y) { dibujando = true; ctx.beginPath(); ctx.moveTo(x, y); enviarTrazo('start', x, y); }
+            function mover(x, y) { if (!dibujando) return; ctx.lineTo(x, y); ctx.stroke(); enviarTrazo('move', x, y); }
+            function parar() { dibujando = false; ctx.beginPath(); enviarTrazo('end', 0, 0); }
 
-            ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.strokeStyle = '#007bff';
-
-            function empezar(x, y) { dibujando = true; ctx.beginPath(); ctx.moveTo(x, y); }
-            function mover(x, y) { if (!dibujando) return; ctx.lineTo(x, y); ctx.stroke(); }
-            function parar() { dibujando = false; ctx.beginPath(); }
-
-            // Eventos PC
+            // Mouse PC
             canvas.addEventListener('mousedown', (e) => { const r = canvas.getBoundingClientRect(); empezar(e.clientX - r.left, e.clientY - r.top); });
             canvas.addEventListener('mousemove', (e) => { const r = canvas.getBoundingClientRect(); mover(e.clientX - r.left, e.clientY - r.top); });
             canvas.addEventListener('mouseup', parar);
 
-            // Eventos Táctiles Móviles
+            // Táctil Móvil
             canvas.addEventListener('touchstart', (e) => {
                 const r = canvas.getBoundingClientRect();
                 const t = e.touches[0];
@@ -128,43 +128,21 @@
             }, { passive: false });
 
             canvas.addEventListener('touchend', parar);
-
-            // Capturar la imagen del Canvas como transmisión de video a 30 FPS
-            const streamCanvas = canvas.captureStream(30);
-            const videoTrack = streamCanvas.getVideoTracks()[0];
-
-            // Compartir el video del canvas en la sala de forma inmediata
-            mcu.startVideo(videoTrack);
         }
 
         // ==========================================
-        // CONFIGURACIÓN RECEPTOR (RECEPCIÓN DE VIDEO)
+        // REPLICACIÓN DE TRAZOS EN TIEMPO REAL (RECEPTOR)
         // ==========================================
-        function configurarReceptor() {
-            // Escuchar cuando un emisor comparta su video en la sala
-            mcu.on("remoteTrackStarted", (remoteTrack) => {
-                if (remoteTrack.type === "video") {
-                    actualizarEstado("¡Conexión establecida con éxito! Viendo en tiempo real.");
-                    
-                    // Metered crea el elemento de video optimizado automáticamente
-                    const elementoVideo = remoteTrack.createVideoElement();
-                    elementoVideo.setAttribute("playsinline", "true");
-                    elementoVideo.setAttribute("autoplay", "true");
-                    elementoVideo.style.width = "100%";
-                    elementoVideo.style.maxWidth = "400px";
-                    
-                    const contenedor = document.getElementById('contenedorVideo');
-                    contenedor.innerHTML = ""; // Limpiar esperas anteriores
-                    contenedor.appendChild(elementoVideo);
-                }
-            });
-
-            mcu.on("remoteTrackStopped", (remoteTrack) => {
-                if (remoteTrack.type === "video") {
-                    actualizarEstado("El emisor ha cerrado la sala o se desconectó.");
-                    document.getElementById('contenedorVideo').innerHTML = "";
-                }
-            });
+        function ejecutarDibujoRemoto(datos) {
+            if (datos.tipo === 'start') {
+                ctx.beginPath();
+                ctx.moveTo(datos.x, datos.y);
+            } else if (datos.tipo === 'move') {
+                ctx.lineTo(datos.x, datos.y);
+                ctx.stroke();
+            } else if (datos.tipo === 'end') {
+                ctx.beginPath();
+            }
         }
     </script>
 </body>
