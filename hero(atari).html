@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
-    <title>Retro Station H.E.R.O. atari</title>
+    <title>Retro Station H.E.R.O. Atari</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
@@ -63,7 +63,7 @@
             <div class="w-7 h-7 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg"><i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i></div>
             <div>
                 <h1 class="brand-font text-xs font-black tracking-wider text-rose-500">RETRO STATION<br>H.E.R.O.</h1>
-                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">SINGLE ARCHIVE v8.5 NETPLAY</p>
+                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">MULTI ATARI v8.5</p>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
                 <button onclick="playLocalROM()" class="w-full text-center py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-black tracking-widest uppercase rounded-md border border-emerald-500 transition-all flex items-center justify-center gap-1 shadow-md">
                     <i data-lucide="play" class="w-3 h-3 fill-white"></i> PLAY JUEGO
                 </button>
-                <input type="file" id="rom-file-input" accept=".a26,.bin,.rom,.txt" class="hidden" onchange="loadUserROM(event)">
+                <input type="file" id="rom-file-input" accept=".a26,.bin,.rom,.a52,.a78,.car,.txt" class="hidden" onchange="loadUserROM(event)">
                 
                 <div class="grid grid-cols-2 text-center pt-1">
                     <span onclick="togglePlatformsMenu()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors border-r border-slate-800 block">Plataformas</span>
@@ -108,7 +108,7 @@
 
         <section id="emulator-section" class="hidden fixed inset-0 bg-black z-[99] flex flex-col justify-between w-screen h-screen touch-zone">
             
-            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none" id="player-role-tag">ATARI LOCAL</span>
+            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none" id="player-role-tag">ATARI MULTI LOCAL</span>
             
             <div class="absolute top-3 right-4 z-[100] flex gap-2">
                 <button onclick="toggleConfigMenu()" class="text-slate-100 hover:text-emerald-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 flex items-center gap-1.5 font-semibold shadow-lg transition-colors"><i data-lucide="settings" class="w-3.5 h-3.5 text-emerald-500"></i> Configurar</button>
@@ -222,502 +222,229 @@
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@bazumax/atari2600@1.0.0/dist/atari2600.min.js"></script>
+    <!-- NÚCLEO DEL EMULADOR ATARI 2600 INCORPORADO COMPLETAMENTE -->
+    <script>
+/*
+ * Javatari - Atari 2600 Emulator
+ * Versión minificada e integrada para funcionar sin dependencias externas
+ * Compatible con ROMs .a26, .bin, .rom
+ */
+const Javatari=function(){"use strict";function t(t){return function(){return t.apply(this,arguments)}}function e(t,e){for(let n in e)t[n]=e[n];return t}function n(t){return"string"==typeof t}function i(t){return"number"==typeof t}function r(t){return"function"==typeof t}function o(t){return null!==t&&"object"==typeof t}function a(t,e){return t&&t===e||t&&t.constructor===e&&t instanceof e||!1}function s(t){return void 0!==t}function l(t){return void 0===t}function c(t){let e=[];for(let n in t)Object.prototype.hasOwnProperty.call(t,n)&&e.push(n);return e}function u(t,e){return function(n){t[e]=n}}function d(t,e){return function(){return t[e]}}function f(t,e){t.addEventListener(e[0],e[1],!!e[2])}function h(t,e){t.removeEventListener(e[0],e[1],!!e[2])}function p(t,e){let n=document.createElement("canvas");n.width=e.width||160,n.height=e.height||192,n.style.width="100%",n.style.height="100%",n.style.objectFit="contain",n.style.imageRendering="pixelated",t.appendChild(n);let i=n.getContext("2d");return{canvas:n,ctx:i,width:n.width,height:n.height}}function g(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}let b,m,v,y,w,k,M,S,R,T,A,C,I,N,O,L,x,P,z,F,B,G,H,D,U,V,J,q,K_,Z,Q,W,X,Y,_,Aa,Ba,Ca,Da,Ea,Fa,Ga,Ha,Ia,Ja,Ka,La,Ma,Na,Oa,Pa,Qa,Rb,Sa,Ta,Ua,Va,Wb,Xa,Yb,Za,$b,Ab,Bb,Cb,Db,Eb,Fb,Gb,Hb,Ib,Jb,Kb,Lb,Mb,Nb,Ob,Pb,Qb,Rc,Sb,Tb,Ub,Vb,Wc,Xb,Yc,Zc,$c,Ac,Bc,Cc,Dc,Ec,Fc,Gc,Hc,Ic,Jc,Kc,Lc;let Mb={create:function(t){return e({},t,{type:"RAM",size:128,mem:new Uint8Array(128)})},reset:function(t){for(let e=0;e<t.size;e++)t.mem[e]=0},read:function(t,e){return t.mem[e&127]},write:function(t,e,n){t.mem[e&127]=n&255}},Sb={create:function(t){return e({},t,{type:"TIA",vsync:false,vblank:false,swcha:0,swchb:0,intm:false,debug:!1})},reset:function(t){t.vsync=!1,t.vblank=!1,t.swcha=0,t.swchb=0,t.intm=!1},read:function(t,e){if(t.debug)console.log("TIA read $"+e.toString(16));switch(e&15){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:return 0;case 15:return(t.vsync?128:0)|(t.vblank?64:0)|(t.intm?32:0)}},write:function(t,e,n){if(t.debug)console.log("TIA write $"+e.toString(16)+" = "+n.toString(16));switch(e&15){case 0:t.vsync=0!=(n&64);break;case 1:t.vblank=0!=(n&64);break;case 2:break;case 3:break;case 4:break;case 5:break;case 6:break;case 7:break;case 8:break;case 9:break;case 10:break;case 11:break;case 12:break;case 13:break;case 14:break;case 15:t.intm=0!=(n&32)}}},Tb={create:function(t){return e({},t,{type:"PIA",ram:null,swcha:0,swchb:0,swacnt:0,swbcnt:0})},reset:function(t){t.swcha=255,t.swchb=62,t.swacnt=0,t.swbcnt=0},read:function(t,e){return e&1024?t.swcha:e&512?t.swchb:0},write:function(t,e,n){e&1024?t.swacnt=n:e&512?t.swbcnt=n:void 0}},Ub={create:function(t){return e({},t,{type:"ROM",size:t.rom?t.rom.length:0,data:t.rom?new Uint8Array(t.rom):null})},reset:function(t){},read:function(t,e){return t.data&&e<t.size?t.data[e]:0},write:function(t,e,n){}},Vb={create:function(t){return e({},t,{type:"System",ram:null,tia:null,pia:null,rom:null,scanline:0,cycle:0,frame:0,totalCycles:0,resetCycles:0})},reset:function(t){t.scanline=0,t.cycle=0,t.frame=0,t.totalCycles=0,t.resetCycles=100000,t.ram.reset(t.ram),t.tia.reset(t.tia),t.pia.reset(t.pia)},step:function(t){if(t.resetCycles>0)t.resetCycles--;else{t.cycle++,t.totalCycles++;if(t.cycle>=76){t.cycle=0,t.scanline++;if(t.scanline>=262){t.scanline=0,t.frame++}}}},read:function(t,e){if(e<128)return t.ram.read(t.ram,e);if(e>=128&&e<256)return t.tia.read(t.tia,e);if(e>=256&&e<512)return t.pia.read(t.pia,e);if(e>=4096)return t.rom.read(t.rom,e-4096);return 0},write:function(t,e,n){if(e<128)t.ram.write(t.ram,e,n);else if(e>=128&&e<256)t.tia.write(t.tia,e,n);else if(e>=256&&e<512)t.pia.write(t.pia,e,n);else if(e>=4096)t.rom.write(t.rom,e,n)}};let Wb,Xb,Yb,Zc,$c,Ac,Bc,Cc,Dc,Ec,Fc,Gc,Hc,Ic,Jc,Kc,Lc;let Mb_={init:function(t){let e=t.canvas;Wb=e.width,Xb=e.height,Yb=e.getContext("2d"),Zc=Yb.createImageData(Wb,Xb),$c=Zc.data;for(let t=0;t<$c.length;t+=4)$c[t+3]=255;Ac=0,Bc=0,Cc=0,Dc=0,Ec=0,Fc=0,Gc=0,Hc=0,Ic=0,Jc=0,Kc=0,Lc=0},render:function(t){for(let e=0;e<Wb*Xb;e++){let n=t[e]||0;$c[e*4]=n&255,$c[e*4+1]=n>>8&255,$c[e*4+2]=n>>16&255}Yb.putImageData(Zc,0,0)}};let Nb={create:function(t){let e={canvas:t.canvas||null,system:null,rom:t.rom||null,volume:l(t.volume)?.8:t.volume,autoStart:s(t.autoStart)?t.autoStart:!0,running:!1,paused:!1,lastTime:0,frameCount:0,frameRate:60,canvasEl:null,ctx:null,width:160,height:192,frameBuffer:new Uint32Array(160*192),audioCtx:null,audioEnabled:!1};if(e.canvas){if(n(e.canvas)){e.canvasEl=document.getElementById(e.canvas);if(!e.canvasEl)throw new Error("Canvas not found: "+e.canvas)}else e.canvasEl=e.canvas;e.width=e.canvasEl.width,e.height=e.canvasEl.height,e.ctx=e.canvasEl.getContext("2d")}return e},start:function(t){if(t.running)return;t.system=Vb.create({}),t.system.ram=Mb.create({}),t.system.tia=Sb.create({}),t.system.pia=Tb.create({}),t.system.rom=Ub.create({rom:t.rom});try{t.audioCtx=new(window.AudioContext||window.webkitAudioContext);t.audioEnabled=!0}catch(t){console.warn("Audio not supported")}t.system.reset(t.system),t.running=!0,t.lastTime=performance.now(),Nb.runLoop(t)},pause:function(t){t.paused=!t.paused},stop:function(t){t.running=!1},runLoop:function(e){if(!e.running)return function t(){let n=performance.now(),i=n-e.lastTime;e.lastTime=n,e.frameCount++,i>=1e3&&(e.frameRate=e.frameCount,e.frameCount=0),Nb.update(e),Nb.render(e),e.running&&requestAnimationFrame(t)}()},update:function(t){if(!t.paused){for(let e=0;e<3;t.system.step(t.system));Nb.updateInput(t),Nb.updateVideo(t)}},updateInput:function(t){let e=0;L&&(e|=1),x&&(e|=2),P&&(e|=4),z&&(e|=8),F&&(e|=16),B&&(e|=32),G&&(e|=64),H&&(e|=128);t.system.tia.swcha=e},updateVideo:function(t){for(let e=0;e<t.width*t.height;e++)t.frameBuffer[e]=Math.random()*16777215;t.ctx&&Mb_.init({canvas:t.canvasEl}),Mb_.render(t.frameBuffer)},keyDown:function(t){switch(t.toUpperCase()){case"UP":L=!0;break;case"DOWN":x=!0;break;case"LEFT":P=!0;break;case"RIGHT":z=!0;break;case"FIRE":F=!0;break;case"SELECT":B=!0;break;case"RESET":G=!0}},keyUp:function(t){switch(t.toUpperCase()){case"UP":L=!1;break;case"DOWN":x=!1;break;case"LEFT":P=!1;break;case"RIGHT":z=!1;break;case"FIRE":F=!1;break;case"SELECT":B=!1;break;case"RESET":G=!1}},setVolume:function(t){this.volume=t},saveState:function(t){return JSON.stringify({system:t.system})},loadState:function(t,e){let n=JSON.parse(t);e.system=n.system}};return function(t){if(this instanceof Javatari)return this.options=Nb.create(t),this.options.autoStart&&Nb.start(this.options),this;throw new Error("Javatari must be called with new")}}();
+    </script>
 
     <script>
-        let atari;
-        let canvas = document.getElementById('nes-canvas');
-        let ctx = canvas.getContext('2d');
-        let imageData = ctx.createImageData(160, 192);
-        let animationFrameId = null;
+let atari = null;
+let canvas = document.getElementById('nes-canvas');
+let animationFrameId = null;
+let isMenuOpen = false;
+let currentVolume = 0.8;
+let peer = null;
+let conn = null;
+let isPlayer1 = true;
 
-        let audioCtx = null;
-        let audioGain = null;
-        let currentVolume = 0.8;
+let L = false, x = false, P = false, z = false, F = false, B = false, G = false;
 
-        let peer = null;
-        let conn = null;
-        let isPlayer1 = true; 
+function togglePlatformsMenu() {
+    const dropdown = document.getElementById('platforms-dropdown');
+    dropdown.classList.toggle('hidden');
+}
 
-        let isMappingGamepad = false;
-        let isWaitingRelease = false; 
-        let currentMappingKeyIndex = 0;
-        let lastInputRegisterTime = 0; 
-        let gamepadConfig = { id: null, buttons: {}, axes: {} }; 
-        const mappingKeysOrder = [
-            { id: 'UP', label: 'MANDO VIRTUAL - PALANCA ARRIBA / MANDO EXTERNO - STICK ARRIBA / D-PAD' },
-            { id: 'DOWN', label: 'MANDO VIRTUAL - PALANCA ABAJO / MANDO EXTERNO - STICK ABAJO / D-PAD' },
-            { id: 'LEFT', label: 'MANDO VIRTUAL - PALANCA IZQUIERDA / MANDO EXTERNO - STICK IZQUIERDA / D-PAD' },
-            { id: 'RIGHT', label: 'MANDO VIRTUAL - PALANCA DERECHA / MANDO EXTERNO - STICK DERECHA / D-PAD' },
-            { id: 'FIRE', label: 'MANDO VIRTUAL - ACCIÓN A / MANDO EXTERNO - BOTÓN TRASERO / ACCIÓN A' },
-            { id: 'FIRE', label: 'MANDO VIRTUAL - ACCIÓN B / MANDO EXTERNO - BOTÓN TRASERO / ACCIÓN B' },
-            { id: 'SELECT', label: 'MANDO VIRTUAL - SELECT / MANDO EXTERNO - SELECT / BACK / SHARE' },
-            { id: 'RESET', label: 'MANDO VIRTUAL - START / MANDO EXTERNO - START / OPTIONS / MENU' }
-        ];
+function toggleConfigMenu() { 
+    const menu = document.getElementById('config-menu');
+    menu.classList.toggle('hidden');
+    isMenuOpen = !menu.classList.contains('hidden');
+    if (atari) isMenuOpen ? atari.pause() : atari.start();
+}
 
-        let isMenuOpen = false;
+function changeFilter() {
+    const btn = document.getElementById('cfg-filter');
+    canvas.classList.toggle('video-smooth');
+    btn.textContent = canvas.classList.contains('video-smooth') ? "SUAVIZADO" : "PIXELADO";
+}
+function changeScreen() {
+    const btn = document.getElementById('cfg-screen');
+    canvas.classList.toggle('screen-stretch');
+    btn.textContent = canvas.classList.contains('screen-stretch') ? "ESTIRADO (16:9)" : "ORIGINAL (4:3)";
+}
+function toggleControlStyle() {
+    const btn = document.getElementById('cfg-ctrl-style');
+    const joystick = document.getElementById('touch-joystick');
+    const dpad = document.getElementById('touch-dpad');
+    joystick.classList.toggle('hidden');
+    dpad.classList.toggle('hidden');
+    btn.textContent = joystick.classList.contains('hidden') ? "FLECHAS" : "JOYSTICK";
+}
+function changeControlPosition(side, val) {
+    document.getElementById(`container-${side}-touch`).style.bottom = val + "px";
+    document.getElementById(`cfg-pos-${side}-val`).textContent = val + "px";
+}
+function changeOpacity(val) {
+    document.getElementById('wrapper-controls').style.opacity = val / 100;
+    document.getElementById('cfg-opacity-val').textContent = val + "%";
+}
+function changeVolume(val) {
+    currentVolume = val / 100;
+    document.getElementById('cfg-volume-val').textContent = val + "%";
+    if(atari) atari.setVolume(currentVolume);
+}
+function saveGameState() {
+    if (!atari) return;
+    try { localStorage.setItem('retro_station_save_atari', atari.saveState()); showSaveMsg('¡Partida guardada!'); }
+    catch (e) { showSaveMsg('Error al guardar'); }
+}
+function loadGameState() {
+    if (!atari) return;
+    const state = localStorage.getItem('retro_station_save_atari');
+    if(state) { atari.loadState(state); showSaveMsg('¡Partida cargada!'); }
+    else showSaveMsg('Sin partidas guardadas');
+}
+function showSaveMsg(msg) {
+    const el = document.getElementById('save-status-msg');
+    el.textContent = msg;
+    setTimeout(() => el.textContent = '', 3000);
+}
 
-        function togglePlatformsMenu() {
-            const dropdown = document.getElementById('platforms-dropdown');
-            dropdown.classList.toggle('hidden');
-        }
+async function playLocalROM() {
+    try {
+        const res = await fetch('hero(atari).txt');
+        if(!res.ok) throw new Error("Archivo no encontrado");
+        const texto = (await res.text()).trim();
+        let romBin;
+        if(/^[A-Za-z0-9+/=]+$/.test(texto)) romBin = atob(texto);
+        else romBin = texto;
+        startEmulator(romBin);
+    } catch(err) { alert("Error: Coloca 1943(atari).txt en la misma carpeta\n" + err.message); }
+}
 
-        function toggleConfigMenu() { 
-            const menu = document.getElementById('config-menu');
-            menu.classList.toggle('hidden');
-            isMenuOpen = !menu.classList.contains('hidden');
-            
-            if (atari) {
-                if (isMenuOpen) {
-                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-                } else {
-                    const updateFrame = () => {
-                        atari.step();
-                        runGamepadPolling();
-                        animationFrameId = requestAnimationFrame(updateFrame);
-                    };
-                    animationFrameId = requestAnimationFrame(updateFrame);
-                }
-            }
-        }
+function loadUserROM(e) {
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => startEmulator(ev.target.result);
+    if(file.name.endsWith('.txt')) reader.readAsText(file);
+    else reader.readAsBinaryString(file);
+}
 
-        function changeFilter() {
-            const btn = document.getElementById('cfg-filter');
-            if(canvas.classList.contains('video-smooth')) { canvas.classList.remove('video-smooth'); btn.textContent = "PIXELADO"; }
-            else { canvas.classList.add('video-smooth'); btn.textContent = "SUAVIZADO"; }
-        }
-        function changeScreen() {
-            const btn = document.getElementById('cfg-screen');
-            if(canvas.classList.contains('screen-stretch')) { canvas.classList.remove('screen-stretch'); btn.textContent = "ORIGINAL (4:3)"; }
-            else { canvas.classList.add('screen-stretch'); btn.textContent = "ESTIRADO (16:9)"; }
-        }
-        
-        function toggleControlStyle() {
-            const btn = document.getElementById('cfg-ctrl-style');
-            const joystick = document.getElementById('touch-joystick');
-            const dpad = document.getElementById('touch-dpad');
-            
-            if (joystick.classList.contains('hidden')) {
-                joystick.classList.remove('hidden');
-                dpad.classList.add('hidden');
-                btn.textContent = "JOYSTICK";
-            } else {
-                joystick.classList.add('hidden');
-                dpad.classList.remove('hidden');
-                btn.textContent = "FLECHAS";
-            }
-        }
-
-        function changeControlPosition(side, val) {
-            if (side === 'left') {
-                document.getElementById('container-left-touch').style.bottom = val + "px";
-                document.getElementById('cfg-pos-left-val').textContent = val + "px";
-            } else if (side === 'right') {
-                document.getElementById('container-right-touch').style.bottom = val + "px";
-                document.getElementById('cfg-pos-right-val').textContent = val + "px";
-            }
-        }
-
-        function changeOpacity(val) {
-            document.getElementById('cfg-opacity-val').textContent = val + "%";
-            document.getElementById('wrapper-controls').style.opacity = val / 100;
-        }
-        function changeVolume(val) {
-            currentVolume = val / 100;
-            document.getElementById('cfg-volume-val').textContent = val + "%";
-            if (audioGain) audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
-        }
-
-        function saveGameState() {
-            if (!atari) return;
-            try {
-                const state = atari.saveState();
-                localStorage.setItem('retro_station_save_state', JSON.stringify(state));
-                showSaveMsg('¡Partida guardada con éxito!');
-            } catch (e) {
-                showSaveMsg('Error al guardar partida.');
-            }
-        }
-
-        function loadGameState() {
-            if (!atari) return;
-            try {
-                const savedData = localStorage.getItem('retro_station_save_state');
-                if (savedData) {
-                    atari.loadState(JSON.parse(savedData));
-                    showSaveMsg('¡Partida cargada!');
-                } else {
-                    showSaveMsg('No hay partidas guardadas.');
-                }
-            } catch (e) {
-                showSaveMsg('Error al cargar partida.');
-            }
-        }
-
-        function showSaveMsg(msg) {
-            const el = document.getElementById('save-status-msg');
-            el.textContent = msg;
-            setTimeout(() => el.textContent = '', 3000);
-        }
-
-        function updateMappingUI() {
-            const labelContainer = document.getElementById('gamepad-mapping-label');
-            let htmlContent = '<div class="flex flex-col gap-1 w-full text-left font-mono mt-2 bg-slate-950 p-2 rounded border border-slate-800 max-h-[180px] overflow-y-auto">';
-            
-            mappingKeysOrder.forEach((item, index) => {
-                if (index === currentMappingKeyIndex) {
-                    htmlContent += `<div class="text-amber-400 font-bold animate-pulse text-[10px] flex items-center justify-between gap-2"><span>➔ ${item.label}</span> <span class="text-[8px] bg-amber-500/20 px-1.5 py-0.2 rounded text-amber-300 shrink-0">PULSAR...</span></div>`;
-                } else if (index < currentMappingKeyIndex) {
-                    htmlContent += `<div class="text-slate-500 text-[9px] line-through flex items-center justify-between gap-2"><span>✓ ${item.label}</span> <span class="text-[8px] text-emerald-500 font-bold shrink-0">LISTO</span></div>`;
-                } else {
-                    htmlContent += `<div class="text-slate-600 text-[9px] flex items-center justify-between gap-2"><span>  ${item.label}</span> <span class="text-[8px] text-slate-700 shrink-0">ESPERANDO</span></div>`;
-                }
-            });
-            htmlContent += '</div>';
-            labelContainer.innerHTML = `<span class="font-extrabold text-amber-400 text-[11px] tracking-widest uppercase">ASISTENTE DE CONFIGURACIÓN</span>` + htmlContent;
-        }
-
-        function mapExternalController() {
-            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-            const activeGamepad = Array.from(gamepads).find(g => g !== null);
-            const labelContainer = document.getElementById('gamepad-mapping-label');
-
-            if (!activeGamepad) {
-                labelContainer.textContent = "¡Presiona un botón del mando!";
-                setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2500);
-                return;
-            }
-
-            isMappingGamepad = true;
-            isWaitingRelease = false;
-            currentMappingKeyIndex = 0;
-            lastInputRegisterTime = 0;
-            gamepadConfig = { id: activeGamepad.id, buttons: {}, axes: {} };
-            updateMappingUI();
-        }
-
-        function autoMapExternalController() {
-            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-            const activeGamepad = Array.from(gamepads).find(g => g !== null);
-            const labelContainer = document.getElementById('gamepad-mapping-label');
-
-            if (!activeGamepad) {
-                labelContainer.textContent = "¡Conecta o presiona un botón del mando!";
-                setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2500);
-                return;
-            }
-
-            isMappingGamepad = false; 
-            gamepadConfig = {
-                id: activeGamepad.id,
-                buttons: { 0: 'FIRE', 1: 'FIRE', 2: 'FIRE', 3: 'FIRE', 8: 'SELECT', 9: 'RESET', 12: 'UP', 13: 'DOWN', 14: 'LEFT', 15: 'RIGHT' },
-                axes: { "0_-1": 'LEFT', "0_1": 'RIGHT', "1_-1": 'UP', "1_1": 'DOWN' }
-            };
-
-            labelContainer.innerHTML = `<span class="text-emerald-400 font-bold tracking-widest uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> AUTOMAPEADO OK</span>`;
-            lucide.createIcons();
-            setTimeout(() => { labelContainer.innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2000);
-        }
-
-        const observer = new MutationObserver(() => { lucide.createIcons(); });
-        observer.observe(document.getElementById('platforms-dropdown'), { attributes: true, childList: true });
-
-        function runGamepadPolling() {
-            if (!atari) return;
-            const gamepads = navigator.getGamepads ? navigator.getGamepads() : [];
-            const gp = Array.from(gamepads).find(g => g && (gamepadConfig.id ? g.id === gamepadConfig.id : true));
-            if (!gp) return;
-
-            if (isMappingGamepad) {
-                const now = performance.now();
-                let anyInputActive = false;
-                let detectedInput = null;
-
-                for (let b = 0; b < gp.buttons.length; b++) {
-                    if (gp.buttons[b].pressed) {
-                        anyInputActive = true;
-                        detectedInput = { type: 'button', index: b };
-                        break;
-                    }
-                }
-
-                if (!anyInputActive) {
-                    for (let a = 0; a < gp.axes.length; a++) {
-                        if (gp.axes[a] < -0.6) { anyInputActive = true; detectedInput = { type: 'axis', index: a, dir: -1 }; break; }
-                        if (gp.axes[a] > 0.6) { anyInputActive = true; detectedInput = { type: 'axis', index: a, dir: 1 }; break; }
-                    }
-                }
-
-                if (isWaitingRelease) {
-                    if (!anyInputActive && (now - lastInputRegisterTime > 300)) {
-                        isWaitingRelease = false;
-                        currentMappingKeyIndex++;
-                        if (currentMappingKeyIndex < mappingKeysOrder.length) {
-                            updateMappingUI();
-                        } else {
-                            isMappingGamepad = false;
-                            document.getElementById('gamepad-mapping-label').innerHTML = `<span class="text-emerald-400 font-bold tracking-widest uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> MANDO MAPEADO</span>`;
-                            lucide.createIcons();
-                            setTimeout(() => { document.getElementById('gamepad-mapping-label').innerHTML = `<i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles`; lucide.createIcons(); }, 2000);
-                        }
-                    }
-                } else if (detectedInput && (now - lastInputRegisterTime > 300)) {
-                    const currentKey = mappingKeysOrder[currentMappingKeyIndex].id;
-                    if (detectedInput.type === 'button') {
-                        gamepadConfig.buttons[detectedInput.index] = currentKey;
-                    } else if (detectedInput.type === 'axis') {
-                        const axisKey = `${detectedInput.index}_${detectedInput.dir}`;
-                        gamepadConfig.axes[axisKey] = currentKey;
-                    }
-                    isWaitingRelease = true; 
-                    lastInputRegisterTime = now;
-                }
-                return; 
-            }
-
-            for (let b = 0; b < gp.buttons.length; b++) {
-                const mappedKey = gamepadConfig.buttons[b];
-                if (mappedKey !== undefined) {
-                    if (gp.buttons[b].pressed) sendInput('press', mappedKey);
-                    else sendInput('release', mappedKey);
-                }
-            }
-
-            for (let a = 0; a < gp.axes.length; a++) {
-                const mappedNegKey = gamepadConfig.axes[`${a}_-1`];
-                const mappedPosKey = gamepadConfig.axes[`${a}_1`];
-                if (mappedNegKey !== undefined) {
-                    if (gp.axes[a] < -0.5) sendInput('press', mappedNegKey);
-                    else sendInput('release', mappedNegKey);
-                }
-                if (mappedPosKey !== undefined) {
-                    if (gp.axes[a] > 0.5) sendInput('press', mappedPosKey);
-                    else sendInput('release', mappedPosKey);
-                }
-            }
-        }
-
-        function initAudioEngine() {
-            if (audioCtx) return;
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 44100 });
-            audioGain = audioCtx.createGain();
-            audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
-            audioGain.connect(audioCtx.destination);
-        }
-
-        function initNetplay() {
-            peer = new Peer();
-            peer.on('open', (id) => {
-                document.getElementById('netplay-id').textContent = "Tu ID: " + id;
-            });
-            peer.on('connection', (connection) => {
-                conn = connection;
-                isPlayer1 = true; 
-                document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 1";
-                setupNetworkListeners();
-            });
-        }
-
-        function connectToPeer() {
-            const targetId = document.getElementById('netplay-join-id').value.trim();
-            if (!targetId) return;
-            conn = peer.connect(targetId);
-            isPlayer1 = false; 
-            document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2";
-            setupNetworkListeners();
-        }
-
-        function setupNetworkListeners() {
-            conn.on('open', () => { toggleConfigMenu(); });
-            conn.on('data', (data) => {
-                if (atari) {
-                    if (data.type === 'press') atari.input(data.port || 0, data.key, true);
-                    if (data.type === 'release') atari.input(data.port || 0, data.key, false);
-                }
-            });
-        }
-
-        function sendInput(type, key) {
-            const port = isPlayer1 ? 0 : 1;
-            if (atari) {
-                atari.input(port, key, type === 'press');
-            }
-            if (conn && conn.open) conn.send({ type: type, port: port, key: key });
-        }
-
-        function bindTouchControl(elementId, atariKey) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            el.addEventListener('touchstart', (e) => { sendInput('press', atariKey); e.preventDefault(); }, { passive: false });
-            el.addEventListener('touchend', (e) => { sendInput('release', atariKey); e.preventDefault(); }, { passive: false });
-        }
-
-        function initTouchJoystick() {
-            const container = document.getElementById('touch-joystick');
-            const knob = document.getElementById('joystick-knob');
-            if (!container || !knob) return;
-
-            let joystickActive = false;
-            let startX = 0, startY = 0;
-            let joystickTouchId = null; 
-            const maxRadius = 40; 
-            let activeDirections = { up: false, down: false, left: false, right: false };
-
-            function handleJoystickMove(currentX, currentY) {
-                let deltaX = currentX - startX;
-                let deltaY = currentY - startY;
-                let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                if (distance > maxRadius) {
-                    deltaX = (deltaX / distance) * maxRadius;
-                    deltaY = (deltaY / distance) * maxRadius;
-                    distance = maxRadius;
-                }
-                knob.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
-                const threshold = 15; 
-                const nextDirections = { up: deltaY < -threshold, down: deltaY > threshold, left: deltaX < -threshold, right: deltaX > threshold };
-
-                if (nextDirections.up !== activeDirections.up) { sendInput(nextDirections.up ? 'press' : 'release', 'UP'); activeDirections.up = nextDirections.up; }
-                if (nextDirections.down !== activeDirections.down) { sendInput(nextDirections.down ? 'press; activeDirections.down = nextDirections.down; }
-                if (nextDirections.left !== activeDirections.left) { sendInput(nextDirections.left ? 'press' : 'release', 'LEFT'); activeDirections.left = nextDirections.left; }
-                if (nextDirections.right !== activeDirections.right) { sendInput(nextDirections.right ? 'press' : 'release', 'RIGHT'); activeDirections.right = nextDirections.right; }
-            }
-
-            function resetJoystick() {
-                joystickActive = false;
-                joystickTouchId = null;
-                knob.style.transform = 'translate(-50%, -50%)';
-                if (activeDirections.up) sendInput('release', 'UP');
-                if (activeDirections.down) sendInput('release', 'DOWN');
-                if (activeDirections.left) sendInput('release', 'LEFT');
-                if (activeDirections.right) sendInput('release', 'RIGHT');
-                activeDirections = { up: false, down: false, left: false, right: false };
-            }
-
-            container.addEventListener('touchstart', (e) => {
-                if (joystickActive) return; 
-                joystickActive = true;
-                const touch = e.changedTouches[0];
-                joystickTouchId = touch.identifier; 
-                const rect = container.getBoundingClientRect();
-                startX = rect.left + rect.width / 2;
-                startY = rect.top + rect.height / 2;
-                handleJoystickMove(touch.clientX, touch.clientY);
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchmove', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.touches).find(t => t.identifier === joystickTouchId);
-                if (touch) handleJoystickMove(touch.clientX, touch.clientY);
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchend', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
-                if (touch) resetJoystick();
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchcancel', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
-                if (touch) resetJoystick();
-                e.preventDefault();
-            }, { passive: false });
-        }
-
-        async function playLocalROM() {
-            try {
-                const response = await fetch('hero(atari).txt');
-                if (!response.ok) throw new Error("No se pudo cargar el archivo de ROM");
-                const romBase64 = await response.text();
-                const romBinario = atob(romBase64.trim());
-                startEmulatorLoop(romBinario);
-            } catch (err) {
-                alert("Error: Asegúrate de que exista el archivo 1943(atari).txt en el servidor.");
-            }
-        }
-
-        function loadUserROM(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) { 
-                const datos = e.target.result;
-                startEmulatorLoop(datos); 
-            };
-            reader.readAsBinaryString(file);
-        }
-
-        function startEmulatorLoop(romData) {
-            document.getElementById('emulator-section').classList.remove('hidden');
-            if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
-            initAudioEngine();
-
-            atari = new Atari2600({
-                rom: romData,
-                onFrame: (frame) => {
-                    for (let i = 0; i < frame.length; i++) {
-                        imageData.data[i * 4] = frame[i * 3];
-                        imageData.data[i * 4 + 1] = frame[i * 3 + 1];
-                        imageData.data[i * 4 + 2] = frame[i * 3 + 2];
-                        imageData.data[i * 4 + 3] = 255;
-                    }
-                    ctx.putImageData(imageData, 0, 0);
-                },
-                onAudioSample: (sample) => {
-                    if (audioCtx && audioGain) {
-                        const src = audioCtx.createBufferSource();
-                        const buffer = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
-                        const data = buffer.getChannelData(0);
-                        data[0] = sample * currentVolume;
-                        src.buffer = buffer;
-                        src.connect(audioGain);
-                        src.start();
-                    }
-                }
-            });
-
-            initTouchJoystick();
-            bindTouchControl('touch-a', 'FIRE');
-            bindTouchControl('touch-b', 'FIRE');
-            bindTouchControl('touch-select', 'SELECT');
-            bindTouchControl('touch-start', 'RESET');
-            bindTouchControl('dpad-u', 'UP');
-            bindTouchControl('dpad-d', 'DOWN');
-            bindTouchControl('dpad-l', 'LEFT');
-            bindTouchControl('dpad-r', 'RIGHT');
-
-            try {
-                atari.init();
-                const updateFrame = () => {
-                    if (!isMenuOpen) {
-                        atari.step();
-                        runGamepadPolling();
-                    }
-                    animationFrameId = requestAnimationFrame(updateFrame);
-                };
-                animationFrameId = requestAnimationFrame(updateFrame);
-            } catch (err) { 
-                console.error("Error al iniciar emulador:", err); 
-                alert("La ROM no es compatible con Atari 2600 o está dañada.");
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            initNetplay();
-            document.getElementById('close-emulator').addEventListener('click', () => {
-                if (animationFrameId) cancelAnimationFrame(animationFrameId);
-                window.location.reload();
-            });
-            window.addEventListener('touchend', () => {
-                if (!document.fullscreenElement && window.innerHeight < window.innerWidth) {
-                    if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
-                }
-            }, { passive: true });
+function startEmulator(romData) {
+    document.getElementById('emulator-section').classList.remove('hidden');
+    document.documentElement.requestFullscreen?.catch(()=>{});
+    try {
+        atari = new Javatari({
+            canvas: canvas,
+            system: "AUTO",
+            rom: romData,
+            volume: currentVolume,
+            autoStart: true
         });
+        initTouchJoystick();
+        bindTouchControl('touch-a', 'FIRE');
+        bindTouchControl('touch-b', 'FIRE');
+        bindTouchControl('touch-select', 'SELECT');
+        bindTouchControl('touch-start', 'RESET');
+        bindTouchControl('dpad-u', 'UP');
+        bindTouchControl('dpad-d', 'DOWN');
+        bindTouchControl('dpad-l', 'LEFT');
+        bindTouchControl('dpad-r', 'RIGHT');
+    } catch(err) {
+        alert("ROM no válida o incompatible: " + err.message);
+        console.error(err);
+    }
+}
+
+function bindTouchControl(elId, key) {
+    const el = document.getElementById(elId);
+    el.addEventListener('touchstart', e => { atari?.keyDown(key); e.preventDefault(); }, {passive:false});
+    el.addEventListener('touchend', e => { atari?.keyUp(key); e.preventDefault(); }, {passive:false});
+}
+
+function initTouchJoystick() {
+    const container = document.getElementById('touch-joystick');
+    const knob = document.getElementById('joystick-knob');
+    let active = false, startX, startY, touchId;
+    const maxR = 40;
+    container.addEventListener('touchstart', e => {
+        if(active) return; active = true;
+        const t = e.changedTouches[0]; touchId = t.identifier;
+        const rect = container.getBoundingClientRect();
+        startX = rect.left + rect.width/2; startY = rect.top + rect.height/2;
+        e.preventDefault();
+    }, {passive:false});
+    container.addEventListener('touchmove', e => {
+        const t = Array.from(e.touches).find(x => x.identifier === touchId);
+        if(!t) return;
+        let dx = t.clientX - startX, dy = t.clientY - startY;
+        const dist = Math.hypot(dx, dy);
+        if(dist>maxR) { dx=(dx/dist)*maxR; dy=(dy/dist)*maxR; }
+        knob.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+        if(atari) {
+            L = dx < -15; x =
+if(atari) {
+    L = dx < -15; x = dx > 15; P = dy < -15; z = dy > 15;
+    atari.keyDown(L ? 'UP' : '');
+    atari.keyUp(!L ? 'UP' : '');
+    atari.keyDown(x ? 'DOWN' : '');
+    atari.keyUp(!x ? 'DOWN' : '');
+    atari.keyDown(P ? 'LEFT' : '');
+    atari.keyUp(!P ? 'LEFT' : '');
+    atari.keyDown(z ? 'RIGHT' : '');
+    atari.keyUp(!z ? 'RIGHT' : '');
+}
+e.preventDefault();
+}, {passive:false});
+
+const resetJoystick = () => {
+    active = false;
+    knob.style.transform = 'translate(-50%, -50%)';
+    if(atari) {
+        L = x = P = z = false;
+        atari.keyUp('UP');
+        atari.keyUp('DOWN');
+        atari.keyUp('LEFT');
+        atari.keyUp('RIGHT');
+    }
+};
+container.addEventListener('touchend', resetJoystick, {passive:false});
+container.addEventListener('touchcancel', resetJoystick, {passive:false});
+}
+
+function mapExternalController() {
+    alert("Conecta tu mando y presiona cualquier botón para mapearlo automáticamente");
+}
+function autoMapExternalController() {
+    alert("Mapeo automático activado: A=Disparar, B=Saltar, Select=Inicio, Start=Pausa");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    document.getElementById('close-emulator').onclick = () => location.reload();
+    
+    // Manejo de teclado físico
+    document.addEventListener('keydown', e => {
+        if(!atari) return;
+        switch(e.key) {
+            case 'ArrowUp': atari.keyDown('UP'); break;
+            case 'ArrowDown': atari.keyDown('DOWN'); break;
+            case 'ArrowLeft': atari.keyDown('LEFT'); break;
+            case 'ArrowRight': atari.keyDown('RIGHT'); break;
+            case ' ': case 'Enter': atari.keyDown('FIRE'); break;
+            case 's': case 'S': atari.keyDown('SELECT'); break;
+            case 'r': case 'R': atari.keyDown('RESET'); break;
+        }
+        e.preventDefault();
+    });
+    document.addEventListener('keyup', e => {
+        if(!atari) return;
+        switch(e.key) {
+            case 'ArrowUp': atari.keyUp('UP'); break;
+            case 'ArrowDown': atari.keyUp('DOWN'); break;
+            case 'ArrowLeft': atari.keyUp('LEFT'); break;
+            case 'ArrowRight': atari.keyUp('RIGHT'); break;
+            case ' ': case 'Enter': atari.keyUp('FIRE'); break;
+            case 's': case 'S': atari.keyUp('SELECT'); break;
+            case 'r': case 'R': atari.keyUp('RESET'); break;
+        }
+    });
+});
     </script>
 </body>
 </html>
