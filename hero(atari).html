@@ -13,7 +13,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
         .brand-font { font-family: 'Space Grotesk', sans-serif; }
         @media screen and (orientation: portrait) { .portrait-warning { display: flex !important; } }
-        #atari-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; }
+        #atari-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; background: #000; }
         .touch-zone { touch-action: none; -webkit-user-select: none; user-select: none; }
         .touch-btn:active { background-color: rgba(244, 63, 94, 0.4) !important; transform: scale(0.92); }
         .video-smooth { image-rendering: auto !important; }
@@ -23,7 +23,7 @@
         .joystick-knob { width: 48px; height: 48px; background: rgba(225, 29, 72, 0.9); border: 2px solid #f1f5f9; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5); pointer-events: none; transition: background-color 0.1s; }
         
         .dpad-container { width: 130px; height: 130px; position: relative; }
-        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; items-center: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
         .dpad-btn:active { background: rgba(244, 63, 94, 0.6) !important; }
         .dpad-up { top: 0; left: 44px; width: 42px; height: 46px; border-radius: 6px 6px 0 0; border-bottom: none; }
         .dpad-down { bottom: 0; left: 44px; width: 42px; height: 46px; border-radius: 0 0 6px 6px; border-top: none; }
@@ -63,23 +63,13 @@
             <div class="w-7 h-7 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg"><i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i></div>
             <div>
                 <h1 class="brand-font text-xs font-black tracking-wider text-rose-500">RETRO STATION<br>H.E.R.O.</h1>
-                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">atari 2600 v8.5 NETPLAY</p>
+                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">atari 2600 v8.5</p>
             </div>
         </div>
 
         <div class="flex-1 my-3 bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-lg flex flex-col justify-between relative">
         
             <div id="main-card-content" class="relative w-full flex-1 bg-cover bg-center flex flex-col justify-between p-4" style="background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.9)), url('https://drive.google.com/thumbnail?id=1d7Uzk30mg72qj3DeFz-3DooKRjcHYTGx');">
-            </div>
-            
-            <div id="platforms-dropdown" class="hidden absolute inset-0 bg-slate-950/95 p-4 z-20 flex flex-col gap-2 overflow-y-auto">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-1">
-                    <span class="text-[10px] font-extrabold tracking-widest uppercase text-emerald-400">PLATAFORMAS</span>
-                    <button onclick="togglePlatformsMenu()" class="text-slate-400 hover:text-rose-500"><i data-lucide="x" class="w-4 h-4"></i></button>
-                </div>
-                <a href="atari.html" class="w-full text-left py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded text-[10px] font-bold tracking-wider uppercase text-slate-200 transition-colors flex items-center justify-between">ATARI <i data-lucide="chevron-right" class="w-3 h-3 text-slate-500"></i></a>
-                <a href="nintendo.html" class="w-full text-left py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded text-[10px] font-bold tracking-wider uppercase text-slate-200 transition-colors flex items-center justify-between">NINTENDO <i data-lucide="chevron-right" class="w-3 h-3 text-slate-500"></i></a>
-                <a href="supernintendo.html" class="w-full text-left py-2 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded text-[10px] font-bold tracking-wider uppercase text-slate-200 transition-colors flex items-center justify-between">SUPER NINTENDO <i data-lucide="chevron-right" class="w-3 h-3 text-slate-500"></i></a>
             </div>
 
             <div class="p-3 bg-slate-900 border-t border-slate-800/60 flex flex-col gap-2">
@@ -88,9 +78,8 @@
                 </button>
                 <input type="file" id="rom-file-input" accept=".a26,.bin,.rom,.txt" class="hidden" onchange="loadUserROM(event)">
                 
-                <div class="grid grid-cols-2 text-center pt-1">
-                    <span onclick="togglePlatformsMenu()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors border-r border-slate-800 block">Plataformas</span>
-                    <span onclick="document.getElementById('rom-file-input').click()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors block">cargar Rom</span>
+                <div class="grid grid-cols-1 text-center pt-1">
+                    <span onclick="document.getElementById('rom-file-input').click()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors block">Cargar ROM / TXT Base64</span>
                 </div>
             </div>
         </div>
@@ -108,23 +97,16 @@
 
         <section id="emulator-section" class="hidden fixed inset-0 bg-black z-[99] flex flex-col justify-between w-screen h-screen touch-zone">
             
-            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none" id="player-role-tag">ATARI LOCAL</span>
+            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none">ATARI 2600</span>
             
             <div class="absolute top-3 right-4 z-[100] flex gap-2">
                 <button onclick="toggleConfigMenu()" class="text-slate-100 hover:text-emerald-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 flex items-center gap-1.5 font-semibold shadow-lg transition-colors"><i data-lucide="settings" class="w-3.5 h-3.5 text-emerald-500"></i> Configurar</button>
-                <button id="close-emulator" class="text-slate-100 hover:text-rose-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 font-semibold shadow-lg transition-colors flex items-center gap-1"><i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-500"></i> Salir al Menú</button>
+                <button id="close-emulator" class="text-slate-100 hover:text-rose-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 font-semibold shadow-lg transition-colors flex items-center gap-1"><i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-500"></i> Salir</button>
             </div>
 
             <div id="config-menu" class="hidden absolute top-14 left-1/2 -translate-x-1/2 w-[22rem] max-h-[82vh] overflow-y-auto bg-slate-900/95 border border-slate-800/80 rounded-xl p-4 z-[150] shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-md flex flex-col gap-4 text-slate-200">
-                
-                <div class="bg-slate-950 border border-slate-850/80 rounded-lg p-2 flex flex-col items-center justify-center min-h-[65px] overflow-hidden">
-                    <span class="text-[8px] text-slate-500 font-extrabold tracking-widest uppercase mb-1.5 flex items-center gap-1"><i data-lucide="info" class="w-2.5 h-2.5 text-slate-500"></i> Juego Pausado - Publicidad</span>
-                    <ins class="adsbygoogle" style="display:inline-block;width:250px;height:50px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-
                 <div class="flex flex-col gap-3">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-500"></i> Video y Controles</h3>
+                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-500"></i> Configuración</h3>
                     <div class="flex flex-col gap-2.5 text-xs">
                         <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
                             <span class="text-slate-300 font-medium">Filtro de Pantalla</span>
@@ -134,60 +116,9 @@
                             <span class="text-slate-300 font-medium">Relación de Aspecto</span>
                             <button onclick="changeScreen()" id="cfg-screen" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">ORIGINAL (4:3)</button>
                         </div>
-                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
-                            <span class="text-slate-300 font-medium">Tipo Control Izquierdo</span>
-                            <button onclick="toggleControlStyle()" id="cfg-ctrl-style" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">JOYSTICK</button>
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Posición Control Izquierdo</span><span id="cfg-pos-left-val" class="font-mono text-emerald-400 font-bold">Abajo</span></div>
-                            <input type="range" min="16" max="250" value="24" step="8" oninput="changeControlPosition('left', this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Posición Botones A/B</span><span id="cfg-pos-right-val" class="font-mono text-emerald-400 font-bold">Abajo</span></div>
-                            <input type="range" min="16" max="250" value="40" step="8" oninput="changeControlPosition('right', this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Opacidad Botones</span><span id="cfg-opacity-val" class="font-mono text-emerald-400 font-bold">50%</span></div>
-                            <input type="range" min="10" max="100" value="50" step="10" oninput="changeOpacity(this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
-                        </div>
                         <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
                             <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Volumen Audio</span><span id="cfg-volume-val" class="font-mono text-rose-400 font-bold">80%</span></div>
                             <input type="range" min="0" max="100" value="80" step="10" oninput="changeVolume(this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-rose-500">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="save" class="w-3.5 h-3.5 text-amber-500"></i> Gestión de Partidas</h3>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="saveGameState()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-amber-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="download" class="w-3.5 h-3.5"></i> Guardar</button>
-                        <button onclick="loadGameState()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-emerald-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="upload" class="w-3.5 h-3.5"></i> Cargar</button>
-                    </div>
-                    <div id="save-status-msg" class="text-[9px] text-amber-400 mt-0.5 text-center font-bold tracking-wide h-3"></div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="gamepad" class="w-3.5 h-3.5 text-purple-500"></i> Mando Externo</h3>
-                    <div class="flex flex-col gap-2">
-                        <button onclick="mapExternalController()" id="gamepad-mapping-btn" class="w-full bg-slate-950 hover:bg-slate-900 active:scale-[0.98] border border-slate-700 p-2.5 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex flex-col items-center justify-center gap-1.5 shadow transition-all">
-                            <span id="gamepad-mapping-label" class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles</span>
-                        </button>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="autoMapExternalController()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Auto Mapear</button>
-                            <button onclick="autoMapExternalController()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Mapear Automát.</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5 text-sky-500"></i> Multijugador en Línea</h3>
-                    <div class="flex flex-col gap-2 text-[11px]">
-                        <div class="bg-slate-950 p-2 rounded-lg border border-slate-850 font-mono text-[9px] break-all select-all flex justify-between items-center text-sky-400 font-bold shadow-inner">
-                            <span id="netplay-id">Generando código...</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <input type="text" id="netplay-join-id" placeholder="Pegar código del Amigo" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500 font-medium text-[10px] shadow-inner">
-                            <button onclick="connectToPeer()" class="bg-sky-600 hover:bg-sky-500 active:scale-95 text-white px-3.5 rounded-lg font-extrabold uppercase text-[10px] tracking-wider transition-all">Unirse</button>
                         </div>
                     </div>
                 </div>
@@ -201,393 +132,205 @@
                         <div id="touch-joystick" class="joystick-container">
                             <div id="joystick-knob" class="joystick-knob"></div>
                         </div>
-                        <div id="touch-dpad" class="dpad-container hidden">
-                            <div id="dpad-u" class="dpad-btn dpad-up">▲</div>
-                            <div id="dpad-l" class="dpad-btn dpad-left">◀</div>
-                            <div id="dpad-c" class="dpad-center"></div>
-                            <div id="dpad-r" class="dpad-btn dpad-right">▶</div>
-                            <div id="dpad-d" class="dpad-btn dpad-down">▼</div>
-                        </div>
                     </div>
                     <div id="container-right-touch" style="bottom: 40px;" class="absolute right-6 flex gap-4 select-none pointer-events-auto">
-                        <div id="touch-b" class="touch-btn w-14 h-14 bg-rose-700/90 border-2 border-slate-300 rounded-full flex items-center justify-center font-black text-white text-lg shadow-xl">B</div>
-                        <div id="touch-a" class="touch-btn w-14 h-14 bg-rose-600/90 border-2 border-slate-300 rounded-full flex items-center justify-center font-black text-white text-lg shadow-xl">DISPARO</div>
+                        <div id="touch-fire" class="touch-btn w-14 h-14 bg-rose-600/90 border-2 border-slate-300 rounded-full flex items-center justify-center font-black text-white text-sm shadow-xl">DISPARO</div>
                     </div>
                     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-6 select-none pointer-events-auto">
                         <div id="touch-select" class="touch-btn px-4 py-1.5 bg-slate-800/90 border border-slate-700 rounded text-[9px] font-bold text-slate-200 tracking-wider uppercase shadow">SELECT</div>
-                        <div id="touch-start" class="touch-btn px-4 py-1.5 bg-slate-800/90 border border-slate-700 rounded text-[9px] font-bold text-slate-200 tracking-wider uppercase shadow">RESET</div>
+                        <div id="touch-reset" class="touch-btn px-4 py-1.5 bg-slate-800/90 border border-slate-700 rounded text-[9px] font-bold text-slate-200 tracking-wider uppercase shadow">RESET</div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@bazumax/atari2600@1.0.0/dist/atari2600.min.js"></script>
+    <!-- ✅ LIBRERÍA DE EMULADOR ATARI 2600 CONFIRMADA -->
+    <script src="https://cdn.jsdelivr.net/npm/virtual-consoles@0.11.1/dist/atari2600.min.js"></script>
 
     <script>
-        let atari;
+        let Atari2600 = window.Atari2600;
+        let atari = null;
         let canvas = document.getElementById('atari-canvas');
         let ctx = canvas.getContext('2d');
         let imageData = ctx.createImageData(160, 192);
         let animationFrameId = null;
-
-        let audioCtx = null;
-        let audioGain = null;
-        let currentVolume = 0.8;
-
-        let peer = null;
-        let conn = null;
-        let isPlayer1 = true; 
-
         let isMenuOpen = false;
-
-        function togglePlatformsMenu() {
-            const dropdown = document.getElementById('platforms-dropdown');
-            dropdown.classList.toggle('hidden');
-        }
+        let audioCtx = null;
+        let currentVolume = 0.8;
 
         function toggleConfigMenu() { 
             const menu = document.getElementById('config-menu');
             menu.classList.toggle('hidden');
             isMenuOpen = !menu.classList.contains('hidden');
-            
-            if (atari) {
-                if (isMenuOpen) {
-                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-                } else {
-                    const updateFrame = () => {
-                        atari.step();
-                        runGamepadPolling();
-                        animationFrameId = requestAnimationFrame(updateFrame);
-                    };
-                    animationFrameId = requestAnimationFrame(updateFrame);
-                }
-            }
         }
-
         function changeFilter() {
             const btn = document.getElementById('cfg-filter');
-            if(canvas.classList.contains('video-smooth')) { canvas.classList.remove('video-smooth'); btn.textContent = "PIXELADO"; }
-            else { canvas.classList.add('video-smooth'); btn.textContent = "SUAVIZADO"; }
+            canvas.classList.toggle('video-smooth');
+            btn.textContent = canvas.classList.contains('video-smooth') ? "SUAVIZADO" : "PIXELADO";
         }
         function changeScreen() {
             const btn = document.getElementById('cfg-screen');
-            if(canvas.classList.contains('screen-stretch')) { canvas.classList.remove('screen-stretch'); btn.textContent = "ORIGINAL (4:3)"; }
-            else { canvas.classList.add('screen-stretch'); btn.textContent = "ESTIRADO (16:9)"; }
-        }
-        
-        function toggleControlStyle() {
-            const btn = document.getElementById('cfg-ctrl-style');
-            const joystick = document.getElementById('touch-joystick');
-            const dpad = document.getElementById('touch-dpad');
-            
-            if (joystick.classList.contains('hidden')) {
-                joystick.classList.remove('hidden');
-                dpad.classList.add('hidden');
-                btn.textContent = "JOYSTICK";
-            } else {
-                joystick.classList.add('hidden');
-                dpad.classList.remove('hidden');
-                btn.textContent = "FLECHAS";
-            }
-        }
-
-        function changeControlPosition(side, val) {
-            if (side === 'left') {
-                document.getElementById('container-left-touch').style.bottom = val + "px";
-                document.getElementById('cfg-pos-left-val').textContent = val + "px";
-            } else if (side === 'right') {
-                document.getElementById('container-right-touch').style.bottom = val + "px";
-                document.getElementById('cfg-pos-right-val').textContent = val + "px";
-            }
-        }
-
-        function changeOpacity(val) {
-            document.getElementById('cfg-opacity-val').textContent = val + "%";
-            document.getElementById('wrapper-controls').style.opacity = val / 100;
+            canvas.classList.toggle('screen-stretch');
+            btn.textContent = canvas.classList.contains('screen-stretch') ? "ESTIRADO" : "ORIGINAL (4:3)";
         }
         function changeVolume(val) {
             currentVolume = val / 100;
             document.getElementById('cfg-volume-val').textContent = val + "%";
-            if (audioGain) audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
-        }
-
-        function saveGameState() {
-            if (!atari) return;
-            try {
-                const state = atari.saveState();
-                localStorage.setItem('retro_station_atari_save', JSON.stringify(state));
-                showSaveMsg('¡Partida guardada con éxito!');
-            } catch (e) {
-                showSaveMsg('Error al guardar partida.');
-            }
-        }
-
-        function loadGameState() {
-            if (!atari) return;
-            try {
-                const savedData = localStorage.getItem('retro_station_atari_save');
-                if (savedData) {
-                    atari.loadState(JSON.parse(savedData));
-                    showSaveMsg('¡Partida cargada!');
-                } else {
-                    showSaveMsg('No hay partidas guardadas.');
-                }
-            } catch (e) {
-                showSaveMsg('Error al cargar partida.');
-            }
-        }
-
-        function showSaveMsg(msg) {
-            const el = document.getElementById('save-status-msg');
-            el.textContent = msg;
-            setTimeout(() => el.textContent = '', 3000);
-        }
-
-        function initAudioEngine() {
-            if (audioCtx) return;
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 44100 });
-            audioGain = audioCtx.createGain();
-            audioGain.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
-            audioGain.connect(audioCtx.destination);
-        }
-
-        function initNetplay() {
-            peer = new Peer();
-            peer.on('open', (id) => {
-                document.getElementById('netplay-id').textContent = "Tu ID: " + id;
-            });
-            peer.on('connection', (connection) => {
-                conn = connection;
-                isPlayer1 = true; 
-                document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 1";
-                setupNetworkListeners();
-            });
-        }
-
-        function connectToPeer() {
-            const targetId = document.getElementById('netplay-join-id').value.trim();
-            if (!targetId) return;
-            conn = peer.connect(targetId);
-            isPlayer1 = false; 
-            document.getElementById('player-role-tag').textContent = "ONLINE: JUGADOR 2";
-            setupNetworkListeners();
-        }
-
-        function setupNetworkListeners() {
-            conn.on('open', () => { toggleConfigMenu(); });
-            conn.on('data', (data) => {
-                if (atari) {
-                    if (data.type === 'press') atari.input(data.port, data.key, true);
-                    if (data.type === 'release') atari.input(data.port, data.key, false);
-                }
-            });
         }
 
         function sendInput(type, key) {
-            const port = isPlayer1 ? 0 : 1;
-            if (atari) {
-                atari.input(port, key, type === 'press');
-            }
-            if (conn && conn.open) conn.send({ type: type, port: port, key: key });
+            if (!atari) return;
+            atari.input(0, key, type === 'press');
         }
 
-        function bindTouchControl(elementId, atariKey) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            el.addEventListener('touchstart', (e) => { sendInput('press', atariKey); e.preventDefault(); }, { passive: false });
-            el.addEventListener('touchend', (e) => { sendInput('release', atariKey); e.preventDefault(); }, { passive: false });
-        }
-
-        function initTouchJoystick() {
-            const container = document.getElementById('touch-joystick');
+        function initControls() {
+            const joystick = document.getElementById('touch-joystick');
             const knob = document.getElementById('joystick-knob');
-            if (!container || !knob) return;
+            let active = false, touchId = null, startX, startY;
+            const maxRadius = 40;
 
-            let joystickActive = false;
-            let startX = 0, startY = 0;
-            let joystickTouchId = null; 
-            const maxRadius = 40; 
-            let activeDirections = { up: false, down: false, left: false, right: false };
+            joystick.addEventListener('touchstart', e => {
+                if (active) return;
+                active = true;
+                const t = e.changedTouches[0];
+                touchId = t.identifier;
+                const r = joystick.getBoundingClientRect();
+                startX = r.left + r.width/2;
+                startY = r.top + r.height/2;
+                e.preventDefault();
+            }, {passive:false});
 
-            function handleJoystickMove(currentX, currentY) {
-                let deltaX = currentX - startX;
-                let deltaY = currentY - startY;
-                let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                if (distance > maxRadius) {
-                    deltaX = (deltaX / distance) * maxRadius;
-                    deltaY = (deltaY / distance) * maxRadius;
-                    distance = maxRadius;
-                }
-                knob.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px))`;
-                const threshold = 15; 
-                const nextDirections = { up: deltaY < -threshold, down: deltaY > threshold, left: deltaX < -threshold, right: deltaX > threshold };
+            joystick.addEventListener('touchmove', e => {
+                if (!active) return;
+                const t = Array.from(e.touches).find(x => x.identifier === touchId);
+                if (!t) return;
+                let dx = t.clientX - startX, dy = t.clientY - startY;
+                let dist = Math.hypot(dx, dy);
+                if (dist > maxRadius) { dx = dx/dist*maxRadius; dy = dy/dist*maxRadius; }
+                knob.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+                
+                sendInput(dy < -15 ? 'press' : 'release', 'UP');
+                sendInput(dy > 15 ? 'press' : 'release', 'DOWN');
+                sendInput(dx < -15 ? 'press' : 'release', 'LEFT');
+                sendInput(dx > 15 ? 'press' : 'release', 'RIGHT');
+                e.preventDefault();
+            }, {passive:false});
 
-                if (nextDirections.up !== activeDirections.up) { sendInput(nextDirections.up ? 'press' : 'release', 'UP'); activeDirections.up = nextDirections.up; }
-                if (nextDirections.down !== activeDirections.down) { sendInput(nextDirections.down ? 'press' : 'release', 'DOWN'); activeDirections.down = nextDirections.down; }
-                if (nextDirections.left !== activeDirections.left) { sendInput(nextDirections.left ? 'press' : 'release', 'LEFT'); activeDirections.left = nextDirections.left; }
-                if (nextDirections.right !== activeDirections.right) { sendInput(nextDirections.right ? 'press' : 'release', 'RIGHT'); activeDirections.right = nextDirections.right; }
-            }
-
-            function resetJoystick() {
-                joystickActive = false;
-                joystickTouchId = null;
+            const end = () => {
+                active = false;
+                touchId = null;
                 knob.style.transform = 'translate(-50%, -50%)';
-                if (activeDirections.up) sendInput('release', 'UP');
-                if (activeDirections.down) sendInput('release', 'DOWN');
-                if (activeDirections.left) sendInput('release', 'LEFT');
-                if (activeDirections.right) sendInput('release', 'RIGHT');
-                activeDirections = { up: false, down: false, left: false, right: false };
-            }
+                sendInput('release', 'UP'); sendInput('release', 'DOWN');
+                sendInput('release', 'LEFT'); sendInput('release', 'RIGHT');
+            };
+            joystick.addEventListener('touchend', end);
+            joystick.addEventListener('touchcancel', end);
 
-            container.addEventListener('touchstart', (e) => {
-                if (joystickActive) return; 
-                joystickActive = true;
-                const touch = e.changedTouches[0];
-                joystickTouchId = touch.identifier; 
-                const rect = container.getBoundingClientRect();
-                startX = rect.left + rect.width / 2;
-                startY = rect.top + rect.height / 2;
-                handleJoystickMove(touch.clientX, touch.clientY);
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchmove', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.touches).find(t => t.identifier === joystickTouchId);
-                if (touch) handleJoystickMove(touch.clientX, touch.clientY);
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchend', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
-                if (touch) resetJoystick();
-                e.preventDefault();
-            }, { passive: false });
-
-            container.addEventListener('touchcancel', (e) => {
-                if (!joystickActive) return;
-                const touch = Array.from(e.changedTouches).find(t => t.identifier === joystickTouchId);
-                if (touch) resetJoystick();
-                e.preventDefault();
-            }, { passive: false });
+            document.getElementById('touch-fire').addEventListener('touchstart', e => { sendInput('press', 'FIRE'); e.preventDefault(); }, {passive:false});
+            document.getElementById('touch-fire').addEventListener('touchend', e => { sendInput('release', 'FIRE'); e.preventDefault(); }, {passive:false});
+            document.getElementById('touch-select').addEventListener('touchstart', e => { sendInput('press', 'SELECT'); e.preventDefault(); }, {passive:false});
+            document.getElementById('touch-select').addEventListener('touchend', e => { sendInput('release', 'SELECT'); e.preventDefault(); }, {passive:false});
+            document.getElementById('touch-reset').addEventListener('touchstart', e => { sendInput('press', 'RESET'); e.preventDefault(); }, {passive:false});
+            document.getElementById('touch-reset').addEventListener('touchend', e => { sendInput('release', 'RESET'); e.preventDefault(); }, {passive:false});
         }
 
+        // ✅ CARGA DESDE TXT BASE64
         async function playLocalROM() {
             try {
-                // Carga el archivo TXT con Base64
-                const response = await fetch('hero(atari.txt');
-                if (!response.ok) throw new Error("Archivo no encontrado");
+                const res = await fetch('hero(atari).txt');
+                if (!res.ok) throw new Error("Archivo hero(atari).txt no encontrado");
                 
-                const base64Text = await response.text();
-                const cleanBase64 = base64Text.trim().replace(/\s/g, '');
+                const base64 = (await res.text()).trim().replace(/[^A-Za-z0-9+/=]/g, '');
+                const binary = atob(base64);
+                const rom = new Uint8Array(binary.length);
+                for (let i=0; i<binary.length; i++) rom[i] = binary.charCodeAt(i);
                 
-                // Decodifica Base64 a binario
-                const binaryString = atob(cleanBase64);
-                const romBytes = new Uint8Array(binaryString.length);
-                for (let i = 0; i < binaryString.length; i++) {
-                    romBytes[i] = binaryString.charCodeAt(i);
-                }
-                
-                startEmulatorLoop(romBytes);
+                startEmulator(rom);
             } catch (err) {
-                alert("Error: Coloca 'rom.txt' con el Base64 en la misma carpeta");
+                alert("❌ Error al cargar: " + err.message + "\nColoca hero(atari).txt con el Base64 en la misma carpeta");
                 console.error(err);
             }
         }
 
-        function loadUserROM(event) {
-            const file = event.target.files[0];
+        // ✅ CARGA DESDE ARCHIVO LOCAL (.BIN/.ROM/.TXT)
+        function loadUserROM(e) {
+            const file = e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                let romData;
+
+            reader.onload = function(evt) {
+                let rom;
                 if (file.name.endsWith('.txt')) {
-                    // Procesa TXT con Base64
                     try {
-                        const cleanBase64 = e.target.result.trim().replace(/\s/g, '');
-                        const binaryString = atob(cleanBase64);
-                        romData = new Uint8Array(binaryString.length);
-                        for (let i = 0; i < binaryString.length; i++) {
-                            romData[i] = binaryString.charCodeAt(i);
-                        }
+                        const base64 = evt.target.result.trim().replace(/[^A-Za-z0-9+/=]/g, '');
+                        const binary = atob(base64);
+                        rom = new Uint8Array(binary.length);
+                        for (let i=0; i<binary.length; i++) rom[i] = binary.charCodeAt(i);
                     } catch (err) {
-                        alert("El archivo TXT no tiene Base64 válido");
+                        alert("❌ El archivo TXT no tiene un Base64 válido");
                         return;
                     }
                 } else {
-                    // Carga ROM normal
-                    romData = new Uint8Array(e.target.result);
+                    rom = new Uint8Array(evt.target.result);
                 }
-                startEmulatorLoop(romData);
+                startEmulator(rom);
             };
-            
-            if (file.name.endsWith('.txt')) {
-                reader.readAsText(file);
-            } else {
-                reader.readAsArrayBuffer(file);
-            }
+
+            if (file.name.endsWith('.txt')) reader.readAsText(file);
+            else reader.readAsArrayBuffer(file);
         }
 
-        function startEmulatorLoop(romData) {
-            document.getElementById('emulator-section').classList.remove('hidden');
-            if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
-            initAudioEngine();
+        // ✅ INICIO DEL EMULADOR
+        function startEmulator(romData) {
+            if (!Atari2600) {
+                alert("❌ La librería del emulador no cargó. Revisa tu conexión");
+                return;
+            }
 
-            // Inicializa emulador Atari 2600
-            atari = new Atari2600(romData);
+            document.getElementById('emulator-section').classList.remove('hidden');
+            if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+            
+            try {
+                atari = new Atari2600(romData);
+            } catch (err) {
+                alert("❌ ROM inválida: " + err.message);
+                return;
+            }
 
             // Renderizado de video
             atari.onFrame = (frame) => {
-                for (let i = 0; i < frame.length; i++) {
-                    const pixel = frame[i];
-                    imageData.data[i * 4] = (pixel >> 16) & 0xFF;
-                    imageData.data[i * 4 + 1] = (pixel >> 8) & 0xFF;
-                    imageData.data[i * 4 + 2] = pixel & 0xFF;
-                    imageData.data[i * 4 + 3] = 255;
+                for (let i=0; i<frame.length; i++) {
+                    const c = frame[i];
+                    imageData.data[i*4] = (c >> 16) & 0xFF;
+                    imageData.data[i*4+1] = (c >> 8) & 0xFF;
+                    imageData.data[i*4+2] = c & 0xFF;
+                    imageData.data[i*4+3] = 255;
                 }
                 ctx.putImageData(imageData, 0, 0);
             };
 
             // Audio
-            atari.onAudioSample = (sample) => {
-                if (!audioCtx) return;
-                const buffer = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
-                buffer.getChannelData(0)[0] = sample / 32768;
-                const source = audioCtx.createBufferSource();
-                source.buffer = buffer;
-                source.connect(audioGain);
-                source.start();
+            atari.onSample = (s) => {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({sampleRate: 44100});
+                const b = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
+                b.getChannelData(0)[0] = (s / 32768) * currentVolume;
+                const src = audioCtx.createBufferSource();
+                src.buffer = b; src.connect(audioCtx.destination); src.start();
             };
 
-            // Controles táctiles
-            initTouchJoystick();
-            bindTouchControl('touch-a', 'FIRE');
-            bindTouchControl('touch-b', 'FIRE');
-            bindTouchControl('touch-select', 'SELECT');
-            bindTouchControl('touch-start', 'RESET');
-            bindTouchControl('dpad-u', 'UP');
-            bindTouchControl('dpad-d', 'DOWN');
-            bindTouchControl('dpad-l', 'LEFT');
-            bindTouchControl('dpad-r', 'RIGHT');
+            initControls();
 
             // Bucle principal
-            try {
-                const updateFrame = () => {
-                    if (!isMenuOpen) {
-                        atari.step();
-                    }
-                    animationFrameId = requestAnimationFrame(updateFrame);
-                };
-                animationFrameId = requestAnimationFrame(updateFrame);
-            } catch (err) { console.error(err); }
+            const loop = () => {
+                if (!isMenuOpen) atari.tick();
+                animationFrameId = requestAnimationFrame(loop);
+            };
+            loop();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
-            initNetplay();
             document.getElementById('close-emulator').addEventListener('click', () => {
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 window.location.reload();
