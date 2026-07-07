@@ -2,151 +2,192 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas en Vivo - Salas Personalizadas</title>
-    <script src="https://unpkg.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Canvas en Vivo - Táctil y Estable</title>
+    <script src="https://cloudflare.com"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f0f2f5; color: #333; margin: 0; padding: 20px; }
-        .box { background: white; max-width: 550px; margin: 20px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 15px; touch-action: manipulation; }
+        .box { background: white; max-width: 500px; margin: 15px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
         .flex-section { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
-        input { padding: 10px; font-size: 16px; border: 2px solid #ddd; border-radius: 6px; width: 80px; text-align: center; font-weight: bold; }
-        .btn { padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .btn-green { background: #28a745; } .btn-green:hover { background: #218838; }
-        .btn-blue { background: #007bff; } .btn-blue:hover { background: #0069d9; }
-        canvas, video { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; }
-        #status { font-weight: bold; color: #666; margin: 15px 0; padding: 8px; background: #e9ecef; border-radius: 5px; display: inline-block; }
+        input { padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 6px; width: 120px; text-align: center; font-weight: bold; }
+        .btn { padding: 12px 24px; font-size: 16px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        .btn-green { background: #28a745; }
+        .btn-blue { background: #007bff; }
+        
+        /* IMPORTANTE: Evita que el celular haga scroll al dibujar en el canvas */
+        canvas { 
+            border: 3px solid #222; 
+            background: #fff; 
+            border-radius: 8px; 
+            margin-top: 15px; 
+            touch-action: none; /* Bloquea gestos del navegador sobre el lienzo */
+            max-width: 100%; /* Se adapta a pantallas móviles pequeñas */
+            height: auto;
+        }
+        video { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; max-width: 100%; height: auto; }
+        #status { font-weight: bold; color: #333; margin: 10px 0; padding: 10px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px; display: inline-block; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <h2>Transmisión de Canvas P2P</h2>
-    <div id="status">Selecciona una opción abajo para empezar</div>
+    <h2>Transmisión Móvil/Táctil P2P</h2>
+    <div id="status">Esperando tu elección...</div>
 
-    <!-- PANEL DE CONTROL PRINCIPAL -->
     <div id="panelControl" class="box">
         <div class="flex-section" style="border-bottom: 1px solid #eee; padding-bottom: 20px;">
             <h3>OPCIÓN A: Transmitir mi Canvas</h3>
-            <p>Crea un ID numérico para tu sala (ej: 4567):</p>
+            <p>Escribe un número de sala (ej: 4455):</p>
             <div>
-                <input type="number" id="idEmisor" value="1234">
+                <input type="number" id="idEmisor" pattern="[0-9]*" inputmode="numeric" value="4455">
+                <br><br>
                 <button class="btn btn-green" onclick="iniciarTransmision()">Iniciar Transmisión</button>
             </div>
         </div>
 
         <div class="flex-section">
-            <h3>OPCIÓN B: Ver el Canvas de otra persona</h3>
-            <p>Introduce el ID de la sala a la que te quieres conectar:</p>
+            <h3>OPCIÓN B: Ver Canvas ajeno</h3>
+            <p>Introduce el número de sala de tu amigo:</p>
             <div>
-                <input type="number" id="idReceptor" value="1234">
+                <input type="number" id="idReceptor" pattern="[0-9]*" inputmode="numeric" value="4455">
+                <br><br>
                 <button class="btn btn-blue" onclick="conectarseATransmision()">Ver Transmisión</button>
             </div>
         </div>
     </div>
 
-    <!-- ÁREA DE TRANSMISIÓN (EMISOR) -->
     <div id="zonaEmisor" class="box" style="display: none;">
-        <h3>Tu Canvas (Dibuja con el mouse)</h3>
-        <canvas id="miCanvas" width="500" height="380"></canvas>
+        <h3>Usa tu dedo o mouse para dibujar</h3>
+        <canvas id="miCanvas" width="400" height="400"></canvas>
     </div>
 
-    <!-- ÁREA DE VISUALIZACIÓN (RECEPTOR) -->
     <div id="zonaReceptor" class="box" style="display: none;">
         <h3>Video en Tiempo Real</h3>
-        <video id="videoCanvas" autoplay playsinline width="500" height="380"></video>
+        <video id="videoCanvas" autoplay playsinline muted width="400" height="400"></video>
     </div>
 
     <script>
         let peer = null;
         const statusDiv = document.getElementById('status');
+        // Cambia este prefijo por algo completamente aleatorio para que nadie use tu misma sala
+        const PREFIX = "tactil-canvas-room-xyz11-"; 
 
-        // PREFIX de seguridad para evitar colisiones globales con otros usuarios de PeerJS
-        const PREFIX = "canvas-room-xyz-";
+        const peerConfig = {
+            config: {
+                'iceServers': [
+                    { 'urls': 'stun:://google.com' },
+                    { 'urls': 'stun:://google.com' }
+                ]
+            }
+        };
+
+        function actualizarEstado(texto, tipo = 'info') {
+            statusDiv.innerText = texto;
+            statusDiv.style.background = tipo === 'error' ? '#f8d7da' : '#fff3cd';
+        }
 
         // ==========================================
-        // 1. LÓGICA PARA EL EMISOR (EL QUE COMPARTE)
+        // EMISOR (EL QUE DIBUJA)
         // ==========================================
         function iniciarTransmision() {
-            const salaId = document.getElementById('idEmisor').value;
-            if(!salaId) return alert("Por favor ingresa un número de ID");
+            const salaId = document.getElementById('idEmisor').value.trim();
+            if(!salaId) return alert("Ingresa un número de sala");
 
-            statusDiv.innerText = "Configurando sala...";
-            
-            // Creamos el nodo Peer con el ID personalizado
-            peer = new Peer(PREFIX + salaId);
+            actualizarEstado("Registrando sala en internet...");
+            peer = new Peer(PREFIX + salaId, peerConfig);
 
-            peer.on('open', (id) => {
+            peer.on('open', () => {
                 document.getElementById('panelControl').style.display = 'none';
                 document.getElementById('zonaEmisor').style.display = 'block';
-                statusDiv.innerText = `Transmitiendo en la sala: ${salaId}. Pídele a tu amigo que ingrese este número.`;
-                configurarCanvas();
+                actualizarEstado(`Sala lista: ${salaId}. Pídele al espectador que use este número.`);
+                configurarCanvasTactil();
             });
 
             peer.on('error', (err) => {
-                if (err.type === 'unavailable-id') {
-                    statusDiv.innerText = "Error: Ese ID de sala ya está ocupado. Intenta con otro número.";
-                } else {
-                    statusDiv.innerText = "Error de conexión: " + err.type;
-                }
+                console.error(err);
+                actualizarEstado("Error al crear sala. Intenta con otro número.", 'error');
             });
         }
 
-        function configurarCanvas() {
+        function configurarCanvasTactil() {
             const canvas = document.getElementById('miCanvas');
             const ctx = canvas.getContext('2d');
             let dibujando = false;
 
-            ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.strokeStyle = '#007bff';
+            ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.strokeStyle = '#28a745';
 
-            canvas.addEventListener('mousedown', () => dibujando = true);
-            canvas.addEventListener('mouseup', () => { dibujando = false; ctx.beginPath(); });
-            canvas.addEventListener('mousemove', (e) => {
-                if (!dibujando) return;
-                const rect = canvas.getBoundingClientRect();
-                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-                ctx.stroke();
+            // Funciones de dibujo unificadas
+            function empezarDibujo(x, y) {
+                dibujando = true;
                 ctx.beginPath();
-                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-            });
+                ctx.moveTo(x, y);
+            }
 
-            // Capturar flujo de video del canvas a 30 FPS
+            function moverDibujo(x, y) {
+                if (!dibujando) return;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+
+            function terminarDibujo() {
+                dibujando = false;
+                ctx.beginPath();
+            }
+
+            // --- EVENTOS DE MOUSE (PC) ---
+            canvas.addEventListener('mousedown', (e) => { const r = canvas.getBoundingClientRect(); empezarDibujo(e.clientX - r.left, e.clientY - r.top); });
+            canvas.addEventListener('mousemove', (e) => { const r = canvas.getBoundingClientRect(); moverDibujo(e.clientX - r.left, e.clientY - r.top); });
+            canvas.addEventListener('mouseup', terminarDibujo);
+
+            // --- EVENTOS TÁCTILES (MÓVIL) ---
+            canvas.addEventListener('touchstart', (e) => {
+                const r = canvas.getBoundingClientRect();
+                const touch = e.touches[0]; // Captura el primer dedo
+                empezarDibujo(touch.clientX - r.left, touch.clientY - r.top);
+                e.preventDefault(); // Detiene el scroll de la pantalla
+            }, { passive: false });
+
+            canvas.addEventListener('touchmove', (e) => {
+                const r = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                moverDibujo(touch.clientX - r.left, touch.clientY - r.top);
+                e.preventDefault();
+            }, { passive: false });
+
+            canvas.addEventListener('touchend', terminarDibujo);
+
+            // Capturar el stream a 30 FPS y transmitirlo
             const stream = canvas.captureStream(30);
-
-            // Escuchar llamadas entrantes de los espectadores
             peer.on('call', (call) => {
-                statusDiv.innerText = "¡Un espectador se ha conectado a tu pantalla!";
-                call.answer(stream); // Responder enviando el video
+                actualizarEstado("¡Espectador conectado viendo en vivo!");
+                call.answer(stream);
             });
         }
 
         // ==========================================
-        // 2. LÓGICA PARA EL RECEPTOR (EL QUE MIRA)
+        // RECEPTOR (EL QUE MIRA)
         // ==========================================
         function conectarseATransmision() {
-            const salaId = document.getElementById('idReceptor').value;
-            if(!salaId) return alert("Por favor ingresa el número de ID de tu amigo");
+            const salaId = document.getElementById('idReceptor').value.trim();
+            if(!salaId) return alert("Ingresa el número de sala de tu amigo");
 
-            statusDiv.innerText = "Conectando a la sala...";
-            
-            // Creamos un Peer con ID aleatorio para el espectador
-            peer = new Peer();
+            actualizarEstado("Conectando con el emisor...");
+            peer = new Peer(peerConfig);
 
             peer.on('open', () => {
                 document.getElementById('panelControl').style.display = 'none';
                 document.getElementById('zonaReceptor').style.display = 'block';
 
-                // Llamamos al emisor usando el ID de su sala
                 const call = peer.call(PREFIX + salaId, new MediaStream());
 
                 call.on('stream', (remoteStream) => {
-                    statusDiv.innerText = `Conectado exitosamente a la sala: ${salaId}`;
+                    actualizarEstado(`Viendo la transmisión de la sala ${salaId}`);
                     const video = document.getElementById('videoCanvas');
                     video.srcObject = remoteStream;
                 });
             });
 
             peer.on('error', (err) => {
-                statusDiv.innerText = "No se pudo conectar. Verifica que el ID sea correcto y que el emisor ya haya iniciado la transmisión.";
-                console.error(err);
+                actualizarEstado("Sala no encontrada. Asegúrate de que el emisor haya iniciado primero.", 'error');
             });
         }
     </script>
