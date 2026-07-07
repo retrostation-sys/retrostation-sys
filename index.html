@@ -3,147 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Canvas Compartido en Tiempo Real</title>
+    <title>RETRO STATION | ACCESO VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="/manifest.json"> 
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
     <style>
-        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #f0f2f5; margin: 0; padding: 15px; }
-        .box { background: white; max-width: 500px; margin: 15px auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        .flex-section { display: flex; flex-direction: column; gap: 15px; }
-        input { padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 6px; width: 120px; text-align: center; font-weight: bold; }
-        .btn { padding: 12px 24px; font-size: 16px; font-weight: bold; color: white; border: none; border-radius: 6px; cursor: pointer; }
-        .btn-green { background: #28a745; }
-        .btn-blue { background: #007bff; }
-        canvas { border: 3px solid #222; background: #fff; border-radius: 8px; margin-top: 15px; touch-action: none; max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; }
-        #status { font-weight: bold; color: #333; margin: 10px 0; padding: 10px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px; display: inline-block; font-size: 14px; }
+        :root {
+            --primary-blue: #007aff;
+            --secondary-blue: #00d4ff;
+            --accent-cyan: #00f2ff;
+            --dark-bg: #020617;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; /* Modificado para permitir el scroll vertical */
+            background-color: var(--dark-bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: white;
+        }
+
+        /* Fondo de Partículas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Layout Principal */
+        .viewport {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(10, 25, 47, 0.8) 0%, rgba(2, 6, 23, 0.9) 100%);
+        }
+
+        /* Animaciones de Entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2vh;
+        }
+
+        .logo-box {
+            width: clamp(70px, 15vw, 90px);
+            height: clamp(70px, 15vw, 90px);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(0, 122, 255, 0.4);
+            position: relative;
+        }
+
+        .logo-box svg {
+            width: 40%;
+            height: 40%;
+            fill: white;
+        }
+
+        .logo-glow {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: var(--primary-blue);
+            filter: blur(35px);
+            opacity: 0.2;
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 10vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to bottom, #ffffff 60%, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 15px;
+        }
+
+        .subtitle {
+            font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+            color: var(--accent-cyan);
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 4vh;
+        }
+
+        /* Card de Información */
+        .info-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        .info-card h2 {
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .blue-text {
+            color: var(--secondary-blue);
+            font-weight: 600;
+        }
+
+        /* Botón Adaptable */
+        .cta-btn {
+            width: 100%;
+            max-width: 320px;
+            padding: 18px 0;
+            background: #ffffff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 18px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.95);
+            background: var(--primary-blue);
+            color: #fff;
+        }
+
+        /* Estilo para el span llamativo de instalación */
+        .pwa-btn {
+            display: inline-block;
+            margin-top: 3vh;
+            color: #ffe600;
+            font-weight: 800;
+            font-size: clamp(0.75rem, 3vw, 0.95rem);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: underline;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
+            transition: transform 0.2s ease;
+            text-align: center;
+            padding: 5px 10px;
+        }
+
+        .pwa-btn:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            margin-top: 2vh;
+            font-size: 0.65rem;
+            color: #475569;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        /* Ajuste para pantallas muy pequeñas o paisajes */
+        @media (max-height: 600px) {
+            .viewport { justify-content: flex-start; padding-top: 20px; overflow-y: auto; }
+            .subtitle { margin-bottom: 15px; }
+            .info-card { padding: 1rem; margin-bottom: 15px; }
+        }
     </style>
 </head>
 <body>
 
-    <h2>Lienzo Compartido Táctil (Instantáneo)</h2>
-    <div id="status">Ingresa un número de sala para comenzar...</div>
+    <canvas id="bg-canvas"></canvas>
 
-    <!-- PANEL DE CONTROL -->
-    <div id="panelControl" class="box">
-        <div class="flex-section">
-            <h3>Conectar a una Sala</h3>
-            <p>Escribe cualquier número de sala (Ej: 3030) y elige tu rol:</p>
-            <div>
-                <input type="number" id="idSala" pattern="[0-9]*" inputmode="numeric" value="3030">
-                <br><br>
-                <button class="btn btn-green" onclick="conectarSala('emisor')">Transmitir Dibujo</button>
-                <button class="btn btn-blue" onclick="conectarSala('receptor')">Solo Observar</button>
+    <div class="viewport">
+        
+        <div class="logo-section fade-in" style="animation-delay: 0.1s;">
+            <div class="logo-box">
+                <div class="logo-glow"></div>
+                <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2Zm-11 7H8v2H7v-2H5v-1h2v-2h1v2h2v1Zm4.5 1.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5Zm3.5-2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5Z"/></svg>
             </div>
+            <h1>RETRO STATION</h1>
+            <div class="subtitle">Premium Access</div>
         </div>
-    </div>
 
-    <!-- INTERFAZ COMPARTIDA (AMBOS USAN UN CANVAS LOCAL) -->
-    <div id="zonaCanvas" class="box" style="display: none;">
-        <h3 id="tituloRol">Lienzo</h3>
-        <canvas id="miCanvas" width="400" height="400"></canvas>
+        <div class="info-card fade-in" style="animation-delay: 0.3s;">
+            <h2>Entretenimiento VIP</h2>
+            <p>
+                Disfruta de los mejores <br /> <span class="blue-text">VIDEO JUEGOS RETRO</span><br>
+                sin saturar la memoria de tu dispositivo<br>no requiere espacio de almacenamiento<br><br><br>
+                * * * * * * * * * *<br> <span class="blue-text">PLAY ONLINE</span><br>sin descargas
+                
+            </p>
+        </div>
+
+        <a href="atari.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
+            ATARI
+        </a><br>
+        <a href="nintendo.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
+            NINTENDO
+        </a><br>
+        <a href="supernintendo.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
+            SUPER NINTENDO
+        </a><br>
+        <a href="nintendo64.html" class="cta-btn fade-in" style="animation-delay: 0.5s;">
+            NINTENDO 64
+        </a>
+
+        <span id="install-btn" class="pwa-btn fade-in" style="animation-delay: 0.6s;">
+            agregar a la pantalla de inicio de tu dispositivo
+        </span>
+
+        <div class="footer fade-in" style="animation-delay: 0.7s;">
+            Servidor Seguro • Alta Disponibilidad
+        </div>
+
     </div>
 
     <script>
-        let ws = null;
-        let rolUsuario = '';
-        const statusDiv = document.getElementById('status');
-        const canvas = document.getElementById('miCanvas');
+        const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        let dibujando = false;
+        let particles = [];
 
-        ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.strokeStyle = '#007bff';
-
-        function actualizarEstado(texto) { statusDiv.innerText = texto; }
-
-        function conectarSala(rol) {
-            const salaId = document.getElementById('idSala').value.trim();
-            if (!salaId) return alert("Por favor ingresa un número de sala");
-
-            rolUsuario = rol;
-            actualizarEstado("Conectando con la sala de datos en tiempo real...");
-
-            // Usamos la API pública de pruebas e instantánea de PieSocket (100% disponible)
-            const apiKey = "oCd7EMZwOQIeeCVatZHzbAsFQA9yd9w7STwSgGZ5"; 
-            const wsUrl = `wss://://piesocket.com{salaId}?api_key=${apiKey}&notify_self=0`;
-
-            ws = new WebSocket(wsUrl);
-
-            ws.onopen = () => {
-                document.getElementById('panelControl').style.display = 'none';
-                document.getElementById('zonaCanvas').style.display = 'block';
-                
-                if (rolUsuario === 'emisor') {
-                    document.getElementById('tituloRol').innerText = "Tu Lienzo (Dibuja con mouse o dedo)";
-                    actualizarEstado(`Transmitiendo en vivo en la sala: ${salaId}`);
-                    activarEventosDibujo();
-                } else {
-                    document.getElementById('tituloRol').innerText = "Pantalla del Emisor (Modo Lectura)";
-                    actualizarEstado(`Sincronizado a la sala: ${salaId}. Esperando trazos...`);
-                }
-            };
-
-            ws.onmessage = (event) => {
-                if (rolUsuario === 'receptor') {
-                    const datos = JSON.parse(event.data);
-                    ejecutarDibujoRemoto(datos);
-                }
-            };
-
-            ws.onerror = (e) => {
-                console.error(e);
-                actualizarEstado("Error de red. Intenta con otro número de sala.");
-            };
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
         }
 
-        // ==========================================
-        // CAPTURA Y ENVÍO DE COORDENADAS (EMISOR)
-        // ==========================================
-        function enviarTrazo(tipo, x, y) {
-            if (ws && ws.readyState === WebSocket.OPEN) {
-                ws.send(JSON.stringify({ tipo, x, y }));
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.life = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(0, 122, 255, ${this.life})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
-        function activarEventosDibujo() {
-            function empezar(x, y) { dibujando = true; ctx.beginPath(); ctx.moveTo(x, y); enviarTrazo('start', x, y); }
-            function mover(x, y) { if (!dibujando) return; ctx.lineTo(x, y); ctx.stroke(); enviarTrazo('move', x, y); }
-            function parar() { dibujando = false; ctx.beginPath(); enviarTrazo('end', 0, 0); }
-
-            // Mouse PC
-            canvas.addEventListener('mousedown', (e) => { const r = canvas.getBoundingClientRect(); empezar(e.clientX - r.left, e.clientY - r.top); });
-            canvas.addEventListener('mousemove', (e) => { const r = canvas.getBoundingClientRect(); mover(e.clientX - r.left, e.clientY - r.top); });
-            canvas.addEventListener('mouseup', parar);
-
-            // Táctil Móvil
-            canvas.addEventListener('touchstart', (e) => {
-                const r = canvas.getBoundingClientRect();
-                const t = e.touches[0];
-                empezar(t.clientX - r.left, t.clientY - r.top);
-                e.preventDefault();
-            }, { passive: false });
-
-            canvas.addEventListener('touchmove', (e) => {
-                const r = canvas.getBoundingClientRect();
-                const t = e.touches[0];
-                mover(t.clientX - r.left, t.clientY - r.top);
-                e.preventDefault();
-            }, { passive: false });
-
-            canvas.addEventListener('touchend', parar);
+        function initParticles() {
+            const count = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 100);
+            particles = [];
+            for (let i = 0; i < count; i++) particles.push(new Particle());
         }
 
-        // ==========================================
-        // REPLICACIÓN DE TRAZOS EN TIEMPO REAL (RECEPTOR)
-        // ==========================================
-        function ejecutarDibujoRemoto(datos) {
-            if (datos.tipo === 'start') {
-                ctx.beginPath();
-                ctx.moveTo(datos.x, datos.y);
-            } else if (datos.tipo === 'move') {
-                ctx.lineTo(datos.x, datos.y);
-                ctx.stroke();
-            } else if (datos.tipo === 'end') {
-                ctx.beginPath();
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+
+        // Lógica de captura para instalación en pantalla de inicio
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Previene la barra por defecto del navegador
+            e.preventDefault();
+            // Guarda el evento para ejecutarlo cuando se presione el span
+            deferredPrompt = e;
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Muestra la ventana nativa de instalación
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+            } else {
+                // Alternativa informativa para navegadores donde no se dispara el prompt nativo directamente (ej. Safari en iOS)
+                alert(
+                    'CÓMO INSTALAR EN TU PANTALLA DE INICIO:\n\n' +
+                    '📱 En Android (Google Chrome / Edge):\n' +
+                    '1. Presiona el ícono de los tres puntos ( ⋮ ) en la esquina superior derecha del navegador.\n' +
+                    '2. Busca y selecciona la opción "Instalar aplicación" o "Agregar a la pantalla principal" ( 📲 ).\n\n' +
+                    '🍏 En iPhone / iPad (Safari):\n' +
+                    '1. Presiona el botón Compartir ( ⎋ o [↑] ) situado en la barra inferior del navegador.\n' +
+                    '2. Desplázate hacia abajo en las opciones y selecciona "Agregar a inicio" ( ➕ ).'
+                );
             }
-        }
+        });
     </script>
 </body>
 </html>
+
