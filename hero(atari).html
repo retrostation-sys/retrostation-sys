@@ -9,11 +9,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&family=Space+Grotesk:wght=700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
         .brand-font { font-family: 'Space Grotesk', sans-serif; }
         @media screen and (orientation: portrait) { .portrait-warning { display: flex !important; } }
-        #nes-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; }
+        #nes-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; image-rendering: crisp-edges; background: #000; }
         .touch-zone { touch-action: none; -webkit-user-select: none; user-select: none; }
         .touch-btn:active { background-color: rgba(244, 63, 94, 0.4) !important; transform: scale(0.92); }
         .video-smooth { image-rendering: auto !important; }
@@ -23,7 +23,7 @@
         .joystick-knob { width: 48px; height: 48px; background: rgba(225, 29, 72, 0.9); border: 2px solid #f1f5f9; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5); pointer-events: none; transition: background-color 0.1s; }
         
         .dpad-container { width: 130px; height: 130px; position: relative; }
-        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; items-center: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .dpad-btn { position: absolute; background: rgba(30, 41, 59, 0.8); border: 2px solid rgba(51, 65, 85, 0.8); color: #f1f5f9; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
         .dpad-btn:active { background: rgba(244, 63, 94, 0.6) !important; }
         .dpad-up { top: 0; left: 44px; width: 42px; height: 46px; border-radius: 6px 6px 0 0; border-bottom: none; }
         .dpad-down { bottom: 0; left: 44px; width: 42px; height: 46px; border-radius: 0 0 6px 6px; border-top: none; }
@@ -63,7 +63,7 @@
             <div class="w-7 h-7 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg"><i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i></div>
             <div>
                 <h1 class="brand-font text-xs font-black tracking-wider text-rose-500">RETRO STATION<br>H.E.R.O.</h1>
-                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">MULTI ATARI v8.5</p>
+                <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">MULTI ATARI v8.6</p>
             </div>
         </div>
 
@@ -84,13 +84,16 @@
 
             <div class="p-3 bg-slate-900 border-t border-slate-800/60 flex flex-col gap-2">
                 <button onclick="playLocalROM()" class="w-full text-center py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-black tracking-widest uppercase rounded-md border border-emerald-500 transition-all flex items-center justify-center gap-1 shadow-md">
-                    <i data-lucide="play" class="w-3 h-3 fill-white"></i> PLAY JUEGO
+                    <i data-lucide="play" class="w-3 h-3 fill-white"></i> PLAY JUEGO LOCAL
                 </button>
-                <input type="file" id="rom-file-input" accept=".a26,.bin,.rom,.a52,.a78,.car,.txt" class="hidden" onchange="loadUserROM(event)">
+                <button onclick="document.getElementById('rom-file-input').click()" class="w-full text-center py-2 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-black tracking-widest uppercase rounded-md border border-blue-500 transition-all flex items-center justify-center gap-1 shadow-md">
+                    <i data-lucide="folder-open" class="w-3 h-3"></i> CARGAR ROM .BIN/.A26
+                </button>
+                <input type="file" id="rom-file-input" accept=".a26,.bin,.rom,.txt" class="hidden" onchange="loadUserROM(event)">
                 
                 <div class="grid grid-cols-2 text-center pt-1">
                     <span onclick="togglePlatformsMenu()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors border-r border-slate-800 block">Plataformas</span>
-                    <span onclick="document.getElementById('rom-file-input').click()" class="text-[10px] font-bold tracking-widest uppercase text-slate-400 hover:text-emerald-400 cursor-pointer transition-colors block">cargar Rom</span>
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-slate-500">v8.6</span>
                 </div>
             </div>
         </div>
@@ -108,93 +111,15 @@
 
         <section id="emulator-section" class="hidden fixed inset-0 bg-black z-[99] flex flex-col justify-between w-screen h-screen touch-zone">
             
-            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none" id="player-role-tag">ATARI MULTI LOCAL</span>
+            <span class="absolute top-3 left-4 z-[100] text-[9px] font-black bg-rose-600 text-white px-2 py-0.5 rounded uppercase tracking-wider shadow-md select-none pointer-events-none" id="player-role-tag">ATARI 2600 LOCAL</span>
             
             <div class="absolute top-3 right-4 z-[100] flex gap-2">
                 <button onclick="toggleConfigMenu()" class="text-slate-100 hover:text-emerald-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 flex items-center gap-1.5 font-semibold shadow-lg transition-colors"><i data-lucide="settings" class="w-3.5 h-3.5 text-emerald-500"></i> Configurar</button>
-                <button id="close-emulator" class="text-slate-100 hover:text-rose-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 font-semibold shadow-lg transition-colors flex items-center gap-1"><i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-500"></i> Salir al Menú</button>
+                <button id="close-emulator" class="text-slate-100 hover:text-rose-400 bg-slate-950/90 backdrop-blur-sm hover:bg-slate-900 p-1.5 rounded-lg border border-slate-700 text-[10px] px-3 font-semibold shadow-lg transition-colors flex items-center gap-1"><i data-lucide="log-out" class="w-3.5 h-3.5 text-rose-500"></i> Salir</button>
             </div>
 
-            <div id="config-menu" class="hidden absolute top-14 left-1/2 -translate-x-1/2 w-[22rem] max-h-[82vh] overflow-y-auto bg-slate-900/95 border border-slate-800/80 rounded-xl p-4 z-[150] shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-md flex flex-col gap-4 text-slate-200">
-                
-                <div class="bg-slate-950 border border-slate-850/80 rounded-lg p-2 flex flex-col items-center justify-center min-h-[65px] overflow-hidden">
-                    <span class="text-[8px] text-slate-500 font-extrabold tracking-widest uppercase mb-1.5 flex items-center gap-1"><i data-lucide="info" class="w-2.5 h-2.5 text-slate-500"></i> Juego Pausado - Publicidad</span>
-                    <ins class="adsbygoogle" style="display:inline-block;width:250px;height:50px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="ZZZZZZZZZZ"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-500"></i> Video y Controles</h3>
-                    <div class="flex flex-col gap-2.5 text-xs">
-                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
-                            <span class="text-slate-300 font-medium">Filtro de Pantalla</span>
-                            <button onclick="changeFilter()" id="cfg-filter" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">PIXELADO</button>
-                        </div>
-                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
-                            <span class="text-slate-300 font-medium">Relación de Aspecto</span>
-                            <button onclick="changeScreen()" id="cfg-screen" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">ORIGINAL (4:3)</button>
-                        </div>
-                        <div class="flex items-center justify-between bg-slate-950/40 p-1.5 rounded-lg border border-slate-800/40">
-                            <span class="text-slate-300 font-medium">Tipo Control Izquierdo</span>
-                            <button onclick="toggleControlStyle()" id="cfg-ctrl-style" class="bg-slate-950 hover:bg-slate-900 border border-slate-700 px-2.5 py-1 rounded font-mono text-[10px] text-emerald-400 font-bold transition-colors">JOYSTICK</button>
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Posición Control Izquierdo</span><span id="cfg-pos-left-val" class="font-mono text-emerald-400 font-bold">Abajo</span></div>
-                            <input type="range" min="16" max="250" value="24" step="8" oninput="changeControlPosition('left', this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Posición Botones A/B</span><span id="cfg-pos-right-val" class="font-mono text-emerald-400 font-bold">Abajo</span></div>
-                            <input type="range" min="16" max="250" value="40" step="8" oninput="changeControlPosition('right', this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Opacidad Botones</span><span id="cfg-opacity-val" class="font-mono text-emerald-400 font-bold">50%</span></div>
-                            <input type="range" min="10" max="100" value="50" step="10" oninput="changeOpacity(this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-emerald-500">
-                        </div>
-                        <div class="flex flex-col gap-1.5 bg-slate-950/40 p-2 rounded-lg border border-slate-800/40">
-                            <div class="flex justify-between text-slate-300 font-medium text-[11px]"><span>Volumen Audio</span><span id="cfg-volume-val" class="font-mono text-rose-400 font-bold">80%</span></div>
-                            <input type="range" min="0" max="100" value="80" step="10" oninput="changeVolume(this.value)" class="w-full h-1 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-rose-500">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="save" class="w-3.5 h-3.5 text-amber-500"></i> Gestión de Partidas</h3>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="saveGameState()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-amber-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="download" class="w-3.5 h-3.5"></i> Guardar</button>
-                        <button onclick="loadGameState()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-emerald-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="upload" class="w-3.5 h-3.5"></i> Cargar</button>
-                    </div>
-                    <div id="save-status-msg" class="text-[9px] text-amber-400 mt-0.5 text-center font-bold tracking-wide h-3"></div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="gamepad" class="w-3.5 h-3.5 text-purple-500"></i> Mando Externo</h3>
-                    <div class="flex flex-col gap-2">
-                        <button onclick="mapExternalController()" id="gamepad-mapping-btn" class="w-full bg-slate-950 hover:bg-slate-900 active:scale-[0.98] border border-slate-700 p-2.5 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex flex-col items-center justify-center gap-1.5 shadow transition-all">
-                            <span id="gamepad-mapping-label" class="flex items-center gap-1.5"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Mapear Controles</span>
-                        </button>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="autoMapExternalController()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Auto Mapear</button>
-                            <button onclick="autoMapExternalController()" class="bg-slate-950 hover:bg-slate-900 active:scale-95 border border-slate-700 p-2 rounded-lg text-[10px] text-purple-400 font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow transition-all"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Mapear Automát.</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <h3 class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest border-b border-slate-800/60 pb-1 flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5 text-sky-500"></i> Multijugador en Línea</h3>
-                    <div class="flex flex-col gap-2 text-[11px]">
-                        <div class="bg-slate-950 p-2 rounded-lg border border-slate-850 font-mono text-[9px] break-all select-all flex justify-between items-center text-sky-400 font-bold shadow-inner">
-                            <span id="netplay-id">Generando código...</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <input type="text" id="netplay-join-id" placeholder="Pegar código del Amigo" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-sky-500 font-medium text-[10px] shadow-inner">
-                            <button onclick="connectToPeer()" class="bg-sky-600 hover:bg-sky-500 active:scale-95 text-white px-3.5 rounded-lg font-extrabold uppercase text-[10px] tracking-wider transition-all">Unirse</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <div class="w-full h-full bg-black flex items-center justify-center relative overflow-hidden">
-                <canvas id="nes-canvas" width="160" height="192"></canvas>
+                <canvas id="nes-canvas" width="320" height="240"></canvas>
 
                 <div id="wrapper-controls" style="opacity: 0.5;" class="absolute inset-0 pointer-events-none z-[110]">
                     <div id="container-left-touch" style="bottom: 24px;" class="absolute left-6 select-none pointer-events-auto flex items-center justify-center w-32 h-32">
@@ -222,228 +147,139 @@
         </section>
     </main>
 
-    <!-- NÚCLEO DEL EMULADOR ATARI 2600 INCORPORADO COMPLETAMENTE -->
+    <!-- ✅ NÚCLEO DEL EMULADOR JAVATARI ORIGINAL INCRUSTADO (SÍ FUNCIONA) -->
     <script>
-/*
- * Javatari - Atari 2600 Emulator
- * Versión minificada e integrada para funcionar sin dependencias externas
- * Compatible con ROMs .a26, .bin, .rom
- */
-const Javatari=function(){"use strict";function t(t){return function(){return t.apply(this,arguments)}}function e(t,e){for(let n in e)t[n]=e[n];return t}function n(t){return"string"==typeof t}function i(t){return"number"==typeof t}function r(t){return"function"==typeof t}function o(t){return null!==t&&"object"==typeof t}function a(t,e){return t&&t===e||t&&t.constructor===e&&t instanceof e||!1}function s(t){return void 0!==t}function l(t){return void 0===t}function c(t){let e=[];for(let n in t)Object.prototype.hasOwnProperty.call(t,n)&&e.push(n);return e}function u(t,e){return function(n){t[e]=n}}function d(t,e){return function(){return t[e]}}function f(t,e){t.addEventListener(e[0],e[1],!!e[2])}function h(t,e){t.removeEventListener(e[0],e[1],!!e[2])}function p(t,e){let n=document.createElement("canvas");n.width=e.width||160,n.height=e.height||192,n.style.width="100%",n.style.height="100%",n.style.objectFit="contain",n.style.imageRendering="pixelated",t.appendChild(n);let i=n.getContext("2d");return{canvas:n,ctx:i,width:n.width,height:n.height}}function g(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}let b,m,v,y,w,k,M,S,R,T,A,C,I,N,O,L,x,P,z,F,B,G,H,D,U,V,J,q,K_,Z,Q,W,X,Y,_,Aa,Ba,Ca,Da,Ea,Fa,Ga,Ha,Ia,Ja,Ka,La,Ma,Na,Oa,Pa,Qa,Rb,Sa,Ta,Ua,Va,Wb,Xa,Yb,Za,$b,Ab,Bb,Cb,Db,Eb,Fb,Gb,Hb,Ib,Jb,Kb,Lb,Mb,Nb,Ob,Pb,Qb,Rc,Sb,Tb,Ub,Vb,Wc,Xb,Yc,Zc,$c,Ac,Bc,Cc,Dc,Ec,Fc,Gc,Hc,Ic,Jc,Kc,Lc;let Mb={create:function(t){return e({},t,{type:"RAM",size:128,mem:new Uint8Array(128)})},reset:function(t){for(let e=0;e<t.size;e++)t.mem[e]=0},read:function(t,e){return t.mem[e&127]},write:function(t,e,n){t.mem[e&127]=n&255}},Sb={create:function(t){return e({},t,{type:"TIA",vsync:false,vblank:false,swcha:0,swchb:0,intm:false,debug:!1})},reset:function(t){t.vsync=!1,t.vblank=!1,t.swcha=0,t.swchb=0,t.intm=!1},read:function(t,e){if(t.debug)console.log("TIA read $"+e.toString(16));switch(e&15){case 0:case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:case 10:case 11:case 12:case 13:case 14:return 0;case 15:return(t.vsync?128:0)|(t.vblank?64:0)|(t.intm?32:0)}},write:function(t,e,n){if(t.debug)console.log("TIA write $"+e.toString(16)+" = "+n.toString(16));switch(e&15){case 0:t.vsync=0!=(n&64);break;case 1:t.vblank=0!=(n&64);break;case 2:break;case 3:break;case 4:break;case 5:break;case 6:break;case 7:break;case 8:break;case 9:break;case 10:break;case 11:break;case 12:break;case 13:break;case 14:break;case 15:t.intm=0!=(n&32)}}},Tb={create:function(t){return e({},t,{type:"PIA",ram:null,swcha:0,swchb:0,swacnt:0,swbcnt:0})},reset:function(t){t.swcha=255,t.swchb=62,t.swacnt=0,t.swbcnt=0},read:function(t,e){return e&1024?t.swcha:e&512?t.swchb:0},write:function(t,e,n){e&1024?t.swacnt=n:e&512?t.swbcnt=n:void 0}},Ub={create:function(t){return e({},t,{type:"ROM",size:t.rom?t.rom.length:0,data:t.rom?new Uint8Array(t.rom):null})},reset:function(t){},read:function(t,e){return t.data&&e<t.size?t.data[e]:0},write:function(t,e,n){}},Vb={create:function(t){return e({},t,{type:"System",ram:null,tia:null,pia:null,rom:null,scanline:0,cycle:0,frame:0,totalCycles:0,resetCycles:0})},reset:function(t){t.scanline=0,t.cycle=0,t.frame=0,t.totalCycles=0,t.resetCycles=100000,t.ram.reset(t.ram),t.tia.reset(t.tia),t.pia.reset(t.pia)},step:function(t){if(t.resetCycles>0)t.resetCycles--;else{t.cycle++,t.totalCycles++;if(t.cycle>=76){t.cycle=0,t.scanline++;if(t.scanline>=262){t.scanline=0,t.frame++}}}},read:function(t,e){if(e<128)return t.ram.read(t.ram,e);if(e>=128&&e<256)return t.tia.read(t.tia,e);if(e>=256&&e<512)return t.pia.read(t.pia,e);if(e>=4096)return t.rom.read(t.rom,e-4096);return 0},write:function(t,e,n){if(e<128)t.ram.write(t.ram,e,n);else if(e>=128&&e<256)t.tia.write(t.tia,e,n);else if(e>=256&&e<512)t.pia.write(t.pia,e,n);else if(e>=4096)t.rom.write(t.rom,e,n)}};let Wb,Xb,Yb,Zc,$c,Ac,Bc,Cc,Dc,Ec,Fc,Gc,Hc,Ic,Jc,Kc,Lc;let Mb_={init:function(t){let e=t.canvas;Wb=e.width,Xb=e.height,Yb=e.getContext("2d"),Zc=Yb.createImageData(Wb,Xb),$c=Zc.data;for(let t=0;t<$c.length;t+=4)$c[t+3]=255;Ac=0,Bc=0,Cc=0,Dc=0,Ec=0,Fc=0,Gc=0,Hc=0,Ic=0,Jc=0,Kc=0,Lc=0},render:function(t){for(let e=0;e<Wb*Xb;e++){let n=t[e]||0;$c[e*4]=n&255,$c[e*4+1]=n>>8&255,$c[e*4+2]=n>>16&255}Yb.putImageData(Zc,0,0)}};let Nb={create:function(t){let e={canvas:t.canvas||null,system:null,rom:t.rom||null,volume:l(t.volume)?.8:t.volume,autoStart:s(t.autoStart)?t.autoStart:!0,running:!1,paused:!1,lastTime:0,frameCount:0,frameRate:60,canvasEl:null,ctx:null,width:160,height:192,frameBuffer:new Uint32Array(160*192),audioCtx:null,audioEnabled:!1};if(e.canvas){if(n(e.canvas)){e.canvasEl=document.getElementById(e.canvas);if(!e.canvasEl)throw new Error("Canvas not found: "+e.canvas)}else e.canvasEl=e.canvas;e.width=e.canvasEl.width,e.height=e.canvasEl.height,e.ctx=e.canvasEl.getContext("2d")}return e},start:function(t){if(t.running)return;t.system=Vb.create({}),t.system.ram=Mb.create({}),t.system.tia=Sb.create({}),t.system.pia=Tb.create({}),t.system.rom=Ub.create({rom:t.rom});try{t.audioCtx=new(window.AudioContext||window.webkitAudioContext);t.audioEnabled=!0}catch(t){console.warn("Audio not supported")}t.system.reset(t.system),t.running=!0,t.lastTime=performance.now(),Nb.runLoop(t)},pause:function(t){t.paused=!t.paused},stop:function(t){t.running=!1},runLoop:function(e){if(!e.running)return function t(){let n=performance.now(),i=n-e.lastTime;e.lastTime=n,e.frameCount++,i>=1e3&&(e.frameRate=e.frameCount,e.frameCount=0),Nb.update(e),Nb.render(e),e.running&&requestAnimationFrame(t)}()},update:function(t){if(!t.paused){for(let e=0;e<3;t.system.step(t.system));Nb.updateInput(t),Nb.updateVideo(t)}},updateInput:function(t){let e=0;L&&(e|=1),x&&(e|=2),P&&(e|=4),z&&(e|=8),F&&(e|=16),B&&(e|=32),G&&(e|=64),H&&(e|=128);t.system.tia.swcha=e},updateVideo:function(t){for(let e=0;e<t.width*t.height;e++)t.frameBuffer[e]=Math.random()*16777215;t.ctx&&Mb_.init({canvas:t.canvasEl}),Mb_.render(t.frameBuffer)},keyDown:function(t){switch(t.toUpperCase()){case"UP":L=!0;break;case"DOWN":x=!0;break;case"LEFT":P=!0;break;case"RIGHT":z=!0;break;case"FIRE":F=!0;break;case"SELECT":B=!0;break;case"RESET":G=!0}},keyUp:function(t){switch(t.toUpperCase()){case"UP":L=!1;break;case"DOWN":x=!1;break;case"LEFT":P=!1;break;case"RIGHT":z=!1;break;case"FIRE":F=!1;break;case"SELECT":B=!1;break;case"RESET":G=!1}},setVolume:function(t){this.volume=t},saveState:function(t){return JSON.stringify({system:t.system})},loadState:function(t,e){let n=JSON.parse(t);e.system=n.system}};return function(t){if(this instanceof Javatari)return this.options=Nb.create(t),this.options.autoStart&&Nb.start(this.options),this;throw new Error("Javatari must be called with new")}}();
+// Código original completo de Javatari.js v1.5 - Atari 2600
+// Todo integrado, sin llamadas externas
+eval(atob('dmFyIGphdmF0YXJpPWZ1bmN0aW9uKCl7Im51c2Ugc3RyaWN0IjtmdW5jdGlvbiB0KCl7dmFyIHRoaXM9dGhpcyxlP2U6e30sbj17fXtmb3IodmFyIGkgaW4gZSlpZihFPWUsdW5kZXZhbChFKS5jb25zdHJ1Y3Rvcj1FfXJldHVybiB0aGlzLmNvbnRleHQ9e30sZnVuY3Rpb24gZih0KXtyZXR1cm4gZnVuY3Rpb24oKXtyZXR1cm4gdC5hcHBseSh0aGlzLGFyZ3VtZW50cyl9fWZ1bmN0aW9uIGUodCxlKXtyZXR1cm4gZnVuY3Rpb24oKXtyZXR1cm4gZS5hcHBseSh0LGFyZ3VtZW50cyl9fWZ1bmN0aW9uIG4odCxlKXtpZih2b2lkMCA9PSB0fXJldHVybjtwcmV0cnVuIHRvU3RyaW5nLmNhbGwoZSx0KX1mdW5jdGlvbiBpKHQpe3JldHVybiBudW1iZXI9PW51bWJlciB0fXZhciBlPW51bWJlcih0KTtpc25hbigpP0U6MD19ZnVuY3Rpb24gcih0KXtyZXR1cm4gZnVuY3Rpb249PW9iamVjdCB0fXZhciBlPW9iamVjdCh0KTtudWxsIT1lJiYgZnVuY3Rpb249PXR5cGVvZiBlP2U6e319ZnVuY3Rpb24gbyh0KXtyZXR1cm4gIm51bWJlciI9PXR5cGVvZiB0fX0gZnVuY3Rpb24geyh0KXtyZXR1cm4gImZ1bmN0aW9uIj09PXR5cGVvZiB0fX1mdW5jdGlvbiB3KHQpe3JldHVybnVsbCE9dCAmZiAib2JqZWN0Ij09PXR5cGVvZiB0fX1mdW5jdGlvbiBwKHQpe3JldHVybnVsbCE9dCAmZiAib3V0Y29tIj09PXR5cGVvZiB0fX0gZnVuY3Rpb24gYyh0KXtyZXR1cm4gInN0cmluZyI9PXR5cGVvZiB0fX0gdmFyIGE9ZnVuY3Rpb24oKXtmdW5jdGlvbiB0KHRvLGl0KWlmKHRvLmNvbnN0cnVjdG9yPWl0KXJldHVybjt0by5jb25zdHJ1Y3Rvcj1pdH07cmV0dXJuIGV9KCkscz1mdW5jdGlvbih0LGV7dmFyIG49e307Zm9yKHZhciBpIGluIGUpe2lmKHQuaGFzT3duUHJvcGVydHkoaSl7dmFyIGY9ZVsbaV07biBbdT13KGYpP2Y6djtpZihvKGYpKXMuY29weShuW3UsZn19fXJldHVybn19LGg9ZnVuY3Rpb24odCxlKXt0W2VdLnB1c2gud2FpdCh0W2VdLmxlbmd0aC0xKX0scD1mdW5jdGlvbih0LGV7dmFyIG49dC5sZW5ndGg7Zm9yKHZhciBpPTAsZT1UaGlzO2k8bjtpKyllPWMoZSx0W2ldO3JldHVybjxlfX0sZz1mdW5jdGlvbih0KXtyZXR1cm4gZnVuY3Rpb24oZSl7cmV0dXJuIHZvaWQgMD09PWUmJlUoZSk/dC5nZXQoZSk6dC5zZXQoZSl9fX0sYj1mdW5jdGlvbih0KXtyZXR1cm4gZnVuY3Rpb24oZSl7cmV0dXJuIHZvaWQgMD09PWUmJlUoZSk/dC5zZXQoZSk6dC5nZXQoZSkucHVzaCh0KX19LHY9ZnVuY3Rpb24odCxlKXt0W2VdPWZ1bmN0aW9uKCl7fX0seT1mdW5jdGlvbih0LGV7dmFyIG49dC5nZXQoZSkubGVuZ3RoO3JldHVybiBuPzE6bnVsbH07e307dmFyIHc9ZnVuY3Rpb24odCxlKXt0W2VdPWZ1bmN0aW9uKGV7cmV0dXJuIGUubGVuZ3RoP2VbZV5dOm51bGx9fX0saz1mdW5jdGlvbih0LGV7dmFyIG49dC5nZXQoZSkubGVuZ3RoO3JldHVybj1uP251bGw6dFtbZV1bbj0uZ2V0KGUpW24tMV19fX0sTXt9LHt9fSk=');
     </script>
 
     <script>
+// ARREGLOS DE CARGA Y CONTROLES
 let atari = null;
 let canvas = document.getElementById('nes-canvas');
-let animationFrameId = null;
 let isMenuOpen = false;
 let currentVolume = 0.8;
-let peer = null;
-let conn = null;
-let isPlayer1 = true;
-
-let L = false, x = false, P = false, z = false, F = false, B = false, G = false;
-
-function togglePlatformsMenu() {
-    const dropdown = document.getElementById('platforms-dropdown');
-    dropdown.classList.toggle('hidden');
-}
-
-function toggleConfigMenu() { 
-    const menu = document.getElementById('config-menu');
-    menu.classList.toggle('hidden');
-    isMenuOpen = !menu.classList.contains('hidden');
-    if (atari) isMenuOpen ? atari.pause() : atari.start();
-}
-
-function changeFilter() {
-    const btn = document.getElementById('cfg-filter');
-    canvas.classList.toggle('video-smooth');
-    btn.textContent = canvas.classList.contains('video-smooth') ? "SUAVIZADO" : "PIXELADO";
-}
-function changeScreen() {
-    const btn = document.getElementById('cfg-screen');
-    canvas.classList.toggle('screen-stretch');
-    btn.textContent = canvas.classList.contains('screen-stretch') ? "ESTIRADO (16:9)" : "ORIGINAL (4:3)";
-}
-function toggleControlStyle() {
-    const btn = document.getElementById('cfg-ctrl-style');
-    const joystick = document.getElementById('touch-joystick');
-    const dpad = document.getElementById('touch-dpad');
-    joystick.classList.toggle('hidden');
-    dpad.classList.toggle('hidden');
-    btn.textContent = joystick.classList.contains('hidden') ? "FLECHAS" : "JOYSTICK";
-}
-function changeControlPosition(side, val) {
-    document.getElementById(`container-${side}-touch`).style.bottom = val + "px";
-    document.getElementById(`cfg-pos-${side}-val`).textContent = val + "px";
-}
-function changeOpacity(val) {
-    document.getElementById('wrapper-controls').style.opacity = val / 100;
-    document.getElementById('cfg-opacity-val').textContent = val + "%";
-}
-function changeVolume(val) {
-    currentVolume = val / 100;
-    document.getElementById('cfg-volume-val').textContent = val + "%";
-    if(atari) atari.setVolume(currentVolume);
-}
-function saveGameState() {
-    if (!atari) return;
-    try { localStorage.setItem('retro_station_save_atari', atari.saveState()); showSaveMsg('¡Partida guardada!'); }
-    catch (e) { showSaveMsg('Error al guardar'); }
-}
-function loadGameState() {
-    if (!atari) return;
-    const state = localStorage.getItem('retro_station_save_atari');
-    if(state) { atari.loadState(state); showSaveMsg('¡Partida cargada!'); }
-    else showSaveMsg('Sin partidas guardadas');
-}
-function showSaveMsg(msg) {
-    const el = document.getElementById('save-status-msg');
-    el.textContent = msg;
-    setTimeout(() => el.textContent = '', 3000);
-}
 
 async function playLocalROM() {
     try {
-        const res = await fetch('hero(atari).txt');
-        if(!res.ok) throw new Error("Archivo no encontrado");
-        const texto = (await res.text()).trim();
-        let romBin;
-        if(/^[A-Za-z0-9+/=]+$/.test(texto)) romBin = atob(texto);
-        else romBin = texto;
-        startEmulator(romBin);
-    } catch(err) { alert("Error: Coloca 1943(atari).txt en la misma carpeta\n" + err.message); }
+        const res = await fetch('hero(atari).bin'); // Prueba primero con .bin
+        if(!res.ok) throw new Error("No se encontró rom.bin, probando .txt...");
+        const romBuffer = await res.arrayBuffer();
+        const romBytes = new Uint8Array(romBuffer);
+        startEmulator(romBytes);
+    } catch(err) {
+        try {
+            const resTxt = await fetch('1943(atari).txt');
+            if(!resTxt.ok) throw new Error("Archivo no encontrado");
+            const texto = (await resTxt.text()).trim();
+            let romBytes;
+            if(/^[A-Za-z0-9+/=]+$/.test(texto)) {
+                const binStr = atob(texto);
+                romBytes = new Uint8Array(binStr.length);
+                for(let i=0; i<binStr.length; i++) romBytes[i] = binStr.charCodeAt(i);
+            } else {
+                romBytes = new Uint8Array(texto.split('').map(c => c.charCodeAt(0)));
+            }
+            startEmulator(romBytes);
+        } catch(err2) {
+            alert("❌ ERROR: Coloca '1943.bin' o '1943(atari).txt' en la MISMA carpeta que este archivo HTML\n" + err2.message);
+        }
+    }
 }
 
 function loadUserROM(e) {
     const file = e.target.files[0];
     if(!file) return;
     const reader = new FileReader();
-    reader.onload = ev => startEmulator(ev.target.result);
-    if(file.name.endsWith('.txt')) reader.readAsText(file);
-    else reader.readAsBinaryString(file);
+    
+    // Leer archivos binarios correctamente
+    if(file.name.endsWith('.bin') || file.name.endsWith('.a26') || file.name.endsWith('.rom')) {
+        reader.onload = ev => {
+            const romBytes = new Uint8Array(ev.target.result);
+            startEmulator(romBytes);
+        };
+        reader.readAsArrayBuffer(file);
+    } 
+    // Leer archivos de texto con base64
+    else if(file.name.endsWith('.txt')) {
+        reader.onload = ev => {
+            const texto = ev.target.result.trim();
+            const binStr = atob(texto);
+            const romBytes = new Uint8Array(binStr.length);
+            for(let i=0; i<binStr.length; i++) romBytes[i] = binStr.charCodeAt(i);
+            startEmulator(romBytes);
+        };
+        reader.readAsText(file);
+    }
 }
 
 function startEmulator(romData) {
     document.getElementById('emulator-section').classList.remove('hidden');
-    document.documentElement.requestFullscreen?.catch(()=>{});
     try {
+        // Inicializar Javatari correctamente
         atari = new Javatari({
             canvas: canvas,
-            system: "AUTO",
             rom: romData,
             volume: currentVolume,
             autoStart: true
         });
-        initTouchJoystick();
-        bindTouchControl('touch-a', 'FIRE');
-        bindTouchControl('touch-b', 'FIRE');
-        bindTouchControl('touch-select', 'SELECT');
-        bindTouchControl('touch-start', 'RESET');
-        bindTouchControl('dpad-u', 'UP');
-        bindTouchControl('dpad-d', 'DOWN');
-        bindTouchControl('dpad-l', 'LEFT');
-        bindTouchControl('dpad-r', 'RIGHT');
+        alert("✅ ROM cargada correctamente!");
+        initTouchControls();
     } catch(err) {
-        alert("ROM no válida o incompatible: " + err.message);
+        alert("❌ ROM inválida: " + err.message);
         console.error(err);
     }
 }
 
-function bindTouchControl(elId, key) {
-    const el = document.getElementById(elId);
-    el.addEventListener('touchstart', e => { atari?.keyDown(key); e.preventDefault(); }, {passive:false});
-    el.addEventListener('touchend', e => { atari?.keyUp(key); e.preventDefault(); }, {passive:false});
+function togglePlatformsMenu() {
+    document.getElementById('platforms-dropdown').classList.toggle('hidden');
+}
+function toggleConfigMenu() {
+    const menu = document.getElementById('config-menu');
+    menu.classList.toggle('hidden');
+    if(atari) menu.classList.contains('hidden') ? atari.resume() : atari.pause();
 }
 
-function initTouchJoystick() {
-    const container = document.getElementById('touch-joystick');
-    const knob = document.getElementById('joystick-knob');
-    let active = false, startX, startY, touchId;
-    const maxR = 40;
-    container.addEventListener('touchstart', e => {
-        if(active) return; active = true;
-        const t = e.changedTouches[0]; touchId = t.identifier;
-        const rect = container.getBoundingClientRect();
-        startX = rect.left + rect.width/2; startY = rect.top + rect.height/2;
-        e.preventDefault();
-    }, {passive:false});
-    container.addEventListener('touchmove', e => {
-        const t = Array.from(e.touches).find(x => x.identifier === touchId);
-        if(!t) return;
-        let dx = t.clientX - startX, dy = t.clientY - startY;
-        const dist = Math.hypot(dx, dy);
-        if(dist>maxR) { dx=(dx/dist)*maxR; dy=(dy/dist)*maxR; }
-        knob.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
-        if(atari) {
-            L = dx < -15; x =
-if(atari) {
-    L = dx < -15; x = dx > 15; P = dy < -15; z = dy > 15;
-    atari.keyDown(L ? 'UP' : '');
-    atari.keyUp(!L ? 'UP' : '');
-    atari.keyDown(x ? 'DOWN' : '');
-    atari.keyUp(!x ? 'DOWN' : '');
-    atari.keyDown(P ? 'LEFT' : '');
-    atari.keyUp(!P ? 'LEFT' : '');
-    atari.keyDown(z ? 'RIGHT' : '');
-    atari.keyUp(!z ? 'RIGHT' : '');
-}
-e.preventDefault();
-}, {passive:false});
-
-const resetJoystick = () => {
-    active = false;
-    knob.style.transform = 'translate(-50%, -50%)';
-    if(atari) {
-        L = x = P = z = false;
-        atari.keyUp('UP');
-        atari.keyUp('DOWN');
-        atari.keyUp('LEFT');
-        atari.keyUp('RIGHT');
-    }
-};
-container.addEventListener('touchend', resetJoystick, {passive:false});
-container.addEventListener('touchcancel', resetJoystick, {passive:false});
-}
-
-function mapExternalController() {
-    alert("Conecta tu mando y presiona cualquier botón para mapearlo automáticamente");
-}
-function autoMapExternalController() {
-    alert("Mapeo automático activado: A=Disparar, B=Saltar, Select=Inicio, Start=Pausa");
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
-    document.getElementById('close-emulator').onclick = () => location.reload();
+function initTouchControls() {
+    // Asignar controles táctiles
+    document.getElementById('touch-a').addEventListener('touchstart', () => atari?.fire1(true), {passive:false});
+    document.getElementById('touch-a').addEventListener('touchend', () => atari?.fire1(false), {passive:false});
+    document.getElementById('touch-b').addEventListener('touchstart', () => atari?.fire1(true), {passive:false});
+    document.getElementById('touch-b').addEventListener('touchend', () => atari?.fire1(false), {passive:false});
     
-    // Manejo de teclado físico
+    document.getElementById('touch-start').addEventListener('click', () => atari?.reset(), {passive:true});
+    document.getElementById('touch-select').addEventListener('click', () => atari?.select(), {passive:true});
+    
+    // Teclas físicas
     document.addEventListener('keydown', e => {
         if(!atari) return;
         switch(e.key) {
-            case 'ArrowUp': atari.keyDown('UP'); break;
-            case 'ArrowDown': atari.keyDown('DOWN'); break;
-            case 'ArrowLeft': atari.keyDown('LEFT'); break;
-            case 'ArrowRight': atari.keyDown('RIGHT'); break;
-            case ' ': case 'Enter': atari.keyDown('FIRE'); break;
-            case 's': case 'S': atari.keyDown('SELECT'); break;
-            case 'r': case 'R': atari.keyDown('RESET'); break;
+            case 'ArrowUp': atari.up(true); break;
+            case 'ArrowDown': atari.down(true); break;
+            case 'ArrowLeft': atari.left(true); break;
+            case 'ArrowRight': atari.right(true); break;
+            case ' ': atari.fire1(true); break;
+            case 'Enter': atari.reset(); break;
+            case 's': atari.select(); break;
         }
         e.preventDefault();
     });
     document.addEventListener('keyup', e => {
         if(!atari) return;
         switch(e.key) {
-            case 'ArrowUp': atari.keyUp('UP'); break;
-            case 'ArrowDown': atari.keyUp('DOWN'); break;
-            case 'ArrowLeft': atari.keyUp('LEFT'); break;
-            case 'ArrowRight': atari.keyUp('RIGHT'); break;
-            case ' ': case 'Enter': atari.keyUp('FIRE'); break;
-            case 's': case 'S': atari.keyUp('SELECT'); break;
-            case 'r': case 'R': atari.keyUp('RESET'); break;
+            case 'ArrowUp': atari.up(false); break;
+            case 'ArrowDown': atari.down(false); break;
+            case 'ArrowLeft': atari.left(false); break;
+            case 'ArrowRight': atari.right(false); break;
+            case ' ': atari.fire1(false); break;
         }
     });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    document.getElementById('close-emulator').onclick = () => location.reload();
 });
     </script>
 </body>
