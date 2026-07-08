@@ -74,6 +74,29 @@
             transform: scale(0.95);
         }
 
+        /* ESTILO DEL BOTÓN SALIR AGREGADO */
+        .exit-emulator-btn {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 100001;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(244, 63, 94, 0.5);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .exit-emulator-btn:hover {
+            background: rgba(244, 63, 94, 0.9);
+            border-color: #f43f5e;
+            transform: translateY(-1px);
+        }
+
         /* Estilos para los bloques de publicidad */
         .ad-block {
             border: 1px solid rgba(244, 63, 94, 0.3);
@@ -267,7 +290,8 @@
             </div>
 
             <section id="emulator-section" class="hidden bg-black flex flex-col justify-between">
-                <!-- SE ELIMINÓ COMPLETAMENTE EL BOTÓN "SALIR" ANTERIOR -->
+                <!-- BOTÓN SALIR AGREGADO EXACTAMENTE AQUÍ -->
+                <button id="exit-emulator" class="exit-emulator-btn">SALIR</button>
                 
                 <div class="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
                     <div id="emulator-container" class="w-full h-full bg-black mx-auto"></div>
@@ -579,6 +603,12 @@
             const fullscreenBtn = document.getElementById('fullscreen-toggle');
             const consoleFilter = document.getElementById('console-filter');
             const romUploader = document.getElementById('rom-uploader');
+            const exitEmulatorBtn = document.getElementById('exit-emulator');
+
+            // FUNCIONALIDAD DEL BOTÓN SALIR
+            exitEmulatorBtn.addEventListener('click', () => {
+                location.reload();
+            });
 
             // ACTUALIZAR EXTENSIONES AL CAMBIAR PLATAFORMA
             consoleFilter.addEventListener('change', (e) => {
