@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <title>RETROSTATION-SYS MULTI EMULATOR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&family=Space+Grotesk:wght=700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+        }
+        .brand-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #f43f5e;
+            border-radius: 2px;
+        }
+
+        @media screen and (orientation: portrait) {
+            .portrait-warning {
+                display: flex !important;
+            }
+        }
+
+        #emulator-section {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 99999 !important;
+        }
+        #emulator-container, #ejs-player {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        /* 🟡 BOTÓN PANTALLA COMPLETA FLOTANTE */
+        .fullscreen-btn {
+            position: fixed;
+            bottom: 12px;
+            right: 12px;
+            z-index: 999999; /* SIEMPRE POR ENCIMA DE TODO */
+            background: #facc15; /* Amarillo */
+            color: #0f172a;
+            border: 2px solid #eab308;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .fullscreen-btn:hover {
+            background: #fde047;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(250, 204, 21, 0.7);
+        }
+        .fullscreen-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Estilos para los bloques de publicidad */
+        .ad-block {
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+        .ad-block:hover {
+            border-color: rgba(244, 63, 94, 0.6);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+        }
+        .ad-label {
+            font-size: 8px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row antialiased select-none overflow-hidden">
+
+
+
+    <!-- 🟡 BOTÓN FLOTANTE PANTALLA COMPLETA -->
+    <button id="fullscreen-toggle" class="fullscreen-btn" title="Activar Pantalla Completa">
+        <i data-lucide="maximize-2" class="w-3 h-3"></i>
+    </button>
+
+
+    <!-- PANTALLA GIRA TU DISPOSITIVO CON ESPACIOS PUBLICITARIOS -->
+    <div class="portrait-warning fixed inset-0 bg-slate-950 z-[100] hidden flex-col bg-cover bg-center bg-no-repeat" 
+         style="background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('URL_DE_TU_IMAGEN_AQUI');">
+        
+        <!-- 📢 ESPACIO PUBLICITARIO SUPERIOR -->
+        <div class="w-full p-3 flex-shrink-0">
+            <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
+                <span class="ad-label mb-2">Espacio Publicitario</span>
+                <ins class="adsbygoogle"
+                     style="display:block;width:100%;height:100%;min-height:60px"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="ID_DE_TU_ANUNCIO_SUPERIOR"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+
+        <!-- CONTENIDO CENTRAL SIN MODIFICACIONES -->
+        <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+            <div class="w-16 h-16 bg-rose-600 rounded-full flex items-center justify-center animate-bounce mb-4 shadow-lg shadow-rose-600/50">
+                <i data-lucide="rotate-cw" class="w-8 h-8 text-white"></i>
+            </div>
+            <h2 class="brand-font text-xl font-bold text-white tracking-wider drop-shadow-md">GIRA TU DISPOSITIVO</h2>
+            <p class="text-slate-300 text-xs mt-2 max-w-xs drop-shadow">Para disfrutar de la experiencia RETROSTATION-SYS completa, por favor rota tu pantalla a modo horizontal.</p>
+        </div>
+
+        <!-- 📢 ESPACIO PUBLICITARIO INFERIOR -->
+        <div class="w-full p-3 flex-shrink-0">
+            <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
+                <span class="ad-label mb-2">Espacio Publicitario</span>
+                <ins class="adsbygoogle"
+                     style="display:block;width:100%;height:100%;min-height:60px"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="ID_DE_TU_ANUNCIO_INFERIOR"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 📢  PUBLICIDAD BARRA LATERAL-->
+    <aside class="w-full md:w-64 bg-slate-900 border-b md:border-b-0 md:border-r border-slate-800 flex flex-col shrink-0 h-auto md:h-full z-10 p-3 gap-3">
+    
+    
+        <!-- MARCA DEL PROYECTO-->
+        <div class="p-3 flex items-center gap-3 border-b border-slate-800 bg-slate-950/40 rounded-xl">
+            <div class="w-8 h-8 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg shadow-rose-900/40">
+                <i data-lucide="gamepad-2" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+                <h1 class="brand-font text-sm font-black tracking-wider text-rose-500">RETRO STATION-SYS</h1>
+                <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">OS V4.0 • MULTIEMULATOR</p>
+            </div>
+        </div>
+
+
+        <!-- BLOQUE 1: Anuncio principal (mayor tamaño) -->
+        <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[180px] md:min-h-[220px]">
+            <span class="ad-label mb-2">Espacio Publicitario Premium</span>
+            <ins class="adsbygoogle"
+                 style="display:block;width:100%;height:100%;min-height:150px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="ID_DE_TU_ANUNCIO_GRANDE"
+                 data-ad-format="vertical"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- BLOQUE 2: Anuncio mediano -->
+        <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[120px]">
+            <span class="ad-label mb-2">Espacio Publicitario</span>
+            <ins class="adsbygoogle"
+                 style="display:block;width:100%;height:100%;min-height:90px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="ID_DE_TU_ANUNCIO_MEDIANO"
+                 data-ad-format="fluid"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Bloque informativo opcional -->
+        <div class="ad-block p-3 text-center mt-auto">
+            <p class="text-[9px] text-slate-400 font-medium">
+                Apoya el proyecto manteniendo la publicidad activa<br>
+                ¡Así seguimos agregando más juegos gratis!
+            </p>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-[calc(100vh-4rem)] md:h-full overflow-hidden relative">
+        
+        <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 p-2 flex flex-wrap items-center gap-2 justify-between z-10 shrink-0">
+            <div class="flex items-center gap-1.5 overflow-x-auto custom-scroll max-w-full py-0.5">
+                <select id="console-filter" class="bg-slate-950 border border-slate-800 text-slate-400 text-[10px] rounded px-2 py-1 focus:outline-none focus:border-rose-500">
+                    <option value="all">TODAS LAS PLATAFORMAS</option>
+                    <option value="2600">ATARI 2600</option>
+                    <option value="a2600">ATARI 2600 (ALT)</option>
+                    <option value="lynx">ATARI LYNX</option>
+                    <option value="jaguar">ATARI JAGUAR</option>
+                    <option value="gba">GAME BOY ADVANCE</option>
+                    <option value="gb">GAME BOY</option>
+                    <option value="gbc">GAME BOY COLOR</option>
+                    <option value="nes">NINTENDO NES / FAMICOM</option>
+                    <option value="snes">SUPER NINTENDO / SUPER FAMICOM</option>
+                    <option value="n64">NINTENDO 64</option>
+                    <option value="ngp">NEO GEO POCKET</option>
+                    <option value="ngpc">NEO GEO POCKET COLOR</option>
+                    <option value="sega32x">SEGA 32X</option>
+                    <option value="gamegear">SEGA GAME GEAR</option>
+                    <option value="megadrive">SEGA GENESIS / MEGA DRIVE</option>
+                    <option value="sms">SEGA MASTER SYSTEM</option>
+                    <option value="segacd">SEGA CD / MEGA CD</option>
+                    <option value="saturn">SEGA SATURN</option>
+                    <option value="dreamcast">SEGA DREAMCAST</option>
+                    <option value="psx">PLAYSTATION 1</option>
+                    <option value="ps2">PLAYSTATION 2</option>
+                    <option value="psp">PLAYSTATION PORTABLE</option>
+                    <option value="cps1">CAPCOM CPS-1</option>
+                    <option value="cps2">CAPCOM CPS-2</option>
+                    <option value="cps3">CAPCOM CPS-3</option>
+                    <option value="mame">MAME (ARCADE)</option>
+                    <option value="neogeo">NEO GEO ARCADE</option>
+                    <option value="fba">FINAL BURN ARCADE</option>
+                    <option value="vb">NINTENDO VIRTUAL BOY</option>
+                    <option value="ws">BANDAI WONDERSWAN</option>
+                    <option value="wsc">BANDAI WONDERSWAN COLOR</option>
+                    <option value="pcengine">PC ENGINE / TURBOGRAFX 16</option>
+                    <option value="pcenginecd">PC ENGINE CD</option>
+                    <option value="gx4000">AMSTRAD GX4000</option>
+                    <option value="cpc">AMSTRAD CPC</option>
+                    <option value="msx">MSX / MSX2</option>
+                    <option value="zx">SINCLAIR ZX SPECTRUM</option>
+                    <option value="c64">COMMODORE 64</option>
+                    <option value="amiga">COMMODORE AMIGA</option>
+                    <option value="dos">MS-DOS</option>
+                </select>
+
+                <!-- BOTÓN CARGAR ROM CON MISMO ESTILO -->
+                <label class="bg-slate-950 border border-slate-800 text-slate-400 text-[10px] rounded px-2 py-1 focus:outline-none focus:border-rose-500 hover:text-white cursor-pointer flex items-center gap-1 font-medium">
+                    <i data-lucide="upload" class="w-3 h-3"></i> CARGAR ROM
+                    <input type="file" id="rom-uploader" class="hidden">
+                </label>
+            </div>
+        </header>
+
+        <div class="flex-1 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
+            
+            <div id="games-container" class="absolute inset-0 p-4 overflow-y-auto custom-scroll pb-12">
+                <div class="flex items-center justify-between mb-3">
+                    <span id="global-counter" class="text-[10px] text-slate-400 font-semibold tracking-wider"></span>
+                </div>
+                <div id="no-results" class="hidden text-center py-12">
+                    <i data-lucide="search-slash" class="w-10 h-10 text-slate-600 mx-auto mb-2"></i>
+                    <h3 class="text-sm font-bold text-slate-400">No hay roms coincidentes</h3>
+                </div>
+                <div id="games-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                </div>
+            </div>
+
+            <section id="emulator-section" class="hidden bg-black flex flex-col justify-between">
+                <!-- SE ELIMINÓ COMPLETAMENTE EL BOTÓN "SALIR" ANTERIOR -->
+                
+                <div class="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
+                    <div id="emulator-container" class="w-full h-full bg-black mx-auto"></div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="bg-slate-950 border-t border-slate-900 h-8 px-4 flex items-center justify-between text-[10px] text-slate-500 shrink-0 select-none">
+            
+            <div class="hidden sm:block font-medium tracking-wider"><center>
+                © 2026 RETRO STATION-SYS (Juegos De Dominio Público y Homebrew)</center>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // EXTENSIONES PERMITIDAS POR PLATAFORMA (COMPATIBLES CON EMULATORJS)
+        const platformExtensions = {
+            'all': '.zip,.7z,.bin,.rom,.nes,.smc,.sfc,.fig,.sfc,.md,.gen,.smd,.32x,.gg,.sms,.iso,.chd,.cue,.pbp,.img,.n64,.v64,.z64,.gb,.gbc,.gba,.nds,.pce,.sgx,.ccd,.m3u,.chd,.ngp,.ngc,.lnx,.jag,.ws,.wsc,.vb,.dsk,.tap,.z80,.sna,.cdt,.fdi,.d64,.g64,.prg,.adf,.ipf,.dms,.exe,.com,.bat',
+            '2600': '.a26,.bin,.rom,.zip',
+            'a2600': '.a26,.bin,.rom,.zip',
+            'lynx': '.lnx,.lyx,.zip',
+            'jaguar': '.jag,.rom,.zip',
+            'gba': '.gba,.agb,.bin,.zip',
+            'gb': '.gb,.dmg,.bin,.zip',
+            'gbc': '.gbc,.gb,.zip',
+            'nes': '.nes,.nez,.unf,.unif,.fds,.bin,.zip',
+            'snes': '.smc,.sfc,.fig,.srm,.zip',
+            'n64': '.n64,.v64,.z64,.rom,.bin,.zip',
+            'ngp': '.ngp,.bin,.zip',
+            'ngpc': '.ngc,.ngp,.zip',
+            'sega32x': '.32x,.bin,.smd,.zip',
+            'gamegear': '.gg,.bin,.sms,.zip',
+            'megadrive': '.md,.gen,.smd,.bin,.zip',
+            'sms': '.sms,.bin,.gg,.zip',
+            'segacd': '.iso,.bin,.cue,.chd,.m3u,.zip',
+            'saturn': '.iso,.bin,.cue,.chd,.m3u,.zip',
+            'dreamcast': '.cdi,.gdi,.iso,.chd,.zip',
+            'psx': '.bin,.cue,.iso,.chd,.pbp,.img,.ccd,.m3u,.zip',
+            'ps2': '.iso,.bin,.chd,.cue,.m3u,.zip',
+            'psp': '.iso,.cso,.pbp,.zip',
+            'cps1': '.zip,.7z',
+            'cps2': '.zip,.7z',
+            'cps3': '.zip,.7z',
+            'mame': '.zip,.7z',
+            'neogeo': '.zip,.7z',
+            'fba': '.zip,.7z',
+            'vb': '.vb,.bin,.zip',
+            'ws': '.ws,.wsc,.bin,.zip',
+            'wsc': '.wsc,.ws,.bin,.zip',
+            'pcengine': '.pce,.sgx,.bin,.zip',
+            'pcenginecd': '.ccd,.cue,.chd,.m3u,.zip',
+            'gx4000': '.cdt,.sna,.tap,.dsk,.zip',
+            'cpc': '.cdt,.sna,.tap,.dsk,.zip',
+            'msx': '.rom,.mx1,.mx2,.dsk,.cas,.zip',
+            'zx': '.tap,.z80,.sna,.cdt,.dsk,.zip',
+            'c64': '.d64,.g64,.prg,.tap,.zip',
+            'amiga': '.adf,.ipf,.dms,.zip',
+            'dos': '.exe,.com,.bat,.iso,.zip'
+        };
+
+        const consoleDetails = {
+            all: { name: "TODOS LOS JUEGOS", icon: "layout-grid", color: "from-slate-700 to-slate-800" },
+            gba: { name: "GAME BOY ADVANCE", icon: "gamepad-2", color: "from-purple-600 to-indigo-900" },
+            atari2600: { name: "ATARI 2600", icon: "joystick", color: "from-amber-700 to-orange-900" },
+            nes: { name: "NINTENDO NES", icon: "box", color: "from-red-600 to-red-950" },
+            snes: { name: "SUPER NINTENDO", icon: "layers", color: "from-blue-600 to-indigo-950" },
+            n64: { name: "NINTENDO 64", icon: "triangle", color: "from-green-600 to-emerald-950" },
+            gb: { name: "GAME BOY", icon: "smartphone", color: "from-olive-600 to-slate-800" },
+            gbc: { name: "GAME BOY COLOR", icon: "palette", color: "from-pink-600 to-purple-950" },
+            sega32x: { name: "SEGA 32X", icon: "zap", color: "from-yellow-600 to-amber-950" },
+            gamegear: { name: "SEGA GAME GEAR", icon: "tv", color: "from-cyan-600 to-blue-950" },
+            megadrive: { name: "SEGA GENESIS", icon: "disc", color: "from-blue-700 to-slate-900" },
+            sms: { name: "MASTER SYSTEM", icon: "grid", color: "from-sky-600 to-blue-900" },
+            psx: { name: "PLAYSTATION 1", icon: "play-circle", color: "from-gray-600 to-slate-900" },
+            psp: { name: "PLAYSTATION PORTABLE", icon: "credit-card", color: "from-blue-500 to-slate-950" },
+            cps1: { name: "CAPCOM CPS-1", icon: "shield", color: "from-yellow-500 to-orange-900" },
+            cps2: { name: "CAPCOM CPS-2", icon: "shield-alert", color: "from-emerald-500 to-teal-900" },
+            cps3: { name: "CAPCOM CPS-3", icon: "shield-check", color: "from-cyan-500 to-blue-900" },
+            dreamcast: { name: "SEGA DREAMCAST", icon: "activity", color: "from-orange-500 to-red-800" },
+            mame: { name: "MAME (ARCADE)", icon: "cpu", color: "from-red-700 to-neutral-900" }
+        };
+
+        const juegosDatabase = [
+            { title: "PAC-MAN", img: "", src: "", system: "atari2600" },
+            { title: "SPACE INVADERS", img: "", src: "", system: "atari2600" },
+            { title: "PITFALL!", img: "", src: "", system: "atari2600" },
+            { title: "SUPER MARIO BROS.", img: "", src: "", system: "nes" },
+            { title: "THE LEGEND OF ZELDA", img: "", src: "", system: "nes" },
+            { title: "METROID", img: "", src: "", system: "nes" },
+            { title: "SUPER MARIO WORLD", img: "", src: "", system: "snes" },
+            { title: "CHRONO TRIGGER", img: "", src: "", system: "snes" },
+            { title: "DONKEY KONG COUNTRY", img: "", src: "", system: "snes" },
+            { title: "SUPER MARIO 64", img: "", src: "", system: "n64" },
+            { title: "THE LEGEND OF ZELDA: OCARINA OF TIME", img: "", src: "", system: "n64" },
+            { title: "MARIO KART 64", img: "", src: "", system: "n64" },
+            { title: "TETRIS", img: "", src: "", system: "gb" },
+            { title: "POKÉMON RED VERSION", img: "", src: "", system: "gb" },
+            { title: "SUPER MARIO LAND", img: "", src: "", system: "gb" },
+            { title: "POKÉMON CRYSTAL VERSION", img: "", src: "", system: "gbc" },
+            { title: "THE LEGEND OF ZELDA: ORACLE OF AGES", img: "", src: "", system: "gbc" },
+            { title: "SUPER MARIO BROS. DELUXE", img: "", src: "", system: "gbc" },
+            { title: "SONIC KOSTAS 32X", img: "", src: "", system: "sega32x" },
+            { title: "VIRTUA FIGHTER", img: "", src: "", system: "sega32x" },
+            { title: "DOOM 32X", img: "", src: "", system: "sega32x" },
+            { title: "SONIC THE HEDGEHOG", img: "", src: "", system: "gamegear" },
+            { title: "DEFENDER OF OASIS", img: "", src: "", system: "gamegear" },
+            { title: "TAILS ADVENTURE", img: "", src: "", system: "gamegear" },
+            { title: "SONIC THE HEDGEHOG 2", img: "", src: "", system: "megadrive" },
+            { title: "STREETS OF RAGE 2", img: "", src: "", system: "megadrive" },
+            { title: "ALADDIN GENESIS", img: "", src: "", system: "megadrive" },
+            { title: "ALEX KIDD IN MIRACLE WORLD", img: "", src: "", system: "sms" },
+            { title: "PHANTASY STAR", img: "", src: "", system: "sms" },
+            { title: "SONIC THE HEDGEHOG SMS", img: "", src: "", system: "sms" },
+            { title: "CASTELEVANIA: SYMPHONY OF THE NIGHT", img: "", src: "", system: "psx" },
+            { title: "CRASH BANDICOOT", img: "", src: "", system: "psx" },
+            { title: "METAL GEAR SOLID", img: "", src: "", system: "psx" },
+            { title: "DISSIDIA FINAL FANTASY", img: "", src: "", system: "psp" },
+            { title: "LOCOROCO", img: "", src: "", system: "psp" },
+            { title: "TEKKEN 6", img: "", src: "", system: "psp" },
+            { title: "STREET FIGHTER II: THE WORLD WARRIOR", img: "", src: "", system: "cps1" },
+            { title: "FINAL FIGHT", img: "", src: "", system: "cps1" },
+            { title: "CAPTAIN COMMANDO", img: "", src: "", system: "cps1" },
+            { title: "SUPER STREET FIGHTER II TURBO", img: "", src: "", system: "cps2" },
+            { title: "MARVEL VS. CAPCOM: CLASH OF SUPER HEROES", img: "", src: "", system: "cps2" },
+            { title: "ALIEN VS. PREDATOR", img: "", src: "", system: "cps2" },
+            { title: "STREET FIGHTER III 3RD STRIKE", img: "", src: "", system: "cps3" },
+            { title: "JOJO'S BIZARRE ADVENTURE", img: "", src: "", system: "cps3" },
+            { title: "RED EARTH", img: "", src: "", system: "cps3" },
+            { title: "SONIC ADVENTURE", img: "", src: "", system: "dreamcast" },
+            { title: "CRAZY TAXI", img: "", src: "", system: "dreamcast" },
+            { title: "SHENMUE", img: "", src: "", system: "dreamcast" },
+            { title: "METAL SLUG", img: "", src: "", system: "mame" },
+            { title: "PAC-MAN ARCADE", img: "", src: "", system: "mame" },
+            { title: "DONKEY KONG", img: "", src: "", system: "mame" },
+            { title: "ADVANCE WARS", img: "", src: "", system: "gba" },
+            { title: "POKÉMON RUBY VERSION", img: "", src: "", system: "gba" },
+            { title: "METROID FUSION", img: "", src: "", system: "gba" }
+        ];
+
+        let activeFilters = {
+            console: 'all'
+        };
+
+        let db;
+        const dbRequest = indexedDB.open("RetroOS_ROMs_Cache", 1);
+        dbRequest.onupgradeneeded = (e) => {
+            let database = e.target.result;
+            if (!database.objectStoreNames.contains("roms")) {
+                database.createObjectStore("roms", { keyPath: "title" });
+            }
+        };
+        dbRequest.onsuccess = (e) => {
+            db = e.target.result;
+            renderGames();
+        };
+
+        function cleanString(str) {
+            if (!str) return '';
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        function toggleFullscreen(enter = true) {
+            const docEl = document.documentElement;
+            if (enter) {
+                if (docEl.requestFullscreen) { docEl.requestFullscreen(); }
+                else if (docEl.mozRequestFullScreen) { docEl.mozRequestFullScreen(); }
+                else if (docEl.webkitRequestFullscreen) { docEl.webkitRequestFullscreen(); }
+                else if (docEl.msRequestFullscreen) { docEl.msRequestFullscreen(); }
+            } else {
+                if (document.exitFullscreen) { document.exitFullscreen(); }
+                else if (document.mozCancelFullScreen) { document.mozCancelFullScreen(); }
+                else if (document.webkitExitFullscreen) { document.webkitExitFullscreen(); }
+                else if (document.msExitFullscreen) { document.msExitFullscreen(); }
+            }
+        }
+
+        function renderGames() {
+            const grid = document.getElementById('games-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = '';
+
+            const filtered = juegosDatabase.filter(game => {
+                return activeFilters.console === 'all' || game.system === activeFilters.console;
+            });
+
+            document.getElementById('global-counter').textContent = `${filtered.length} / ${juegosDatabase.length} ROMS`;
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+            noResults.classList.add('hidden');
+
+            filtered.forEach(game => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900/60 backdrop-blur border border-slate-800/80 hover:border-rose-500 rounded-xl p-3 flex flex-col justify-between transition-all group relative overflow-hidden active:scale-[0.98]";
+                
+                const safeTitle = game.title.replace(/'/g, "\\'");
+
+                if (db) {
+                    const transaction = db.transaction(["roms"], "readonly");
+                    const store = transaction.objectStore("roms");
+                    const request = store.get(game.title);
+                    request.onsuccess = (e) => {
+                        if (e.target.result) {
+                            const actionContainer = document.getElementById(`actions-${safeTitle.replace(/\s+/g, '-')}`);
+                            if (actionContainer) {
+                                actionContainer.innerHTML = `
+                                    <button onclick="playCachedROM('${safeTitle}', '${game.system}')" class="bg-emerald-600 hover:bg-emerald-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5">
+                                        <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR
+                                    </button>
+                                    <label class="bg-slate-800 hover:bg-slate-700 text-slate-300 rounded p-1 text-[10px] font-bold uppercase transition-colors flex items-center cursor-pointer" title="Cambiar archivo">
+                                        <i data-lucide="refresh-cw" class="w-2.5 h-2.5"></i>
+                                        <input type="file" accept=".zip,.bin,.nes,.smc,.sfc,.n64,.gb,.gbc,.gba,.32x,.gg,.gen,.md,.sms,.pbp,.iso,.chd" class="hidden" 
+                                            onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
+                                    </label>
+                                `;
+                                lucide.createIcons();
+                            }
+                        }
+                    };
+                }
+
+                card.innerHTML = `
+                    <div>
+                        ${game.img ? `<img src="${game.img}" alt="${game.title}" class="w-full h-28 object-cover rounded-lg mb-2 border border-slate-800">` : ''}
+                        <h3 class="brand-font text-[11px] font-bold text-slate-100 group-hover:text-rose-400 transition-colors line-clamp-2 leading-tight tracking-wide uppercase">
+                            ${game.title}
+                        </h3>
+                    </div>
+                    <div class="mt-2 pt-1.5 border-t border-slate-950 flex items-center justify-between">
+                        <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter bg-slate-950 px-1 py-0.5 rounded border border-slate-800">${consoleDetails[game.system]?.name || game.system.toUpperCase()}</span>
+                        <div class="flex gap-1 items-center" id="actions-${safeTitle.replace(/\s+/g, '-')}">
+                            ${game.src ? `
+                            <button onclick="launchEmulatorJS('${game.src}', '${safeTitle}', '${game.system}')" class="bg-blue-600 hover:bg-blue-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5">
+                                <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR
+                            </button>
+                            ` : `
+                            <label class="bg-rose-600 hover:bg-rose-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5 cursor-pointer">
+                                <i data-lucide="upload" class="w-2.5 h-2.5"></i> CARGAR
+                                <input type="file" accept="${platformExtensions[game.system] || platformExtensions.all}" class="hidden" 
+                                    onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
+                            </label>
+                            `}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function handleLocalROM(input, gameTitle, consoleType) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            if (db) {
+                const transaction = db.transaction(["roms"], "readwrite");
+                const store = transaction.objectStore("roms");
+                store.put({ title: gameTitle, fileData: file });
+                transaction.oncomplete = () => { renderGames(); };
+            }
+            const localRomUrl = URL.createObjectURL(file);
+            launchEmulatorJS(localRomUrl, gameTitle, consoleType);
+        }
+
+        function playCachedROM(gameTitle, consoleType) {
+            if (!db) return;
+            const transaction = db.transaction(["roms"], "readonly");
+            const store = transaction.objectStore("roms");
+            const request = store.get(gameTitle);
+            request.onsuccess = (e) => {
+                const record = e.target.result;
+                if (record && record.fileData) {
+                    const localRomUrl = URL.createObjectURL(record.fileData);
+                    launchEmulatorJS(localRomUrl, gameTitle, consoleType);
+                }
+            };
+        }
+
+        function launchEmulatorJS(romUrl, gameTitle, consoleType) {
+            const emulatorSection = document.getElementById('emulator-section');
+            const container = document.getElementById('emulator-container');
+
+            emulatorSection.classList.remove('hidden');
+            toggleFullscreen(true);
+
+            container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
+
+            window.EJS_player = '#ejs-player';
+            window.EJS_core = ['mame', 'cps1', 'cps2', 'cps3', 'neogeo', 'fba'].includes(consoleType) ? 'mame' : consoleType;
+            window.EJS_gameUrl = romUrl; 
+            window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
+            window.EJS_startOnLoaded = true; 
+            window.EJS_Settings = { buttons: { fullscreen: false } };
+
+            const loaderScript = document.createElement('script');
+            loaderScript.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+            container.appendChild(loaderScript);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderGames();
+
+            const emulatorSection = document.getElementById('emulator-section');
+            const container = document.getElementById('emulator-container');
+            const fullscreenBtn = document.getElementById('fullscreen-toggle');
+            const consoleFilter = document.getElementById('console-filter');
+            const romUploader = document.getElementById('rom-uploader');
+
+            // ACTUALIZAR EXTENSIONES AL CAMBIAR PLATAFORMA
+            consoleFilter.addEventListener('change', (e) => {
+                activeFilters.console = e.target.value;
+                // Actualizar tipos de archivo permitidos en el botón general
+                romUploader.accept = platformExtensions[e.target.value] || platformExtensions.all;
+                renderGames();
+            });
+
+            // FUNCIONALIDAD DEL BOTÓN GENERAL CARGAR ROM
+            romUploader.addEventListener('change', (e) => {
+                if (!e.target.files || !e.target.files[0]) return;
+                const file = e.target.files[0];
+                const selectedConsole = consoleFilter.value;
+                const localRomUrl = URL.createObjectURL(file);
+                launchEmulatorJS(localRomUrl, file.name.replace(/\.[^/.]+$/, ""), selectedConsole);
+                // Reiniciar el input para permitir cargar el mismo archivo nuevamente
+                romUploader.value = '';
+            });
+
+            // 🟡 FUNCIONALIDAD DEL BOTÓN FLOTANTE
+            fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    toggleFullscreen(true);
+                    fullscreenBtn.title = "Salir de Pantalla Completa";
+                    fullscreenBtn.innerHTML = '<i data-lucide="minimize-2" class="w-6 h-6"></i>';
+                } else {
+                    toggleFullscreen(false);
+                    fullscreenBtn.title = "Activar Pantalla Completa";
+                    fullscreenBtn.innerHTML = '<i data-lucide="maximize-2" class="w-6 h-6"></i>';
+                }
+                lucide.createIcons();
+            });
+
+            // Actualizar ícono si cambia pantalla completa por otros medios
+            document.addEventListener('fullscreenchange', () => {
+                if (document.fullscreenElement) {
+                    fullscreenBtn.title = "Salir de Pantalla Completa";
+                    fullscreenBtn.innerHTML = '<i data-lucide="minimize-2" class="w-6 h-6"></i>';
+                } else {
+                    fullscreenBtn.title = "Activar Pantalla Completa";
+                    fullscreenBtn.innerHTML = '<i data-lucide="maximize-2" class="w-6 h-6"></i>';
+                }
+                lucide.createIcons();
+            });
+
+            const handleOrientationChange = () => {
+                const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+                if (isLandscape && emulatorSection.classList.contains('hidden')) toggleFullscreen(true);
+            };
+            (screen.orientation || window).addEventListener('change', handleOrientationChange);
+        });
+    </script>
+</body>
+</html>
