@@ -226,33 +226,34 @@
                 <select id="console-filter" class="bg-slate-950 border border-slate-800 text-slate-400 text-[10px] rounded px-2 py-1 focus:outline-none focus:border-rose-500">
                     <option value="all">TODAS LAS PLATAFORMAS</option>
                     <option value="2600">ATARI 2600</option>
+                    <!-- CONSEGIR ROMS
                     <option value="a2600">ATARI 2600 (ALT)</option>
+                    -->
+                    <!-- CONSEGIR ROMS
                     <option value="lynx">ATARI LYNX</option>
+                    -->
+                    <!-- CONSEGIR ROMS
                     <option value="jaguar">ATARI JAGUAR</option>
-                    <option value="gba">GAME BOY ADVANCE</option>
-                    <option value="gb">GAME BOY</option>
-                    <option value="gbc">GAME BOY COLOR</option>
+                    -->
                     <option value="nes">NINTENDO NES / FAMICOM</option>
                     <option value="snes">SUPER NINTENDO / SUPER FAMICOM</option>
                     <option value="n64">NINTENDO 64</option>
+                    <option value="gb">GAME BOY</option>
+                    <option value="gbc">GAME BOY COLOR</option>
+                    <option value="gba">GAME BOY ADVANCE</option>
+                    <option value="gamegear">SEGA GAME GEAR</option>
+                    <option value="sms">SEGA MASTER SYSTEM</option>
+                    <option value="megadrive">SEGA GENESIS / MEGA DRIVE</option>
+                    <option value="sega32x">SEGA 32X</option>
+                    <!-- CONSEGUIR ROMS
+                    <option value="saturn">SEGA SATURN</option>
+                    <option value="segacd">SEGA CD / MEGA CD</option>
+                    <option value="dreamcast">SEGA DREAMCAST</option>
                     <option value="ngp">NEO GEO POCKET</option>
                     <option value="ngpc">NEO GEO POCKET COLOR</option>
-                    <option value="sega32x">SEGA 32X</option>
-                    <option value="gamegear">SEGA GAME GEAR</option>
-                    <option value="megadrive">SEGA GENESIS / MEGA DRIVE</option>
-                    <option value="sms">SEGA MASTER SYSTEM</option>
-                    <option value="segacd">SEGA CD / MEGA CD</option>
-                    <option value="saturn">SEGA SATURN</option>
-                    <option value="dreamcast">SEGA DREAMCAST</option>
-                    <option value="psx">PLAYSTATION 1</option>
-                    <option value="ps2">PLAYSTATION 2</option>
-                    <option value="psp">PLAYSTATION PORTABLE</option>
-                    <option value="cps1">CAPCOM CPS-1</option>
-                    <option value="cps2">CAPCOM CPS-2</option>
-                    <option value="cps3">CAPCOM CPS-3</option>
-                    <option value="mame">MAME (ARCADE)</option>
-                    <option value="neogeo">NEO GEO ARCADE</option>
-                    <option value="fba">FINAL BURN ARCADE</option>
+                     <option value="ps2">PLAYSTATION 2</option>
+                     <option value="psp">PLAYSTATION PORTABLE</option>
+                     <option value="fba">FINAL BURN ARCADE</option>
                     <option value="vb">NINTENDO VIRTUAL BOY</option>
                     <option value="ws">BANDAI WONDERSWAN</option>
                     <option value="wsc">BANDAI WONDERSWAN COLOR</option>
@@ -265,6 +266,32 @@
                     <option value="c64">COMMODORE 64</option>
                     <option value="amiga">COMMODORE AMIGA</option>
                     <option value="dos">MS-DOS</option>
+                    -->
+                    
+                    
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <option value="psx">PLAYSTATION 1</option>
+                   
+                    
+                    <option value="cps1">CAPCOM CPS-1</option>
+                    <option value="cps2">CAPCOM CPS-2</option>
+                    <option value="cps3">CAPCOM CPS-3</option>
+                    <option value="mame">MAME (ARCADE)</option>
+                    <option value="neogeo">NEO GEO ARCADE</option>
+                    
+                    
+                    
+                    
                 </select>
 
                 <!-- BOTÓN CARGAR ROM CON MISMO ESTILO -->
@@ -308,6 +335,19 @@
     </main>
 
     <script>
+        // ------------------------------
+        // ✅ LISTA DE EQUIVALENCIAS: VALOR DEL MENÚ → NÚCLEO QUE RECONOCE EMULATORJS
+        // ------------------------------
+        const equivalenciaNucleos = {
+            '2600': 'atari2600',
+            'a2600': 'atari2600',
+            'gbc': 'gba',
+            'sms': 'genesis_plus_gx',
+            'gamegear': 'genesis_plus_gx',
+            'megadrive': 'genesis_plus_gx',
+            'all': null
+        };
+
         // EXTENSIONES PERMITIDAS POR PLATAFORMA (COMPATIBLES CON EMULATORJS)
         const platformExtensions = {
             'all': '.zip,.7z,.bin,.rom,.nes,.smc,.sfc,.fig,.sfc,.md,.gen,.smd,.32x,.gg,.sms,.iso,.chd,.cue,.pbp,.img,.n64,.v64,.z64,.gb,.gbc,.gba,.nds,.pce,.sgx,.ccd,.m3u,.chd,.ngp,.ngc,.lnx,.jag,.ws,.wsc,.vb,.dsk,.tap,.z80,.sna,.cdt,.fdi,.d64,.g64,.prg,.adf,.ipf,.dms,.exe,.com,.bat',
@@ -376,11 +416,10 @@
         };
 
         const juegosDatabase = [
-        			{ title: "CARGA TU ROM ATARI AQUI", img: "", src: "", system: "atari2600" },
             { title: "PAC MAN 4K", img: "pacman4k(atari2600).jpg", src: "pacman4k(atari2600).bin", system: "atari2600" },
             { title: "SOCCER", img: "soccer(atari2600).png", src: "soccer(atari2600).bin", system: "atari2600" },
             { title: "PITFALL!", img: "", src: "", system: "atari2600" },
-            { title: "SUPER MARIO BROS.", img: "", src: "", system: "nes" },
+            { title: "SPACE MUTANTS.", img: "SpaceMutantsExtendoDG.png", src: "SpaceMutantsExtendoDG.nes", system: "nes" },
             { title: "THE LEGEND OF ZELDA", img: "", src: "", system: "nes" },
             { title: "METROID", img: "", src: "", system: "nes" },
             { title: "SUPER MARIO WORLD", img: "", src: "", system: "snes" },
@@ -582,8 +621,16 @@
 
             container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
 
+            // ✅ AQUÍ SE CORRIGE EL NÚCLEO ANTES DE ENVIARLO AL EMULADOR
+            let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
+            
+            // Si es "todas las plataformas", usamos el núcleo de la ROM si viene definido
+            if (nucleoCorrecto === null) {
+                nucleoCorrecto = consoleType;
+            }
+
             window.EJS_player = '#ejs-player';
-            window.EJS_core = ['mame', 'cps1', 'cps2', 'cps3', 'neogeo', 'fba'].includes(consoleType) ? 'mame' : consoleType;
+            window.EJS_core = ['mame', 'cps1', 'cps2', 'cps3', 'neogeo', 'fba'].includes(nucleoCorrecto) ? 'mame' : nucleoCorrecto;
             window.EJS_gameUrl = romUrl; 
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
             window.EJS_startOnLoaded = true; 
