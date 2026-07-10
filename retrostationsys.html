@@ -616,35 +616,33 @@
         }
 
         function launchEmulatorJS(romUrl, gameTitle, consoleType) {
-    const emulatorSection = document.getElementById('emulator-section');
-    const container = document.getElementById('emulator-container');
+            const emulatorSection = document.getElementById('emulator-section');
+            const container = document.getElementById('emulator-container');
 
-    emulatorSection.classList.remove('hidden');
-    toggleFullscreen(true);
+            emulatorSection.classList.remove('hidden');
+            toggleFullscreen(true);
 
-    container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
+            container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
 
-    // ✅ AQUÍ SE CORRIGE EL NÚCLEO Y RUTAS
-    let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
-    
-    if (nucleoCorrecto === null) {
-        nucleoCorrecto = consoleType;
-    }
+            // ✅ AQUÍ SE CORRIGE EL NÚCLEO ANTES DE ENVIARLO AL EMULADOR
+            let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
+            
+            // Si es "todas las plataformas", usamos el núcleo de la ROM si viene definido
+            if (nucleoCorrecto === null) {
+                nucleoCorrecto = consoleType;
+            }
 
-    window.EJS_player = '#ejs-player';
-    // ✅ LOS NÚCLEOS Y ARCHIVOS DE DATOS VAN DE TU CARPETA LOCAL
-    window.EJS_pathtodata = './cores/';
-    window.EJS_core = nucleoCorrecto;
-    window.EJS_gameUrl = romUrl; 
-    window.EJS_startOnLoaded = true; 
-    window.EJS_Settings = { buttons: { fullscreen: false } };
+            window.EJS_player = '#ejs-player';
+            window.EJS_core = ['mame', 'cps1', 'cps2', 'cps3', 'neogeo', 'fba'].includes(nucleoCorrecto) ? 'mame' : nucleoCorrecto;
+            window.EJS_gameUrl = romUrl; 
+            window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
+            window.EJS_startOnLoaded = true; 
+            window.EJS_Settings = { buttons: { fullscreen: false } };
 
-    // ✅ EL LOADER.JS SE CARGA DEL CDN OFICIAL (NO ESTÁ EN TU CARPETA)
-    const loaderScript = document.createElement('script');
-    loaderScript.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
-    container.appendChild(loaderScript);
-}
-
+            const loaderScript = document.createElement('script');
+            loaderScript.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+            container.appendChild(loaderScript);
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
