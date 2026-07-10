@@ -29,6 +29,36 @@
             border-radius: 2px;
         }
 
+        /* ✅ ESTILOS PARA CARRUSEL TÁCTIL */
+        .platform-section {
+            margin-bottom: 1.5rem;
+        }
+        .platform-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #f43f5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+        }
+        .carousel-container {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0.25rem;
+            -webkit-overflow-scrolling: touch; /* ✅ Desplazamiento suave en táctiles */
+            scrollbar-width: none;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .game-card {
+            flex: 0 0 140px; /* ✅ Ancho fijo para cada ficha */
+            max-width: 140px;
+        }
+
         @media screen and (orientation: portrait) {
             .portrait-warning {
                 display: flex !important;
@@ -266,32 +296,14 @@
                     <option value="c64">COMMODORE 64</option>
                     <option value="amiga">COMMODORE AMIGA</option>
                     <option value="dos">MS-DOS</option>
-                    -->
-                    
-                    
-                   
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <option value="psx">PLAYSTATION 1</option>
-                   
-                    
                     <option value="cps1">CAPCOM CPS-1</option>
                     <option value="cps2">CAPCOM CPS-2</option>
                     <option value="cps3">CAPCOM CPS-3</option>
                     <option value="mame">MAME (ARCADE)</option>
                     <option value="neogeo">NEO GEO ARCADE</option>
-                    
-                    
-                    
-                    
+                    -->
+                    <option value="psx">PLAYSTATION 1</option>
+                                     
                 </select>
 
                 <!-- BOTÓN CARGAR ROM CON MISMO ESTILO -->
@@ -312,8 +324,8 @@
                     <i data-lucide="search-slash" class="w-10 h-10 text-slate-600 mx-auto mb-2"></i>
                     <h3 class="text-sm font-bold text-slate-400">No hay roms coincidentes</h3>
                 </div>
-                <div id="games-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-                </div>
+                <!-- ✅ AHORA SE MUESTRA POR PLATAFORMAS CON CARRUSEL -->
+                <div id="games-content"></div>
             </div>
 
             <section id="emulator-section" class="hidden bg-black flex flex-col justify-between">
@@ -345,7 +357,6 @@
             'sms': 'genesis_plus_gx',
             'gamegear': 'genesis_plus_gx',
             'megadrive': 'genesis_plus_gx',
-            'cps1': 'fbalpha2012_cps1',
             'all': null
         };
 
@@ -417,62 +428,104 @@
         };
 
         const juegosDatabase = [
-            { title: "PAC MAN 4K", img: "pacman4k(atari2600).jpg", src: "pacman4k(atari2600).bin", system: "atari2600" },
-            { title: "SOCCER", img: "soccer(atari2600).png", src: "soccer(atari2600).bin", system: "atari2600" },
-            { title: "PITFALL!", img: "", src: "", system: "atari2600" },
-            { title: "DETH COMPLEX 2", img: "dethcomplex2.png", src: "dethcomplex2.nes", system: "nes" },
-            { title: "MAGICAL DUNGEON 3D", img: "magicaldungeon3d.png", src: "magicaldungeon3d.nes", system: "nes" },
-            { title: "SPACE MUTANTS.", img: "SpaceMutantsExtendoDG.png", src: "SpaceMutantsExtendoDG.nes", system: "nes" },
+        // JUEGOS ATARI 2600
+            { title: "PAC MAN 4K", img: "https://drive.google.com/thumbnail?id=1K42axvcoK9pbt6bG31wmHL6_91TCNcq_", src: "pacman4k(atari2600).bin", system: "atari2600" },
+            { title: "SOCCER", img: "https://drive.google.com/thumbnail?id=16C0nrVvgcY6gU7Lnp-C-88kFZzeOHRsd", src: "soccer(atari2600).bin", system: "atari2600" },
             
             
+            //JUEGOS NINTENDO        
+            { title: "DETH COMPLEX 2", img: "https://drive.google.com/thumbnail?id=1jKRthY7Cx356aVCMyOjqieDV5qj-xnPt", src: "dethcomplex2.nes", system: "nes" },
+            { title: "MAGICAL DUNGEON 3D", img: "https://drive.google.com/thumbnail?id=10Qzz4bcGnNBO71gSqtnRcWEpAKVNcHBx", src: "magicaldungeon3d.nes", system: "nes" },
+            { title: "SPACE MUTANTS.", img: "https://drive.google.com/thumbnail?id=1qXOY_rwnJQG8SCzb1c68XO1o-JIXbNEf", src: "SpaceMutantsExtendoDG.nes", system: "nes" },
+            { title: "DETH COMPLEX 2", img: "https://drive.google.com/thumbnail?id=1jKRthY7Cx356aVCMyOjqieDV5qj-xnPt", src: "dethcomplex2.nes", system: "nes" },
+            { title: "MAGICAL DUNGEON 3D", img: "https://drive.google.com/thumbnail?id=10Qzz4bcGnNBO71gSqtnRcWEpAKVNcHBx", src: "magicaldungeon3d.nes", system: "nes" },
+            { title: "SPACE MUTANTS.", img: "https://drive.google.com/thumbnail?id=1qXOY_rwnJQG8SCzb1c68XO1o-JIXbNEf", src: "SpaceMutantsExtendoDG.nes", system: "nes" },
+            { title: "DETH COMPLEX 2", img: "https://drive.google.com/thumbnail?id=1jKRthY7Cx356aVCMyOjqieDV5qj-xnPt", src: "dethcomplex2.nes", system: "nes" },
+            { title: "MAGICAL DUNGEON 3D", img: "https://drive.google.com/thumbnail?id=10Qzz4bcGnNBO71gSqtnRcWEpAKVNcHBx", src: "magicaldungeon3d.nes", system: "nes" },
+            { title: "SPACE MUTANTS.", img: "https://drive.google.com/thumbnail?id=1qXOY_rwnJQG8SCzb1c68XO1o-JIXbNEf", src: "SpaceMutantsExtendoDG.nes", system: "nes" },
+            
+            
+            //JUEGOS SUPER NINTENDO
             { title: "SUPER MARIO WORLD", img: "", src: "", system: "snes" },
             { title: "CHRONO TRIGGER", img: "", src: "", system: "snes" },
             { title: "DONKEY KONG COUNTRY", img: "", src: "", system: "snes" },
+            
+            
+            // JUEGOS NINTENDO 64
             { title: "SUPER MARIO 64", img: "", src: "", system: "n64" },
             { title: "THE LEGEND OF ZELDA: OCARINA OF TIME", img: "", src: "", system: "n64" },
             { title: "MARIO KART 64", img: "", src: "", system: "n64" },
+            
+            
+            // JUEGOS GAME BOY
             { title: "TETRIS", img: "", src: "", system: "gb" },
             { title: "POKÉMON RED VERSION", img: "", src: "", system: "gb" },
             { title: "SUPER MARIO LAND", img: "", src: "", system: "gb" },
+            
+            
+            // JUEGOS GAME BOY COLOR
             { title: "POKÉMON CRYSTAL VERSION", img: "", src: "", system: "gbc" },
             { title: "THE LEGEND OF ZELDA: ORACLE OF AGES", img: "", src: "", system: "gbc" },
+            
+            
+            // JUEGOS GAME BOY ADVANCE
+            { title: "ADVANCE WARS", img: "", src: "", system: "gba" },
+            { title: "POKÉMON RUBY VERSION", img: "", src: "", system: "gba" },
+            { title: "METROID FUSION", img: "", src: "", system: "gba" },
+            
+            
+            // JUEGOS SEGA 32X
             { title: "SUPER MARIO BROS. DELUXE", img: "", src: "", system: "gbc" },
             { title: "SONIC KOSTAS 32X", img: "", src: "", system: "sega32x" },
             { title: "VIRTUA FIGHTER", img: "", src: "", system: "sega32x" },
             { title: "DOOM 32X", img: "", src: "", system: "sega32x" },
+            
+            
+            // JUEGOS SEGA GAME GEAR
             { title: "SONIC THE HEDGEHOG", img: "", src: "", system: "gamegear" },
             { title: "DEFENDER OF OASIS", img: "", src: "", system: "gamegear" },
             { title: "TAILS ADVENTURE", img: "", src: "", system: "gamegear" },
+            
+            
+            // JUEGOS SEGA MEGADRIVE
             { title: "SONIC THE HEDGEHOG 2", img: "", src: "", system: "megadrive" },
             { title: "STREETS OF RAGE 2", img: "", src: "", system: "megadrive" },
             { title: "ALADDIN GENESIS", img: "", src: "", system: "megadrive" },
+            
+            
+            //JUEGOS SEGA MASTER SYSTEM
             { title: "ALEX KIDD IN MIRACLE WORLD", img: "", src: "", system: "sms" },
-            { title: "PHANTASY STAR", img: "", src: "", system: "sms" },
+            { title: "PHANTASY STAR", img: "", src: "", system: "sms" },      
             { title: "SONIC THE HEDGEHOG SMS", img: "", src: "", system: "sms" },
+            
+            // JUEGOS SEGA DREAMCAST
+            //{ title: "SHENMUE", img: "", src: "", system: "dreamcast" },
+            
+            
+            // JUEGOS PLAY STATION 1
             { title: "CASTELEVANIA: SYMPHONY OF THE NIGHT", img: "", src: "", system: "psx" },
             { title: "CRASH BANDICOOT", img: "", src: "", system: "psx" },
             { title: "METAL GEAR SOLID", img: "", src: "", system: "psx" },
-            { title: "DISSIDIA FINAL FANTASY", img: "", src: "", system: "psp" },
-            { title: "LOCOROCO", img: "", src: "", system: "psp" },
-            { title: "TEKKEN 6", img: "", src: "", system: "psp" },
-            { title: "STREET FIGHTER II: THE WORLD WARRIOR", img: "", src: "", system: "cps1" },
-            { title: "FINAL FIGHT", img: "", src: "", system: "cps1" },
-            { title: "CAPTAIN COMMANDO", img: "", src: "", system: "cps1" },
-            { title: "SUPER STREET FIGHTER II TURBO", img: "", src: "", system: "cps2" },
-            { title: "MARVEL VS. CAPCOM: CLASH OF SUPER HEROES", img: "", src: "", system: "cps2" },
-            { title: "ALIEN VS. PREDATOR", img: "", src: "", system: "cps2" },
-            { title: "STREET FIGHTER III 3RD STRIKE", img: "", src: "", system: "cps3" },
-            { title: "JOJO'S BIZARRE ADVENTURE", img: "", src: "", system: "cps3" },
-            { title: "RED EARTH", img: "", src: "", system: "cps3" },
-            { title: "SONIC ADVENTURE", img: "", src: "", system: "dreamcast" },
-            { title: "CRAZY TAXI", img: "", src: "", system: "dreamcast" },
-            { title: "SHENMUE", img: "", src: "", system: "dreamcast" },
-            { title: "METAL SLUG", img: "", src: "", system: "mame" },
-            { title: "PAC-MAN ARCADE", img: "", src: "", system: "mame" },
-            { title: "DONKEY KONG", img: "", src: "", system: "mame" },
-            { title: "ADVANCE WARS", img: "", src: "", system: "gba" },
-            { title: "POKÉMON RUBY VERSION", img: "", src: "", system: "gba" },
-            { title: "METROID FUSION", img: "", src: "", system: "gba" }
+            
+            // JUEGOS PPSSPP
+            //{ title: "DISSIDIA FINAL FANTASY", img: "", src: "", system: "psp" },
+            
+            
+            // JUEGOS CPS1
+            //{ title: "STREET FIGHTER II: THE WORLD WARRIOR", img: "", src: "", system: "cps1" },
+            
+            
+            //JUEGOS CPS2
+            //{ title: "SUPER STREET FIGHTER II TURBO", img: "", src: "", system: "cps2" },
+            
+            
+            //JUEGOS CPS3
+            //{ title: "STREET FIGHTER III 3RD STRIKE", img: "", src: "", system: "cps3" },
+            
+            
+            //JUEGOS MAME         
+            //{ title: "METAL SLUG", img: "", src: "", system: "mame" },
+                                
         ];
 
         let activeFilters = {
@@ -513,13 +566,14 @@
         }
 
         function renderGames() {
-            const grid = document.getElementById('games-grid');
+            const content = document.getElementById('games-content');
             const noResults = document.getElementById('no-results');
-            grid.innerHTML = '';
+            content.innerHTML = '';
 
-            const filtered = juegosDatabase.filter(game => {
-                return activeFilters.console === 'all' || game.system === activeFilters.console;
-            });
+            let filtered = juegosDatabase;
+            if (activeFilters.console !== 'all') {
+                filtered = juegosDatabase.filter(game => game.system === activeFilters.console);
+            }
 
             document.getElementById('global-counter').textContent = `${filtered.length} / ${juegosDatabase.length} ROMS`;
 
@@ -529,62 +583,85 @@
             }
             noResults.classList.add('hidden');
 
+            // ✅ AGRUPAMOS JUEGOS POR PLATAFORMA
+            const grouped = {};
             filtered.forEach(game => {
-                const card = document.createElement('div');
-                card.className = "bg-slate-900/60 backdrop-blur border border-slate-800/80 hover:border-rose-500 rounded-xl p-3 flex flex-col justify-between transition-all group relative overflow-hidden active:scale-[0.98]";
-                
-                const safeTitle = game.title.replace(/'/g, "\\'");
-
-                if (db) {
-                    const transaction = db.transaction(["roms"], "readonly");
-                    const store = transaction.objectStore("roms");
-                    const request = store.get(game.title);
-                    request.onsuccess = (e) => {
-                        if (e.target.result) {
-                            const actionContainer = document.getElementById(`actions-${safeTitle.replace(/\s+/g, '-')}`);
-                            if (actionContainer) {
-                                actionContainer.innerHTML = `
-                                    <button onclick="playCachedROM('${safeTitle}', '${game.system}')" class="bg-emerald-600 hover:bg-emerald-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5">
-                                        <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR
-                                    </button>
-                                    <label class="bg-slate-800 hover:bg-slate-700 text-slate-300 rounded p-1 text-[10px] font-bold uppercase transition-colors flex items-center cursor-pointer" title="Cambiar archivo">
-                                        <i data-lucide="refresh-cw" class="w-2.5 h-2.5"></i>
-                                        <input type="file" accept=".zip,.bin,.nes,.smc,.sfc,.n64,.gb,.gbc,.gba,.32x,.gg,.gen,.md,.sms,.pbp,.iso,.chd" class="hidden" 
-                                            onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
-                                    </label>
-                                `;
-                                lucide.createIcons();
-                            }
-                        }
-                    };
-                }
-
-                card.innerHTML = `
-                    <div>
-                        ${game.img ? `<img src="${game.img}" alt="${game.title}" class="w-full h-28 object-cover rounded-lg mb-2 border border-slate-800">` : ''}
-                        <h3 class="brand-font text-[11px] font-bold text-slate-100 group-hover:text-rose-400 transition-colors line-clamp-2 leading-tight tracking-wide uppercase">
-                            ${game.title}
-                        </h3>
-                    </div>
-                    <div class="mt-2 pt-1.5 border-t border-slate-950 flex items-center justify-between">
-                        <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter bg-slate-950 px-1 py-0.5 rounded border border-slate-800">${consoleDetails[game.system]?.name || game.system.toUpperCase()}</span>
-                        <div class="flex gap-1 items-center" id="actions-${safeTitle.replace(/\s+/g, '-')}">
-                            ${game.src ? `
-                            <button onclick="launchEmulatorJS('${game.src}', '${safeTitle}', '${game.system}')" class="bg-blue-600 hover:bg-blue-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5">
-                                <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR
-                            </button>
-                            ` : `
-                            <label class="bg-rose-600 hover:bg-rose-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5 cursor-pointer">
-                                <i data-lucide="upload" class="w-2.5 h-2.5"></i> CARGAR
-                                <input type="file" accept="${platformExtensions[game.system] || platformExtensions.all}" class="hidden" 
-                                    onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
-                            </label>
-                            `}
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
+                if (!grouped[game.system]) grouped[game.system] = [];
+                grouped[game.system].push(game);
             });
+
+            // ✅ CREAMOS CADA SECCIÓN CON SU CARRUSEL
+            Object.entries(grouped).forEach(([system, games]) => {
+                const section = document.createElement('div');
+                section.className = 'platform-section';
+                
+                const consoleName = consoleDetails[system]?.name || system.toUpperCase();
+                section.innerHTML = `<h3 class="platform-title">${consoleName}</h3>`;
+
+                const carousel = document.createElement('div');
+                carousel.className = 'carousel-container';
+
+                games.forEach(game => {
+                    const card = document.createElement('div');
+                    card.className = "game-card bg-slate-900/60 backdrop-blur border border-slate-800/80 hover:border-rose-500 rounded-xl p-3 flex flex-col justify-between transition-all group relative overflow-hidden active:scale-[0.98]";
+                    
+                    const safeTitle = game.title.replace(/'/g, "\\'");
+
+                    if (db) {
+                        const transaction = db.transaction(["roms"], "readonly");
+                        const store = transaction.objectStore("roms");
+                        const request = store.get(game.title);
+                        request.onsuccess = (e) => {
+                            if (e.target.result) {
+                                const actionContainer = document.getElementById(`actions-${safeTitle.replace(/\s+/g, '-')}`);
+                                if (actionContainer) {
+                                    actionContainer.innerHTML = `
+                                        <button onclick="playCachedROM('${safeTitle}', '${game.system}')" class="bg-emerald-600 hover:bg-emerald-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5">
+                                            <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR
+                                        </button>
+                                        <label class="bg-slate-800 hover:bg-slate-700 text-slate-300 rounded p-1 text-[10px] font-bold uppercase transition-colors flex items-center cursor-pointer" title="Cambiar archivo">
+                                            <i data-lucide="refresh-cw" class="w-2.5 h-2.5"></i>
+                                            <input type="file" accept=".zip,.bin,.nes,.smc,.sfc,.n64,.gb,.gbc,.gba,.32x,.gg,.gen,.md,.sms,.pbp,.iso,.chd" class="hidden" 
+                                                onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
+                                        </label>
+                                    `;
+                                    lucide.createIcons();
+                                }
+                            }
+                        };
+                    }
+
+                    card.innerHTML = `
+                        <div>
+                            ${game.img ? `<img src="${game.img}" alt="${game.title}" class="w-full h-28 object-cover rounded-lg mb-2 border border-slate-800">` : ''}
+                            <h3 class="brand-font text-[11px] font-bold text-slate-100 group-hover:text-rose-400 transition-colors line-clamp-2 leading-tight tracking-wide uppercase">
+                                ${game.title}
+                            </h3>
+                        </div>
+                        <div class="mt-2 pt-1.5 border-t border-slate-950 flex items-center justify-between">
+                            <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter bg-slate-950 px-1 py-0.5 rounded border border-slate-800">${consoleDetails[game.system]?.name || game.system.toUpperCase()}</span>
+                            <div class="flex gap-1 items-center" id="actions-${safeTitle.replace(/\s+/g, '-')}">
+                                ${game.src ? `
+                                <button onclick="launchEmulatorJS('${game.src}', '${safeTitle}', '${game.system}')" class="bg-blue-600 hover:bg-blue-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5">
+                                    <i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR
+                                </button>
+                                ` : `
+                                <label class="bg-rose-600 hover:bg-rose-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5 cursor-pointer">
+                                    <i data-lucide="upload" class="w-2.5 h-2.5"></i> CARGAR
+                                    <input type="file" accept="${platformExtensions[game.system] || platformExtensions.all}" class="hidden" 
+                                        onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
+                                </label>
+                                `}
+                            </div>
+                        </div>
+                    `;
+                    carousel.appendChild(card);
+                });
+
+                section.appendChild(carousel);
+                content.appendChild(section);
+            });
+
             lucide.createIcons();
         }
 
