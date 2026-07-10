@@ -616,35 +616,35 @@
         }
 
         function launchEmulatorJS(romUrl, gameTitle, consoleType) {
-            const emulatorSection = document.getElementById('emulator-section');
-            const container = document.getElementById('emulator-container');
+    const emulatorSection = document.getElementById('emulator-section');
+    const container = document.getElementById('emulator-container');
 
-            emulatorSection.classList.remove('hidden');
-            toggleFullscreen(true);
+    emulatorSection.classList.remove('hidden');
+    toggleFullscreen(true);
 
-            container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
+    container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
 
-            // ✅ AQUÍ SE CORRIGE EL NÚCLEO Y RUTA DE TUS ARCHIVOS LOCALES
-            let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
-            
-            // Si es "todas las plataformas", usamos el valor tal cual
-            if (nucleoCorrecto === null) {
-                nucleoCorrecto = consoleType;
-            }
+    // ✅ AQUÍ SE CORRIGE EL NÚCLEO Y RUTAS
+    let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
+    
+    if (nucleoCorrecto === null) {
+        nucleoCorrecto = consoleType;
+    }
 
-            window.EJS_player = '#ejs-player';
-            // ✅ USAMOS TUS NÚCLEOS LOCALES DE LA CARPETA cores
-            window.EJS_pathtodata = './cores/';
-            window.EJS_core = nucleoCorrecto;
-            window.EJS_gameUrl = romUrl; 
-            window.EJS_startOnLoaded = true; 
-            window.EJS_Settings = { buttons: { fullscreen: false } };
+    window.EJS_player = '#ejs-player';
+    // ✅ LOS NÚCLEOS Y ARCHIVOS DE DATOS VAN DE TU CARPETA LOCAL
+    window.EJS_pathtodata = './cores/';
+    window.EJS_core = nucleoCorrecto;
+    window.EJS_gameUrl = romUrl; 
+    window.EJS_startOnLoaded = true; 
+    window.EJS_Settings = { buttons: { fullscreen: false } };
 
-            // ✅ CARGAMOS EL CARGADOR TAMBIÉN DESDE TU CARPETA
-            const loaderScript = document.createElement('script');
-            loaderScript.src = './cores/loader.js';
-            container.appendChild(loaderScript);
-        }
+    // ✅ EL LOADER.JS SE CARGA DEL CDN OFICIAL (NO ESTÁ EN TU CARPETA)
+    const loaderScript = document.createElement('script');
+    loaderScript.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+    container.appendChild(loaderScript);
+}
+
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
