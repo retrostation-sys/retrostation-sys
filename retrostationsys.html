@@ -55,7 +55,7 @@
             display: none;
         }
         .game-card {
-            flex: 0 0 140px; /* ✅ Ancho fijo para cada ficha */
+            flex: 0 0 140px; /* 🟡 Ancho fijo para cada ficha */
             max-width: 140px;
         }
 
@@ -80,7 +80,7 @@
             max-height: none !important;
         }
 
-        /* 🟡 BOTÓN PANTALLA COMPLETA FLOTANTE */
+        /* 🟡 BOTÓN PANTALLA COMPLETA */
         .fullscreen-btn {
             position: fixed;
             bottom: 12px;
@@ -104,7 +104,7 @@
             transform: scale(0.95);
         }
 
-        /* ESTILO DEL BOTÓN SALIR AGREGADO */
+        /* BOTÓN SALIR */
         .exit-emulator-btn {
             position: absolute;
             top: 12px;
@@ -152,17 +152,17 @@
 
 
 
-    <!-- 🟡 BOTÓN FLOTANTE PANTALLA COMPLETA -->
+    <!-- 🟡 BOTÓN PANTALLA COMPLETA -->
     <button id="fullscreen-toggle" class="fullscreen-btn" title="Activar Pantalla Completa">
         <i data-lucide="maximize-2" class="w-3 h-3"></i>
     </button>
 
 
-    <!-- PANTALLA GIRA TU DISPOSITIVO CON ESPACIOS PUBLICITARIOS -->
+    <!--🟡 PANTALLA GIRA TU DISPOSITIVO  -->
     <div class="portrait-warning fixed inset-0 bg-slate-950 z-[100] hidden flex-col bg-cover bg-center bg-no-repeat" 
          style="background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('URL_DE_TU_IMAGEN_AQUI');">
         
-        <!-- 📢 ESPACIO PUBLICITARIO SUPERIOR -->
+        <!-- 🟡 ESPACIO PUBLICITARIO SUPERIOR -->
         <div class="w-full p-3 flex-shrink-0">
             <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
                 <span class="ad-label mb-2">Espacio Publicitario</span>
@@ -176,7 +176,7 @@
             </div>
         </div>
 
-        <!-- CONTENIDO CENTRAL SIN MODIFICACIONES -->
+        <!-- 🟡 CONTENIDO CENTRAL -->
         <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
             <div class="w-16 h-16 bg-rose-600 rounded-full flex items-center justify-center animate-bounce mb-4 shadow-lg shadow-rose-600/50">
                 <i data-lucide="rotate-cw" class="w-8 h-8 text-white"></i>
@@ -185,7 +185,7 @@
             <p class="text-slate-300 text-xs mt-2 max-w-xs drop-shadow">Para disfrutar de la experiencia RETROSTATION-SYS completa, por favor rota tu pantalla a modo horizontal.</p>
         </div>
 
-        <!-- 📢 ESPACIO PUBLICITARIO INFERIOR -->
+        <!-- 🟡ESPACIO PUBLICITARIO INFERIOR -->
         <div class="w-full p-3 flex-shrink-0">
             <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
                 <span class="ad-label mb-2">Espacio Publicitario</span>
@@ -201,11 +201,11 @@
     </div>
 
 
-    <!-- 📢  PUBLICIDAD BARRA LATERAL-->
+    <!-- 🟡  PUBLICIDAD BARRA LATERAL-->
     <aside class="w-full md:w-64 bg-slate-900 border-b md:border-b-0 md:border-r border-slate-800 flex flex-col shrink-0 h-auto md:h-full z-10 p-3 gap-3">
     
     
-        <!-- MARCA DEL PROYECTO-->
+        <!-- 🟡 MARCA DEL PROYECTO-->
         <div class="p-3 flex items-center gap-3 border-b border-slate-800 bg-slate-950/40 rounded-xl">
             <div class="w-8 h-8 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg shadow-rose-900/40">
                 <i data-lucide="gamepad-2" class="w-5 h-5 text-white"></i>
@@ -217,7 +217,7 @@
         </div>
 
 
-        <!-- BLOQUE 1: Anuncio principal (mayor tamaño) -->
+        <!-- 🟡 BLOQUE 1: Anuncio  -->
         <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[180px] md:min-h-[220px]">
             <span class="ad-label mb-2">Espacio Publicitario Premium</span>
             <ins class="adsbygoogle"
@@ -229,7 +229,7 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- BLOQUE 2: Anuncio mediano -->
+        <!-- 🟡 BLOQUE 2: Anuncio -->
         <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[120px]">
             <span class="ad-label mb-2">Espacio Publicitario</span>
             <ins class="adsbygoogle"
@@ -240,7 +240,7 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- Bloque informativo opcional -->
+        <!--🟡  Bloque informativo -->
         <div class="ad-block p-3 text-center mt-auto">
             <p class="text-[9px] text-slate-400 font-medium">
                 Apoya el proyecto manteniendo la publicidad activa<br>
@@ -306,7 +306,7 @@
                                      
                 </select>
 
-                <!-- BOTÓN CARGAR ROM CON MISMO ESTILO -->
+                <!--🟡  BOTÓN CARGAR ROM -->
                 <label class="bg-slate-950 border border-slate-800 text-slate-400 text-[10px] rounded px-2 py-1 focus:outline-none focus:border-rose-500 hover:text-white cursor-pointer flex items-center gap-1 font-medium">
                     <i data-lucide="upload" class="w-3 h-3"></i> CARGAR ROM
                     <input type="file" id="rom-uploader" class="hidden">
@@ -324,12 +324,12 @@
                     <i data-lucide="search-slash" class="w-10 h-10 text-slate-600 mx-auto mb-2"></i>
                     <h3 class="text-sm font-bold text-slate-400">No hay roms coincidentes</h3>
                 </div>
-                <!-- ✅ AHORA SE MUESTRA POR PLATAFORMAS CON CARRUSEL -->
+                <!--  🟡 CARRUSELES -->
                 <div id="games-content"></div>
             </div>
 
             <section id="emulator-section" class="hidden bg-black flex flex-col justify-between">
-                <!-- BOTÓN SALIR AGREGADO EXACTAMENTE AQUÍ -->
+                <!-- 🟡 BOTÓN SALIR  -->
                 <button id="exit-emulator" class="exit-emulator-btn">SALIR</button>
                 
                 <div class="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
@@ -347,9 +347,7 @@
     </main>
 
     <script>
-        // ------------------------------
-        // ✅ LISTA DE EQUIVALENCIAS: VALOR DEL MENÚ → NÚCLEO QUE RECONOCE EMULATORJS
-        // ------------------------------
+        // 🟡 LISTA DE EQUIVALENCIAS: VALOR DEL MENÚ → NÚCLEO QUE RECONOCE EMULATORJS
         const equivalenciaNucleos = {
             '2600': 'atari2600',
             'a2600': 'atari2600',
@@ -360,7 +358,7 @@
             'all': null
         };
 
-        // EXTENSIONES PERMITIDAS POR PLATAFORMA (COMPATIBLES CON EMULATORJS)
+        // 🟡 EXTENSIONES COMPATIBLES CON EMULATORJS
         const platformExtensions = {
             'all': '.zip,.7z,.bin,.rom,.nes,.smc,.sfc,.fig,.sfc,.md,.gen,.smd,.32x,.gg,.sms,.iso,.chd,.cue,.pbp,.img,.n64,.v64,.z64,.gb,.gbc,.gba,.nds,.pce,.sgx,.ccd,.m3u,.chd,.ngp,.ngc,.lnx,.jag,.ws,.wsc,.vb,.dsk,.tap,.z80,.sna,.cdt,.fdi,.d64,.g64,.prg,.adf,.ipf,.dms,.exe,.com,.bat',
             '2600': '.a26,.bin,.rom,.zip',
@@ -428,103 +426,133 @@
         };
 
         const juegosDatabase = [
-        // JUEGOS ATARI 2600
+        // 🟡 JUEGOS ATARI 2600
         			{ title: "CAVE 1K", img: "https://drive.google.com/thumbnail?id=10Z-aAZ1-0z_XpTa20joELFHxvHlz7I8G", src: "cave1k.bin", system: "atari2600" },
         			{ title: "CLIMBER 5", img: "https://drive.google.com/thumbnail?id=1JvXB20Dmx37kUCSa6l22U-yumGFG-s4X", src: "climber5.bin", system: "atari2600" },
             { title: "PAC MAN", img: "https://drive.google.com/thumbnail?id=1K42axvcoK9pbt6bG31wmHL6_91TCNcq_", src: "pacman4k(atari2600).bin", system: "atari2600" },
             { title: "SOCCER", img: "https://drive.google.com/thumbnail?id=16C0nrVvgcY6gU7Lnp-C-88kFZzeOHRsd", src: "soccer(atari2600).bin", system: "atari2600" },
             { title: "SPLATFORM", img: "https://drive.google.com/thumbnail?id=1GW0O_Di335YfK6AkJjfe5OHh_J1aOyAI", src: "splatform2600.bin", system: "atari2600" },
             
+            { title: "ADVENTURE", img: "https://drive.google.com/thumbnail?id=1-RHIk1YmYAOinCRSiBfr_BZQeZOXjWUv", system: "atari2600" },
+            { title: "ALIEN", img: "https://drive.google.com/thumbnail?id=1ZQUBZCTArYc0e565TorX8pl_pas-oBh5", system: "atari2600" },
+            { title: "AMIDAR", img: "https://drive.google.com/thumbnail?id=1HQ7JMkVQ7b4avH3EuYDgyN8IecY_Sqke", system: "atari2600" },
+            { title: "ASSAULT", img: "https://drive.google.com/thumbnail?id=19Ut-0tXeVil8OK1YE7-8NTa7qv4XrRaO", system: "atari2600" },
+            { title: "ASTEROIDS", img: "https://drive.google.com/thumbnail?id=1SpOj85GKmJVoSSXrsCC0xm-4zITznAA5", system: "atari2600" },
+            { title: "ATARI VIDEO CUBE", img: "https://drive.google.com/thumbnail?id=1QjcNMKPiiPYVpu05TdAzBLXt2KrmU-8Y", system: "atari2600" },
+            { title: "BANK HEIST", img: "https://drive.google.com/thumbnail?id=1Ev2L_wVo17q428Kj3gToaAnFZt-pP2_z", system: "atari2600" },
+            { title: "BATTLEZONE", img: "https://drive.google.com/thumbnail?id=1RpP3z-pHVU165rrPcIyWchbWzmjZ0FWo", system: "atari2600" },
+            { title: "BEANY BOPPER", img: "https://drive.google.com/thumbnail?id=1XkMXVcdJKqpK4UEhcauNauABFdZ7KPbU", system: "atari2600" },
+            { title: "BERMUDA", img: "https://drive.google.com/thumbnail?id=1gxB1A5Ug5XcBuKhoh3SLhZzrFqtqS5yy", system: "atari2600" },
+            { title: "BERZERK", img: "https://drive.google.com/thumbnail?id=12kycCuNWsXUL2Y-F9todX5rwucWxNHSq", system: "atari2600" },
+            { title: "CAT TRAX", img: "https://drive.google.com/thumbnail?id=1J5CxK3JdOChuKnw3JQShUxcWcCkBB7cO", system: "atari2600" },
+            { title: "CENTIPEDE", img: "https://drive.google.com/thumbnail?id=1_FAflb8Nhkg8gv96Ea4uimtUzGse8Qov", system: "atari2600" },
+            { title: "CHOPPER COMMAND", img: "https://drive.google.com/thumbnail?id=1p1j1aUYbIZZnLVrs1c-WPErTS-JeUwdQ", system: "atari2600" },
+            { title: "CONQUEST OF MARS", img: "https://drive.google.com/thumbnail?id=1i3Jav46wlMM9vORyuJvE1gsvGVTsIWse", system: "atari2600" },
+            { title: "CRYSTAL CASTLES", img: "https://drive.google.com/thumbnail?id=12ZpyarN54IQHijFO09jP3xbE0ukOk6a0", system: "atari2600" },
+            { title: "DARK CAVERN", img: "https://drive.google.com/thumbnail?id=144U3WAEoQ0gOUdZqZuOyH1RF1J4_Oa45", system: "atari2600" },
+            { title: "DARK CHAMBERS", img: "https://drive.google.com/thumbnail?id=1lbtiQnoGfu4UsWO_kK7LeaWjs-r_SE2s", system: "atari2600" },
+            { title: "DEFENDER", img: "https://drive.google.com/thumbnail?id=1b7OD6bCUiO1o0haO5vy6D_nmrnvkSk8T", system: "atari2600" },
+            { title: "DEFENDER 2", img: "https://drive.google.com/thumbnail?id=1T6qq991survfLw_I7MhfAS103xdY4jFq", system: "atari2600" },
+            { title: "DEMOLITION HERBY", img: "https://drive.google.com/thumbnail?id=1BhCkl3muOKpGZPoSQ_hxjz2Wof50rhZ_", system: "atari2600" },
+            { title: "DEMON ATAK", img: "https://drive.google.com/thumbnail?id=1EedAHYcY4_PrDi-CLNgrFKfc4UjVQ1ij", system: "atari2600" },
+            { title: "CRYSTAL CASTLES", img: "https://drive.google.com/thumbnail?id=", system: "atari2600" },
+            { title: "CRYSTAL CASTLES", img: "https://drive.google.com/thumbnail?id=", system: "atari2600" },
+            { title: "CRYSTAL CASTLES", img: "https://drive.google.com/thumbnail?id=", system: "atari2600" },
             
-            //JUEGOS NINTENDO        
+            
+            
+            // 🟡 JUEGOS NINTENDO        
             { title: "DETH COMPLEX 2", img: "https://drive.google.com/thumbnail?id=1jKRthY7Cx356aVCMyOjqieDV5qj-xnPt", src: "dethcomplex2.nes", system: "nes" },
             { title: "MAGICAL DUNGEON 3D", img: "https://drive.google.com/thumbnail?id=10Qzz4bcGnNBO71gSqtnRcWEpAKVNcHBx", src: "magicaldungeon3d.nes", system: "nes" },
             { title: "PONG TMNT TRILOGY", img: "https://drive.google.com/thumbnail?id=1obaks5fuTIq311mTSgHdgAH3xVQOwhSF", src: "pongtmnttrilogy.nes", system: "nes" },
             { title: "SPACE MUTANTS.", img: "https://drive.google.com/thumbnail?id=1qXOY_rwnJQG8SCzb1c68XO1o-JIXbNEf", src: "SpaceMutantsExtendoDG.nes", system: "nes" },
             { title: "THE ARM WRESTLING CLASSIC", img: "https://drive.google.com/thumbnail?id=1qCsEvbvy-6Cg6aMZjlRZM5y1nV_2lJUW", src: "thearmwrestlingclassic.nes", system: "nes" },
+            
+            { title: "1943", img: "https://drive.google.com/thumbnail?id=1qCsEvbvy-6Cg6aMZjlRZM5y1nV_2lJUW", src: "thearmwrestlingclassic.nes", system: "nes" },
+            
            
            
             
             
-            //JUEGOS SUPER NINTENDO
+            // 🟡 JUEGOS SUPER NINTENDO
             { title: "ASTRO HAWK", img: "https://drive.google.com/thumbnail?id=1wIOKiC0gn98yflYkMtpbmFupCE4dDHEn", src: "astrohawk.smc", system: "snes" },
             { title: "CHRONO TRIGGER", img: "", src: "", system: "snes" },
             { title: "DONKEY KONG COUNTRY", img: "", src: "", system: "snes" },
             
             
-            // JUEGOS NINTENDO 64
+            // 🟡 JUEGOS NINTENDO 64
             { title: "SUPER MARIO 64", img: "", src: "", system: "n64" },
             { title: "THE LEGEND OF ZELDA: OCARINA OF TIME", img: "", src: "", system: "n64" },
             { title: "MARIO KART 64", img: "", src: "", system: "n64" },
             
             
-            // JUEGOS GAME BOY
+            // 🟡 JUEGOS GAME BOY
             { title: "GB WORDYL", img: "https://drive.google.com/thumbnail?id=12dN_CKLtLkeG01Xno-vPC9yO2vpWBLVl", src: "gbwordyl.gb", system: "gb" },
             { title: "SUPER MARIO LAND", img: "", src: "", system: "gb" },
             
             
-            // JUEGOS GAME BOY COLOR
+            // 🟡 JUEGOS GAME BOY COLOR
             { title: "SAINT SEIYA THE PHOENIX RETURN", img: "https://drive.google.com/thumbnail?id=14-57eeceRhMf8aN9Oyj33b0ISbbGIonZ", src: "saintseiyathephoenixreturns.gbc", system: "gbc" },
             { title: "POKÉMON CRYSTAL VERSION", img: "", src: "", system: "gbc" },
             { title: "THE LEGEND OF ZELDA: ORACLE OF AGES", img: "", src: "", system: "gbc" },
             
             
-            // JUEGOS GAME BOY ADVANCE
+            // 🟡 JUEGOS GAME BOY ADVANCE
             { title: "ADVANCE WARS", img: "", src: "", system: "gba" },
             { title: "POKÉMON RUBY VERSION", img: "", src: "", system: "gba" },
             { title: "METROID FUSION", img: "", src: "", system: "gba" },
             
             
-            // JUEGOS SEGA 32X
+            // 🟡 JUEGOS SEGA 32X
             { title: "SUPER MARIO BROS. DELUXE", img: "", src: "", system: "gbc" },
             { title: "SONIC KOSTAS 32X", img: "", src: "", system: "sega32x" },
             { title: "VIRTUA FIGHTER", img: "", src: "", system: "sega32x" },
             { title: "DOOM 32X", img: "", src: "", system: "sega32x" },
             
             
-            // JUEGOS SEGA GAME GEAR
+            // 🟡 JUEGOS SEGA GAME GEAR
             { title: "SONIC THE HEDGEHOG", img: "", src: "", system: "gamegear" },
             { title: "DEFENDER OF OASIS", img: "", src: "", system: "gamegear" },
             { title: "TAILS ADVENTURE", img: "", src: "", system: "gamegear" },
             
             
-            // JUEGOS SEGA MEGADRIVE/GENESIS
+            // 🟡 JUEGOS SEGA MEGADRIVE/GENESIS
             { title: "SPEED RUN TOWER", img: "https://drive.google.com/thumbnail?id=1lN6tzEXtFyolggnxauJuhGyCZkzDGXws", src: "speedruntower.bin", system: "megadrive" },
             { title: "STREETS OF RAGE 2", img: "", src: "", system: "megadrive" },
             { title: "ALADDIN GENESIS", img: "", src: "", system: "megadrive" },
             
             
-            //JUEGOS SEGA MASTER SYSTEM
+            // 🟡 JUEGOS SEGA MASTER SYSTEM
             { title: "ALEX KIDD IN MIRACLE WORLD", img: "", src: "", system: "sms" },
             { title: "PHANTASY STAR", img: "", src: "", system: "sms" },      
             { title: "SONIC THE HEDGEHOG SMS", img: "", src: "", system: "sms" },
             
-            // JUEGOS SEGA DREAMCAST
+            // 🟡 JUEGOS SEGA DREAMCAST
             //{ title: "SHENMUE", img: "", src: "", system: "dreamcast" },
             
             
-            // JUEGOS PLAY STATION 1
+            // 🟡 JUEGOS PLAY STATION 1
             { title: "CASTELEVANIA: SYMPHONY OF THE NIGHT", img: "", src: "", system: "psx" },
             { title: "CRASH BANDICOOT", img: "", src: "", system: "psx" },
             { title: "METAL GEAR SOLID", img: "", src: "", system: "psx" },
             
-            // JUEGOS PPSSPP
+            // 🟡 JUEGOS PPSSPP
             //{ title: "DISSIDIA FINAL FANTASY", img: "", src: "", system: "psp" },
             
             
-            // JUEGOS CPS1
+            // 🟡 JUEGOS CPS1
             //{ title: "STREET FIGHTER II: THE WORLD WARRIOR", img: "", src: "", system: "cps1" },
             
             
-            //JUEGOS CPS2
+            // 🟡 JUEGOS CPS2
             //{ title: "SUPER STREET FIGHTER II TURBO", img: "", src: "", system: "cps2" },
             
             
-            //JUEGOS CPS3
+            //🟡 JUEGOS CPS3
             //{ title: "STREET FIGHTER III 3RD STRIKE", img: "", src: "", system: "cps3" },
             
             
-            //JUEGOS MAME         
+            // 🟡 JUEGOS MAME         
             //{ title: "METAL SLUG", img: "", src: "", system: "mame" },
                                 
         ];
@@ -584,14 +612,14 @@
             }
             noResults.classList.add('hidden');
 
-            // ✅ AGRUPAMOS JUEGOS POR PLATAFORMA
+            // 🟡 AGRUPACION JUEGOS POR PLATAFORMA
             const grouped = {};
             filtered.forEach(game => {
                 if (!grouped[game.system]) grouped[game.system] = [];
                 grouped[game.system].push(game);
             });
 
-            // ✅ CREAMOS CADA SECCIÓN CON SU CARRUSEL
+            // 🟡 CARRUSELES
             Object.entries(grouped).forEach(([system, games]) => {
                 const section = document.createElement('div');
                 section.className = 'platform-section';
@@ -702,10 +730,10 @@
 
             container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
 
-            // ✅ AQUÍ SE CORRIGE EL NÚCLEO ANTES DE ENVIARLO AL EMULADOR
+            // 🟡 CORRECCION DE NÚCLEO ANTES DE ENVIARLO AL EMULADOR
             let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
             
-            // Si es "todas las plataformas", usamos el núcleo de la ROM si viene definido
+            // 🟡  BOTON TODAS LAS PLATAFORMAS USAR NUCLEO DE LA ROM  SI VIENE DEFINIDO
             if (nucleoCorrecto === null) {
                 nucleoCorrecto = consoleType;
             }
@@ -733,20 +761,20 @@
             const romUploader = document.getElementById('rom-uploader');
             const exitEmulatorBtn = document.getElementById('exit-emulator');
 
-            // FUNCIONALIDAD DEL BOTÓN SALIR
+            // 🟡 BOTÓN SALIR
             exitEmulatorBtn.addEventListener('click', () => {
                 location.reload();
             });
 
-            // ACTUALIZAR EXTENSIONES AL CAMBIAR PLATAFORMA
+            // 🟡 ACTUALIZAR EXTENSIONES AL CAMBIAR PLATAFORMA
             consoleFilter.addEventListener('change', (e) => {
                 activeFilters.console = e.target.value;
-                // Actualizar tipos de archivo permitidos en el botón general
+                // 🟡 BOTON GENERAL ACTUALIZAR TIPO DE ARCHIVO
                 romUploader.accept = platformExtensions[e.target.value] || platformExtensions.all;
                 renderGames();
             });
 
-            // FUNCIONALIDAD DEL BOTÓN GENERAL CARGAR ROM
+            // 🟡 BOTÓN CARGAR ROM
             romUploader.addEventListener('change', (e) => {
                 if (!e.target.files || !e.target.files[0]) return;
                 const file = e.target.files[0];
@@ -757,7 +785,7 @@
                 romUploader.value = '';
             });
 
-            // 🟡 FUNCIONALIDAD DEL BOTÓN FLOTANTE
+            // 🟡 BOTÓN FLOTANTE PANTALLA COMPLETA
             fullscreenBtn.addEventListener('click', () => {
                 if (!document.fullscreenElement) {
                     toggleFullscreen(true);
@@ -771,7 +799,7 @@
                 lucide.createIcons();
             });
 
-            // Actualizar ícono si cambia pantalla completa por otros medios
+            //  🟡 BOTÓN FLOTANTE PANTALLA COMPLETA - ACTUALIZAR ICONO SI CAMBIA PANTALLA COMPLETA POR OTRO MEDIO
             document.addEventListener('fullscreenchange', () => {
                 if (document.fullscreenElement) {
                     fullscreenBtn.title = "Salir de Pantalla Completa";
