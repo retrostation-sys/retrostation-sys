@@ -1,7 +1,7 @@
 x= "https://drive.google.com/thumbnail?id="
 agregarJuegos([
     { title: "CAVE 1K", img: x+ "10Z-aAZ1-0z_XpTa20joELFHxvHlz7I8G", src: "cave1k.bin", system: "atari2600" },
-    { title: "CLIMBER 5", img: "https://drive.google.com/thumbnail?id=1JvXB20Dmx37kUCSa6l22U-yumGFG-s4X", src: "climber5.bin", system: "atari2600" },
+    { title: "CLIMBER 5", img: x+ "1JvXB20Dmx37kUCSa6l22U-yumGFG-s4X", src: "climber5.bin", system: "atari2600" },
     { title: "PAC MAN", img: "https://drive.google.com/thumbnail?id=1K42axvcoK9pbt6bG31wmHL6_91TCNcq_", src: "pacman4k(atari2600).bin", system: "atari2600" },
     { title: "SOCCER", img: "https://drive.google.com/thumbnail?id=16C0nrVvgcY6gU7Lnp-C-88kFZzeOHRsd", src: "soccer(atari2600).bin", system: "atari2600" },
     { title: "SPLATFORM", img: "https://drive.google.com/thumbnail?id=1GW0O_Di335YfK6AkJjfe5OHh_J1aOyAI", src: "splatform2600.bin", system: "atari2600" },
