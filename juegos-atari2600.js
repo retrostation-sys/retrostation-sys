@@ -46,7 +46,7 @@ agregarJuegos([
     { system: "atari2600", img: x+ "1RbyfhAw741wa6vJ4bFTTLJNt6EPEe8kM", title: "GALAXIAN" },
     { system: "atari2600", img: x+ "1Q5IafUcoLWGGUC8PbdPYmUC14rGwAfHu", title: "GAS HOG" },
     { system: "atari2600", img: x+ "1_Ms3LJXXbf99a7IKGR5GOceiSRmIGImC", title: "HARBOR SCAPE" },
-    { system: "atari2600", img: x+ "1_Ms3LJXXbf99a7IKGR5GOceiSRmIGImC", title: "HERO" },
+    { system: "atari2600", img: x+ "1zlD1YypJgo3EpA0i3blxkqzWaxASOqv8", title: "HERO" },
     { system: "atari2600", img: x+ "13wGO-2jwA6j5tXBmwh_5Z8XryAWR-4rq", title: "JAWBREAKER" },
     { system: "atari2600", img: x+ "1UnD_iihNU6_CvCGQFpQaZulpi-98iWPs", title: "JOUST" },
     { system: "atari2600", img: x+ "1nb7TSQoUv9wA6XNoGo_7ZYPZX8qhm4BA", title: "JUNGLE HUNT" },
