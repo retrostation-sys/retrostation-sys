@@ -1,42 +1,242 @@
 $(document).ready(function() {
+
 $("#01").html("<h3>LINKS ENCONTRADOS EN LA RED 2</h3>");
-$(".pg1").attr({
-			"style": "color: green; cursor:pointer;",
-			"href": "1K.html"
-		});
-		$(".pg2").attr({
-			"style": "color: green; cursor:pointer;",
-			"href": "2K.html"
-		});
-		$(".pg3").attr({
-			"style": "color: green; cursor:pointer;",
-			"href": "3K.html"
-		});
+$(".pg1, .pg2, .pg3, .pg4, .pg5, .pg6").attr({
+	"style": "font-weight:bold; cursor:pointer;",
+});
 
+$(".pg1").attr({ "href": "1K.html" });
+$(".pg2").attr({ "href": "2K.html" });
+$(".pg3").attr({ "href": "3K.html" });
+$(".pg4").attr({ "href": "4K.html" });
+$(".pg5").attr({ "href": "5K.html" });
+$(".pg6").attr({ "href": "6K.html" });
 
-	tbx= "https://1024terabox.com/s/";
-	mdf= "https://www.mediafire.com/file/";
-	amDa= "AMERICAN DAD ";
-	baBe= "BATMAN BEYOND ";
-	dQAD= "DRAGON QUEST THE ADVENTURE OF DAI ";
-	
-	var enlaces = [
-		
-		{ url: mdf+ "4g4epoiy1iyl4a8/GPPNTDMSLJS.rar", texto: "A BRIDGE TOO FAR (1001_2000) Mediafire" },		
-		{ url: tbx+ "1e-nPS2N1-t7YXRHIEjMHPA", texto: amDa+ "1.01.001 (2005) Terabox" },
-		{ url: tbx+ "11gDuR9y97QGdYPhwNm1IjA", texto: amDa+ "1.02.002 (2005) Terabox" },
-		{ url: tbx+ "11w27VXxayTym_sq5vsJ6-g", texto: amDa+ "1.03.003 (2005) Terabox" },
-		
-            
-        ];
+tbx= "https://1024terabox.com/s/";
+mdf= "https://www.mediafire.com/file/";
+prx= "https://1024terabox.com/s/14fJfLh2v1c_8pLh8bEb4NQ";
 
-        $.each(enlaces, function(indice, enlace) {
-        			txtN= enlace.texto ? enlace.texto: '';
-        			txtR= enlace.textoR ? enlace.textoR: '';
-            $('#lista-enlaces').append(
-                '<li><a href="' + enlace.url + '" target="_blank">'
-                + txtN  + ' <span style="color:red;">' + txtR + '</span>' + '</a></li>'
-            );
-        });
+var enlaces= [
+	{ url: tbx+ "16kA9DTAj1fOTbx4j1PnAbA", texto: "EL SEÑOR DE LOS CIELOS 4.062.324 (2016) Terabox" },
+	{ url: tbx+ "1FCIL9OTp55sR5P7-ceKW7w", texto: "EL SEÑOR DE LOS CIELOS 4.063.325 (2016) Terabox" },
+	{ url: tbx+ "10mtZTqemR32m_vK3WVTTZg", texto: "EL SEÑOR DE LOS CIELOS 4.064.326 (2016) Terabox" },
+	{ url: tbx+ "1Rv5K7ShP6WD_ptiP-Bav8A", texto: "EL SEÑOR DE LOS CIELOS 4.065.327 (2016) Terabox" },
+	{ url: tbx+ "11SL5l4KSTWT0jzS0viPU5g", texto: "EL SEÑOR DE LOS CIELOS 4.066.328 (2016) Terabox" },
+	{ url: "PROXIMAMENYE", textoR: "EL SEÑOR DE LOS CIELOS 4.067.329 (2016)" },
+	{ url: tbx+ "14wcVyHe8OUA_EVRgC4parA", texto: "EL SEÑOR DE LOS CIELOS 4.068.330 (2016) Terabox" },
+	{ url: tbx+ "1PsDLnhl8FXCSbVi_m3N3kg", texto: "EL SEÑOR DE LOS CIELOS 4.069.331 (2016) Terabox" },
+	{ url: tbx+ "1KYOJhyEHOqyEE08N2a6zAg", texto: "EL SEÑOR DE LOS CIELOS 4.070.332 (2016) Terabox" },
+	{ url: tbx+ "1LxoEudr035mdRFvOyJP6nA", texto: "EL SEÑOR DE LOS CIELOS 4.071.333 (2016) Terabox" },
+	{ url: tbx+ "1WWCL8Cndzhb9-adCdzbvaQ", texto: "EL SEÑOR DE LOS CIELOS 4.072.334 (2016) Terabox" },
+	{ url: tbx+ "1t0gP2pwABZ4ng0UHO0Me0Q", texto: "EL SEÑOR DE LOS CIELOS 4.073.335 (2016) Terabox" },
+	{ url: tbx+ "1y3F9L6ZdqO-bvCYjHPQW2A", texto: "EL SEÑOR DE LOS CIELOS 4.074.336 (2016) Terabox" },
+	{ url: tbx+ "1c2KyL_HXu41KH4obL5PsUw", texto: "EL SEÑOR DE LOS CIELOS 4.075.337 (2016) Terabox" },
+	{ url: tbx+ "1Enh2JWMqhfymrwgymtmSfQ", texto: "EL SEÑOR DE LOS CIELOS 4.076.338 (2016) Terabox" },
+	{ url: tbx+ "1gNbvyO15_3OrZA38QcR2wg", texto: "EL SEÑOR DE LOS CIELOS 4.077.339 (2016) Terabox" },
+	{ url: tbx+ "1WUMAl2DFkU5f0B4CVZLZ-g", texto: "EL SEÑOR DE LOS CIELOS 4.078.340 (2016) Terabox" },
+	{ url: tbx+ "1m1310ZLFBO-xhNw9RJY-vw", texto: "EL SEÑOR DE LOS CIELOS 4.079.341 (2016) Terabox" },
+	{ url: prx, textoR: "EL SEÑOR DE LOS CIELOS 4.080.342 (2016)" },
+	{ url: tbx+ "1vwn2zbRfTt1tebM9PrczDQ", texto: "EL SEÑOR DE LOS CIELOS 5.001.343 (2017) Terabox" },
+	{ url: tbx+ "1Wvw0KWmEoHNSNlj-4W-7vg", texto: "EL SEÑOR DE LOS CIELOS 5.002.344 (2017) Terabox" },
+	{ url: tbx+ "1Q4AlegCX4HvEtjDTp726hg", texto: "EL SEÑOR DE LOS CIELOS 5.003.345 (2017) Terabox" },
+	{ url: tbx+ "1vCkG-ya9eCk5CJ6b4Hxllw", texto: "EL SEÑOR DE LOS CIELOS 5.004.346 (2017) Terabox" },
+	{ url: tbx+ "1tj7jjrjtryyCWkn0DRQB5g", texto: "EL SEÑOR DE LOS CIELOS 5.005.347 (2017) Terabox" },
+	{ url: tbx+ "1ORFWe6j5PGwlCq0H5-yMjg", texto: "EL SEÑOR DE LOS CIELOS 5.006.348 (2017) Terabox" },
+	{ url: tbx+ "1EBzUDra0JeUH0GnAiCaApg", texto: "EL SEÑOR DE LOS CIELOS 5.007.349 (2017) Terabox" },
+	{ url: tbx+ "1J0QbaHdaTcLzq74_uQN8rg", texto: "EL SEÑOR DE LOS CIELOS 5.008.350 (2017) Terabox" },
+	{ url: tbx+ "1uPPMiakF2FMbKMUwlzLAPw", texto: "EL SEÑOR DE LOS CIELOS 5.009.351 (2017) Terabox" },
+	{ url: tbx+ "10BrAtWejqstQn9myG-Lkng", texto: "EL SEÑOR DE LOS CIELOS 5.010.352 (2017) Terabox" },
+	{ url: tbx+ "1LEhRe4H3eFhMZl0a6VlRkw", texto: "EL SEÑOR DE LOS CIELOS 5.011.353 (2017) Terabox" },
+	{ url: tbx+ "1RWKaGN3KrPsH0nntYLWFIQ", texto: "EL SEÑOR DE LOS CIELOS 5.012.354 (2017) Terabox" },
+	{ url: tbx+ "1Cdu2mR7YfEPYXwZfV6FFtA", texto: "EL SEÑOR DE LOS CIELOS 5.013.355 (2017) Terabox" },
+	{ url: tbx+ "1SdnKf_IOc6SNgjCxLdsTnQ", texto: "EL SEÑOR DE LOS CIELOS 5.014.356 (2017) Terabox" },
+	{ url: tbx+ "1u9VQ9BP-Dct_4IUx3Uc-7A", texto: "EL SEÑOR DE LOS CIELOS 5.015.357 (2017) Terabox" },
+	{ url: tbx+ "1SXsiYK3SLirLZL2d9q8V9g", texto: "EL SEÑOR DE LOS CIELOS 5.016.358 (2017) Terabox" },
+	{ url: tbx+ "1NgTP3xee6W1BL12hAWv_tA", texto: "EL SEÑOR DE LOS CIELOS 5.017.359 (2017) Terabox" },
+	{ url: tbx+ "16c-1kV8eATplyKg62fOejA", texto: "EL SEÑOR DE LOS CIELOS 5.018.360 (2017) Terabox" },
+	{ url: tbx+ "164wCbiVhRiNx-p2D3Sh2eQ", texto: "EL SEÑOR DE LOS CIELOS 5.019.361 (2017) Terabox" },
+	{ url: tbx+ "1-m-YUWZtcs0giQfgws2Ceg", texto: "EL SEÑOR DE LOS CIELOS 5.020.362 (2017) Terabox" },
+	{ url: tbx+ "16v-y20PHyZRS7nqpkh70Tg", texto: "EL SEÑOR DE LOS CIELOS 5.021.363 (2017) Terabox" },
+	{ url: tbx+ "1YpcHojMTKNIbvDrDuBxXPQ", texto: "EL SEÑOR DE LOS CIELOS 5.022.364 (2017) Terabox" },
+	{ url: tbx+ "1ezRNEQ_XYszGA5jYxKx61w", texto: "EL SEÑOR DE LOS CIELOS 5.023.365 (2017) Terabox" },
+	{ url: tbx+ "1hCvGc32jEznuQ_h5g0pn6g", texto: "EL SEÑOR DE LOS CIELOS 5.024.366 (2017) Terabox" },
+	{ url: tbx+ "1u4n1s1a5bh5Dg8aojlqLIA", texto: "EL SEÑOR DE LOS CIELOS 5.025.367 (2017) Terabox" },
+	{ url: tbx+ "1bJCHpKDQMynf1GdoAjmHAQ", texto: "EL SEÑOR DE LOS CIELOS 5.026.368 (2017) Terabox" },
+	{ url: tbx+ "1W_hMpY9xaosCm1ouRRoaRw", texto: "EL SEÑOR DE LOS CIELOS 5.027.369 (2017) Terabox" },
+	{ url: tbx+ "1WIG1wImzu_xIrwxojXJPOQ", texto: "EL SEÑOR DE LOS CIELOS 5.028.370 (2017) Terabox" },
+	{ url: tbx+ "1yGeeXQ3VWZ21r5vaisNpVw", texto: "EL SEÑOR DE LOS CIELOS 5.029.371 (2017) Terabox" },
+	{ url: tbx+ "1GXP7IGRMmOV4thFuJ9I9Fg", texto: "EL SEÑOR DE LOS CIELOS 5.030.372 (2017) Terabox" },
+	{ url: tbx+ "1uUnQ6VByoUJ7BvkFnZ5R5Q", texto: "EL SEÑOR DE LOS CIELOS 5.031.373 (2017) Terabox" },
+	{ url: tbx+ "1cg6a6gP8isWhgm8T58RNbA", texto: "EL SEÑOR DE LOS CIELOS 5.032.374 (2017) Terabox" },
+	{ url: tbx+ "1Qpcrgkv2b7BtVgEaa2fY8Q", texto: "EL SEÑOR DE LOS CIELOS 5.033.375 (2017) Terabox" },
+	{ url: tbx+ "1zWhoCWPG_Orru1q7G2iTcg", texto: "EL SEÑOR DE LOS CIELOS 5.034.376 (2017) Terabox" },
+	{ url: tbx+ "1gcnDxPHiqUFSGkUq7wy6AQ", texto: "EL SEÑOR DE LOS CIELOS 5.035.377 (2017) Terabox" },
+	{ url: tbx+ "1k_TnnCmjq5m7t7S1AsoisQ", texto: "EL SEÑOR DE LOS CIELOS 5.036.378 (2017) Terabox" },
+	{ url: tbx+ "1Ruqa5lqXMSDt8onXPoqXoA", texto: "EL SEÑOR DE LOS CIELOS 5.037.379 (2017) Terabox" },
+	{ url: tbx+ "1nPV-kR7Ws0xDCG7688bg_A", texto: "EL SEÑOR DE LOS CIELOS 5.038.380 (2017) Terabox" },
+	{ url: tbx+ "1OYd_v01nHKeQOqaHquVmXQ", texto: "EL SEÑOR DE LOS CIELOS 5.039.381 (2017) Terabox" },
+	{ url: tbx+ "1jtiYkKJDtPNK5Fd1TDp0hw", texto: "EL SEÑOR DE LOS CIELOS 5.040.382 (2017) Terabox" },
+	{ url: tbx+ "1lWUOUPusB3eAeHLGb3cNUg", texto: "EL SEÑOR DE LOS CIELOS 5.041.383 (2017) Terabox" },
+	{ url: tbx+ "1bl3YkP427Dqi3CrYuXDArQ", texto: "EL SEÑOR DE LOS CIELOS 5.042.384 (2017) Terabox" },
+	{ url: tbx+ "1vkVCGjrLUXOacD3xQsIFYQ", texto: "EL SEÑOR DE LOS CIELOS 5.043.385 (2017) Terabox" },
+	{ url: tbx+ "1X5MM-O5dmhEMRf-WgTPQzQ", texto: "EL SEÑOR DE LOS CIELOS 5.044.386 (2017) Terabox" },
+	{ url: tbx+ "1QwPBPtmyRWqu6uXRzX4GjA", texto: "EL SEÑOR DE LOS CIELOS 5.045.387 (2017) Terabox" },
+	{ url: tbx+ "10jdWJ_sKdM07lKF_-XsmDw", texto: "EL SEÑOR DE LOS CIELOS 5.046.388 (2017) Terabox" },
+	{ url: tbx+ "130cq78_jL33Q2LnUhW3orA", texto: "EL SEÑOR DE LOS CIELOS 5.047.389 (2017) Terabox" },
+	{ url: tbx+ "1r5ZPnALLOpK32mLpVD6W3w", texto: "EL SEÑOR DE LOS CIELOS 5.048.390 (2017) Terabox" },
+	{ url: tbx+ "1bDXq5R8g5J6z8_J1GYjEWw", texto: "EL SEÑOR DE LOS CIELOS 5.049.391 (2017) Terabox" },
+	{ url: tbx+ "1TLLmcMjpzG595S7OLXoEKA", texto: "EL SEÑOR DE LOS CIELOS 5.050.392 (2017) Terabox" },
+	{ url: tbx+ "1Ptq6-OpgHAqHL3wh4bRoRg", texto: "EL SEÑOR DE LOS CIELOS 5.051.393 (2017) Terabox" },
+	{ url: tbx+ "1Kjyu_vhInxVMsZDq_VKn2w", texto: "EL SEÑOR DE LOS CIELOS 5.052.394 (2017) Terabox" },
+	{ url: tbx+ "1NpH665sZgbQC7UatfEhYbQ", texto: "EL SEÑOR DE LOS CIELOS 5.053.395 (2017) Terabox" },
+	{ url: tbx+ "1qUEMzhjOrP9UGsapjtY2kg", texto: "EL SEÑOR DE LOS CIELOS 5.054.396 (2017) Terabox" },
+	{ url: tbx+ "1VITK83_FT-m6Qz4WdTj7XQ", texto: "EL SEÑOR DE LOS CIELOS 5.055.397 (2017) Terabox" },
+	{ url: tbx+ "1CPLKmTB7qBYpgEVnCeYp8A", texto: "EL SEÑOR DE LOS CIELOS 5.056.398 (2017) Terabox" },
+	{ url: tbx+ "1rjbRLUMIR31IJE1ORoLg_A", texto: "EL SEÑOR DE LOS CIELOS 5.057.399 (2017) Terabox" },
+	{ url: tbx+ "18tHXi7U0Dum0XLfhb8rAvw", texto: "EL SEÑOR DE LOS CIELOS 5.058.400 (2017) Terabox" },
+	{ url: tbx+ "13slC2O_Z2RsIiuVuWniqXw", texto: "EL SEÑOR DE LOS CIELOS 5.059.401 (2017) Terabox" },
+	{ url: tbx+ "1T-gUepuVFd8AqDlFmuNqOg", texto: "EL SEÑOR DE LOS CIELOS 5.060.402 (2017) Terabox" },
+	{ url: tbx+ "1IMFbBjL5oK7LjMdMLjq6qA", texto: "EL SEÑOR DE LOS CIELOS 5.061.403 (2017) Terabox" },
+	{ url: tbx+ "1jgzG8gjQIEPT_gFb0giJsA", texto: "EL SEÑOR DE LOS CIELOS 5.062.404 (2017) Terabox" },
+	{ url: tbx+ "1kW-_TJ6XRVZkjMTlabtTvA", texto: "EL SEÑOR DE LOS CIELOS 5.063.405 (2017) Terabox" },
+	{ url: tbx+ "12GFRkbetV5dxHZkXdX--bw", texto: "EL SEÑOR DE LOS CIELOS 5.064.406 (2017) Terabox" },
+	{ url: tbx+ "1aMPaT110UhWqca_k-eIXCA", texto: "EL SEÑOR DE LOS CIELOS 5.065.407 (2017) Terabox" },
+	{ url: tbx+ "1cihKQERGJVsR8Bo7sUa0jA", texto: "EL SEÑOR DE LOS CIELOS 5.066.408 (2017) Terabox" },
+	{ url: tbx+ "1EC99W_gQH5mEMEB-bLikwQ", texto: "EL SEÑOR DE LOS CIELOS 5.067.409 (2017) Terabox" },
+	{ url: tbx+ "1HRc5_1gW9g8sbj_6Q8-jfQ", texto: "EL SEÑOR DE LOS CIELOS 5.068.410 (2017) Terabox" },
+	{ url: tbx+ "1i1_4X9NuvPoKOgWYGdRyfQ", texto: "EL SEÑOR DE LOS CIELOS 5.069.411 (2017) Terabox" },
+	{ url: tbx+ "1_sG-_o5JWO-kSQHXIRHtRA", texto: "EL SEÑOR DE LOS CIELOS 5.070.412 (2017) Terabox" },
+	{ url: tbx+ "1XOInEggLuW92no2V8UeduQ", texto: "EL SEÑOR DE LOS CIELOS 5.071.413 (2017) Terabox" },
+	{ url: tbx+ "140W_mjF7w5_SPQj1MdrYDA", texto: "EL SEÑOR DE LOS CIELOS 5.072.414 (2017) Terabox" },
+	{ url: tbx+ "15uBYAuXl_CHpdsEwYnvNMg", texto: "EL SEÑOR DE LOS CIELOS 5.073.415 (2017) Terabox" },
+	{ url: tbx+ "1X5PmCXRTDHi60NGc6n6yeg", texto: "EL SEÑOR DE LOS CIELOS 5.074.416 (2017) Terabox" },
+	{ url: tbx+ "1YuFKqfFLQX0xTZput0WC_Q", texto: "EL SEÑOR DE LOS CIELOS 5.075.417 (2017) Terabox" },
+	{ url: tbx+ "1TdVhXCnRzGsC12yhcsMbhQ", texto: "EL SEÑOR DE LOS CIELOS 5.076.418 (2017) Terabox" },
+	{ url: tbx+ "1TdVhXCnRzGsC12yhcsMbhQ", texto: "EL SEÑOR DE LOS CIELOS 5.077.419 (2017) Terabox" },
+	{ url: tbx+ "1JBMsZSjaljv9XtLAjMTj_A", texto: "EL SEÑOR DE LOS CIELOS 5.078.420 (2017) Terabox" },
+	{ url: tbx+ "1ZWugso_lNsCo5zU2vqlw0g", texto: "EL SEÑOR DE LOS CIELOS 5.079.421 (2017) Terabox" },
+	{ url: tbx+ "17Sjis5GOkPdNh-Awjm3r9g", texto: "EL SEÑOR DE LOS CIELOS 5.080.422 (2017) Terabox" },
+	{ url: tbx+ "1E4DYF9DHJPqmBpclymMx_A", texto: "EL SEÑOR DE LOS CIELOS 5.081.423 (2017) Terabox" },
+	{ url: tbx+ "1ZOXFvJeS9BHtPJDMenD2uA", texto: "EL SEÑOR DE LOS CIELOS 5.082.424 (2017) Terabox" },
+	{ url: tbx+ "1M8g9ygr9hZvHQAflKTWRNg", texto: "EL SEÑOR DE LOS CIELOS 5.083.425 (2017) Terabox" },
+	{ url: tbx+ "1oMjdKFbLOBYoMsUt4GWEEA", texto: "EL SEÑOR DE LOS CIELOS 5.084.426 (2017) Terabox" },
+	{ url: tbx+ "17sKSbv_I1ikBsHfCMgu2OA", texto: "EL SEÑOR DE LOS CIELOS 5.085.427 (2017) Terabox" },
+	{ url: tbx+ "1qE4qG1vskzXcd52QVp1y5w", texto: "EL SEÑOR DE LOS CIELOS 5.086.428 (2017) Terabox" },
+	{ url: tbx+ "1zbl9tDXqilHZdiPgTSxKcA", texto: "EL SEÑOR DE LOS CIELOS 5.087.429 (2017) Terabox" },
+	{ url: tbx+ "1hf19MXf48wcsA2zh16Xc2w", texto: "EL SEÑOR DE LOS CIELOS 5.088.430 (2017) Terabox" },
+	{ url: tbx+ "1pB2Mf-71yfvQyB9G_iZoIw", texto: "EL SEÑOR DE LOS CIELOS 5.089.431 (2017) Terabox" },
+	{ url: tbx+ "1i5DxWItteOR8NJ7Gjx4JIQ", texto: "EL SEÑOR DE LOS CIELOS 5.090.432 (2017) Terabox" },
+	{ url: tbx+ "133sIy9L3ARlKblwF78h0fw", texto: "EL SEÑOR DE LOS CIELOS 5.091.433 (2017) Terabox" },
+	{ url: tbx+ "1C9IPFpZecv04fj-akQ27Bw", texto: "EL SEÑOR DE LOS CIELOS 5.092.434 (2017) Terabox" },
+	{ url: tbx+ "11LdAUVQQQfITtnOM2GF-dg", texto: "EL SEÑOR DE LOS CIELOS 5.093.435 (2017) Terabox" },
+	{ url: tbx+ "1VY2MqPTBlj0YP6NisL6ITw", texto: "EL SEÑOR DE LOS CIELOS 5.094.436 (2017) Terabox" },
+	{ url: tbx+ "1T4HL9bEdcnEmfSiN3RjhQw", texto: "EL SEÑOR DE LOS CIELOS 5.095.437 (2017) Terabox" },
 
-    });
+ 
+ 
+ 
+  { url: mdf+ "qaukf2bcz1hnu58/g4t0nsndlcls10.1.rar", texto: "EL SEÑOR DE LOS CIELOS 10.001 (2026) Mediafire" }, 
+ { url: mdf+ "zh4qmo55wdh2ew5/g4t0nsndlcls10.2.rar", texto: "EL SEÑOR DE LOS CIELOS 10.002 (2026) Mediafire" },
+ { url: mdf+ "r8wi61tz40en1lb/g4t0nsndlcls10.3.rar", texto: "EL SEÑOR DE LOS CIELOS 10.003 (2026) Mediafire" },
+ { url: mdf+ "e1nyuy3ufe5jhko/g4t0nsndlcls10.4.rar", texto: "EL SEÑOR DE LOS CIELOS 10.004 (2026) Mediafire" },
+ { url: mdf+ "o0bcarga2ha6v5x/g4t0nsndlcls10.5.rar", texto: "EL SEÑOR DE LOS CIELOS 10.005 (2026) Mediafire" },
+ { url: mdf+ "4d4itsed3sbls43/g4t0nsndlcls10.6.rar", texto: "EL SEÑOR DE LOS CIELOS 10.006 (2026) Mediafire" },
+ { url: mdf+ "y64f54yfqlwx6oy/g4t0nsndlcls10.7.rar", texto: "EL SEÑOR DE LOS CIELOS 10.007 (2026) Mediafire" },
+ { url: mdf+ "k8bsfb6u6y7u5lq/g4t0nsndlcls10.8.rar", texto: "EL SEÑOR DE LOS CIELOS 10.008 (2026) Mediafire" },
+ { url: mdf+ "zs2d0eow0kz4s2b/g4t0nsndlcls10.9.rar", texto: "EL SEÑOR DE LOS CIELOS 10.009 (2026) Mediafire" },
+ { url: mdf+ "cz5jvndxws296l1/g4t0nsndlcls10.10.rar", texto: "EL SEÑOR DE LOS CIELOS 10.010 (2026) Mediafire" },
+ { url: mdf+ "gr2yfqsugozwh1j/g4t0nsndlcls10.11.rar", texto: "EL SEÑOR DE LOS CIELOS 10.011 (2026) Mediafire" },
+ { url: mdf+ "bvzzv4dm3xt3mbu/g4t0nsndlcls10.12.rar", texto: "EL SEÑOR DE LOS CIELOS 10.012 (2026) Mediafire" },
+ { url: mdf+ "5wd7ocgymo0jz2n/g4t0nsndlcls10.13.rar", texto: "EL SEÑOR DE LOS CIELOS 10.013 (2026) Mediafire" },
+ { url: mdf+ "z9fuc0im0uzblxk/g4t0nsndlcls10.14.rar", texto: "EL SEÑOR DE LOS CIELOS 10.014 (2026) Mediafire" },
+ { url: mdf+ "0ayon9c428ynj07/g4t0nsndlcls10.15.rar", texto: "EL SEÑOR DE LOS CIELOS 10.015 (2026) Mediafire" },
+ { url: mdf+ "i0qmpgt2h6wywxa/g4t0nsndlcls10.16.rar", texto: "EL SEÑOR DE LOS CIELOS 10.016 (2026) Mediafire" },
+ { url: mdf+ "9r9xbhu1czmhtne/g4t0nsndlcls10.17.rar", texto: "EL SEÑOR DE LOS CIELOS 10.017 (2026) Mediafire" },
+ { url: mdf+ "oyldd2q40xltpum/g4t0nsndlcls10.18.rar", texto: "EL SEÑOR DE LOS CIELOS 10.018 (2026) Mediafire" },
+ { url: mdf+ "s93q82jlhu7dr8v/g4t0nsndlcls10.19.rar", texto: "EL SEÑOR DE LOS CIELOS 10.019 (2026) Mediafire" },
+ { url: mdf+ "lj0erkb6ofp2f3w/g4t0nsndlcls10.20.rar", texto: "EL SEÑOR DE LOS CIELOS 10.020 (2026) Mediafire" },
+ { url: mdf+ "10g1cz2wo1cx6g3/g4t0nsndlcls10.21.rar", texto: "EL SEÑOR DE LOS CIELOS 10.021 (2026) Mediafire" },
+ { url: mdf+ "d6c8t9lgkg2vqf2/g4t0nsndlcls10.22.rar", texto: "EL SEÑOR DE LOS CIELOS 10.022 (2026) Mediafire" },
+ { url: mdf+ "byvq5tbtta9tiuv/g4t0nsndlcls10.23.rar", texto: "EL SEÑOR DE LOS CIELOS 10.023 (2026) Mediafire" },
+ { url: mdf+ "mqkusfy71mzo9wl/g4t0nsndlcls10.24.rar", texto: "EL SEÑOR DE LOS CIELOS 10.024 (2026) Mediafire" },
+ { url: mdf+ "a7j02bcv13ab4ib/g4t0nsndlcls10.25.rar", texto: "EL SEÑOR DE LOS CIELOS 10.025 (2026) Mediafire" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.026 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.027 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.028 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.029 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.030 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.031 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.032 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.033 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.034 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.035 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.036 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.037 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.038 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.039 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.040 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.041 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.042 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.043 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.044 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.045 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.046 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.047 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.048 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.049 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.050 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.051 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.052 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.053 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.054 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.055 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.056 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.057 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.058 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.059 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.060 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.061 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.062 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.063 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.064 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.065 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.066 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.067 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.068 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.069 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.070 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.071 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.072 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.073 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.074 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.075 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.076 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.077 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.078 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.079 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.080 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.081 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.082 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.083 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.084 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.085 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.086 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.087 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.088 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.089 (2026)" },
+ { url: prx, textoR: "EL SEÑOR DE LOS CIELOS 10.090 (2026)" },
+		  { url: mdf+ "f5b0zcm229zw7tk/GPHMNAMSDLVRS.rar", texto: "MASTERS OF THE UNIVERSE 1080p. (2026) Mediafire" },
+ { url: mdf+ "nieu3v96muownpl/GPHMNAMSDLVRS.4K.rar", texto: "MASTERS OF THE UNIVERSE 4K HDR10+ DV (2026) Mediafire" },
+ { url: mdf+ "hqoicbt17rcywl5/G4T0NSIM.rar", texto: "SIMPSLEY (Los Simpsons Simpsley) (2026) Mediafire" },
+ { url: mdf+ "qdv7ilp89a89y7p/GPELAFNDR.rar", texto: "TUNER (El afinador) (2025) Mediafire" },
+ 
+ ];
+ 
+ $.each(enlaces, function(indice, enlace) {
+ 	txtN= enlace.texto ? enlace.texto: '';
+ 	txtR= enlace.textoR ? enlace.textoR: '';
+ 	$('#lista-enlaces').append(
+ 		'<li><a href="' + enlace.url + '" target="_blank">' + txtN  + ' <span style="color:red;">' + txtR + '</span>' + '</a></li>'
+ 	);
+ });
+});
