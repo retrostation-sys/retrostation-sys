@@ -6,7 +6,10 @@ agregarJuegos([
     
     
     
-    { system: "nes", img: x+ "16iGfq1kYXCB6b0wyIb1MYIrRJ6A13cRT", title: "10 YARD FIGHT",  src: "https://github.com/dkxce/NES/raw/refs/heads/main/GamesByAlphabet.EN/0..9/10-Yard%20Fight%20(J).nes" },
+    { system: "nes", img: x+ "16iGfq1kYXCB6b0wyIb1MYIrRJ6A13cRT", title: "10 YARD FIGHT",  src: "https://raw.githubusercontent.com/dkxce/NES/main/GamesByAlphabet.EN/0..9/10-Yard%20Fight%20.nes" },
+    
+    
+    
     { system: "nes", img: x+ "16iGfq1kYXCB6b0wyIb1MYIrRJ6A13cRT", title: "1943" },
     { system: "nes", img: x+ "1lSO7bxZ685Fgyi9BhmOlt9qR-S9jhJjV", title: "A NIGHTMARE ON ELM STREET" },
     { system: "nes", img: x+ "1dDPPFRivP3csw37c6jzX0Mw7vNQHoOfJ", title: "ACTION IN NEW YORK" },
