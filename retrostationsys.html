@@ -156,7 +156,6 @@
         <div class="w-full p-3 flex-shrink-0">
             <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
             
-            
                <!--PUBLICIDAD--> <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
                 
                 
@@ -172,7 +171,6 @@
         </div>
         <div class="w-full p-3 flex-shrink-0">
             <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
-             
              
              
              
@@ -309,11 +307,12 @@ const equivalenciaNucleos = {
     'sms': 'genesis_plus_gx',
     'gamegear': 'genesis_plus_gx',
     'megadrive': 'genesis_plus_gx',
+    'psx': 'pcsx_rearmed',
     'all': null
 };
 
 const platformExtensions = {
-    'all': '.zip,.7z,.bin,.rom,.nes,.smc,.sfc,.fig,.sfc,.md,.gen,.smd,.32x,.gg,.sms,.iso,.chd,.cue,.pbp,.img,.n64,.v64,.z64,.gb,.gbc,.gba,.nds,.pce,.sgx,.ccd,.m3u,.chd,.ngp,.ngc,.lnx,.jag,.ws,.wsc,.vb,.dsk,.tap,.z80,.sna,.cdt,.fdi,.d64,.g64,.prg,.adf,.ipf,.dms,.exe,.com,.bat',
+    'all': '.zip,.7z,.bin,.rom,.nes,.smc,.sfc,.fig,.sfc,.md,.gen,.smd,.32x,.gg,.sms,.iso,.chd,.cue,.pbp,.img,.n64,.v64,.z64,.gb,.gbc,.gba,.nds,.pce,.sgx,.ccd,.m3u,.chd,.ngp,.ngc,.lnx,.jag,.ws,.wsc,.vb,.dsk,.tap,.z80,.sna,.cdt,.fdi,.d64,.g64,.prg,.adf,.ipf,.dms,.exe,.com,.bat,.bin',
     '2600': '.a26,.bin,.rom,.zip',
     'nes': '.nes,.nez,.unf,.unif,.fds,.bin,.zip',
     'snes': '.smc,.sfc,.fig,.srm,.zip',
@@ -325,7 +324,7 @@ const platformExtensions = {
     'gamegear': '.gg,.bin,.sms,.zip',
     'megadrive': '.md,.gen,.smd,.bin,.zip',
     'sms': '.sms,.bin,.gg,.zip',
-    'psx': '.bin,.cue,.iso,.chd,.pbp,.img,.ccd,.m3u,.zip',
+    'psx': '.bin,.cue,.iso,.chd,.pbp,.img,.ccd,.m3u,.zip,.bin',
     'psp': '.iso,.cso,.pbp,.zip',
     'cps1': '.zip,.7z',
     'cps2': '.zip,.7z',
@@ -455,7 +454,7 @@ function renderGames() {
                                 </button>
                                 <label class="bg-slate-800 hover:bg-slate-700 text-slate-300 rounded p-1 text-[10px] font-bold uppercase transition-colors flex items-center cursor-pointer" title="Cambiar archivo">
                                     <i data-lucide="refresh-cw" class="w-2.5 h-2.5"></i>
-                                    <input type="file" accept=".zip,.bin,.nes,.smc,.sfc,.n64,.gb,.gbc,.gba,.32x,.gg,.gen,.md,.sms,.pbp,.iso,.chd" class="hidden" 
+                                    <input type="file" accept=".zip,.bin,.nes,.smc,.sfc,.n64,.gb,.gbc,.gba,.32x,.gg,.gen,.md,.sms,.pbp,.iso,.chd,.cue,.bin" class="hidden" 
                                         onchange="handleLocalROM(this, '${safeTitle}', '${game.system}')">
                                 </label>
                             `;
@@ -538,12 +537,18 @@ function launchEmulatorJS(romUrl, gameTitle, consoleType) {
     let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
     if (nucleoCorrecto === null) nucleoCorrecto = consoleType;
 
+    // 🎮 Configuración para EmulatorJS con BIOS de PS1
     window.EJS_player = '#ejs-player';
     window.EJS_core = ['mame', 'cps1', 'cps2', 'cps3', 'neogeo', 'fba'].includes(nucleoCorrecto) ? 'mame' : nucleoCorrecto;
     window.EJS_gameUrl = romUrl; 
     window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
     window.EJS_startOnLoaded = true; 
     window.EJS_Settings = { buttons: { fullscreen: false } };
+    
+    // ✅ BIOS de PlayStation 1 (SCPH1001.bin) - está en la misma carpeta
+    if (consoleType === 'psx') {
+        window.EJS_biosUrl = 'SCPH1001.bin';
+    }
 
     const loaderScript = document.createElement('script');
     loaderScript.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
