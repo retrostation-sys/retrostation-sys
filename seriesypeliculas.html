@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	
+	<title>TERABOX LINKS | PREMIUM</title>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	
+	<style>
+		:root {
+			--primary: #2563eb;
+			--bg-dark: #0a0a0c;
+			--card-bg: rgba(20, 20, 25, 0.95);
+		}
+		body {
+			font-family: 'Inter', sans-serif;
+			background-color: var(--bg-dark);
+			color: #f8fafc;
+			margin: 0;
+			padding: 0;
+			padding-bottom: 280px; /* Espacio para el banner fijo */
+			scroll-behavior: smooth;
+			overflow-x: hidden;
+			min-height: 100vh;
+		}
+		.glass {
+			background: var(--card-bg);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+		}
+		.sticky-header {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background-color: var(--bg-dark);
+			padding-bottom: 4px;
+		}
+		.video-container {
+			position: relative;
+			padding-bottom: 56.25%;
+			background: #000;
+			border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+		}
+		.controls-bar {
+			height: 44px;
+			margin-top: -1px;
+			border-top: none;
+			border-radius: 0 0 12px 12px;
+		}
+		@keyframes pulse-yellow {
+			0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); transform: scale(1); }
+			50% { box-shadow: 0 0 0 12px rgba(234, 179, 8, 0); transform: scale(1.05); }
+			100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); transform: scale(1); }
+		}
+		.btn-playing {
+			animation: pulse-yellow 1.5s infinite !important;
+			background-color: #eab308 !important;
+			color: black !important;
+		}
+		.main-content {
+			padding: 12px 12px 20px 12px;
+		}
+		.skeleton {
+			background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+			background-size: 200% 100%;
+			animation: loading 1.5s infinite;
+		}
+		@keyframes loading {
+			0% { background-position: 200% 0; }
+			100% { background-position: -200% 0; }
+		}
+		.carousel-wrapper {
+			display: flex;
+			overflow-x: auto;
+			scroll-snap-type: proximity;
+			gap: 12px;
+			padding: 8px 0;
+			scrollbar-width: none;
+		}
+		.carousel-wrapper::-webkit-scrollbar {
+		display: none; 
+		}
+		.carousel-item {
+			flex: 0 0 45%;
+			width: 45%;
+			scroll-snap-align: center;
+		}
+		@media (min-width: 640px) {
+			.carousel-item { flex: 0 0 35%; width: 35%; }
+		}
+		.modal-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 2000;
+			background: rgba(0, 0, 0, 0.92);
+			backdrop-filter: blur(12px);
+		}
+		.modal-overlay.active { display: flex; }
+		#modal-search-input::placeholder {
+			color: rgba(255, 255, 255, 0.4);
+			text-transform: uppercase;
+			font-weight: 800;
+			letter-spacing: 0.05em;
+		}
+		#native-video-player {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0; left: 0;
+			display: none;
+			background: #000;
+		}
+		/* === PUBLICIDAD FIJA ABAJO === */
+		#pub {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(10, 10, 12, 0.98);
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			z-index: 999;
+			padding: 10px 0;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body class="select-none overflow-x-hidden">
+	
+	<div id="news-modal" class="modal-overlay items-center justify-center p-4">
+		<div class="glass w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
+			<div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
+				<h3 class="text-md font-extrabold text-yellow-400 flex items-center gap-2">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"/>
+					</svg>
+					NOVEDADES
+				</h3>
+				<button onclick="closeNewsModal()" class="p-2 hover:bg-white/10 rounded-full transition">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"/>
+					</svg>
+				</button>
+			</div>
+			<div id="news-list" class="p-3 space-y-2 max-h-[40vh] overflow-y-auto"></div>
+			<div class="p-5 pt-2 bg-black/20 text-center">
+				<p class="text-[12px] text-gray-300 font-medium">Si te gusta el contenido</p>
+				<p class="text-[12px] text-gray-300 font-medium">¡Gracias por tu apoyo!</p>
+			</div>
+		</div>
+	</div>
+	
+	<div id="search-modal" class="modal-overlay items-center justify-center p-4">
+		<div class="glass w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+			<div class="p-4 border-b border-white/10 flex items-center gap-3 bg-white/5">
+				<div class="flex items-center gap-2 flex-grow min-w-0">
+					<span class="w-1.5 h-6 bg-blue-600 rounded-full flex-shrink-0"></span>
+					<input type="text" id="modal-search-input" class="w-full bg-transparent border-none text-sm font-black text-white uppercase tracking-widest outline-none placeholder:text-gray-600" placeholder="BUSCAR MÁS..." />
+				</div>
+				<button onclick="closeSearchModal()" class="p-2 hover:bg-white/10 rounded-full transition flex-shrink-0">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"/>
+					</svg>
+				</button>
+			</div>
+			<div id="search-results-grid" class="p-4 grid grid-cols-2 sm:grid-cols-3 gap-4 overflow-y-auto"></div>
+			<div id="search-empty" class="p-10 text-center hidden">
+				<p class="text-gray-500 text-xs italic">No hay coincidencias...</p>
+			</div>
+		</div>
+	</div>
+	
+	<div id="share-modal" class="modal-overlay items-center justify-center p-4">
+		<div class="glass w-full max-w-sm rounded-2xl overflow-hidden p-5 flex flex-col gap-4">
+			<div class="flex justify-between items-center">
+				<h4 class="text-xs font-black text-blue-400">COPIAR LINK IPTV</h4>
+				<button onclick="closeShareModal()" class="text-white opacity-50 hover:opacity-100">×</button>
+			</div>
+			<div class="relative">
+				<input type="text" id="share-url-input" readonly class="w-full bg-black/40 border border-white/10 rounded-lg py-2 px-3 text-[10px] text-gray-300 pr-10 outline-none" />
+				<button onclick="copyShareUrl()" class="absolute right-2 top-1/2 -translate-y-1/2 text-blue-400 hover:text-blue-300">
+					<i class="fas fa-copy"></i>
+				</button>
+			</div>
+			<p id="copy-success" class="text-[9px] text-green-500 text-center hidden font-bold uppercase">¡Link copiado al portapapeles!</p>
+		</div>
+	</div>
+	
+	<div class="sticky-header">
+		<div class="max-w-screen-xl mx-auto">
+			<div class="video-container overflow-hidden">
+				<div id="youtube-player" class="absolute inset-0 w-full h-full"></div>
+				<video id="native-video-player" class="absolute inset-0 w-full h-full" controls playsinline crossorigin="anonymous"></video>
+			</div>
+			<div class="controls-bar glass flex items-center gap-2 px-2 mx-1">
+				<button onclick="toggleFullScreen()" class="p-1.5 text-blue-400 hover:text-white transition-colors" title="Pantalla Completa">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+					</svg>
+				</button>
+				<button onclick="showNews()" class="p-1.5 text-yellow-500 hover:text-yellow-400 transition-colors" title="Novedades">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l-1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+					</svg>
+				</button>
+				<button id="share-iptv-btn" onclick="openShareModal()" class="p-1.5 text-green-400 hover:text-white transition-colors hidden" title="Compartir Link">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+					</svg>
+				</button>
+				<div class="relative flex-grow">
+					<input type="text" id="image-search-input" placeholder="Buscar..." class="w-full bg-black/40 border border-white/10 rounded-lg py-1 pl-3 pr-8 text-[11px] focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-500" />
+					<button id="clear-search" class="absolute right-1.5 top-1/2 -translate-y-1/2 text-red-500 p-0.5" onclick="closeSearchModal()">
+						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path d="M6 18L18 6M6 6l12 12" stroke-width="3"/>
+						</svg>
+					</button>
+				</div>
+				<button id="action-button" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center justify-center gap-1.5 transition active:scale-95 text-[10px]">
+					<span id="btn-text">TERABOX</span>
+					<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-width="2.5"/></svg>
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="main-content max-w-screen-xl mx-auto">
+		<div id="original-carousels-section" class="space-y-6"></div>
+	</div>
+
+	<!-- CARGA DE CARRUSELES -->
+	<script src="peliculas1.js"></script>
+	<script src="peliculasA.js"></script>
+	<script src="peliculasB.js"></script>
+	<script src="peliculasC.js"></script>
+	<script src="peliculasD.js"></script>
+	<script src="peliculasE.js"></script>
+	<script src="peliculasF.js"></script>
+	<script src="peliculasG.js"></script>
+	<script src="peliculasH.js"></script>
+	<script src="peliculasI.js"></script>
+	<script src="peliculasJ.js"></script>
+	<script src="peliculasK.js"></script>
+	<script src="peliculasL.js"></script>
+	<script src="peliculasM.js"></script>
+	<script src="peliculasN.js"></script>
+	<script src="peliculasO.js"></script>
+	<script src="peliculasP.js"></script>
+	<script src="peliculasQ.js"></script>
+	<script src="peliculasR.js"></script>
+	<script src="peliculasS.js"></script>
+	<script src="peliculasT.js"></script>
+	<script src="peliculasU.js"></script>
+	<script src="peliculasV.js"></script>
+	<script src="peliculasW.js"></script>
+	<script src="peliculasX.js"></script>
+	<script src="peliculasY.js"></script>
+	<script src="peliculasZ.js"></script>
+	<script src="estrenos.js"></script>
+	<script src="youtube.js"></script>
+	<script src="canalesTv.js"></script>
+	<script src="peliculasTv.js"></script>
+
+	<script>
+    $(document).ready(function() {
+        $(document).on('click', function() {
+            const docElm = document.documentElement;
+            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                if (docElm.requestFullscreen) docElm.requestFullscreen().catch(e => {});
+            }
+        });
+    });
+
+    var player;
+    var isPlayerReady = false;
+    var firstVideoId = '';
+    const nativePlayer = document.getElementById('native-video-player');
+    const ytIframe = document.getElementById('youtube-player');
+    const shareBtn = document.getElementById('share-iptv-btn');
+    let hls = null;
+    let currentItemUrl = "";
+
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player', {
+            height: '100%',
+            width: '100%',
+            videoId: firstVideoId,
+            playerVars: { 'autoplay': 0, 'rel': 0, 'enablejsapi': 1, 'origin': window.location.origin },
+            events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
+        });
+    }
+
+    function onPlayerReady(event) { isPlayerReady = true; }
+
+    function onPlayerStateChange(event) {
+        const btn = document.getElementById('action-button');
+        const btnText = document.getElementById('btn-text');
+        if (event.data == YT.PlayerState.PLAYING) {
+            btn.classList.add('btn-playing');
+            btnText.innerText = "DESCARGALA COMPLETA AQUI POR TERABOX";
+        } else {
+            btn.classList.remove('btn-playing');
+            btnText.innerText = "TERABOX";
+        }
+    }
+
+    function toggleFullScreen() {
+        const docEl = document.documentElement;
+        if (!document.fullscreenElement) { if (docEl.requestFullscreen) docEl.requestFullscreen(); } 
+        else { if (document.exitFullscreen) document.exitFullscreen(); }
+    }
+
+    function isDirectLink(url) {
+        if (!url) return false;
+        const low = url.toLowerCase();
+        return low.includes('.m3u8') || low.includes('.mp4') || low.includes('.m3u') || (low.startsWith('http') && !low.includes('youtube.com'));
+    }
+
+    function selectMedia(item) {
+        const selectedId = getRandomValue(item.youtubeId);
+        const actionBtn = document.getElementById('action-button');
+        
+        currentItemUrl = selectedId;
+        const isIPTV = item.buscar && item.buscar.includes('IPTV');
+        
+        if (isIPTV) {
+            window.open(selectedId, '_blank');
+            closeNewsModal(); closeSearchModal();
+            return;
+        }
+        
+        if (selectedId.includes('.m3u8')) { shareBtn.classList.remove('hidden'); } 
+        else { shareBtn.classList.add('hidden'); }
+
+        const hideTerabox = (item.buscar && item.buscar.includes('YOUTUBE')) || isDirectLink(selectedId);
+        actionBtn.style.display = hideTerabox ? 'none' : 'flex';
+
+        if (isDirectLink(selectedId)) {
+            ytIframe.style.display = 'none';
+            nativePlayer.style.display = 'block';
+            if (player && player.pauseVideo) player.pauseVideo();
+            if (selectedId.toLowerCase().includes('.m3u8') || selectedId.toLowerCase().includes('.m3u')) {
+                if (Hls.isSupported()) {
+                    if (hls) hls.destroy();
+                    hls = new Hls();
+                    hls.loadSource(selectedId);
+                    hls.attachMedia(nativePlayer);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => { nativePlayer.play().catch(() => {}); });
+                } else if (nativePlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                    nativePlayer.src = selectedId;
+                    nativePlayer.play().catch(() => {});
+                }
+            } else {
+                if (hls) { hls.destroy(); hls = null; }
+                nativePlayer.src = selectedId;
+                nativePlayer.load();
+                nativePlayer.play().catch(() => {});
+            }
+        } else {
+            nativePlayer.style.display = 'none';
+            ytIframe.style.display = 'block';
+            if (nativePlayer.pause) nativePlayer.pause();
+            if (hls) { hls.destroy(); hls = null; }
+            if (isPlayerReady && player && player.loadVideoById) { player.loadVideoById({ 'videoId': selectedId }); } 
+            else { firstVideoId = selectedId; }
+        }
+
+        currentUrl = item.buttonId ? `https://1024terabox.com/s/${item.buttonId}` : 'https://www.terabox.com/';
+        localStorage.setItem('lastViewed', JSON.stringify(item));
+        closeNewsModal(); closeSearchModal();
+    }
+
+    function openShareModal() {
+        document.getElementById('share-url-input').value = currentItemUrl;
+        document.getElementById('share-modal').classList.add('active');
+        document.getElementById('copy-success').classList.add('hidden');
+    }
+    function closeShareModal() { document.getElementById('share-modal').classList.remove('active'); }
+    function copyShareUrl() {
+        const input = document.getElementById('share-url-input');
+        input.select();
+        document.execCommand('copy');
+        document.getElementById('copy-success').classList.remove('hidden');
+    }
+    function getRandomValue(val) {
+        if (Array.isArray(val)) return val[Math.floor(Math.random() * val.length)];
+        return val;
+    }
+
+    const allData = {
+    	'pelíc': {
+    		title: '<center><p style="background-color:blue; color:white">LINKS DE DESCARGA POR TERABOX</p></center>', 
+    		carousels: [
+    			...(typeof data_peliculas1 !== 'undefined' ? data_peliculas1 : []),
+    			...(typeof data_peliculasA !== 'undefined' ? data_peliculasA : []),
+    			...(typeof data_peliculasB !== 'undefined' ? data_peliculasB : []),
+    			...(typeof data_peliculasC !== 'undefined' ? data_peliculasC : []),
+    			...(typeof data_peliculasD !== 'undefined' ? data_peliculasD : []),
+    			...(typeof data_peliculasE !== 'undefined' ? data_peliculasE : []),
+    			...(typeof data_peliculasF !== 'undefined' ? data_peliculasF : []),
+    			...(typeof data_peliculasG !== 'undefined' ? data_peliculasG : []),
+    			...(typeof data_peliculasH !== 'undefined' ? data_peliculasH : []),
+    			...(typeof data_peliculasI !== 'undefined' ? data_peliculasI : []),
+    			...(typeof data_peliculasJ !== 'undefined' ? data_peliculasJ : []),
+    			...(typeof data_peliculasK !== 'undefined' ? data_peliculasK : []),
+    			...(typeof data_peliculasL !== 'undefined' ? data_peliculasL : []),
+    			...(typeof data_peliculasM !== 'undefined' ? data_peliculasM : []),
+    			...(typeof data_peliculasN !== 'undefined' ? data_peliculasN : []),
+    			...(typeof data_peliculasO !== 'undefined' ? data_peliculasO : []),
+    			...(typeof data_peliculasP !== 'undefined' ? data_peliculasP : []),
+    			...(typeof data_peliculasQ !== 'undefined' ? data_peliculasQ : []),
+    			...(typeof data_peliculasR !== 'undefined' ? data_peliculasR : []),
+    			...(typeof data_peliculasS !== 'undefined' ? data_peliculasS : []),
+    			...(typeof data_peliculasT !== 'undefined' ? data_peliculasT : []),
+    			...(typeof data_peliculasU !== 'undefined' ? data_peliculasU : []),
+    			...(typeof data_peliculasV !== 'undefined' ? data_peliculasV : []),
+    			...(typeof data_peliculasW !== 'undefined' ? data_peliculasW : []),
+    			...(typeof data_peliculasX !== 'undefined' ? data_peliculasX : []),
+    			...(typeof data_peliculasY !== 'undefined' ? data_peliculasY : []),
+    			...(typeof data_peliculasZ !== 'undefined' ? data_peliculasZ : [])
+    		]
+    	},
+		'estrenos': {
+			title: '<center><p style="background-color:blue; color:white;">LO MAS RECIENTE</p></center>', 
+			carousels: (typeof data_estrenos !== 'undefined' ? data_estrenos : [])
+		},
+		'ytub': {
+			title: '<center><p style="background-color:blue; color:white;">VIDEOS YOUTUBE</p></center>', 
+			carousels: (typeof data_youtube !== 'undefined' ? data_youtube : [])
+		},
+		'canalesTv': {
+           title: '<center><p style="background-color:blue; color:white;">CANALES TV (IPTV)</p></center>', 
+           carousels: (typeof data_canalesTv !== 'undefined' ? data_canalesTv : [])
+        },
+		'películasTv': {
+           title: '<center><p style="background-color:blue; color:white;">PELICULAS (IPTV)</p></center>', 
+           carousels: (typeof data_peliculasTv !== 'undefined' ? data_peliculasTv : [])
+        }
+	};
+
+        const allImages = Object.values(allData).flatMap(c => c.carousels.flatMap(car => car.data));
+        const actionButton = document.getElementById('action-button');
+        const searchInput = document.getElementById('image-search-input');
+        const modalSearchInput = document.getElementById('modal-search-input');
+        let currentUrl = 'https://www.terabox.com/';
+
+        function cleanText(text) {
+            if (!text) return "";
+            return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "").trim();
+        }
+
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            modalSearchInput.value = val;
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => filterData(val), 400);
+        });
+
+        modalSearchInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            searchInput.value = val;
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => filterData(val), 400);
+        });
+
+        function filterData(query) {
+            const q = cleanText(query);
+            const searchModal = document.getElementById('search-modal');
+            const resultsGrid = document.getElementById('search-results-grid');
+            const emptyMsg = document.getElementById('search-empty');
+            
+            if (q.length > 0) {
+                const results = allImages.filter(i => 
+                    cleanText(i.title).includes(q) || cleanText(i.buscar).includes(q) || cleanText(i.subtitle).includes(q)
+                );
+                searchModal.classList.add('active');
+                resultsGrid.innerHTML = '';
+                if (results.length > 0) {
+                    emptyMsg.classList.add('hidden');
+                    results.forEach(item => {
+                        const thumbId = getRandomValue(item.id);
+                        const div = document.createElement('div');
+                        div.className = 'cursor-pointer group flex flex-col gap-1.5';
+                        div.onclick = () => selectMedia(item);
+                        div.innerHTML = `<div class="relative overflow-hidden rounded-xl bg-gray-900 border border-white/5 aspect-video"><img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover transition-transform group-hover:scale-105"/></div><div class="min-w-0"><h4 class="text-[9px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4><p class="text-[8px] text-gray-400 truncate mt-0.5">${item.subtitle}</p><p class="text-[7px] text-gray-500 truncate">${item.subtitle2 || ''}</p></div>`;
+                        resultsGrid.appendChild(div);
+                    });
+                } else { emptyMsg.classList.remove('hidden'); }
+            } else { closeSearchModal(); }
+        }
+
+        function closeSearchModal() { 
+            document.getElementById('search-modal').classList.remove('active');
+            searchInput.value = ''; modalSearchInput.value = '';
+        }
+
+        function renderCarousel(container, data) {
+            container.innerHTML = '';
+            data.forEach(item => {
+                const thumbId = getRandomValue(item.id);
+                const div = document.createElement('div');
+                div.className = 'carousel-item group cursor-pointer';
+                div.onclick = () => selectMedia(item);
+                div.innerHTML = `
+                    <div class="relative overflow-hidden rounded-xl bg-gray-900 border border-white/5 aspect-video">
+                        <div class="skeleton absolute inset-0"></div>
+                        <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"/>
+                    </div>
+                    <div class="mt-1.5 px-0.5 min-w-0">
+                        <h4 class="text-[10px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4>
+                        <p class="text-[9px] text-gray-400 truncate mt-0.5">${item.subtitle}</p>
+                        <p class="text-[8px] text-gray-500 truncate">${item.subtitle2 || ''}</p>
+                    </div>`;
+                container.appendChild(div);
+            });
+        }
+
+        function showNews() {
+            if(!allData.estrenos) return;
+            const estrenos = allData.estrenos.carousels[0].data;
+            const list = document.getElementById('news-list');
+            list.innerHTML = '';
+            estrenos.forEach(item => {
+                const thumbId = getRandomValue(item.id);
+                const div = document.createElement('div');
+                div.className = "flex items-center gap-3 bg-white/5 p-2 rounded-xl border border-white/5 cursor-pointer hover:bg-white/10 transition";
+                div.onclick = () => selectMedia(item);
+                div.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-12 h-8 object-cover rounded shadow" /><div class="flex-1 min-w-0"><p class="text-white text-[10px] font-black truncate uppercase">${item.title}</p><p class="text-gray-400 text-[8px] truncate">${item.subtitle}</p></div>`;
+                list.appendChild(div);
+            });
+            document.getElementById('news-modal').classList.add('active');
+        }
+
+        function closeNewsModal() { document.getElementById('news-modal').classList.remove('active'); }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const section = document.getElementById('original-carousels-section');
+            Object.values(allData).forEach(cat => {
+                if (!cat || !cat.carousels) return;
+                const div = document.createElement('div');
+                div.className = 'mb-5';
+                div.innerHTML = `<h2 class="text-xs font-black mb-1.5 px-2 text-gray-400 border-l-2 border-blue-600 ml-1 uppercase tracking-tight"> ${cat.title}</h2>`;
+                cat.carousels.forEach(c => {
+                    if (!c || !c.data) return;
+                    const wrap = document.createElement('div');
+                    wrap.className = 'carousel-wrapper';
+                    renderCarousel(wrap, c.data);
+                    div.appendChild(wrap);
+                });
+                section.appendChild(div);
+            });
+            const saved = localStorage.getItem('lastViewed');
+            if (saved) {
+                const item = JSON.parse(saved);
+                if (!(item.buscar && item.buscar.includes('IPTV'))) { selectMedia(item); }
+            } else if (allImages.length > 0) {
+                if (!(allImages[0].buscar && allImages[0].buscar.includes('IPTV'))) { selectMedia(allImages[0]); }
+            }
+        });
+
+        actionButton.onclick = () => window.open(currentUrl, '_blank');
+    </script>
+
+    <script>
+        atOptions = {
+            'key' : '96981a3232fef288b114cc1dca19a835',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+        };
+    </script>
+
+	<!-- PUBLICIDAD FIJA ABAJO -->
+	<div id="pub"><center><script src="https://www.highrevenueformat.com/96981a3232fef288b114cc1dca19a835/invoke.js"></script></center></div>
+	    <br>
+	    	
+	    
+
+	
+
+</body>
+</html>
