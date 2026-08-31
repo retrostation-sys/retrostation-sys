@@ -1,0 +1,82 @@
+const data_peliculasB = [
+    {
+        id: 'PelículasB',
+        data: [
+             { id: '1Dhhw1jKaRL_67BeuUhSHl77j3Hkfm4Vo', youtubeId: 'OPfPI2m4gWk', buttonId: '1jA7bMwHXU20h-VsOGVgftg', title: 'BACK AT THE BARNYARD', subtitle: 'La Granja (2007-09)', subtitle2: '2 Temporadas 50 Episodios', buscar: 'S3R01' }, 
+								{ id: '1gsZRi70P4S1hgehroMAoa3XBfD6d8-0z', youtubeId: 'qvsgGtivCgs', buttonId: '1pDkwDT6Wr1ewKPPjKIOzag', title: 'BACK TO THE FUTURE', subtitle: 'Volver Al Futuro (1985)', buscar: 'P3L01' }, {
+								id: '19PklLBmjqw2cmjrqGDGx9XPjnhIwUV-l', youtubeId: 'MdENmefJRpw', buttonId: '1di3lnBEXH1THPCRU1dsSrw', title: 'BACK TO THE FUTURE PART II', subtitle: 'Volver Al Futuro 2 (1989)', buscar: 'P3L01' }, {
+								id: '11xTtJeB-nVkAd-LmNs3SaTEKcEjQFn6o', youtubeId: 'EYkguxpqsrg', buttonId: '13Qe7eqthqSKqw3LYKRHDWg', title: 'BACK TO THE FUTURE PART III', subtitle: 'Volver Al Futuro 3 (1990)', buscar: 'P3L01' }, {
+								id: '1p55D2yEr2In7Gu3_mPBzoBbsAxpmppLX', youtubeId: 'OLYENHi4IIc', buttonId: '1B5BdWrXG2XW48_Fwy2hJMw', title: 'BAD BOYS', subtitle: 'Dos Policías Rebeldes (1995)', buscar: 'P3L01' }, {
+								id: '1tV7YZXDHGzitl0GUlvMzX4-KGvzL988Q', youtubeId: 'UTNcOwQ2lRw', buttonId: '1zxmNJH3tdo-l-8pO1wb7lw', title: 'BAD BOYS 2', subtitle: 'Dos Policias Rebeldes II (2003)', buscar: 'P3L01' }, {
+								id: '1Qin89p6Yi9KF9tC9eIvzQW5IYFMC7T5q', youtubeId: 'jKCj3XuPG8M', buttonId: '1nZRDyIRjvUBw38IIj3J3qw', title: 'BAD BOYS FOR LIFE', subtitle: 'Bad Boys Para Siempre (2020)', buscar: 'Dos Policias Rebeldes, P3L01' }, {
+								id: '1IgMl8X_Aet4nO5fo4ps052tSG6iwXfad', youtubeId: 'mggw7ykX8to', buttonId: '1dtluqQw6_aJc87EgVn6Tfw', title: 'BAD BOYS RIDE OR DIE', subtitle: 'Bad Boys Hasta La Muerte', buscar: 'Dos Policias Rebeldes' }, {
+								id: '1pOrQqiaFbkSq7cRwPMEBoIsTzLl53JAE', youtubeId: 'WzWpL6zlA1w', buttonId: '1afzelvqd3i3V84o3TWNFkw', title: 'BAD CAT', subtitle: 'Gato Malo (2016)', buscar: 'P3L01' }, {
+								id: '1fqmIU0RkFMoLBti8ck___-i4UGRaQ40C', youtubeId: 'oDNFCV3oLY0', buttonId: '1KUl1WhciTjD8WIyx1d3yqw', title: 'BAD HAIR', subtitle: 'Belleza Maldita (2020)', buscar: 'P3L01G' }, {
+								id: '1xwtrJEtjocLAccwQfWPWWHNb9GgQzTMP', youtubeId: '6ldvQ8sv7DU', buttonId: '14NCUvEYLatxOHmZbXN9mPQ', title: 'BAD SISTERS', subtitle: 'Malas hermanas (2022-24)', subtitle2: '2 Temporadas 24 Episodios', buscar: 'P3L01G' }, {
+								id: '1efio-unu1LUz5nSd6iDdLhqR6z7INGFR', youtubeId: 'y7wzBVARwaU', buttonId: '1oNYinw5xoA8xE3jaVi2kyg', title: 'BAD TIMES AT THE EL ROYALE', subtitle: 'Malos Momentos En El Hotel Royale (2018)', buscar: 'P3L01' }, {
+								id: '1Dxj2NbKpWVrkwmSP-5N701S-lSa_AuhO', youtubeId: 'hKbo-ZKdSqw', buttonId: '1wq4ImC7JmgjmdrFnaX_Cdw', title: 'BADLAND HUNTERS', subtitle: 'Cazadores En Tierra Inhóspita (2024)', buscar: 'P3L02' }, {
+								id: '1GBLnna4K0QemZ3iur-Nn6s1KZ5ELxAH5', youtubeId: 'r1DosMJafGk', buttonId: '1wLtbVj_qHwNi-xAOjtdIDQ', title: 'BAND OF BROTHERS', subtitle: 'Hermanos De Sangre (2001)', subtitle2: '1 Temporada 10 Episodios', buscar: 'The Pacific, We Stand Alone Together, S3R01' }, {
+								id: '1EsZhSNRB90t-aTfDsHO8PZEtMkbi5Jya', youtubeId: 'x19tdyNa-QI', buttonId: '1Rje3J3TQaZH6M71F0p7-Zw', title: 'BANG', subtitle: 'Bang (2025)', buscar: 'PEROIZG' }, {
+								id: '1Z6tvjS6Zqsz1O4NkanXUrZ175jxo05PI', youtubeId: 'nBXsRgy_EtM', buttonId: '1Ein6VQyTT02rs7swkB5rUQ', title: 'BANK OF DAVE', subtitle: 'El Banco De Dave (2023)', buscar: 'P3L01' }, {
+								id: '1c1IfoP7eePb2lg2CQOjecp0kFLsV1-yQ', youtubeId: 'HgbTi9wSD-4', buttonId: '1TLSyQ-E9FMDiUAF-0Kn13A', title: 'BARNYARD', subtitle: 'La Granja (2006)', buscar: 'P3L01' }, {
+								id: '1GbLDtQ6JyAfBKaxVBYEe1Q38H2b5Bety', youtubeId: 'wZXK-3WxK1o', buttonId: '1h30T83goJiWlglDblxmaQg', title: 'BARRY LYNDON', subtitle: 'Barry Lyndon (1975)', buscar: 'P3L01' }, {
+								id: '1Qs5oP4V15GFTvfcklrKcAnIOWWuGwjZj', youtubeId: 'WS1s3T-rnFU', buttonId: '1JZbhqhJ3qG3YqDJgGbOUdw', title: 'BAT-MAN BEYOND', subtitle: 'Batman Del Futuro (1999-00)', subtitle2: '3 Temporadas 52 Episodios', buscar: 'S3R01G' }, {
+								id: '1JBlWtycF0qKYQeGh5Gx3EP_vAxSU-9YE', youtubeId: 'J--RQj-Gp8w', buttonId: '1fknmhLFBxoD-IkVK4Tm55w', title: 'BAT-MAN VS. TENAGE MUTANT NINJA TURTLES', subtitle: 'Batman Vs. Las Tortugas Ninja (2019)', buscar: 'TMNT, P3L01' }, {
+								id: '1ct6YHb1VUClg8n75U25AK5MUGIXYgd7N', youtubeId: 'yg_cSD2VnE8', buttonId: '1Qb6hJn81aeayk0OHIuEgnQ', title: 'BATTLE FOR THE PLANET OF THE APES', subtitle: 'La Batalla Por El Planeta De Los Simios (1973)', buscar: 'P3L01' }, {
+								id: '1gazMvx7GC65MJyoLpQ2GP0m0RbLyE1X7', youtubeId: 'okOsyezoR7s', buttonId: '1Dl2f6Ox4a2J4bTdlf_KSOA', title: 'BATTLESHIP', subtitle: 'Batalla Naval (2012)', buscar: 'S3R01' }, {
+								id: '1Ngqe8DmB03DiVg8w5uVu7hKh3U2egVY5', youtubeId: 'yUESncu-AH0', buttonId: '1d1k6_DMm712mT5EHZopXjg', title: 'BEAKMAN\'S WORLD', subtitle: 'El mundo de Beakman (1992-96)', subtitle2: '4 Temporada 91 Episodios', buscar: 'P3L01' }, {
+								id: '1SWW8FeHEjBPrfh0hrGUyJz3odXb72PcJ', youtubeId: 'G-Jnz-ZMtD4', buttonId: '1w2Jq6UoUm8wyzOWJFkfGgg', title: 'BEASTS OF NO NATION', subtitle: 'Bestias Sin Patria (2015)', buscar: 'P3L01' }, {
+								id: '1qKsETqeifGBJiBOAnk3B4F96At6S456n', youtubeId: 'Ccx-MW5Fg6I', buttonId: '18442_xxonqYz9O_kOAK9Bg', title: 'BEAUTY AND THE BEAST', subtitle: 'La Bella y La Bestia (2017)', buscar: 'P3L01' }, {
+								id: '1Lq475btudh6szcSbTvyXTiWhh8GWLJRF', youtubeId: 'e-6N1NZrQAQ', buttonId: '13qVxGkWRLQ4182FgLBa-zQ', title: 'BEDTIME STORIES', subtitle: 'Cuentos Que No Son Cuento (2008)', buscar: 'P3L01' }, {
+								id: '1PE2pa8eMBukzSLVs2dLY1mt_rzzuucnf', youtubeId: 'tfpLEU2YKzc', buttonId: '1dY749AQFyUjCTu9dHoGISQ', title: 'BEDAZZLED', subtitle: 'Al Diablo Con El Diablo', buscar: 'BUSCAR' }, {
+								id: '1lzH6oWv-TEwEaP5KmY-9oIMCJNpEPLV6', youtubeId: 'wz5dWmmqwN4', buttonId: '1KPazTJe7cIOb-qGpZtCO5w', title: 'BEE MOVIE', subtitle: 'Bee Movie La Historia De Una Abeja (2007)', buscar: 'P3L01' }, {
+								id: '1loyto8K8elojsIn_1Y-EtYSTGRzI4znG', youtubeId: '50ic_o5TE1U', buttonId: '1IgA87HcdXioHA02h0OrC8g', title: 'BEFORE', subtitle: 'Before (2024)', subtitle2: 'Serie 1 Temporada 10 Episodios', buscar: 'P3L01G' }, {
+								id: '1IrJCn-emzGng3qtSr3y1T-chTanu67La', youtubeId: 'VDjH5RDZZEM', buttonId: '172uX4Rye7d-ICbJg-AxWEw', title: 'BEHAVING BADLY', subtitle: 'Mal Comportamiento (2014)', buscar: 'P3L01' }, {
+								id: '1yVbaJj9AURaXyXMMCZO444Wpb_F1U1xk', youtubeId: 'mEilNgrpwwM', buttonId: '155fmrx6K_IxQzs4PeizIgg', title: 'BEHIND THE LINE ESCAPE TO DUNKIRK', subtitle: 'Detras De La Línea Escape a Dunkerque (2020)', buscar: 'P3L01' }, {
+								id: '1_hXCrueWhGAWDsUJCwInqdXidFw80Hs-', youtubeId: '5axOQmsC4yw', buttonId: '1vqor4gGPTAIU8IeiYY0lEw', title: 'BELLE & SEBASTIAN', subtitle: 'Belle y Sebastian (1981)', subtitle2: '1 Temporada 52 Episodios', buscar: 'P3ROIZ' }, {
+								id: '15GWcPI4j84aBYrY3Vfo5tq7W0c9Ba510', youtubeId: 'qOSEpi8K-XM', buttonId: '1uGJb-2rW5qLKVZn5dGFsgg', title: 'BENEATH THE PLANET OF THE APES', subtitle: 'Bajo El Planeta De Los Simios (1970)', buscar: 'P3L01' }, {
+								id: '1PpTsCKC1itbHB9Hpn_o7IDz1lq3ZDmTj', youtubeId: 'hS05j44UKUU', buttonId: '1JHqzkFI3Bfrqxh8jiLFdLQ', title: 'BEWITCHED', subtitle: 'Hechizada (2005)', buscar: 'P3L01' }, {
+								id: '1Bv2iEuXeodBP0XVlvikS7UXShCCJ2piF', youtubeId: 'Oi1Q_UvyvYw', buttonId: '1jjglOOIyK8095PX7rcwQCA', title: 'BEWITCHED', subtitle: 'Hechizada (1964-71)', subtitle2: '8 Temporadas 254 Episodios', buscar: 'S3R01' }, {
+								id: '1-3or8bq2yEML7wa7rqJXVzuL60A_K5hS', youtubeId: 'p34rR9VWkLQ', buttonId: '1GEwHnVYcSSwZjo2ix3rHOg', title: 'BEYOND BORDERS', subtitle: 'Mas Allá De Las Fronteras (2003) (Esp)', buscar: 'P3L01' }, {
+								id: '1iqMexPEOUTLu71zAxrtchWLv5Me1Whw2', youtubeId: 'hWE6B3g6d5c', buttonId: '1z2RS9wa8fDI9OKWeCh3QbQ', title: 'BHAKSHAK', subtitle: 'Bhakshak El depredador (2024)', buscar: 'P3L02' }, {
+								id: '1xRp5CVe5CMSYXivpZIxJaawgDoRB4otY', youtubeId: 'yfDlQ-Q12rg', buttonId: '1lekhSLUNUuDM1HL5fCpcug', title: 'BICENTENNIAL MAN', subtitle: 'El Hombre Bicentenario (1999)', buscar: 'P3L01' }, {
+								id: '1lQCY-vtRecmVHVjciOdIWdD49iZz-Roo', youtubeId: 'jxnccxgybUI', buttonId: '1_TFSFWdBJHobtLIoLymUtg', title: 'BIG DADDY', subtitle: 'Un Papá Genial (1999)', buscar: 'P3L01' }, {
+								id: '1WUmH0tV_SFsJAXRzj65KBYQW44egUHXv', youtubeId: 'gZgre_WKDuk', buttonId: '1nwjEI7m2yNe0BTMplCOF7Q', title: 'BIG HERO 6', subtitle: '6 Grandes Heroes (2014)', buscar: 'S3R01G' }, {
+								id: '1ua7OE7jGrAMSzfxMRzmcWsoX0An9EdPM', youtubeId: '3CTwf-bp1zY', buttonId: '1uj1kA2C9uhhMxr6shBA2tA', title: 'BILLIE EILISH', subtitle: 'Glastonbury (2022)', subtitle2: 'Inglés Sub: Inglés', buscar: 'P3L01G' }, {
+								id: '1iNVz67sOetLIzOHN1g5zW8Jv5LZjPqrD', youtubeId: 'ErKiCXGrtWI', buttonId: '1QowOnkvZ8GHCeEJYET3FcA', title: 'BILLY LYNN\'S LONG HALF TIME WALK', subtitle: 'Billy Lynn Honor y Valor (2016)', buscar: 'P3L01' }, {
+								id: '1nV8vh2sy2ecVmhMeu7nlcyDFJMoDRs7b', youtubeId: 'WMNX2dP6RNY', buttonId: '10VWDi32pxUR0bBJbRRUjHw', title: 'BILLY MADISON', subtitle: 'Tonto Pero No Tanto (1995)', buscar: 'P3L01' }, {
+								id: '1W0JziZJ6iO6RW_kSob74tNVFTsVZ_-wT', youtubeId: 'iCgYDM5Ngs0', buttonId: '16aN07WxN9iNaPkjD0nElUw', title: 'BIRD BOX', subtitle: 'A Ciegas (2018)', buscar: 'P3L01' }, {
+								id: '1YITY5yTXlMdev0g_PN_sXwQ2dZbt4HTE', youtubeId: '5wt1FuMWVjs', buttonId: '10pPsfY2lFsnXh1iDY2zEQg', title: 'BLACK CAT', subtitle: 'Black Cat (2005)', subtitle2: '1 Temporada 24 Episodios', buscar: 'S3R01' }, {
+								id: '1t7_jK_ZKRQC6Tmjw8wQKDciVdaDF7GX8', youtubeId: '7wnRi3Sclm8', buttonId: '1WRfoj9oBqKrw-ksYiu3EGg', title: 'BLACK MIRROR BANDERSNATCH', subtitle: 'Black Mirror Bandersnatch (2018)', buscar: 'P3L01' }, {
+								id: '13QXjf3c8Nh674IYP6SGqrwLP86aOMNqv', youtubeId: 'xjDjIWPwcPU', buttonId: '1-1tqUVuZwN2M6NN-l9_77Q', title: 'BLACK PANTHER', subtitle: 'Pantera Negra (2018)', buscar: 'P3L01' }, {
+								id: '1dAtXAISHvrzgKd8ahJdFrjvzLXxrQQKk', youtubeId: '_Z3QKkl1WyM', buttonId: '1x0Hyl2yRkLn_9QC78ale9Q', title: 'BLACK PANTHER WAKANDA FOREVER', subtitle: 'Black Panther Wanda Por Siempre', buscar: 'BUSCAR' }, {
+								id: '1vrOROCMRQHATF6KZA_PRYZez8nRd0pW_', youtubeId: '8EoCHTK7xPw', buttonId: '1KWpk0uLV1_fes8YKZ8amTg', title: 'BLACK SABBATH LIVE IN BIRMINGHAM', subtitle: 'The End Of The End (2017)', buscar: 'S3R01' }, {
+								id: '1z8UaKUjuQtv-Jy40Q_FxgeLvQHoTN9Ib', youtubeId: 'Cy_znrsuXic', buttonId: '1B6ClPRx4Iafj6UoULVBruA', title: 'BLACK WIDOW', subtitle: 'Viuda Negra', buscar: 'BUSCAR' }, {
+								id: '1uL3d6DCRQtNfOEJTrgDCpjMF8xhxdBKl', youtubeId: 'BauB7D4yZiE', buttonId: '1aQeKhn2BPnno5eB9AD6p6w', title: 'BLEACH', subtitle: 'Bleach (2018)', buscar: 'P3L01' }, {
+								id: '19PdNU9vDCnMEJgWyPHKSuYE5svcgZ-a8', youtubeId: 'PycUqhQxR1Y', buttonId: '1e3fHLa5vlgGKUGnCpRnCDg', title: 'BLEEDING STEEL', subtitle: 'Enemigo Inmortal (2017)', buscar: 'P3L01' }, {
+								id: '1-63VBjeTtKNr6WHyALGp9jFTpExyfxWB', youtubeId: 'V6cKLTmDB-k', buttonId: '172UUgIXYQMc1Yn7cGMffwQ', title: 'BLENDED', subtitle: 'Luna De Miel En Familia (2014)', buscar: 'P3L01' }, {
+								id: '1BqC15qmida0PtJxi4e9gRMtJi57shr16', youtubeId: '9wJb3EAmO54', buttonId: '1qNxzLqblLUplwa6qJKPFMw', title: 'BLINDSPOT', subtitle: 'Blindspot (2015-20)', subtitle2: '5 Temporadas 100 Episodios', buscar: 'S3R01' }, {
+								id: '1lneDKnUlE3c2UjApbev2zFaYB34uZVHn', youtubeId: 'iZwykQK9aZo', buttonId: '1WfZz1uevb1OOzgAVGpRvtQ', title: 'BLITZ', subtitle: 'Persecución Mortal (2011)', buscar: 'P3L01G' }, {
+								id: '1o0Mry5Mu_vbeW_8oO9sLv7_WFu1gHa77', youtubeId: 'TMAlW8Q08hY', buttonId: '1wgxCFJtwO5lhpqUm4lTHSA', title: 'BLOODY ESCAPE: BATS OUT OF HELL', subtitle: 'Bloody Escape: Bats out of Hell (2024)', buscar: 'S3R01G' }, {
+								id: '16PvCcSf7SNkF9H-g3kqgF709Ufj5GTzE', youtubeId: '6S9c5nnDd_s', buttonId: '1h68Ef9zL4eOSsBubJQ2mZQ', title: 'BOHEMIAN RHAPSODY', subtitle: 'Bohemian Rhapsody: La Historia De Freddie Mercury (2018)', buscar: 'P3L01' }, {
+								id: '1Avwh42xkXVxDE9QOCVCdqSCF_aS8XJPU', youtubeId: 'BK5WcjsTKWU', buttonId: '1Yq6TmvA-fexcUmMTZMrpOQ', title: 'BOLT', subtitle: 'Bolt (2008)', buscar: 'P3L01' }, {
+								id: '1DCgt-Xt5Ij7yKzg0WUNcz2YHZhlGeVhn', youtubeId: 'aBYS2-1ftOc', buttonId: '1nZtPs1O6KTqec8vp5VxZxw', title: 'BOONIE BEARS GUARDIAN CODE', subtitle: 'Boonie Bears El Gran Escape', buscar: 'P3L02' }, {
+								id: '1GdRX63ShncvtOKE1A-Iy4bO9WhHjx3cA', youtubeId: 'dL6_G1z6ymw', buttonId: '13154PV_AyjIqX27PXrnMyg', title: 'BORAT CULTURAL LEARNINGS OF AMERICA FOR MAKE BENEFIT GLORIOUS NATION OF KAZAKHSTAN', subtitle: 'Borat El Segundo Mejor Reportero Del Glorioso País Kazajistán Viaja a América (2006)', buscar: 'S3R01' }, {
+								id: '1EMOMbnR5HkkySBXwHrfHkfCGEeqMUxWl', youtubeId: 'b4V4LjpYn38', buttonId: '1RZKWq5D1ZO1f_RGE7dVcmg', title: 'BORN ON THE FOURTH OF JULY', subtitle: 'Nacido El Cuatro De Julio (1994)', buscar: 'P3L01' }, {
+								id: '1PvjqOGDRPUahDZ1cslX2bNghS8wGamXq', youtubeId: 'f01m6yqSQ-I', buttonId: '1RZKWq5D1ZO1f_RGE7dVcmg', title: 'BOSCO', subtitle: 'Bosco', buscar: 'P3L02' }, {
+								id: '1dBloWhP6lAirfD86uzknAvK8QgMf8Vpp', youtubeId: 'RGBiwDguDY4', buttonId: '1-bOHAMqdA_uWW_2pX8_tNg', title: 'BRIDE OF CHUCKY', subtitle: 'La Novia De Chucky (1998)', buscar: 'Child\'s Play, Cult Of Chucky, Curse Of Chucky, Living With Chucky, Seed Of Chuck, Chucky El Muñeco Diabólico, El Culto de chucky. La Maldición de Chucky, Viviendo con chucky, El hijo de chucky, P3L01' }, {
+								id: '1JcTFO7u0JMKAn0Pd1audDjVLTBqKvQ9S', youtubeId: 'BvIj2H1ne0k', buttonId: '16EZS08SD0YM33GJvyfreRw', title: 'BROTHERS', subtitle: 'Hermanos (2009)', buscar: 'P3L01' }, {
+								id: '1hUr3o_MxRRZxCdCoZKFCoeRhcoF9z6Dt', youtubeId: '0K3vUvjXhHU', buttonId: '1gXBBCF7JqsOW3B4dd7utRA', title: 'BROTHER\'S KEEPER', subtitle: 'Mi Mejor Amigo​ (2021)', buscar: 'P3L02' }, {
+								id: '1I8Kv377EGPvT4UUOEf1Ya_2C7atQCe5R', youtubeId: 'fe-luzrqWSk', buttonId: '1dZu15LVCKV91DVmk0MLeXA', title: 'BRUCE ALMIGHTY', subtitle: 'Todo Poderoso', buscar: 'BUSCAR' }, {
+								id: '1ux-IwaXL5yISuxJVUW8GlNZo9xKb58LR', youtubeId: 'V-daIHTY4NQ', buttonId: '1MIeVe_JmaUsZRrX-M3Y8lw', title: 'BUFFY THE VAMPIRE SLAYER', subtitle: 'Buffy La Caza Vampiros (1992)', buscar: 'P3L01G,' }, {
+								id: '1SQTm-eQvFGuWdbCuk4AdqNhIno0DQKWW', youtubeId: '5PAbRpzoEX8', buttonId: '15kTrDBlIsynYR1o57qsiDw', title: 'BURST ANGEL', subtitle: 'Burst Angel (2004)', subtitle2: '1 Temporada 24 Episodios 1 OVA', buscar: 'S3R01' }, {
+								id: '1DvtbDD1PYBYsbO_NBnjHOkkJZFYaHry6', youtubeId: 'yJEOJbSuOvI', buttonId: '1pT9yqdUwQ1shGbrnP37DeQ', title: 'BUTCHER\'S CROSSING', subtitle: 'El Cazador De Búfalos', buscar: 'P3L02' },
+            
+            
+            
+            
+            
+            // ... TODOS los demás elementos de este carrusel
+        ]
+    }
+];
