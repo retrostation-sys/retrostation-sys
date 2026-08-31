@@ -2,7 +2,12 @@ const data_peliculas1 = [
     {
         id: 'Películas1',
         data: [
-            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '1mvtGF4bUXIjNOlU5DLbsBw', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2011-16)', subtitle2: '6 Temporadas 138 Episodios', buscar: 'P3L02' },
+            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '1mvtGF4bUXIjNOlU5DLbsBw', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2011)', subtitle2: 'TEMPORADA 1', buscar: 'P3L02' },
+            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '1mbWpUPkWYHModaIFI48H6g', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2012)', subtitle2: 'TEMPORADA 2', buscar: 'P3L02' },
+            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '1-FiEQkd0lN55hYTVmqe5xA', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2013)', subtitle2: 'TEMPORADA 3', buscar: 'P3L02' },
+            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '19mGcmhVcwUEDuSmOruR8mQ', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2014)', subtitle2: 'TEMPORADA 4', buscar: 'P3L02' },
+            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '1idzuF--DXVsNe1FbfKxouQ', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2015)', subtitle2: 'TEMPORADA 5', buscar: 'P3L02' },
+            { id: '1ATOJcg4vQJPMmoMCzqlQTxEr-vlhBzQY', youtubeId: 'jla6YMfkS9Q', buttonId: '1bCr0IS7fdvvrpw3hUYJfbQ', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2016)', subtitle2: 'TEMPORADA 6', buscar: 'P3L02' },
             { id: '1r2ppXqrB2LELgK6aGbOuwbFCywdzkfL-', youtubeId: 'BEsL884-zKQ', buttonId: '1nqfcrwkASrg9WL5P6lwE9Q', title: '2 HEARTS', subtitle: '2 Corazones (2020)', subtitle2: '', buscar: 'BUSCAR' }, 
             { id: '1YHx1xAuPOkPIX4T_lrwlJyFc4mkF-CSS', youtubeId: 'heOcee5ZB9c', buttonId: '1sa2uaoP8BBVf45XYfkokIA', title: '3 METROS SOBRE EL CIELO', subtitle: '3 Metros Sobre El Cielo', buscar: 'BUSCAR' }, 
             { id: '13InCrLYkfU9Q_9XNkHoVEyHp3jXauwYU', youtubeId: '1IYksquG4Ns', buttonId: '1jDwUjdoa4AQQ0Wzv7lmcsQ', title: '4X4', subtitle: '4X4 (2019)', buscar: 'Locked, PEROIZG' }, 
