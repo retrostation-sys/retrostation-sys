@@ -1,0 +1,59 @@
+const data_peliculasH= [
+	{ id: 'PelículasH',
+		data: [
+			{ id: '1MEV9QgUKu-42VbQdcfmXGD0K1YzRc6Ly', youtubeId: 's2-1hz1juBI', buttonId: '1fRz6D7ZKffbZEV8eES7oNg', title: 'HACKSAW RIDGE', subtitle: 'Hasta El Ultimo Hombre (2016)', buscar: 'P3L01' }, {
+								id: '1fHotJK_tMeL4sVyj4xIlAQm7opjViJfC', youtubeId: 'zvGPnW7qHfA', buttonId: '1FN_rFh2VneggayiDnH5v9A', title: 'HALF A LOAF OF KUNG FU', subtitle: 'Medio Pan Kung Fu (1978)', buscar: 'PEL01' }, {
+								id: '1nvy-BgfbbBTU1cB95h8hLnBmrtJA5RMe', youtubeId: 'oVgtguYmNBg', buttonId: '1xrCUjk0qioJQOcjWV8gQ3w', title: 'HALLOWEEN', subtitle: 'Halloween La Noche De Todas Las Brujas (1978)', buscar: 'P3L01' }, {
+								id: '1AY1ttb2QBKHnmZBBn_dKhdVFKqzdZfQF', youtubeId: 'HSEJnHsdR8M', buttonId: '1rYDz9GBcX7-jhpbvefuxRw', title: 'HALLOWEEN', subtitle: 'La Noche De Halloween (2018)', buscar: 'P3L01' }, {
+								id: '1gZY53YdjIgnAsOdFF_ldu5Wo5lRSs8Zw', youtubeId: 'TG9hX_EwfGk', buttonId: '18zlHe6mLmxL2PsIANkGAdQ', title: 'HALLOWEEN ENDS', subtitle: 'Halloween La Noche Final (2022)', buscar: 'P3L01' }, {
+								id: '10OFBaZBL22ChVPo_o9RPo8odF5ERg-rP', youtubeId: 'dDub9AdKTs0', buttonId: '13pX1H89ZxKUd5jD4E1C9kA', title: 'HANCOCK', subtitle: 'Hancock (2008)', buscar: 'BUSCAR' }, {
+								id: '1nTXlawyVqDIvpk7lGy4XSYY0NiWEGZ8w', youtubeId: 'y1emDAYCfVQ', buttonId: '1PnWoc9IaEJKQ_fe2TvO0fA', title: 'HAPPY GILMORE', subtitle: 'Terminagolf (1996)', buscar: 'P3L01' }, {
+								id: '1XZXXDEDidLdRDWabe7u_ctt0xDMwTfaP', youtubeId: 'feuDJPWFslk', buttonId: '1CR6ttkGxplTSLK13HarpWw', title: 'HARINA', subtitle: 'Harina (2022-23)', subtitle2: '2 Temporadas 16 Episodios', buscar: 'S3R01' }, {
+								id: '1Hvvdkj5-j3FoK1WLa7tFdlMr8XaY6bRK', youtubeId: 'fC5S3_LFix0', buttonId: '1xZQYJMhW2y-iCIUrCQU4uQ', title: 'HAUNTED MANSION', subtitle: 'Mansión Embrujada (2023)', buscar: 'P3L01G' }, {
+								id: '1GESL8ctq2pcYeL-wTVqEi4WrIJJWM9W0', youtubeId: 'g1Po7unlsXY', buttonId: '1Coplpu8SBg5LpJWAXXt4Tg', title: 'HAVOC', subtitle: 'Estragos (2025)', buscar: 'PEROIZG' }, {
+								id: '1_MDe2ZcRkoeKnUFSDqsOfZV42GOVOzwn', youtubeId: 'tVlqVHKn2dg', buttonId: '18Ft9Ks3Ot7c0dNM8rwgeCw', title: 'HE\'S JUST NOT THAT INTO YOU', subtitle: 'A El No Le Gustas Tanto (2009)', buscar: 'PEROIZG' }, {
+								id: '1H9rGno-J2Hx6gH6HRK4mvwVEc_GpVj95', youtubeId: '0xbBLJ1WGwQ', buttonId: '1L2MQaXrhhecAJnpYqBxWsA', title: 'HEAT', subtitle: 'Fuego Contra Fuego (1995)', buscar: 'P3L01G' }, {
+								id: '1-v_YxmutEHwerLH0EpWkoIHxfUvHHbPC', youtubeId: '_wpTw7Ta6iw', buttonId: '1I1i3gfd3ZpmxO6CgYmlOcw', title: 'HECKLE', subtitle: 'Heckle (2020)', subtitle2: 'Español, Inglés sub: Español', buscar: 'P3L02' }, {
+								id: '1J8qsAyQKhvRY2tWGSE3gqj-BE5W6bYxn', youtubeId: '29iRCu4b4wo', buttonId: '1LpUYcrzGh58IrFS872t39Q', title: 'HEIDI', subtitle: 'Heidi (1937)', buscar: 'P3L02' }, {
+								id: '1tgc5vUTzW0NzCumulDGShjZ3hu2Is4bA', youtubeId: 'GHUx-vKr7Xc', buttonId: 'TERABOX', title: 'HEIDI', subtitle: 'Heidi (1974)', subtitle2: '1 Temporada 52 Episodios', buscar: 'BUSCAR' }, {
+								id: '1Uk5sWYrIUA596-NlWt9srB11xGOksqjx', youtubeId: 'BBWk1d32YuA', buttonId: '11UiLtrorTLYhkJoD3qR3LA', title: 'HEIDI', subtitle: 'Heidi (1979)', buscar: 'BUSCAR' }, {
+								id: '14ibS-BlEL9gmKl67gx9LEFSvxf9sJBst', youtubeId: '2Q-NAvcRtDo', buttonId: '1gPYPjQ3mThhswZomqIk_GQ', title: 'HEIDI', subtitle: 'Heidi (2005)', buscar: 'P3L02' }, {
+								id: '1d7FBx9CanFsuBLIPYO4Glfuyi0SNS1JH', youtubeId: 'gDmstiOFxyI', buttonId: '1MMyjol_54x9CYJwZc2Gnug', title: 'HELL TEACHER NUBE', subtitle: 'Nube, El Maestro Del Infierno (1996)', subtitle2: '1 Temporada 48 Episodios', buscar: 'S3R01' }, {
+								id: '1NMxY41cIqDRp4JvGYN1Dd1oaH5rJpVEb', youtubeId: 'olBLvQ26_eM', buttonId: '1526inxW0kd8yWZggNzVBwQ', title: 'HELL FEST', subtitle: 'El Festival Del Infierno (2018)', buscar: 'P3L01' }, {
+								id: '1A_mis2LovVnUBxmjDF2j4yBVSATmxFCv', youtubeId: '8-V09016mME', buttonId: '1z-aiAbAh5630AaX3aJaC5g', title: 'HELLBOUND HELLRAISER II', subtitle: 'Hellraiser 2 Hellbound El Infierno (1988)', buscar: 'P3L01' }, {
+								id: '1YgxeUXIh_rhgaFt3wpCny-_Tps-k08KM', youtubeId: 'IRUYYRONzIs', buttonId: '1-uIEmirX8oEc3KS9M8mPSQ', title: 'HELLO! SANDYBELL', subtitle: '¡Hola! Sandybell (1981)', subtitle2: '1 Temporada 47 Episodios', buscar: 'P3ROIZ' }, {
+								id: '1y3URUoYGrrfTR1coiNDySl9iYrG9d_Dl', youtubeId: '8mOn4h0lgKQ', buttonId: '1xP4bX9Tj-gq9l-ybND4GFQ', title: 'HELLRAISER', subtitle: 'Hellraiser El Corazón Del Infierno (1987)', buscar: 'P3L01' }, {
+								id: '10vH1JXyhFvWhQ1Er8MAcPwtDqwz2jGTT', youtubeId: 'oUlgwJNdu2I', buttonId: '15GijDJ67kQLH038EgoLKog', title: 'HELLRAISER', subtitle: 'Hellraiser El Origen (2022)', buscar: 'P3L01' }, {
+								id: '1z4rB6I-1pPhfnh-sfDnvu33a3Vc9D9Lp', youtubeId: 'CbGozPL5BeA', buttonId: '1QzPQGzs3YPUmEalzLi_ufQ', title: 'HELLRAISER III HELL ON EARTH', subtitle: 'Hellraiser 3 El Infierno En La Tierra (1992)', buscar: 'P3L01' }, {
+								id: '1Dx0OaDfJtYnOZyS1vwvMiUsTxZI2dVlb', youtubeId: 'epYPLH6k4Qk', buttonId: '1qIC21WX_dQYK-S-NhCmI0Q', title: 'HELLRAISER BLOODLINE', subtitle: 'Hellraiser 4 Estirpe Infernal (1996)', buscar: 'P3L01' }, {
+								id: '1laf8qSKgj1CrG7D-5pwbtOUbySaKxf3i', youtubeId: 'rBPegoYoD9Q', buttonId: '1h0vUDJjlKo_8ZLLzTAgkWw', title: 'HELLSING', subtitle: 'Hellsing (2001)', subtitle2: '1 Temporada 13 Episodios', buscar: 'S3R01' }, {
+								id: '1Rox-s0uM7UVOel8mSRV1AQLmHdsMQKWx', youtubeId: 'J3QJpl_QL28', buttonId: '1s2A89Q1HjWNCJMzqjd0QOA', title: 'HELLSING: THE DAWN', subtitle: 'Hellsing: The Dawn (2011)', subtitle2: '1 Temporada 3 Episodios', buscar: 'S3R01' }, {
+								id: '1t0eOW9T7EtStvLWE-ZhZAmXP6TnCy1eZ', youtubeId: '_C6DxBbDU9s', buttonId: '1MznVsGpTAFBhaKR07iRm6A', title: 'HELLSING: ULTIMATE', subtitle: 'Hellsing: Ultimate (2006)', subtitle2: '1 Temporada 10 Episodios', buscar: 'S3R01' }, {
+								id: '1pJEgSIE5NcMEmR-BjdE_P62oclbUrSh0', youtubeId: 'O5mAW4QuedM', buttonId: '1DkEF_P2qrLlQYETqiMfB8A', title: 'HERE COMES THE GRUMP', subtitle: 'Ahí Viene ¡Cascarrabias! (1969)', subtitle2: '1 Temporada 34 Episodios', buscar: 'S3R01' }, {
+								id: '1vSNQBBBop1NQEkHTwhAyyFhMfEZQNWD3', youtubeId: 'bUe4_L6OEFU', buttonId: '1L2eF-3JQyAsqMTPTLU5UsQ', title: 'HERE COMES THE GRUMP', subtitle: 'Ahí Viene Cascarrabias! (2018)', buscar: 'P3L01' }, {
+								id: '1MHvFWCj-lTAuBvX62CLCqaivRQfv8E9f', youtubeId: 'aHXkfwajXf8', buttonId: '1JpJvSjgNcBpdKXEi3Gm5hg', title: 'HIGH GROUND', subtitle: 'High Ground En La Tierra De Los Justos (2025)', buscar: 'PEROIZG' }, {
+								id: '1jdi152J0m3-r_JQx335LCrMCW8TMsFKB', youtubeId: '1TASJymwQeo', buttonId: '1X_FeK2SmNxwSj4uUaGzleg', title: 'HISTORY OF THE WORLD PART 1', subtitle: 'La Loca Historia Del Mundo (1981)', buscar: 'P3L01G' }, {
+								id: '1x3DOYD1_072tvrueMdX4dCTlnFQ8WIEu', youtubeId: 'Pcpb-Zq4-dQ', buttonId: '1PknRxIAmJ4RTluvLVfh93g', title: 'HOLD YOUR BREATH', subtitle: 'Aguanta La Respiración (2024)', buscar: 'P3L01G' }, {
+								id: '1NSAT7TqerLgT959RduPGfh5FAWestWHd', youtubeId: 'brjkpRBpFnc', buttonId: '1-CfA59dzNcK6xIZW6ehauA', title: 'HOLMES & WATSON', subtitle: 'Holmes y Watson (2018)', buscar: 'Sherlock Holmes, P3L01' }, {
+								id: '1vlMohjYb7y44WXTeNxhjEH1seiODn5Qw', youtubeId: 'dzdpqRGA1qc', buttonId: '1t7rFsLGemyLb1p4j78d19g', title: 'HOME ALONE', subtitle: 'Mi Pobre Angelito (1990)', buscar: 'P3L01' }, {
+								id: '1o4LIqzbpiQSdhEVBprOhTmEAmsy_awOT', youtubeId: '5h9VDUNtoto', buttonId: '1euPF1uajU63ioWihiEw9JQ', title: 'HOME ALONE 2 LOST IN NEW YORK', subtitle: 'Mi Pobre Angelito 2 Perdido En Nueva York (1992)', buscar: 'P3L01' }, {
+								id: '1gCDCuHjUTn8mY71B7hhyMlZES3VpBGa3', youtubeId: 'wPdnVvxXb5U', buttonId: '1M-YHpGW-xsUB039FBZz6Ig', title: 'HOME ALONE 3', subtitle: 'Mi pobre angelito 3 (1997)', buscar: 'P3L01' }, {
+								id: '1mBotRhccZmKo8TCMw0KUHT6qHgol3P4i', youtubeId: '89W163wlc-A', buttonId: '1ApHrPHMJSlI6O_DJEi1G9w', title: 'HOME ALONE 4 TAKING BACK THE HOUSE', subtitle: 'Mi Pobre Angelito 4 (2002)', buscar: 'P3L01' }, {
+								id: '1bV9-8LxFhEqQVu0JuMNmNd_hp6AwiMWx', youtubeId: 'Bb4Mp_NwAls', buttonId: '1zrVCvXh9l-eDIjs9bbdc1Q', title: 'HOME ALONE 5 THE HOLIDAY HEIST', subtitle: 'Mi Pobre Angelito 5 El Asalto Navideño (2012)', buscar: 'P3L01' }, {
+								id: '15ClMTqGRoP42r6PQnIiBdsnjPikTrYOF', youtubeId: '2BkVf2voCr0', buttonId: '1WCD3T1HOpnfkl-SsXPVl8Q', title: 'HOME SWEET HOME ALONE', subtitle: 'Mi Pobre y Dulce Angelito (2021)', buscar: 'Mi Pobre Angelito 6, Home Alone 6, P3L01' }, {
+								id: '1Dotk59cwPz47cjLniOIHz2Kh4SOShFDk', youtubeId: 'ApmTqV8b52Y', buttonId: '1wwwf5Z7PZyEvAgSDLgRF2A', title: 'HOMEFRONT', subtitle: 'Linea De Fuego (2013)', buscar: 'P3L01G' }, {
+								id: '1H2BlOZ05kTMkn7EdKrhMSz-4vqAWMjmE', youtubeId: 'piNMOWb6iFY', buttonId: '1Cg0iA_QnHJ9a15Ema8Jj6Q', title: 'HOOT KLOOT', subtitle: 'Hoot Kloot (1973)', subtitle2: '1 Temporada 17 Episodios', buscar: 'S3R01' }, {
+								id: '15j517qdNmAkJZjm4H-CT4db3_oPUUHsk', youtubeId: 'lQcocbUx4Lo', buttonId: '1e_bh-NmrdI05x9AgbJHAjg', title: 'HOTEL DE LOS LIOS GARCIA Y GARCIA 2', subtitle: 'El Hotel De Los Líos. García y García 2 (2023) [Esp]', buscar: 'P3L01' }, {
+								id: '1V6QAerBmIiVguPSJT3hjvaJsqPEjJntq', youtubeId: '1F0S7mT8d7k', buttonId: '11sztHjMAcJ0gBZCHDv0UfQ', title: 'HOUSE M. D.', subtitle: 'Dr. House (2004-11)', subtitle2: '8 Temporadas 177 Episodios', buscar: 'S3R01' }, {
+								id: '1qf5eXtelgzQoeOxXRpS9PGHMBsWynh--', youtubeId: '22w7z_lT6YM', buttonId: '1fs4NWhj22EF98wumI9EAwQ', title: 'HOW TO TRAIN YOUR DRAGON', subtitle: 'Como Entrenar a Tu Dragón) (2025)', buscar: 'P3L02' }, {
+								id: '1-3zcuf_fZou7kgYIP_MVfmUB4BYzf83W', youtubeId: 'SkcucKDrbOI', buttonId: '1gFq5-2kAKkM4XP0opCCQYA', title: 'HOW TO TRAIN YOUR DRAGON 3 THE HIDDEN WORLD', subtitle: 'Cómo Entrenar a Tu Dragón 3 El Mundo Oculto (2019)', buscar: 'P3L01' }, {
+								id: '1OSNxCOeHJAHo_Eo1ZovOycNzOKycOCwd', youtubeId: 'DD0m9t4WHEQ', buttonId: '1Ie4kbmpryW9UMiDt4VHWog', title: 'HOW THE GRINCH STOLE CHRISTMAS', subtitle: 'El Grinch(2000)', buscar: 'P3L02' }, {
+								id: '1x7ZQRGMFstjJcj4tRMvhJlK13S5-GZUZ', youtubeId: 'kY3SuNvqQPw', buttonId: '1NxOozOUDQb3gb9Fy8-LkRw', title: 'HUBIE HALLOWEEN', subtitle: 'El Halloween De Hubie (2020)', buscar: 'P3L01' }, {
+								id: '1ieWKc4avRil8aZoHsrho_TMFUD8lhxDr', youtubeId: 's_X35NgQTAk', buttonId: '12iIaZU-bCQcdKLQ1cDQrkg', title: 'HUMAN CAPITAL', subtitle: 'Capital Humano (2019)', buscar: 'P3ROIZ' }, {
+								id: '1meQwqeK6bNvl2hTHiAiihKyd2Km9szGU', youtubeId: 'nM4iy0reaCA', buttonId: '1w-QzK1FY28ja3sUeZz30kw', title: 'HUSTLE', subtitle: 'Garra (2022)', buscar: 'P3L01' },
+            
+
+            // ... TODOS los demás elementos de este carrusel
+        ]
+    }
+];

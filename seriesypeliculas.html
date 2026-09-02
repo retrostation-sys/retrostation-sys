@@ -27,7 +27,7 @@
 			color: #f8fafc;
 			margin: 0;
 			padding: 0;
-			padding-bottom: 280px; /* Espacio para el banner fijo */
+			padding-bottom: 280px;
 			scroll-behavior: smooth;
 			overflow-x: hidden;
 			min-height: 100vh;
@@ -121,7 +121,6 @@
 			display: none;
 			background: #000;
 		}
-		/* === PUBLICIDAD FIJA ABAJO === */
 		#pub {
 			position: fixed;
 			bottom: 0;
@@ -145,7 +144,7 @@
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"/>
 					</svg>
-					NOVEDADES
+					NOVEDADES / ESTRENOS
 				</h3>
 				<button onclick="closeNewsModal()" class="p-2 hover:bg-white/10 rounded-full transition">
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,7 +208,7 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
 					</svg>
 				</button>
-				<button onclick="showNews()" class="p-1.5 text-yellow-500 hover:text-yellow-400 transition-colors" title="Novedades">
+				<button onclick="showNews()" class="p-1.5 text-yellow-500 hover:text-yellow-400 transition-colors" title="Novedades / Estrenos">
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l-1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
 					</svg>
@@ -239,7 +238,6 @@
 		<div id="original-carousels-section" class="space-y-6"></div>
 	</div>
 
-	<!-- CARGA DE CARRUSELES -->
 	<script src="peliculas1.js"></script>
 	<script src="peliculasA.js"></script>
 	<script src="peliculasB.js"></script>
@@ -552,8 +550,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const section = document.getElementById('original-carousels-section');
-            Object.values(allData).forEach(cat => {
-                if (!cat || !cat.carousels) return;
+            Object.entries(allData).forEach(([key, cat]) => {
+                // ✅ ESTRRENOS NO SE MUESTRA EN LA PÁGINA, SOLO EN EL MODAL DE LA ESTRELLA
+                if (key === 'estrenos' || !cat || !cat.carousels) return;
+                
                 const div = document.createElement('div');
                 div.className = 'mb-5';
                 div.innerHTML = `<h2 class="text-xs font-black mb-1.5 px-2 text-gray-400 border-l-2 border-blue-600 ml-1 uppercase tracking-tight"> ${cat.title}</h2>`;
@@ -566,6 +566,7 @@
                 });
                 section.appendChild(div);
             });
+            
             const saved = localStorage.getItem('lastViewed');
             if (saved) {
                 const item = JSON.parse(saved);
@@ -588,13 +589,7 @@
         };
     </script>
 
-	<!-- PUBLICIDAD FIJA ABAJO -->
 	<div id="pub"><center><script src="https://www.highrevenueformat.com/96981a3232fef288b114cc1dca19a835/invoke.js"></script></center></div>
 	    <br>
-	    	
-	    
-
-	
-
 </body>
 </html>
