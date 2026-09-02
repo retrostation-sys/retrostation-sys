@@ -1,0 +1,78 @@
+const data_peliculasD= [
+	{ id: 'PelículasD',
+		data: [
+			{ id: '1FLgvuV2zLLrKtt10UfR9MDBnXR2rDXHS', youtubeId: 'lGfEmA4z9jA', buttonId: '1O4h6aReH5HWjAjP9r7ClVA', title: 'DAMIEN OMEN II', subtitle: 'La Profecía 2 Damien (1978)', buscar: 'P3L01G' },
+			{ id: '1ICqNrwySKiaF069GZXQWp9p_MQZywh5y', youtubeId: 'VrdRyYPggfI', buttonId: '1pgxTKHVwarjnBmvu-m6HOg', title: 'DAMSEL', subtitle: 'Damisela (2024)', buscar: 'P3L02' },
+			{ id: '1TX_GJHg8j7Z4WSGNQL7jHq0smUmeuiZf', youtubeId: 'gpVMON-BFog', buttonId: '1fuG-_p2KGRewy-mjAffGXQ', title: 'DANCE IN THE VAMPIRE BUND', subtitle: 'Bailando Con Vampiros (2010)', subtitle2: '1 Temporada 12 Episodios', buscar: 'S3R01' },
+			{ id: '1CbN9zcyzvpy07IJpbuvR29GfF3QGlvX3', youtubeId: 'j6ucGt_Xp14', buttonId: '1FTMjT2yj2-1vS1tT-nCt9A', title: 'DARK MATTER', subtitle: 'Materia Oscura (2024) (1T9E)', subtitle2: '1 Temporada 9 Episodios', buscar: 'P3L01G' },
+			{ id: '1luIQLOqW95VMA2yV1mnSdRveVZzdnIW8', youtubeId: 'naWkpWL3CoU', buttonId: '1G6gtb4vjZADUOssMtkDgmw', title: 'DAWN OF THE DEAD (1978)', subtitle: 'El Amanecer De Los Muertos (1978)', subtitle2: 'Inglés sub: Español, Inglés', buscar: 'P3L01' },
+			{ id: '1im5J3U53b4wCMMIXOPf0gzxkSR9E7TOo', youtubeId: 'wf8-9AXQGfM', buttonId: '1aqcuEk0fauVIFHXOezsxIA', title: 'DAWN OF THE DEAD', subtitle: 'El Amanecer De Los Muertos (2004)', buscar: 'P3L01' },
+			{ id: '1tR_PmnL-8_5BS2Fkh3iVPxI2nLcxLPXZ', youtubeId: '3sHMCRaS3ao', buttonId: '1bcdPu2lpuNV0KcK7G6m0JA', title: 'DAWN OF THE PLANET OF THE APES', subtitle: 'El Planeta De Los Simios Confrontación (2014)', buscar: 'P3L01' },
+			{ id: '1iOFdcsQF4R9YA8a7x-b7PMDWRaRz1hCD', youtubeId: '0JnRdfiUMa8', buttonId: '1P-2jwN9DZvOSMxnpOOAG-A', title: 'DEADPOOL', subtitle: 'Deadpool', buscar: 'BUSCAR' },
+			{ id: '1EHWC9Hpy89IfvAqD6Cc-_qXRg56wygvJ', youtubeId: '4i6ZePa8jz4', buttonId: '1mxf_hXe6Vbqcr7XP9ah5dg', title: 'DEADPOOL 2', subtitle: 'Deadpool 2', buscar: 'BUSCAR' },
+			{ id: '1xvuYKh_OV_pFioak952uYEzI6dp9KO9y', youtubeId: 'cuJiuqv4Kp0', buttonId: '1RyxQCw7mtROKXzi6w6qqtQ', title: 'DEAR DICTATOR', subtitle: 'Querido Dictador (2017)', buscar: 'P3L01' }, {
+								id: '17KlGuFv_q4BAtbsuZXkcvdPa1Xd50a6Z', youtubeId: 'Bt3D3Ca9nww', buttonId: '1yE25DYXEEV7W5iUDS_ihsg', title: 'DEATH NOTE', subtitle: 'Death Note (2006)', subtitle2: '1 Temporada 37 Episodios', buscar: 'S3R01' }, {
+								id: '1a5ZlcQA5iDvg7jb45tPeFh3orE-RZTYD', youtubeId: 'X4jKEFMvES4', buttonId: '1IL75hmsn6z8rlhnGFQ6shg', title: 'DEATH RUMBLE', subtitle: 'Pelea Mortal (2023)', buscar: 'P3L01' }, {
+								id: '1g6q2O2Qrm3SAJK3TzQq_pVTEE5ntW8H_', youtubeId: 'XQfeoRLvfqU', buttonId: '1M-3f5S-FdmybwodLEczYEA', title: 'DEFENDING JACOB', subtitle: 'Defender a Jacob (2020) [Ing T+Esp]', subtitle2: '1 Temporada 8 Episodios', buscar: 'P3L01' }, {
+								id: '1TwqAywOMdW_dYbDpC0MNBWzQC4gcHghE', youtubeId: 'yGAktL45XNQ', buttonId: '1L9zlQydTaKjpgNgX-M6MpQ', title: 'DELIVERY MAN', subtitle: 'Una Familia Numerosa (2013)', buscar: 'P3L01' }, {
+								id: '1BwvbKIU4KlejjG_63SrsvdOxbvoW1hr3', youtubeId: '0B5v6QZ5R3g', buttonId: '1XTvcXFCn1KE5iJr0H2Tlag', title: 'DEMOLITION MAN', subtitle: 'El Demoledor (1993)', buscar: 'S3R01' }, {
+								id: '1yaqgMerJh3QBYGhssrahGftfd4-G9dUL', youtubeId: 'YOUTUBE', buttonId: '1lBoZM0U4hoslgSyxqsnlVQ', title: 'DEMON SLAYER KIMETSU NO YAIBA INFINITY CASTLE MOVIE 1', subtitle: 'Demon Slayer Kimetsu No Yaiba Castillo Infinito Película 1 (2025)', buscar: 'PEROIZG' }, {
+								id: '1PrAgtbZgTsVR6bSbR106R-9itOkdwjtb', youtubeId: 'ww06yGPM7Kc', buttonId: '11s7TcN095Nilo9X9-ZBFAA', title: 'DEVILMAN CRYBABY', subtitle: 'Devilman Crybaby (2018)', subtitle2: '1 Temporada 10 Episodios', buscar: 'P3L01G' }, {
+								id: '1_6kcZ-0uW3i4AUrQCp_l5LhYVZmigx4t', youtubeId: 'jlhNDyBDhWY', buttonId: '1P14g7KpGSzx4P5Xjv9x9dA', title: 'DEXTER\'S LABORATORY EGO TRIP', subtitle: 'El Laboratorio De Dexter El Viaje De Dexter (1999)', buscar: 'P3L01' }, {
+								id: '1H7fggj8-LkzIl4bvgbxBAcZoUTOd7Z_P', youtubeId: '0TZyEEnsgWU', buttonId: '1ZbkhbX3k-hBJDexNifThSQ', title: 'DIAMONDS AND LEMONS', subtitle: 'Diamantes y Limones (2018) (Ing)', buscar: 'Adventure Time, Hora de Aventura, S3R01' }, {
+								id: '1rXHkNXQGUT9jAtTG-nnQbb5HJl-KiQjK', youtubeId: 'jaJuwKCmJbY', buttonId: '1Tt6IdWzgkczRzLeMMbx_vg', title: 'DIE HARD', subtitle: 'Duro De Matar (1988)', buscar: 'P3L01' }, {
+								id: '1C24YcgM-cgbAgy72C-LJhaLaWzIJ1-6E', youtubeId: 'CvHp7xJZ4_U', buttonId: '1mW1My4MQD2mnIRKSr5mkfQ', title: 'DIE HARD 2', subtitle: 'Duro de Matar 2 (1990)', buscar: 'P3L02' }, {
+								id: '1WPGCKUicB2pAGzriNolwSsYo3pIBDN2P', youtubeId: 'Z2H3KY3Wnr4', buttonId: '18yxO6QkrCs28ymHEWFKSIw', title: 'DINASTIA CASILLAS', subtitle: 'Dinastía Casillas (2025)', subtitle2: '1 Temporada 89 Episodios', buscar: 'El Señor De Los Cielos, PEROIZG' }, {
+								id: '1wQxBGpo5ieKHn6FqUarXArZes8bW9k7p', youtubeId: 'CpSEG64Tq6o', buttonId: '1Yv6NYSTjYugjWuCegXj7KA', title: 'DINOSAURS', subtitle: 'Dinosaurs (1991-94)', subtitle2: '4 Temporadas 65 Episodios', buscar: 'P3L00' }, {
+								id: '1BeviUV2p5iAXGgboZIQZbdW1deO5zFEF', youtubeId: 'so6XoqZgbVM', buttonId: '10eMyKUAdKr9ipLcI_mq7bg', title: 'DISCLAIMER', subtitle: 'Desprecio (2024)', subtitle2: '1 Temporada 7 Episodios', buscar: 'P3L01G' }, {
+								id: '1TJNtq7NWE7qLHivvPJrPU-9VFz0gxnqI', youtubeId: 'Aw7Eln_xuWc', buttonId: '1mjTArr5JYX6TMChrWm46-A', title: 'DIVERGENT', subtitle: 'Divirgente (2014)', buscar: 'P3L02' }, {
+								id: '1GQKGdUd6ZlhF8ZopOh3BxPhagjS-mZF2', youtubeId: '0fUCuvNlOCg', buttonId: '10XH1Tqk3nOSzatMb9T_iTw', title: 'DJANGO UNCHAINED', subtitle: 'Django Sin Cadenas (2012)', buscar: 'P3L01' }, {
+								id: '1yQN05arSpG3qA5RVvobd0_t88bIpEaJe', youtubeId: 'NprEAwYs4OQ', buttonId: '1jSTg1OY_Ny1gyekLPxoPDg', title: 'DNA² (S)', subtitle: 'DNA² (1994)', subtitle2: '1 Temporada 12 Episodios 3 OVAS', buscar: 'S3R01' }, {
+								id: '1moQvqkIXEouZoILIpTwx8GTFD-OSrAIz', youtubeId: 'HSzx-zryEgM', buttonId: '1MVnlTT6d8TYX8FmqqPAfTA', title: 'DOCTOR STRANGE', subtitle: 'Dr. Strange Hechicero Supremo (2016)', buscar: 'P3L01' }, {
+								id: '1SbYdFpqWBql_Q3mpR3Mhpm8oGgaIMyLO', youtubeId: 'KREBGtEeW9U', buttonId: '1zrX7oENPYvMtiuzUAmtq7g', title: 'DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS', subtitle: 'Dr. Strange En El Multiverso De La Locura (2022)', buscar: 'BUSCAR' }, {
+								id: '1T5rOyrzP7WvwHnrCwW2JEd5XsPdDlHcy', youtubeId: '5HAZtloPE3I', buttonId: '13O33tgpO1qphmcGkDrYnmg', title: 'DOMINION PREQUEL TO THE EXORCIST', subtitle: 'Dominion Precuela Del Exorcista (2005)', buscar: 'P3L01' }, {
+								id: '1Gh1CiHcv6h583pTcZ2eO_t4QLrmbmq1Z', youtubeId: 'lF3S6CcCPRY', buttonId: '15fYVzmZcmgUK7WBpACy97w', title: 'DON QUIJOTE CABALGA DE NUEVO', subtitle: 'Don Quijote Cabalga De Nuevo (1973)', buscar: 'P3L01G' }, {
+								id: '18oGleaEE83mWLmy57PbtUVyCxodOheLV', youtubeId: '9Dda63FuCNk', buttonId: '19UAP-o3c805AtTIWqEYgBg', title: 'DON\'T LOOK AT DEMON', subtitle: 'No Mires Al Demonio (2022)', buscar: 'P3L02' }, {
+								id: '19If5T1VU0rVrmw_QUh7cTLii9-Bd9Dcx', youtubeId: 'ilpr8PsNNQM', buttonId: '1qhTTZyWl-wQfT3yzyJJY1A', title: 'DOS CRIADOS MALCRIADOS', subtitle: 'Dos Criados Malcriados', buscar: 'S3R01' }, {
+								id: '12SaggkqHxjx8LqPAr_PhyJNTvXK_IsKF', youtubeId: '9Hbd1QeI1Og', buttonId: '10qi9MKFxNSvsIsuQHTJFmg', title: 'DRAGON BALL', subtitle: 'Dragon Ball (1986)', subtitle2: '1 Temporada 153 Episodios', buscar: 'S3R01' }, {
+								id: '1RTRDVn9hRAdXsWoIqRIlXBR_3qSK-Gux', youtubeId: 'M3Ia3LPVblo', buttonId: '1dutiL-OoVhrkRZbNpdJKVA', title: 'DRAGON BALL CURSE OF THE BLOOD RUBIES', subtitle: 'Dragon Ball La Leyenda De Shen Long (1986)', buscar: 'S3R01' }, {
+								id: '1VpcTfi7_JDHYshfA--cUFLl7RihUP2qh', youtubeId: 'YUDbl9qBihk', buttonId: '1V4XOXvy9bTMP9LYgPurF3w', title: 'DRAGON BALL DAIMA', subtitle: 'Dragon Ball Daima (2024)', subtitle2: '1 Temporada 20 Episodios', buscar: 'S3R01' }, {
+								id: '1dSTmQ2hxj5mWQDNKmJCJnpsjqOoOnNcW', youtubeId: 'wgZ-ATUGXDw', buttonId: '13_gS37ejwiqrO7-fALr4rg', title: 'DRAGON BALL GT', subtitle: 'Dragon Ball GT (1996)', subtitle2: '1 Temporada 64 Episodios + 1 Especial TV', buscar: 'S3R01' }, {
+								id: '1XnZAIgfX3Wgh92wMtMjg6FXcRnkniwWW', youtubeId: 'p_OYTInBmUI', buttonId: '1C8ACBy4K8nACtNUWsLVkVw', title: 'DRAGON BALL MYSTICAL ADVENTURE', subtitle: 'Dragon Ball La Aventura Mistica (1988)', buscar: 'S3R01' }, {
+								id: '1kCmDkz6CvRAQzsmUgNuIhxB_xaW_5ueu', youtubeId: 'vQ4rEd3Kggs', buttonId: '1lgg-OX5FNQJ_zcUjYLAnTQ', title: 'DRAGON BALL SLEEPING PRINCESS IN DEVIL\'S CASTLE', subtitle: 'Dragon Ball La Princesa Durmiente Del Castillo Embrujado (1987)', buscar: 'S3R01' }, {
+								id: '1J-Qi4nklmKrgC7SiH6eOPUlxOdiqdtNz', youtubeId: '_37jJAl1c0g', buttonId: '1Q0sKDIeqiDhiHEvJ6tDpOA', title: 'DRAGON BALL SUPER', subtitle: 'Dragon Ball Super (2015]', subtitle2: '1 Temporada 131 Episodios', buscar: 'S3R01' }, {
+								id: '1-jMKx2ny9hmG61k8Mv3jYlFYSXEr_FNf', youtubeId: 'NRissMn_MHs', buttonId: '1TM9evLkbPf96DnyMi_U04Q', title: 'DRAGON BALL SUPER: BROLY', subtitle: 'Dragon Ball Super: Broly (2018)', buscar: 'S3R01' }, {
+								id: '1jdLihub_KBnKTtZtUqV6vp-cA2gh4XEs', youtubeId: 'zFQPp-jrS7A', buttonId: '1UrIXBJdVegvFKmB-zlx3hA', title: 'DRAGON BALL SUPER: SUPER HERO', subtitle: 'Dragon Ball Super: Super Heroe (2022)', buscar: 'S3R01' }, {
+								id: '1uKLPpszwZ_bKLp8XD2MZvCgvXvYDuEEQ', youtubeId: 'hBELlIg54E8', buttonId: '1Oq0FNM4nihhOPdDPnN4Wyg', title: 'DRAGON BALL: THE PATH TO POWER', subtitle: 'Dragon Ball El Camino Hacia El Poder (1996)', buscar: 'S3R01' }, {
+								id: '1FMNlR1xd4cN_bjCwXBjTTZv5opGOU2zC', youtubeId: 'arEKVepnmEI', buttonId: '1mYyZN3txUyr2W9hbaiiAKQ', title: 'DRAGON BALL Z', subtitle: 'Dragon Ball Z (1989)', subtitle2: '1 Temporada 291 Episodios 5 OVAS', buscar: 'S3R01' }, {
+								id: '13C3TJyXnlV8GQN6mSOoPoVI6wctyIH9_', youtubeId: 'jn9X0rdDRSc', buttonId: '1qhJRrIA-g72GatqYVDHwtg', title: 'DRAGON BALL Z: BATTLE OF THE GODS', subtitle: 'Dragon Ball Z La Batalla De Los Dioses (2013)', buscar: 'S3R01' }, {
+								id: '1Pl6axJv9tTiJRTwrdnGrg1Vp2w6N3t1a', youtubeId: 'C6dJO_8jLUA', buttonId: '1YgAUiOb8vYRfWCA9Vt-yiw', title: 'DRAGON BALL Z: BIO BROLY', subtitle: 'Dragon Ball Z El Combate Final (1994)', buscar: 'S3R01' }, {							
+								id: '1jmtxWXQjbwiiRtaEQ6EItFMej_251zd8', youtubeId: 'GbHrTpQTNOw', buttonId: '1g7np-OaLBcTBO4SCRLPZNQ', title: 'DRAGON BALL Z: BOJACK UNBOUND', subtitle: 'Dragon Ball Z La Halaxia Corre Peligro(1993)', buscar: 'S3R01' }, {
+								id: '1y5aF1vJO_8jUWNluhuaRcZkX93g-7Xg0', youtubeId: 'tSXc0yOMyOs', buttonId: '1NFSESxWoOA5QYa7UZCaK_Q', title: 'DRAGON BALL Z: BROLY SECOND COMING', subtitle: 'Dragon Ball Z El Regreso Del Guerrero Legendario (1994)', buscar: 'S3R01' }, {
+								id: '12R6PXRzrXcQryCYyWQU8i4HYT0Bq7S78', youtubeId: 'ROCnm2Dh_ck', buttonId: '1nJw1_sQJltPSJRlHxnLirA', title: 'DRAGON BALL Z: BROLY THE LEGENDARY SUPER SAIYAN', subtitle: 'Dragon Ball Z El Poder Invencible (1993)', buscar: 'S3R01' }, {
+								id: '12GMohkqwyIHc6o_1gJlGS4b6jXe15qUz', youtubeId: 'nqT9HQma79A', buttonId: '1ktdt83zRzR7-VqzSG_1uxA', title: 'DRAGON BALL Z: COOLER\'S REVENGE', subtitle: 'Dragon Ball Z Los Rivales Mas Podetosos (1991)', buscar: 'S3R01' }, {
+								id: '1iNFddW5TnCD4YwFheDCGz7V527GQu8yK', youtubeId: '1Yf2CySEtEk', buttonId: '1NKNMCukfwhg2_fRa2z7zrQ', title: 'DRAGON BALL Z: DEAD ZONE', subtitle: 'Dragon Ball Z Devuelveme a Mi Gohan! (1989)', buscar: 'S3R01' }, {
+								id: '12jT8Vvm6rf99nJu_v-Mku0X5BiKygEqa', youtubeId: 'DdSBIiKKdkY', buttonId: '1VIDHPUPfxXCH4yl9frLPmg', title: 'DRAGON BALL Z: FUSION REBORN', subtitle: 'Dragon Ball Z La Fusión De Goku y Vegeta (1995)', buscar: 'S3R01' }, {
+								id: '13B5AwAYvRl_9mDJ9KiKKjynMnmlIYd4p', youtubeId: 'slbjUJbPx1E', buttonId: '1nZI5IadX08xnbs18fO0-rw', title: 'DRAGON BALL Z: LORD SLUG', subtitle: 'Dragon Ball Z El Super Saiyajin Son Goku (1991)', buscar: 'S3R01' }, {
+								id: '144riMr_wc53Gi4RzxSyxfF5t_bEnxVJt', youtubeId: 'J-Go4Rzk9i4', buttonId: '1Grr8qFb7J1RTK7NoH2c3zg', title: 'DRAGON BALL Z: RESURRECTION \'F\'', subtitle: 'Dragon Ball Z La La Resurreción De Freezer (2015)', buscar: 'S3R01' }, {
+								id: '13bqB_42qfZymie6WoWEDkfE9NY351G_f', youtubeId: '8BIqAQf9Fds', buttonId: '1v5AX9duFrLnYWSa0lEbNNQ', title: 'DRAGON BALL Z: SUPER ANDROID 13!', subtitle: 'Dragon Ball Z La Pelea De Los Tres Super Saiyajin (1992)', buscar: 'S3R01' }, {
+								id: '12KhsBLA0W2oqOeYXK19f8r9oJlVOPuBZ', youtubeId: 'nagXC8gnwj0', buttonId: '1jux1pnokjPnZpg76l4kX8Q', title: 'DRAGON BALL Z: THE RETURN OF COOLER', subtitle: 'Los Guerreros Más Poderosos (1992)', buscar: 'S1' }, {
+								id: '18rN7dY50kf4hc-30Mih1jUnRKS8SZMLt', youtubeId: 'wO4u20cwh7E', buttonId: '1BvsYu9UAHmYju0hc9e9-pA', title: 'DRAGON BALL Z: THE WORLD\'S STRONGEST', subtitle: 'Dragon Ball Z El Hombre Mas Fuerte Del Mundo (1990)', buscar: 'S1' }, {
+								id: '1ac9XilQdjGH30cPwnTbpY762X00zaHxu', youtubeId: 'bA9IkNSBDk0', buttonId: '1mFxKH9GaGSAUP5pWmi6OjA', title: 'DRAGON BALL Z: TREE OF MIGHT', subtitle: 'Dragon Ball Z El Arbol Del Poder (1990)', buscar: 'S1' }, {
+								id: '1QaaiRZ5ctHdE-tmpgQvFdLvbtPq_diVM', youtubeId: 'DDiZWQ0wHvA', buttonId: '19PJX6UEZo200W-hjWIgIrA', title: 'DRAGON BALL Z: WRATH OF THE DRAGON', subtitle: 'Dragon Ball Z El Ataque Del Dragón (1995)', buscar: 'P1' }, {
+								id: '1f3dvNV72pSwoXsPIWVf0IDEvNXPThZuk', youtubeId: 'KEfDi7XH-O8', buttonId: '1cIlbmsKsTF6RHCGSWN9LhQ', title: 'DRAGON FIST', subtitle: 'El Puño Del Dragón (1979)', buscar: 'P1' }, {
+								id: '14ay5OtemdjK2E-Z9UJ-h97IXSvmtYYJq', youtubeId: 'ANB1TBs6RRA', buttonId: '1p2vjufaCMM1PO-09jkRCDA', title: 'DRAGON QUEST: YOUR STORY', subtitle: 'Dragon Quest Tu Historia (2019)', buscar: 'P1' }, {
+								id: '14dEFvi0F0uGMoc61TGOhjcFQVzpyljya', youtubeId: 'eofQZuBE-EE', buttonId: '178LFrUzNy7-LiUcbgA6TqA', title: 'DRAGONS FOREVER', subtitle: 'Los Tres Dragones (1988)', buscar: 'P2' }, {
+								id: '1JT5uZ2Gtzv6G3il_CaonyM88vL_MmEUt', youtubeId: 'NRLwyqbYIJo', buttonId: '1K6th_4AadVV8DeTNdNa80A', title: 'DRUNKEN MASTER', subtitle: 'El Maestro Borracho (1978)', buscar: 'P1' }, {
+								id: '1SS-o54k63xtoz0b7s8HSsu_5DZeqAapd', youtubeId: '1p3NnJ_oiE0', buttonId: '1K_GbYm_2gm50UCU5F9Z0bg', title: 'DUE DATE', subtitle: 'Todo Un Parto (2010)', buscar: 'S1' }, {
+								id: '1UF-12_x1plnb5bxXLfefW3AMUW4NZOUR', youtubeId: 'OFNRmu2xRKU', buttonId: '1gUeGbpyU-1TJw-NKbCqfIw', title: 'DUMBO', subtitle: 'Dumbo (1941)', buscar: 'P1G' }, {
+								id: '14f9zmBdtMDQG-ecdddr5_XGnuLRtf8VA', youtubeId: 'A5niYB9jfvA', buttonId: '1v0cmAhfnlbNjn8iUAA2-XQ', title: 'DUMBO', subtitle: 'Dumbo (2019)', buscar: 'P1' }, {
+								id: '14odY5ZrAmY1xT0uCk3qwK5LpAT51rBrN', youtubeId: 'n9xhJrPXop4', buttonId: '1v0cmAhfnlbNjn8iUAA2-XQ', title: 'DUNE', subtitle: 'Duna (2021)', buscar: 'P2' },
+								{ id: '1Ua7JgNZcLfEMX6U00Aj3vXC_WdsMmx4y', youtubeId: 'Zd69FfhBmSc', buttonId: '1aq6Hq6UM5vqR0qcwa2yIgA', title: 'DUNKI', subtitle: 'Dunki (2023)', buscar: 'P2' },
+            
+            
+
+            // ... TODOS los demás elementos de este carrusel
+        ]
+    }
+];
