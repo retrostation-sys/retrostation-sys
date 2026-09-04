@@ -6,7 +6,7 @@ const data_peliculas1= [
            { id: '15QiWdPQsFs85UZO_eN7CboaZJ_REUDMC', youtubeId: 'jla6YMfkS9Q', buttonId: '1IdgThuUwh87TlIZL6fUArg', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2014)', subtitle2: 'TEMPORADA 4', buscar: 'P3L02' }, 
            { id: '1MAKefcvQAKQBbn-hHSN6GkJzTwWJuB17', youtubeId: 'jla6YMfkS9Q', buttonId: '1yLJ2LcXxB_kBtc0wNpK_cQ', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2015)', subtitle2: 'TEMPORADA 5', buscar: 'P3L02' }, 
            { id: '1D-S0QhHlr7ipjCdOhqiEa21VYguMbqrA', youtubeId: 'jla6YMfkS9Q', buttonId: '1IvQvbt2GpFOi_VT3DOKcRw', title: '2 BROKE GIRLS', subtitle: '2 Chicas Quebradas (2016)', subtitle2: 'TEMPORADA 6', buscar: 'P3L02' }, 
-           { id: '1Y7ZRIZ8j9PfWhLNO68FH9OK9GkPepGss-', youtubeId: 'BEsL884-zKQ', buttonId: '1nqfcrwkASrg9WL5P6lwE9Q', title: '2 HEARTS', subtitle: '2 Corazones (2020)', subtitle2: '', buscar: 'BUSCAR' }, 
+           { id: '1Y7ZRIZ8j9PfWhLNO68FH9OK9GkPepGss', youtubeId: 'BEsL884-zKQ', buttonId: '1nqfcrwkASrg9WL5P6lwE9Q', title: '2 HEARTS', subtitle: '2 Corazones (2020)', buscar: 'BUSCAR' }, 
            { id: '1mUMTxxjiE91TMeEbLKYB3JzBtDGKeKzt', youtubeId: 'heOcee5ZB9c', buttonId: '1sa2uaoP8BBVf45XYfkokIA', title: '3 METROS SOBRE EL CIELO', subtitle: '3 Metros Sobre El Cielo', buscar: 'BUSCAR' },
            { id: '1lSl6aKnR3GTlfD8R0mzLmNgFuUYdnul9', youtubeId: '1IYksquG4Ns', buttonId: '1jDwUjdoa4AQQ0Wzv7lmcsQ', title: '4X4', subtitle: '4X4 (2019)', buscar: 'Locked, peroiz#g' },
            { id: '17-5YPIb0QIcZt7jRt08Da_QL0hEVEC3W', youtubeId: 'XV3sbY51Xcc', buttonId: '1dGe9ocJmxjmJXMAi-MB5UQ', title: '5 DAYS OF WAR', subtitle: '5 Días De Guerra (2011)', buscar: 'P3L01' }, 
@@ -33,7 +33,7 @@ const data_peliculas1= [
            { id: '1IU5CkIV6ek9lhAOCD3B9CKt9KAd_KfXz', youtubeId: 'qhCOAuzcQXY', buttonId: '1LcplNXdFGragDK45_h-YKA', title: '500 DIAS DE ESCOBAR', subtitle: '500 Días De Escobar (2023)', buscar: 'P3L01' }, 
            { id: '1aVj38N1E6GUT9ZZAPsedj-5Xa_vXjyYn', youtubeId: 'AX7eViA0v8Q', buttonId: '1NCgAVNDYYBopvdjvbVu2vQ', title: '1942 UNKNOWN BATTLE', subtitle: '1942 La Gran Ofensiva (2019)', buscar: 'P3L01' }, 
            { id: '10D53w0WMW2uds6KtyxMlZ8VSlQMSaks4', youtubeId: 'UrPizm6tbak', buttonId: '14y9zlgRjtcQyIaXzXOHrfQ', title: '1898 LOS ULTIMOS DE FILIPINAS', subtitle: '1898 Los Ultimos De Filipinas (2016) (Esp)', buscar: 'P3L01' }, 
-           { id: '10D53w0WMW2uds6KtyxMlZ8VSlQMSaks4', youtubeId: '9ooDeS4Ep5Q', buttonId: '1VAxusfWLrgwfBaaMwrnSvQ', title: '2012', subtitle: '2012 (2009)', buscar: 'P3ROIZ' }, 
+           { id: '1lmFPCLSZzTxCPJFYxx2B9_XwQ4BVdq17', youtubeId: '9ooDeS4Ep5Q', buttonId: '1VAxusfWLrgwfBaaMwrnSvQ', title: '2012', subtitle: '2012 (2009)', buscar: 'P3ROIZ' }, 
            { id: '1b1vzis43FOBX9FF5z7fa2ly03Gimbj5E', youtubeId: 'jhVq-hmY48Q', buttonId: '12BLE-RmNlsW-oz8f2OGr7w', title: '10000 B. C.', subtitle: '10000 A. C. (2008)', buscar: 'P3L01' },
            
            
