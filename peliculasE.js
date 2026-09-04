@@ -24,7 +24,7 @@ const data_peliculasE= [
           { id: '10L4R71C1taHh2qboiJihfqlBWfleYqI0', youtubeId: '3C4cuH0pxUw', buttonId: '1cbunUHEg0bKNahzfza_u4g', title: 'EL JUEGO DE LAS LLAVES', subtitle: 'El Juego De Las Llaves (2022)', buscar: 'P2' },
           { id: '1_nZX4HnzDeYvCrkAeTS_XVRwuKRtrOYZ', youtubeId: '1IROIuRQeiw', buttonId: '1VsP95c8PHFbTGEoEornamw', title: 'EL MAGO', subtitle: 'El Mago (1949)', buscar: 'P1G' },
           { id: '1IUwDpOPIJB8hrD2xTVVJ1eQHruEIkfcU', youtubeId: 'h4Goo2-nzOc', buttonId: '1U0Mb7zcCK1R_AK3vq6M9ig', title: 'EL MINISTRO Y YO', subtitle: 'El Ministro y Yo (1976)', buscar: 'P3L01G' }, 
-          { id: '1nPN4rQFpluvNawopAZPfmsq3zMRdEQmF', youtubeId: 'Vr28HRKTuEA', buttonId: '157ZokA9InlH6HAFdPBP5CA', title: 'EL MOCHAOREJAS', subtitle: 'El Mochaorejas (2026)', buscar: 'peroiz74g' }, 
+          { id: '1nPN4rQFpluvNawopAZPfmsq3zMRdEQmF', youtubeId: 'Vr28HRKTuEA', buttonId: '157ZokA9InlH6HAFdPBP5CA', title: 'EL MOCHAOREJAS', subtitle: 'El Mochaorejas (2026)', buscar: 'peroiz#g' }, 
           { id: '1caqMFF4E7xnjV4dPBCc3kMD6BkMFAxWT', youtubeId: '5SDDgyWkGgQ', buttonId: '1y9cF_mqcCVDIHLazy_9PZA', title: 'EL PADRECITO', subtitle: 'El Padrecito (1964)', buscar: 'P1G' },
           { id: '17vuI6BXuxT_26TzclTSoMWxmb0YIW1lZ', youtubeId: '-BprZYJI6es', buttonId: '1Xc-fsG2ldUxxcSbAhHCG5w', title: 'EL PATRULLERO 777', subtitle: 'El Patrullero 777 (1978)', buscar: 'P1G' },
           { id: '1uH1RILNjlLu4S9kvaFF0qsscvPbCHuZ7', youtubeId: 'vbjSrgQLliE', buttonId: '1Yg52hH8EUeECPsc6XdMlJQ', title: 'EL POPULISMO EN AMERICA LATINA', subtitle: 'El Populismo En América Latina (2018)', subtitle2: '1 Temporada 5 Episodios', buscar: 'S3R01' }, {

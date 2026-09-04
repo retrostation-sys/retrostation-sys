@@ -83,7 +83,7 @@
 			display: flex;
 			overflow-x: auto;
 			scroll-snap-type: proximity;
-			gap: 12px;
+			gap: 14px;
 			padding: 8px 0;
 			scrollbar-width: none;
 		}
@@ -91,12 +91,15 @@
 		display: none; 
 		}
 		.carousel-item {
-			flex: 0 0 45%;
-			width: 45%;
-			scroll-snap-align: center;
+			flex: 0 0 38%;
+			width: 38%;
+			scroll-snap-align: start;
 		}
 		@media (min-width: 640px) {
-			.carousel-item { flex: 0 0 35%; width: 35%; }
+			.carousel-item { flex: 0 0 26%; width: 26%; }
+		}
+		@media (min-width: 1024px) {
+			.carousel-item { flex: 0 0 18%; width: 18%; }
 		}
 		.modal-overlay {
 			display: none;
@@ -132,6 +135,15 @@
 			padding: 10px 0;
 			text-align: center;
 		}
+		.poster-container {
+			position: relative;
+			overflow: hidden;
+			border-radius: 12px;
+			background: linear-gradient(145deg, #1f2937, #111827);
+			border: 1px solid rgba(255,255,255,0.08);
+			aspect-ratio: 2/3;
+			width: 100%;
+		}
 	</style>
 </head>
 
@@ -140,10 +152,10 @@
 	<div id="news-modal" class="modal-overlay items-center justify-center p-4">
 		<div class="glass w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
 			<div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
-				<h3 class="text-md font-extrabold text-yellow-400 flex items-center gap-2">
+			<h3 class="text-md font-extrabold text-yellow-400 flex items-center gap-2">
 					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"/>
-					</svg>
+					</svg>		
 					NOVEDADES / ESTRENOS
 				</h3>
 				<button onclick="closeNewsModal()" class="p-2 hover:bg-white/10 rounded-full transition">
@@ -153,9 +165,7 @@
 				</button>
 			</div>
 			<div id="news-list" class="p-3 space-y-2 max-h-[40vh] overflow-y-auto"></div>
-			<div class="p-5 pt-2 bg-black/20 text-center">
-				<p class="text-[12px] text-gray-300 font-medium">Si te gusta el contenido</p>
-				<p class="text-[12px] text-gray-300 font-medium">¡Gracias por tu apoyo!</p>
+			<div class="p-5 pt-2 bg-black/20 text-center">	
 			</div>
 		</div>
 	</div>
@@ -173,7 +183,7 @@
 					</svg>
 				</button>
 			</div>
-			<div id="search-results-grid" class="p-4 grid grid-cols-2 sm:grid-cols-3 gap-4 overflow-y-auto"></div>
+			<div id="search-results-grid" class="p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-auto"></div>
 			<div id="search-empty" class="p-10 text-center hidden">
 				<p class="text-gray-500 text-xs italic">No hay coincidencias...</p>
 			</div>
@@ -235,7 +245,7 @@
 	</div>
 	
 	<div class="main-content max-w-screen-xl mx-auto">
-		<div id="original-carousels-section" class="space-y-6"></div>
+		<div id="original-carousels-section" class="space-y-8"></div>
 	</div>
 
 	<script src="peliculas1.js"></script>
@@ -497,7 +507,16 @@
                         const div = document.createElement('div');
                         div.className = 'cursor-pointer group flex flex-col gap-1.5';
                         div.onclick = () => selectMedia(item);
-                        div.innerHTML = `<div class="relative overflow-hidden rounded-xl bg-gray-900 border border-white/5 aspect-video"><img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover transition-transform group-hover:scale-105"/></div><div class="min-w-0"><h4 class="text-[9px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4><p class="text-[8px] text-gray-400 truncate mt-0.5">${item.subtitle}</p><p class="text-[7px] text-gray-500 truncate">${item.subtitle2 || ''}</p></div>`;
+                        div.innerHTML = `
+                            <div class="poster-container">
+                                <div class="skeleton absolute inset-0"></div>
+                                <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover transition-transform group-hover:scale-105 opacity-0" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"/>
+                            </div>
+                            <div class="min-w-0 mt-1.5">
+                                <h4 class="text-[9px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4>
+                                <p class="text-[8px] text-gray-400 truncate mt-0.5">${item.subtitle}</p>
+                                <p class="text-[7px] text-gray-500 truncate">${item.subtitle2 || ''}</p>
+                            </div>`;
                         resultsGrid.appendChild(div);
                     });
                 } else { emptyMsg.classList.remove('hidden'); }
@@ -517,11 +536,11 @@
                 div.className = 'carousel-item group cursor-pointer';
                 div.onclick = () => selectMedia(item);
                 div.innerHTML = `
-                    <div class="relative overflow-hidden rounded-xl bg-gray-900 border border-white/5 aspect-video">
+                    <div class="poster-container">
                         <div class="skeleton absolute inset-0"></div>
-                        <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"/>
+                        <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover transition-transform group-hover:scale-105 opacity-0" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"/>
                     </div>
-                    <div class="mt-1.5 px-0.5 min-w-0">
+                    <div class="mt-2 px-0.5 min-w-0">
                         <h4 class="text-[10px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4>
                         <p class="text-[9px] text-gray-400 truncate mt-0.5">${item.subtitle}</p>
                         <p class="text-[8px] text-gray-500 truncate">${item.subtitle2 || ''}</p>
@@ -540,7 +559,14 @@
                 const div = document.createElement('div');
                 div.className = "flex items-center gap-3 bg-white/5 p-2 rounded-xl border border-white/5 cursor-pointer hover:bg-white/10 transition";
                 div.onclick = () => selectMedia(item);
-                div.innerHTML = `<img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-12 h-8 object-cover rounded shadow" /><div class="flex-1 min-w-0"><p class="text-white text-[10px] font-black truncate uppercase">${item.title}</p><p class="text-gray-400 text-[8px] truncate">${item.subtitle}</p></div>`;
+                div.innerHTML = `
+                    <div class="w-10 h-14 rounded overflow-hidden flex-shrink-0 bg-gray-900">
+                        <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-white text-[10px] font-black truncate uppercase">${item.title}</p>
+                        <p class="text-gray-400 text-[8px] truncate">${item.subtitle}</p>
+                    </div>`;
                 list.appendChild(div);
             });
             document.getElementById('news-modal').classList.add('active');
@@ -551,12 +577,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             const section = document.getElementById('original-carousels-section');
             Object.entries(allData).forEach(([key, cat]) => {
-                // ✅ ESTRRENOS NO SE MUESTRA EN LA PÁGINA, SOLO EN EL MODAL DE LA ESTRELLA
                 if (key === 'estrenos' || !cat || !cat.carousels) return;
                 
                 const div = document.createElement('div');
-                div.className = 'mb-5';
-                div.innerHTML = `<h2 class="text-xs font-black mb-1.5 px-2 text-gray-400 border-l-2 border-blue-600 ml-1 uppercase tracking-tight"> ${cat.title}</h2>`;
+                div.className = 'mb-8';
+                div.innerHTML = `<h2 class="text-xs font-black mb-3 px-2 text-gray-400 border-l-2 border-blue-600 ml-1 uppercase tracking-tight"> ${cat.title}</h2>`;
                 cat.carousels.forEach(c => {
                     if (!c || !c.data) return;
                     const wrap = document.createElement('div');
@@ -591,5 +616,14 @@
 
 	<div id="pub"><center><script src="https://www.highrevenueformat.com/96981a3232fef288b114cc1dca19a835/invoke.js"></script></center></div>
 	    <br>
+	    
+	            
+ <!--PUBLICIDAD 300X160--> 
+ <div><center><script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script></center></div>
+        <br><br>
+ <!--PUBLICIDAD 300X160-->  <div><center><script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script></center></div>
+
+                           
+                           
 </body>
 </html>
