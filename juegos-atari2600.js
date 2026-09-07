@@ -7,7 +7,7 @@ agregarJuegos([
     { system: "atari2600", img: x+ "1GW0O_Di335YfK6AkJjfe5OHh_J1aOyAI", title: "SPLATFORM", src: "splatform2600.bin" },
     
     
-    { system: "atari2600", img: x+ "1VakLamssDBasgdXcKryTuLVwRjzrx7Xe", title: "ADVENTURE" },
+    { system: "atari2600", img: x+ "1VakLamssDBasgdXcKryTuLVwRjzrx7Xe", title: "ADVENTURE", src: "https://archive.org/download/ultimate-rom-collection/Atari%20-%202600.zip/Adventure%20%28USA%29.zip" },
     { system: "atari2600", img: x+ "12AmtvA7o7hyLZVxm9GM8EiQfSINf7ajO", title: "ALIEN" },
     { system: "atari2600", img: x+ "1qfMatq_kejW3WRTtgAMOJPWr9AxqV3pE", title: "AMIDAR" },
     { system: "atari2600", img: x+ "1ebmKk_GRho2MS63x6hLYtdcknUQsHiRg", title: "ASSAULT" },

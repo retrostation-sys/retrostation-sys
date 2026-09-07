@@ -1,629 +1,665 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	
-	<title>TERABOX LINKS | PREMIUM</title>
-	
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script src="https://cdn.tailwindcss.com"></script>
-	
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-	
-	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-	
-	<style>
-		:root {
-			--primary: #2563eb;
-			--bg-dark: #0a0a0c;
-			--card-bg: rgba(20, 20, 25, 0.95);
-		}
-		body {
-			font-family: 'Inter', sans-serif;
-			background-color: var(--bg-dark);
-			color: #f8fafc;
-			margin: 0;
-			padding: 0;
-			padding-bottom: 280px;
-			scroll-behavior: smooth;
-			overflow-x: hidden;
-			min-height: 100vh;
-		}
-		.glass {
-			background: var(--card-bg);
-			backdrop-filter: blur(16px);
-			-webkit-backdrop-filter: blur(16px);
-			border: 1px solid rgba(255, 255, 255, 0.08);
-		}
-		.sticky-header {
-			position: sticky;
-			top: 0;
-			z-index: 100;
-			background-color: var(--bg-dark);
-			padding-bottom: 4px;
-		}
-		.video-container {
-			position: relative;
-			padding-bottom: 56.25%;
-			background: #000;
-			border-bottom: 2px solid rgba(37, 99, 235, 0.3);
-		}
-		.controls-bar {
-			height: 44px;
-			margin-top: -1px;
-			border-top: none;
-			border-radius: 0 0 12px 12px;
-		}
-		@keyframes pulse-yellow {
-			0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); transform: scale(1); }
-			50% { box-shadow: 0 0 0 12px rgba(234, 179, 8, 0); transform: scale(1.05); }
-			100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); transform: scale(1); }
-		}
-		.btn-playing {
-			animation: pulse-yellow 1.5s infinite !important;
-			background-color: #eab308 !important;
-			color: black !important;
-		}
-		.main-content {
-			padding: 12px 12px 20px 12px;
-		}
-		.skeleton {
-			background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
-			background-size: 200% 100%;
-			animation: loading 1.5s infinite;
-		}
-		@keyframes loading {
-			0% { background-position: 200% 0; }
-			100% { background-position: -200% 0; }
-		}
-		.carousel-wrapper {
-			display: flex;
-			overflow-x: auto;
-			scroll-snap-type: proximity;
-			gap: 14px;
-			padding: 8px 0;
-			scrollbar-width: none;
-		}
-		.carousel-wrapper::-webkit-scrollbar {
-		display: none; 
-		}
-		.carousel-item {
-			flex: 0 0 38%;
-			width: 38%;
-			scroll-snap-align: start;
-		}
-		@media (min-width: 640px) {
-			.carousel-item { flex: 0 0 26%; width: 26%; }
-		}
-		@media (min-width: 1024px) {
-			.carousel-item { flex: 0 0 18%; width: 18%; }
-		}
-		.modal-overlay {
-			display: none;
-			position: fixed;
-			inset: 0;
-			z-index: 2000;
-			background: rgba(0, 0, 0, 0.92);
-			backdrop-filter: blur(12px);
-		}
-		.modal-overlay.active { display: flex; }
-		#modal-search-input::placeholder {
-			color: rgba(255, 255, 255, 0.4);
-			text-transform: uppercase;
-			font-weight: 800;
-			letter-spacing: 0.05em;
-		}
-		#native-video-player {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0; left: 0;
-			display: none;
-			background: #000;
-		}
-		#pub {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			background: rgba(10, 10, 12, 0.98);
-			border-top: 1px solid rgba(255, 255, 255, 0.1);
-			z-index: 999;
-			padding: 10px 0;
-			text-align: center;
-		}
-		.poster-container {
-			position: relative;
-			overflow: hidden;
-			border-radius: 12px;
-			background: linear-gradient(145deg, #1f2937, #111827);
-			border: 1px solid rgba(255,255,255,0.08);
-			aspect-ratio: 2/3;
-			width: 100%;
-		}
-	</style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+    <title>RETROSTATION-SYS MULTI EMULATOR</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <style>
+    
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&family=Space+Grotesk:wght=700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+        }
+        .brand-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #f43f5e;
+            border-radius: 2px;
+        }
 
-<body class="select-none overflow-x-hidden">
-	
-	<div id="news-modal" class="modal-overlay items-center justify-center p-4">
-		<div class="glass w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
-			<div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/5">
-			<h3 class="text-md font-extrabold text-yellow-400 flex items-center gap-2">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"/>
-					</svg>		
-					NOVEDADES / ESTRENOS
-				</h3>
-				<button onclick="closeNewsModal()" class="p-2 hover:bg-white/10 rounded-full transition">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"/>
-					</svg>
-				</button>
-			</div>
-			<div id="news-list" class="p-3 space-y-2 max-h-[40vh] overflow-y-auto"></div>
-			<div class="p-5 pt-2 bg-black/20 text-center">	
-			</div>
-		</div>
-	</div>
-	
-	<div id="search-modal" class="modal-overlay items-center justify-center p-4">
-		<div class="glass w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
-			<div class="p-4 border-b border-white/10 flex items-center gap-3 bg-white/5">
-				<div class="flex items-center gap-2 flex-grow min-w-0">
-					<span class="w-1.5 h-6 bg-blue-600 rounded-full flex-shrink-0"></span>
-					<input type="text" id="modal-search-input" class="w-full bg-transparent border-none text-sm font-black text-white uppercase tracking-widest outline-none placeholder:text-gray-600" placeholder="BUSCAR MÁS..." />
-				</div>
-				<button onclick="closeSearchModal()" class="p-2 hover:bg-white/10 rounded-full transition flex-shrink-0">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"/>
-					</svg>
-				</button>
-			</div>
-			<div id="search-results-grid" class="p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 overflow-y-auto"></div>
-			<div id="search-empty" class="p-10 text-center hidden">
-				<p class="text-gray-500 text-xs italic">No hay coincidencias...</p>
-			</div>
-		</div>
-	</div>
-	
-	<div id="share-modal" class="modal-overlay items-center justify-center p-4">
-		<div class="glass w-full max-w-sm rounded-2xl overflow-hidden p-5 flex flex-col gap-4">
-			<div class="flex justify-between items-center">
-				<h4 class="text-xs font-black text-blue-400">COPIAR LINK IPTV</h4>
-				<button onclick="closeShareModal()" class="text-white opacity-50 hover:opacity-100">×</button>
-			</div>
-			<div class="relative">
-				<input type="text" id="share-url-input" readonly class="w-full bg-black/40 border border-white/10 rounded-lg py-2 px-3 text-[10px] text-gray-300 pr-10 outline-none" />
-				<button onclick="copyShareUrl()" class="absolute right-2 top-1/2 -translate-y-1/2 text-blue-400 hover:text-blue-300">
-					<i class="fas fa-copy"></i>
-				</button>
-			</div>
-			<p id="copy-success" class="text-[9px] text-green-500 text-center hidden font-bold uppercase">¡Link copiado al portapapeles!</p>
-		</div>
-	</div>
-	
-	<div class="sticky-header">
-		<div class="max-w-screen-xl mx-auto">
-			<div class="video-container overflow-hidden">
-				<div id="youtube-player" class="absolute inset-0 w-full h-full"></div>
-				<video id="native-video-player" class="absolute inset-0 w-full h-full" controls playsinline crossorigin="anonymous"></video>
-			</div>
-			<div class="controls-bar glass flex items-center gap-2 px-2 mx-1">
-				<button onclick="toggleFullScreen()" class="p-1.5 text-blue-400 hover:text-white transition-colors" title="Pantalla Completa">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
-					</svg>
-				</button>
-				<button onclick="showNews()" class="p-1.5 text-yellow-500 hover:text-yellow-400 transition-colors" title="Novedades / Estrenos">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l-1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-					</svg>
-				</button>
-				<button id="share-iptv-btn" onclick="openShareModal()" class="p-1.5 text-green-400 hover:text-white transition-colors hidden" title="Compartir Link">
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-					</svg>
-				</button>
-				<div class="relative flex-grow">
-					<input type="text" id="image-search-input" placeholder="Buscar..." class="w-full bg-black/40 border border-white/10 rounded-lg py-1 pl-3 pr-8 text-[11px] focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-500" />
-					<button id="clear-search" class="absolute right-1.5 top-1/2 -translate-y-1/2 text-red-500 p-0.5" onclick="closeSearchModal()">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path d="M6 18L18 6M6 6l12 12" stroke-width="3"/>
-						</svg>
-					</button>
-				</div>
-				<button id="action-button" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center justify-center gap-1.5 transition active:scale-95 text-[10px]">
-					<span id="btn-text">TERABOX</span>
-					<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-width="2.5"/></svg>
-				</button>
-			</div>
-		</div>
-	</div>
-	
-	<div class="main-content max-w-screen-xl mx-auto">
-		<div id="original-carousels-section" class="space-y-8"></div>
-	</div>
+        .platform-section {
+            margin-bottom: 1.5rem;
+        }
+        .platform-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #f43f5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+        }
+        .carousel-container {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0.25rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .game-card {
+            flex: 0 0 160px;
+            max-width: 160px;
+        }
 
-	<script src="peliculas1.js"></script>
-	<script src="peliculasA.js"></script>
-	<script src="peliculasB.js"></script>
-	<script src="peliculasC.js"></script>
-	<script src="peliculasD.js"></script>
-	<script src="peliculasE.js"></script>
-	<script src="peliculasF.js"></script>
-	<script src="peliculasG.js"></script>
-	<script src="peliculasH.js"></script>
-	<script src="peliculasI.js"></script>
-	<script src="peliculasJ.js"></script>
-	<script src="peliculasK.js"></script>
-	<script src="peliculasL.js"></script>
-	<script src="peliculasM.js"></script>
-	<script src="peliculasN.js"></script>
-	<script src="peliculasO.js"></script>
-	<script src="peliculasP.js"></script>
-	<script src="peliculasQ.js"></script>
-	<script src="peliculasR.js"></script>
-	<script src="peliculasS.js"></script>
-	<script src="peliculasT.js"></script>
-	<script src="peliculasU.js"></script>
-	<script src="peliculasV.js"></script>
-	<script src="peliculasW.js"></script>
-	<script src="peliculasX.js"></script>
-	<script src="peliculasY.js"></script>
-	<script src="peliculasZ.js"></script>
-	<script src="estrenos.js"></script>
-	<script src="youtube.js"></script>
-	<script src="canalesTv.js"></script>
-	<script src="peliculasTv.js"></script>
-
-	<script>
-    $(document).ready(function() {
-        $(document).on('click', function() {
-            const docElm = document.documentElement;
-            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-                if (docElm.requestFullscreen) docElm.requestFullscreen().catch(e => {});
+        @media screen and (orientation: portrait) {
+            .portrait-warning {
+                display: flex !important;
             }
+        }
+
+        #emulator-section {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 99999 !important;
+        }
+        #emulator-container, #ejs-player {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        .fullscreen-btn {
+            position: fixed;
+            bottom: 12px;
+            right: 12px;
+            z-index: 999999;
+            background: #facc15;
+            color: #0f172a;
+            border: 2px solid #eab308;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .fullscreen-btn:hover {
+            background: #fde047;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(250, 204, 21, 0.7);
+        }
+        .fullscreen-btn:active {
+            transform: scale(0.95);
+        }
+
+        .exit-emulator-btn {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 100001;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(244, 63, 94, 0.5);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .exit-emulator-btn:hover {
+            background: rgba(244, 63, 94, 0.9);
+            border-color: #f43f5e;
+            transform: translateY(-1px);
+        }
+
+        .ad-block {
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+        .ad-block:hover {
+            border-color: rgba(244, 63, 94, 0.6);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+        }
+        .ad-label {
+            font-size: 8px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        /* 🖼️ Imagen y título debajo */
+        .game-image-container {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .game-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .game-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #f1f5f9;
+            text-align: center;
+            line-height: 1.3;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 🔍 MODAL DE BÚSQUEDA */
+        .search-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            z-index: 99990;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+        }
+        .search-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .search-modal {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            border-radius: 1rem;
+            width: 100%;
+            max-width: 520px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(244, 63, 94, 0.15);
+            transform: translateY(10px);
+            transition: transform 0.25s ease;
+        }
+        .search-modal-overlay.active .search-modal {
+            transform: translateY(0);
+        }
+        .search-modal-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .search-modal-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f43f5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: text;
+            flex: 1;
+        }
+        .search-modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(244, 63, 94, 0.15);
+            color: #f43f5e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            flex-shrink: 0;
+        }
+        .search-modal-close:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: rotate(90deg);
+        }
+        .search-input-wrapper {
+            padding: 0.75rem 1.25rem;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+        }
+        .search-input {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .search-input:focus {
+            border-color: #f43f5e;
+            box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.15);
+        }
+        .search-results {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.75rem 1.25rem;
+        }
+        .search-result-item {
+            padding: 0.65rem 0.85rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.4rem;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .search-result-item:hover {
+            background: rgba(244, 63, 94, 0.1);
+            border-color: rgba(244, 63, 94, 0.3);
+            transform: translateX(3px);
+        }
+        .search-result-title {
+            font-weight: 600;
+            color: #f1f5f9;
+            font-size: 0.9rem;
+        }
+        .search-result-platform {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 0.2rem;
+        }
+        .search-no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row antialiased select-none overflow-hidden">
+
+    <button id="fullscreen-toggle" class="fullscreen-btn" title="Activar Pantalla Completa">
+        <i data-lucide="maximize-2" class="w-3 h-3"></i>
+    </button>
+
+    <!-- 🔍 MODAL DE BÚSQUEDA -->
+    <div id="search-modal-overlay" class="search-modal-overlay">
+        <div class="search-modal" onclick="event.stopPropagation()">
+            <div class="search-modal-header">
+                <h2 id="search-modal-title" class="search-modal-title" onclick="focusSearchInput()">BUSCAR JUEGO</h2>
+                <button id="search-modal-close" class="search-modal-close" onclick="closeSearchModal()">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="search-input-wrapper">
+                <input type="text" id="search-input" class="search-input" placeholder="Escribe para buscar... (sin tildes ni signos)" autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results custom-scroll">
+                <p class="text-slate-400 text-sm text-center py-4">Escribe el nombre de un juego para buscar</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="portrait-warning fixed inset-0 bg-slate-950 z-[100] hidden flex-col bg-cover bg-center bg-no-repeat">
+        <div class="w-full p-3 flex-shrink-0">
+            <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
+               <!--PUBLICIDAD--> <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
+            </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+            <div class="w-16 h-16 bg-rose-600 rounded-full flex items-center justify-center animate-bounce mb-4 shadow-lg shadow-rose-600/50">
+                <i data-lucide="rotate-cw" class="w-8 h-8 text-white"></i>
+            </div>
+            <h2 class="brand-font text-xl font-bold text-white tracking-wider drop-shadow-md">GIRA TU DISPOSITIVO</h2>
+            <p class="text-slate-300 text-xs mt-2 max-w-xs drop-shadow">Para disfrutar de la experiencia RETROSTATION-SYS completa, por favor rota tu pantalla a modo horizontal.</p>
+        </div>
+        <div class="w-full p-3 flex-shrink-0">
+            <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
+             <!--PUBLICIDAD--> <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <aside class="w-full md:w-64 bg-slate-900 border-b md:border-b-0 md:border-r border-slate-800 flex flex-col shrink-0 h-auto md:h-full z-10 p-3 gap-3">
+        <div class="p-3 flex items-center gap-3 border-b border-slate-800 bg-slate-950/40 rounded-xl">
+            <div class="w-8 h-8 bg-rose-600 rounded-lg flex items-center justify-center shadow-lg shadow-rose-900/40">
+                <i data-lucide="gamepad-2" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+                <h1 class="brand-font text-sm font-black tracking-wider text-rose-500">
+                	RETRO STATION-SYS
+                </h1>
+                <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">
+                	OS V4.0 • MULTIEMULATOR
+                </p>
+            </div>
+        </div>
+
+        <!-- 📢 PUBLICIDAD REGRESÓ A SU LUGAR ORIGINAL -->
+        <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[120px]">
+ <!--PUBLICIDAD 300X160-->  <script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script>
+        </div>
+
+        <div class="ad-block p-3 text-center mt-auto">
+            <p class="text-[9px] text-slate-400 font-medium">
+                Apoya el proyecto manteniendo la publicidad activa<br>
+                ¡Así seguimos agregando más juegos gratis!
+            </p>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-[calc(100vh-4rem)] md:h-full overflow-hidden relative">
+        <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 p-2 flex flex-wrap items-center gap-2 justify-between z-10 shrink-0">
+            <div class="flex items-center gap-1.5 overflow-x-auto custom-scroll max-w-full py-0.5">
+                <select id="console-filter" class="bg-slate-950 border border-slate-800 text-slate-400 text-[10px] rounded px-2 py-1 focus:outline-none focus:border-rose-500">
+                    <option value="all">TODAS LAS PLATAFORMAS</option>
+                    <option value="atari2600">ATARI 2600</option>
+                    <option value="nes">NINTENDO NES / FAMICOM</option>
+                    <option value="snes">SUPER NINTENDO / SUPER FAMICOM</option>
+                    <option value="n64">NINTENDO 64</option>
+                    <option value="gb">GAME BOY</option>
+                    <option value="gbc">GAME BOY COLOR</option>
+                    <option value="gba">GAME BOY ADVANCE</option>
+                    <option value="gamegear">SEGA GAME GEAR</option>
+                    <option value="sms">SEGA MASTER SYSTEM</option>
+                    <option value="megadrive">SEGA GENESIS / MEGA DRIVE</option>
+                    <option value="sega32x">SEGA 32X</option>
+                    <option value="psx">PLAYSTATION 1</option>
+                    <option value="psp">PLAYSTATION PORTABLE</option>
+                    <option value="cps1">CAPCOM CPS-1</option>
+                    <option value="cps2">CAPCOM CPS-2</option>
+                    <option value="cps3">CAPCOM CPS-3</option>
+                    <option value="mame">MAME (ARCADE)</option>
+                    <option value="neogeo">NEO GEO ARCADE</option>
+                    <option value="fba">FINAL BURN ARCADE</option>
+                    <option value="vb">NINTENDO VIRTUAL BOY</option>
+                    <option value="ws">BANDAI WONDERSWAN</option>
+                    <option value="wsc">BANDAI WONDERSWAN COLOR</option>
+                    <option value="pcengine">PC ENGINE / TURBOGRAFX 16</option>
+                    <option value="pcenginecd">PC ENGINE CD</option>
+                    <option value="gx4000">AMSTRAD GX4000</option>
+                    <option value="cpc">AMSTRAD CPC</option>
+                    <option value="msx">MSX / MSX2</option>
+                    <option value="zx">SINCLAIR ZX SPECTRUM</option>
+                    <option value="c64">COMMODORE 64</option>
+                    <option value="amiga">COMMODORE AMIGA</option>
+                    <option value="dos">MS-DOS</option>
+                </select>
+                <button id="open-search-btn" class="bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-rose-500 text-[10px] rounded px-2 py-1 flex items-center gap-1 font-medium transition-colors">
+                    <i data-lucide="search" class="w-3 h-3"></i> BUSCAR
+                </button>
+            </div>
+        </header>
+
+        <div class="flex-1 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
+            <div id="games-container" class="absolute inset-0 p-4 overflow-y-auto custom-scroll pb-12">
+                <div class="flex items-center justify-between mb-3">
+                    <span id="global-counter" class="text-[10px] text-slate-400 font-semibold tracking-wider"></span>
+                </div>
+                <div id="no-results" class="hidden text-center py-12">
+                    <i data-lucide="search-slash" class="w-10 h-10 text-slate-600 mx-auto mb-2"></i>
+                    <h3 class="text-sm font-bold text-slate-400">No hay roms coincidentes</h3>
+                </div>
+                <div id="games-content"></div>
+            </div>
+
+            <section id="emulator-section" class="hidden bg-black flex flex-col justify-between">
+                <button id="exit-emulator" class="exit-emulator-btn">SALIR</button>
+                <div class="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
+                    <div id="emulator-container" class="w-full h-full bg-black mx-auto"></div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="bg-slate-950 border-t border-slate-900 h-8 px-4 flex items-center justify-between text-[10px] text-slate-500 shrink-0 select-none">
+            <div class="hidden sm:block font-medium tracking-wider"><center>© 2026 RETRO STATION-SYS (Juegos De Dominio Público y Homebrew)</center></div>
+        </footer>
+    </main>
+
+<script>
+const juegosDatabase = [];
+function agregarJuegos(lista) { juegosDatabase.push(...lista); }
+
+const equivalenciaNucleos = {
+    '2600': 'atari2600', 'a2600': 'atari2600', 'gbc': 'gba',
+    'sms': 'genesis_plus_gx', 'gamegear': 'genesis_plus_gx', 'megadrive': 'genesis_plus_gx', 'all': null
+};
+
+const platformExtensions = {
+    'all': '.zip,.7z,.bin,.rom,.nes,.smc,.sfc,.fig,.md,.gen,.smd,.32x,.gg,.sms,.iso,.chd,.cue,.pbp,.img,.n64,.v64,.z64,.gb,.gbc,.gba,.pce,.sgx,.ccd,.m3u,.ngp,.ngc,.lnx,.jag,.ws,.wsc,.vb,.dsk,.tap,.z80,.sna,.cdt,.fdi,.d64,.g64,.prg,.adf,.ipf,.dms,.exe,.com,.bat',
+    '2600': '.a26,.bin,.rom,.zip', 'nes': '.nes,.nez,.unf,.unif,.fds,.bin,.zip',
+    'snes': '.smc,.sfc,.fig,.srm,.zip', 'n64': '.n64,.v64,.z64,.rom,.bin,.zip',
+    'gb': '.gb,.dmg,.bin,.zip', 'gbc': '.gbc,.gb,.zip', 'gba': '.gba,.agb,.bin,.zip',
+    'sega32x': '.32x,.bin,.smd,.zip', 'gamegear': '.gg,.bin,.sms,.zip',
+    'megadrive': '.md,.gen,.smd,.bin,.zip', 'sms': '.sms,.bin,.gg,.zip',
+    'psx': '.bin,.cue,.iso,.chd,.pbp,.img,.ccd,.m3u,.zip', 'psp': '.iso,.cso,.pbp,.zip',
+    'cps1': '.zip,.7z', 'cps2': '.zip,.7z', 'cps3': '.zip,.7z', 'mame': '.zip,.7z',
+    'neogeo': '.zip,.7z', 'fba': '.zip,.7z', 'vb': '.vb,.bin,.zip',
+    'ws': '.ws,.wsc,.bin,.zip', 'wsc': '.wsc,.ws,.bin,.zip',
+    'pcengine': '.pce,.sgx,.bin,.zip', 'pcenginecd': '.ccd,.cue,.chd,.m3u,.zip',
+    'gx4000': '.cdt,.sna,.tap,.dsk,.zip', 'cpc': '.cdt,.sna,.tap,.dsk,.zip',
+    'msx': '.rom,.mx1,.mx2,.dsk,.cas,.zip', 'zx': '.tap,.z80,.sna,.cdt,.dsk,.zip',
+    'c64': '.d64,.g64,.prg,.tap,.zip', 'amiga': '.adf,.ipf,.dms,.zip', 'dos': '.exe,.com,.bat,.iso,.zip'
+};
+
+const consoleDetails = {
+    all: { name: "TODOS LOS JUEGOS", icon: "layout-grid", color: "from-slate-700 to-slate-800" },
+    gba: { name: "GAME BOY ADVANCE", icon: "gamepad-2", color: "from-purple-600 to-indigo-900" },
+    atari2600: { name: "ATARI 2600", icon: "joystick", color: "from-amber-700 to-orange-900" },
+    nes: { name: "NINTENDO NES", icon: "box", color: "from-red-600 to-red-950" },
+    snes: { name: "SUPER NINTENDO", icon: "layers", color: "from-blue-600 to-indigo-950" },
+    n64: { name: "NINTENDO 64", icon: "triangle", color: "from-green-600 to-emerald-950" },
+    gb: { name: "GAME BOY", icon: "smartphone", color: "from-olive-600 to-slate-800" },
+    gbc: { name: "GAME BOY COLOR", icon: "palette", color: "from-pink-600 to-purple-950" },
+    sega32x: { name: "SEGA 32X", icon: "zap", color: "from-yellow-600 to-amber-950" },
+    gamegear: { name: "SEGA GAME GEAR", icon: "tv", color: "from-cyan-600 to-blue-950" },
+    megadrive: { name: "SEGA GENESIS", icon: "disc", color: "from-blue-700 to-slate-900" },
+    sms: { name: "MASTER SYSTEM", icon: "grid", color: "from-sky-600 to-blue-900" },
+    psx: { name: "PLAYSTATION 1", icon: "play-circle", color: "from-gray-600 to-slate-900" },
+    psp: { name: "PLAYSTATION PORTABLE", icon: "credit-card", color: "from-blue-500 to-slate-950" },
+    cps1: { name: "CAPCOM CPS-1", icon: "shield", color: "from-yellow-500 to-orange-900" },
+    cps2: { name: "CAPCOM CPS-2", icon: "shield-alert", color: "from-emerald-500 to-teal-900" },
+    cps3: { name: "CAPCOM CPS-3", icon: "shield-check", color: "from-cyan-500 to-blue-900" },
+    mame: { name: "MAME (ARCADE)", icon: "cpu", color: "from-red-700 to-neutral-900" }
+};
+
+let activeFilters = { console: 'all' };
+let db;
+const dbRequest = indexedDB.open("RetroOS_ROMs_Cache", 1);
+dbRequest.onupgradeneeded = (e) => {
+    let database = e.target.result;
+    if (!database.objectStoreNames.contains("roms")) database.createObjectStore("roms", { keyPath: "title" });
+};
+dbRequest.onsuccess = (e) => { db = e.target.result; renderGames(); };
+
+function cleanString(str) {
+    if (!str) return '';
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^\w\s]/g, "").trim();
+}
+
+function toggleFullscreen(enter = true) {
+    const docEl = document.documentElement;
+    if (enter) {
+        if (docEl.requestFullscreen) docEl.requestFullscreen();
+        else if (docEl.mozRequestFullScreen) docEl.mozRequestFullScreen();
+        else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+        else if (docEl.msRequestFullscreen) docEl.msRequestFullscreen();
+    } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+    }
+}
+
+function openSearchModal() {
+    document.getElementById('search-modal-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    setTimeout(focusSearchInput, 100);
+}
+function closeSearchModal() {
+    document.getElementById('search-modal-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-results').innerHTML = '<p class="text-slate-400 text-sm text-center py-4">Escribe el nombre de un juego para buscar</p>';
+}
+function focusSearchInput() { document.getElementById('search-input').focus(); }
+
+function performSearch(query) {
+    const resultsContainer = document.getElementById('search-results');
+    const cleanQuery = cleanString(query);
+    if (!cleanQuery) {
+        resultsContainer.innerHTML = '<p class="text-slate-400 text-sm text-center py-4">Escribe el nombre de un juego para buscar</p>';
+        return;
+    }
+    const matches = juegosDatabase.filter(game => cleanString(game.title).includes(cleanQuery));
+    if (matches.length === 0) {
+        resultsContainer.innerHTML = `<div class="search-no-results"><i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 text-slate-500"></i><p>No se encontraron juegos para: <strong>"${query}"</strong></p></div>`;
+        lucide.createIcons(); return;
+    }
+    resultsContainer.innerHTML = matches.map(game => {
+        const consoleName = consoleDetails[game.system]?.name || game.system.toUpperCase();
+        return `<div class="search-result-item" data-game-src="${game.src || ''}" data-game-title="${game.title.replace(/'/g, "\\'")}" data-game-system="${game.system}"><div class="search-result-title">${game.title}</div><div class="search-result-platform">${consoleName}</div></div>`;
+    }).join('');
+    document.querySelectorAll('.search-result-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const src = item.dataset.gameSrc;
+            const title = item.dataset.gameTitle;
+            const system = item.dataset.gameSystem;
+            closeSearchModal();
+            if (src) launchEmulatorJS(src, title, system);
+            else { activeFilters.console = system; document.getElementById('console-filter').value = system; renderGames(); }
         });
     });
+    lucide.createIcons();
+}
 
-    var player;
-    var isPlayerReady = false;
-    var firstVideoId = '';
-    const nativePlayer = document.getElementById('native-video-player');
-    const ytIframe = document.getElementById('youtube-player');
-    const shareBtn = document.getElementById('share-iptv-btn');
-    let hls = null;
-    let currentItemUrl = "";
-
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('youtube-player', {
-            height: '100%',
-            width: '100%',
-            videoId: firstVideoId,
-            playerVars: { 'autoplay': 0, 'rel': 0, 'enablejsapi': 1, 'origin': window.location.origin },
-            events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
-        });
-    }
-
-    function onPlayerReady(event) { isPlayerReady = true; }
-
-    function onPlayerStateChange(event) {
-        const btn = document.getElementById('action-button');
-        const btnText = document.getElementById('btn-text');
-        if (event.data == YT.PlayerState.PLAYING) {
-            btn.classList.add('btn-playing');
-            btnText.innerText = "DESCARGALA COMPLETA AQUI POR TERABOX";
-        } else {
-            btn.classList.remove('btn-playing');
-            btnText.innerText = "TERABOX";
-        }
-    }
-
-    function toggleFullScreen() {
-        const docEl = document.documentElement;
-        if (!document.fullscreenElement) { if (docEl.requestFullscreen) docEl.requestFullscreen(); } 
-        else { if (document.exitFullscreen) document.exitFullscreen(); }
-    }
-
-    function isDirectLink(url) {
-        if (!url) return false;
-        const low = url.toLowerCase();
-        return low.includes('.m3u8') || low.includes('.mp4') || low.includes('.m3u') || (low.startsWith('http') && !low.includes('youtube.com'));
-    }
-
-    function selectMedia(item) {
-        const selectedId = getRandomValue(item.youtubeId);
-        const actionBtn = document.getElementById('action-button');
-        
-        currentItemUrl = selectedId;
-        const isIPTV = item.buscar && item.buscar.includes('IPTV');
-        
-        if (isIPTV) {
-            window.open(selectedId, '_blank');
-            closeNewsModal(); closeSearchModal();
-            return;
-        }
-        
-        if (selectedId.includes('.m3u8')) { shareBtn.classList.remove('hidden'); } 
-        else { shareBtn.classList.add('hidden'); }
-
-        const hideTerabox = (item.buscar && item.buscar.includes('YOUTUBE')) || isDirectLink(selectedId);
-        actionBtn.style.display = hideTerabox ? 'none' : 'flex';
-
-        if (isDirectLink(selectedId)) {
-            ytIframe.style.display = 'none';
-            nativePlayer.style.display = 'block';
-            if (player && player.pauseVideo) player.pauseVideo();
-            if (selectedId.toLowerCase().includes('.m3u8') || selectedId.toLowerCase().includes('.m3u')) {
-                if (Hls.isSupported()) {
-                    if (hls) hls.destroy();
-                    hls = new Hls();
-                    hls.loadSource(selectedId);
-                    hls.attachMedia(nativePlayer);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => { nativePlayer.play().catch(() => {}); });
-                } else if (nativePlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                    nativePlayer.src = selectedId;
-                    nativePlayer.play().catch(() => {});
-                }
-            } else {
-                if (hls) { hls.destroy(); hls = null; }
-                nativePlayer.src = selectedId;
-                nativePlayer.load();
-                nativePlayer.play().catch(() => {});
-            }
-        } else {
-            nativePlayer.style.display = 'none';
-            ytIframe.style.display = 'block';
-            if (nativePlayer.pause) nativePlayer.pause();
-            if (hls) { hls.destroy(); hls = null; }
-            if (isPlayerReady && player && player.loadVideoById) { player.loadVideoById({ 'videoId': selectedId }); } 
-            else { firstVideoId = selectedId; }
-        }
-
-        currentUrl = item.buttonId ? `https://1024terabox.com/s/${item.buttonId}` : 'https://www.terabox.com/';
-        localStorage.setItem('lastViewed', JSON.stringify(item));
-        closeNewsModal(); closeSearchModal();
-    }
-
-    function openShareModal() {
-        document.getElementById('share-url-input').value = currentItemUrl;
-        document.getElementById('share-modal').classList.add('active');
-        document.getElementById('copy-success').classList.add('hidden');
-    }
-    function closeShareModal() { document.getElementById('share-modal').classList.remove('active'); }
-    function copyShareUrl() {
-        const input = document.getElementById('share-url-input');
-        input.select();
-        document.execCommand('copy');
-        document.getElementById('copy-success').classList.remove('hidden');
-    }
-    function getRandomValue(val) {
-        if (Array.isArray(val)) return val[Math.floor(Math.random() * val.length)];
-        return val;
-    }
-
-    const allData = {
-    	'pelíc': {
-    		title: '<center><p style="background-color:blue; color:white">LINKS DE DESCARGA POR TERABOX</p></center>', 
-    		carousels: [
-    			...(typeof data_peliculas1 !== 'undefined' ? data_peliculas1 : []),
-    			...(typeof data_peliculasA !== 'undefined' ? data_peliculasA : []),
-    			...(typeof data_peliculasB !== 'undefined' ? data_peliculasB : []),
-    			...(typeof data_peliculasC !== 'undefined' ? data_peliculasC : []),
-    			...(typeof data_peliculasD !== 'undefined' ? data_peliculasD : []),
-    			...(typeof data_peliculasE !== 'undefined' ? data_peliculasE : []),
-    			...(typeof data_peliculasF !== 'undefined' ? data_peliculasF : []),
-    			...(typeof data_peliculasG !== 'undefined' ? data_peliculasG : []),
-    			...(typeof data_peliculasH !== 'undefined' ? data_peliculasH : []),
-    			...(typeof data_peliculasI !== 'undefined' ? data_peliculasI : []),
-    			...(typeof data_peliculasJ !== 'undefined' ? data_peliculasJ : []),
-    			...(typeof data_peliculasK !== 'undefined' ? data_peliculasK : []),
-    			...(typeof data_peliculasL !== 'undefined' ? data_peliculasL : []),
-    			...(typeof data_peliculasM !== 'undefined' ? data_peliculasM : []),
-    			...(typeof data_peliculasN !== 'undefined' ? data_peliculasN : []),
-    			...(typeof data_peliculasO !== 'undefined' ? data_peliculasO : []),
-    			...(typeof data_peliculasP !== 'undefined' ? data_peliculasP : []),
-    			...(typeof data_peliculasQ !== 'undefined' ? data_peliculasQ : []),
-    			...(typeof data_peliculasR !== 'undefined' ? data_peliculasR : []),
-    			...(typeof data_peliculasS !== 'undefined' ? data_peliculasS : []),
-    			...(typeof data_peliculasT !== 'undefined' ? data_peliculasT : []),
-    			...(typeof data_peliculasU !== 'undefined' ? data_peliculasU : []),
-    			...(typeof data_peliculasV !== 'undefined' ? data_peliculasV : []),
-    			...(typeof data_peliculasW !== 'undefined' ? data_peliculasW : []),
-    			...(typeof data_peliculasX !== 'undefined' ? data_peliculasX : []),
-    			...(typeof data_peliculasY !== 'undefined' ? data_peliculasY : []),
-    			...(typeof data_peliculasZ !== 'undefined' ? data_peliculasZ : [])
-    		]
-    	},
-		'estrenos': {
-			title: '<center><p style="background-color:blue; color:white;">LO MAS RECIENTE</p></center>', 
-			carousels: (typeof data_estrenos !== 'undefined' ? data_estrenos : [])
-		},
-		'ytub': {
-			title: '<center><p style="background-color:blue; color:white;">VIDEOS YOUTUBE</p></center>', 
-			carousels: (typeof data_youtube !== 'undefined' ? data_youtube : [])
-		},
-		'canalesTv': {
-           title: '<center><p style="background-color:blue; color:white;">CANALES TV (IPTV)</p></center>', 
-           carousels: (typeof data_canalesTv !== 'undefined' ? data_canalesTv : [])
-        },
-		'películasTv': {
-           title: '<center><p style="background-color:blue; color:white;">PELICULAS (IPTV)</p></center>', 
-           carousels: (typeof data_peliculasTv !== 'undefined' ? data_peliculasTv : [])
-        }
-	};
-
-        const allImages = Object.values(allData).flatMap(c => c.carousels.flatMap(car => car.data));
-        const actionButton = document.getElementById('action-button');
-        const searchInput = document.getElementById('image-search-input');
-        const modalSearchInput = document.getElementById('modal-search-input');
-        let currentUrl = 'https://www.terabox.com/';
-
-        function cleanText(text) {
-            if (!text) return "";
-            return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "").trim();
-        }
-
-        let searchTimeout;
-        searchInput.addEventListener('input', (e) => {
-            const val = e.target.value;
-            modalSearchInput.value = val;
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => filterData(val), 400);
-        });
-
-        modalSearchInput.addEventListener('input', (e) => {
-            const val = e.target.value;
-            searchInput.value = val;
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => filterData(val), 400);
-        });
-
-        function filterData(query) {
-            const q = cleanText(query);
-            const searchModal = document.getElementById('search-modal');
-            const resultsGrid = document.getElementById('search-results-grid');
-            const emptyMsg = document.getElementById('search-empty');
-            
-            if (q.length > 0) {
-                const results = allImages.filter(i => 
-                    cleanText(i.title).includes(q) || cleanText(i.buscar).includes(q) || cleanText(i.subtitle).includes(q)
-                );
-                searchModal.classList.add('active');
-                resultsGrid.innerHTML = '';
-                if (results.length > 0) {
-                    emptyMsg.classList.add('hidden');
-                    results.forEach(item => {
-                        const thumbId = getRandomValue(item.id);
-                        const div = document.createElement('div');
-                        div.className = 'cursor-pointer group flex flex-col gap-1.5';
-                        div.onclick = () => selectMedia(item);
-                        div.innerHTML = `
-                            <div class="poster-container">
-                                <div class="skeleton absolute inset-0"></div>
-                                <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover transition-transform group-hover:scale-105 opacity-0" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"/>
-                            </div>
-                            <div class="min-w-0 mt-1.5">
-                                <h4 class="text-[9px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4>
-                                <p class="text-[8px] text-gray-400 truncate mt-0.5">${item.subtitle}</p>
-                                <p class="text-[7px] text-gray-500 truncate">${item.subtitle2 || ''}</p>
-                            </div>`;
-                        resultsGrid.appendChild(div);
-                    });
-                } else { emptyMsg.classList.remove('hidden'); }
-            } else { closeSearchModal(); }
-        }
-
-        function closeSearchModal() { 
-            document.getElementById('search-modal').classList.remove('active');
-            searchInput.value = ''; modalSearchInput.value = '';
-        }
-
-        function renderCarousel(container, data) {
-            container.innerHTML = '';
-            data.forEach(item => {
-                const thumbId = getRandomValue(item.id);
-                const div = document.createElement('div');
-                div.className = 'carousel-item group cursor-pointer';
-                div.onclick = () => selectMedia(item);
-                div.innerHTML = `
-                    <div class="poster-container">
-                        <div class="skeleton absolute inset-0"></div>
-                        <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover transition-transform group-hover:scale-105 opacity-0" onload="this.style.opacity='1'; this.previousElementSibling.style.display='none'"/>
+function renderGames() {
+    const content = document.getElementById('games-content');
+    const noResults = document.getElementById('no-results');
+    content.innerHTML = '';
+    let filtered = activeFilters.console !== 'all' ? juegosDatabase.filter(g => g.system === activeFilters.console) : juegosDatabase;
+    document.getElementById('global-counter').textContent = `${filtered.length} / ${juegosDatabase.length} ROMS`;
+    if (filtered.length === 0) { noResults.classList.remove('hidden'); return; }
+    noResults.classList.add('hidden');
+    const grouped = {};
+    filtered.forEach(g => { if (!grouped[g.system]) grouped[g.system] = []; grouped[g.system].push(g); });
+    Object.entries(grouped).forEach(([system, games]) => {
+        const section = document.createElement('div');
+        section.className = 'platform-section';
+        section.innerHTML = `<h3 class="platform-title">${consoleDetails[system]?.name || system.toUpperCase()}</h3>`;
+        const carousel = document.createElement('div');
+        carousel.className = 'carousel-container';
+        games.forEach(game => {
+            const card = document.createElement('div');
+            card.className = "game-card bg-slate-900/60 backdrop-blur border border-slate-800/80 hover:border-rose-500 rounded-xl p-3 flex flex-col justify-between transition-all group relative overflow-hidden active:scale-[0.98]";
+            const safeTitle = game.title.replace(/'/g, "\\'");
+            card.innerHTML = `
+                <div>
+                    ${game.img ? `<div class="game-image-container"><img src="${game.img}" alt="${game.title}" class="game-image"></div>` : ''}
+                    <!-- 📌 TÍTULO DEBAJO DE LA IMAGEN -->
+                    <h3 class="game-title brand-font">${game.title}</h3>
+                </div>
+                <div class="mt-2 pt-1.5 border-t border-slate-950 flex items-center justify-between">
+                    <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter bg-slate-950 px-1 py-0.5 rounded border border-slate-800">${consoleDetails[game.system]?.name || game.system.toUpperCase()}</span>
+                    <div class="flex gap-1 items-center">
+                        ${game.src ? `<button onclick="launchEmulatorJS('${game.src}', '${safeTitle}', '${game.system}')" class="bg-blue-600 hover:bg-blue-500 text-white rounded px-2 py-1 text-[10px] font-bold uppercase transition-colors flex items-center gap-0.5"><i data-lucide="play" class="w-2.5 h-2.5 fill-white"></i> JUGAR</button>` : ''}
                     </div>
-                    <div class="mt-2 px-0.5 min-w-0">
-                        <h4 class="text-[10px] font-bold text-gray-100 truncate uppercase leading-tight">${item.title}</h4>
-                        <p class="text-[9px] text-gray-400 truncate mt-0.5">${item.subtitle}</p>
-                        <p class="text-[8px] text-gray-500 truncate">${item.subtitle2 || ''}</p>
-                    </div>`;
-                container.appendChild(div);
-            });
-        }
-
-        function showNews() {
-            if(!allData.estrenos) return;
-            const estrenos = allData.estrenos.carousels[0].data;
-            const list = document.getElementById('news-list');
-            list.innerHTML = '';
-            estrenos.forEach(item => {
-                const thumbId = getRandomValue(item.id);
-                const div = document.createElement('div');
-                div.className = "flex items-center gap-3 bg-white/5 p-2 rounded-xl border border-white/5 cursor-pointer hover:bg-white/10 transition";
-                div.onclick = () => selectMedia(item);
-                div.innerHTML = `
-                    <div class="w-10 h-14 rounded overflow-hidden flex-shrink-0 bg-gray-900">
-                        <img src="https://drive.google.com/thumbnail?id=${thumbId}" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <p class="text-white text-[10px] font-black truncate uppercase">${item.title}</p>
-                        <p class="text-gray-400 text-[8px] truncate">${item.subtitle}</p>
-                    </div>`;
-                list.appendChild(div);
-            });
-            document.getElementById('news-modal').classList.add('active');
-        }
-
-        function closeNewsModal() { document.getElementById('news-modal').classList.remove('active'); }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const section = document.getElementById('original-carousels-section');
-            Object.entries(allData).forEach(([key, cat]) => {
-                if (key === 'estrenos' || !cat || !cat.carousels) return;
-                
-                const div = document.createElement('div');
-                div.className = 'mb-8';
-                div.innerHTML = `<h2 class="text-xs font-black mb-3 px-2 text-gray-400 border-l-2 border-blue-600 ml-1 uppercase tracking-tight"> ${cat.title}</h2>`;
-                cat.carousels.forEach(c => {
-                    if (!c || !c.data) return;
-                    const wrap = document.createElement('div');
-                    wrap.className = 'carousel-wrapper';
-                    renderCarousel(wrap, c.data);
-                    div.appendChild(wrap);
-                });
-                section.appendChild(div);
-            });
-            
-            const saved = localStorage.getItem('lastViewed');
-            if (saved) {
-                const item = JSON.parse(saved);
-                if (!(item.buscar && item.buscar.includes('IPTV'))) { selectMedia(item); }
-            } else if (allImages.length > 0) {
-                if (!(allImages[0].buscar && allImages[0].buscar.includes('IPTV'))) { selectMedia(allImages[0]); }
-            }
+                </div>
+            `;
+            carousel.appendChild(card);
         });
+        section.appendChild(carousel);
+        content.appendChild(section);
+    });
+    lucide.createIcons();
+}
 
-        actionButton.onclick = () => window.open(currentUrl, '_blank');
-    </script>
+function launchEmulatorJS(romUrl, gameTitle, consoleType) {
+    const emulatorSection = document.getElementById('emulator-section');
+    const container = document.getElementById('emulator-container');
+    emulatorSection.classList.remove('hidden');
+    toggleFullscreen(true);
+    container.innerHTML = '<div id="ejs-player" class="w-full h-full"></div>';
+    let nucleoCorrecto = equivalenciaNucleos[consoleType] || consoleType;
+    if (nucleoCorrecto === null) nucleoCorrecto = consoleType;
+    window.EJS_player = '#ejs-player';
+    window.EJS_core = ['mame', 'cps1', 'cps2', 'cps3', 'neogeo', 'fba'].includes(nucleoCorrecto) ? 'mame' : nucleoCorrecto;
+    window.EJS_gameUrl = romUrl; 
+    window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
+    window.EJS_startOnLoaded = true; 
+    window.EJS_Settings = { buttons: { fullscreen: false } };
+    const loaderScript = document.createElement('script');
+    loaderScript.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+    container.appendChild(loaderScript);
+}
 
-    <script>
-        atOptions = {
-            'key' : '96981a3232fef288b114cc1dca19a835',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-        };
-    </script>
+document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    renderGames();
+    document.getElementById('open-search-btn').addEventListener('click', openSearchModal);
+    document.getElementById('search-modal-overlay').addEventListener('click', e => e.target === e.currentTarget && closeSearchModal());
+    document.getElementById('search-input').addEventListener('input', e => performSearch(e.target.value));
+    document.getElementById('exit-emulator').addEventListener('click', () => location.reload());
+    document.getElementById('console-filter').addEventListener('change', e => { activeFilters.console = e.target.value; renderGames(); });
+    document.getElementById('fullscreen-toggle').addEventListener('click', () => {
+        if (!document.fullscreenElement) { toggleFullscreen(true); document.getElementById('fullscreen-toggle').innerHTML = '<i data-lucide="minimize-2" class="w-6 h-6"></i>'; }
+        else { toggleFullscreen(false); document.getElementById('fullscreen-toggle').innerHTML = '<i data-lucide="maximize-2" class="w-6 h-6"></i>'; }
+        lucide.createIcons();
+    });
+    const handleOrientationChange = () => {
+        const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+        if (isLandscape && document.getElementById('emulator-section').classList.contains('hidden')) toggleFullscreen(true);
+    };
+    (screen.orientation || window).addEventListener('change', handleOrientationChange);
+});
+</script>
 
-	<div id="pub"><center><script src="https://www.highrevenueformat.com/96981a3232fef288b114cc1dca19a835/invoke.js"></script></center></div>
-	    <br>
-	    
-	            
- <!--PUBLICIDAD 300X160--> 
- <div><center><script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script></center></div>
-        <br><br>
- <!--PUBLICIDAD 300X160-->  <div><center><script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script></center></div>
+<!-- 🟡 CARGA DE TUS ARCHIVOS -->
+<script src="juegos-atari2600.js"></script>
+<script src="juegos-nes.js"></script>
+<script src="juegos-snes.js"></script>
+<script src="juegos-n64.js"></script>
+<script src="juegos-gb.js"></script>
+<script src="juegos-gbc.js"></script>
+<script src="juegos-gba.js"></script>
+<script src="juegos-sega32x.js"></script>
+<script src="juegos-gamegear.js"></script>
+<script src="juegos-mame.js"></script>
+<script src="juegos-cps1.js"></script>
+<script src="juegos-cps2.js"></script>
+<script src="juegos-cps3.js"></script>
+<script src="juegos-megadrive.js"></script>
+<script src="juegos-sms.js"></script>
+<script src="juegos-psx.js"></script>
+<script src="juegos-psp.js"></script>
 
-                           
-                           
 </body>
 </html>
