@@ -14,7 +14,7 @@ const data_peliculasB = [
            { id: '1efio-unu1LUz5nSd6iDdLhqR6z7INGFR', youtubeId: 'y7wzBVARwaU', buttonId: '1oNYinw5xoA8xE3jaVi2kyg', title: 'BAD TIMES AT THE EL ROYALE', subtitle: 'Malos Momentos En El Hotel Royale (2018)', buscar: 'P3L01' }, 
            { id: '1Dxj2NbKpWVrkwmSP-5N701S-lSa_AuhO', youtubeId: 'hKbo-ZKdSqw', buttonId: '1wq4ImC7JmgjmdrFnaX_Cdw', title: 'BADLAND HUNTERS', subtitle: 'Cazadores En Tierra Inhóspita (2024)', buscar: 'P3L02' }, 
            { id: '1GBLnna4K0QemZ3iur-Nn6s1KZ5ELxAH5', youtubeId: 'r1DosMJafGk', buttonId: '1wLtbVj_qHwNi-xAOjtdIDQ', title: 'BAND OF BROTHERS', subtitle: 'Hermanos De Sangre (2001)', subtitle2: '1 Temporada 10 Episodios', buscar: 'The Pacific, We Stand Alone Together, S3R01' }, 
-           { id: '1EsZhSNRB90t-aTfDsHO8PZEtMkbi5Jya', youtubeId: 'x19tdyNa-QI', buttonId: '1Rje3J3TQaZH6M71F0p7-Zw', title: 'BANG', subtitle: 'Bang (2025)', buscar: 'peroiz#g' }, 
+           { id: '12pJod3UX1glkFcxRPbRHaIEFGdvBC6cu', youtubeId: 'x19tdyNa-QI', buttonId: '1Rje3J3TQaZH6M71F0p7-Zw', title: 'BANG', subtitle: 'Bang (2025)', buscar: 'peroiz#g' }, 
            { id: '1Z6tvjS6Zqsz1O4NkanXUrZ175jxo05PI', youtubeId: 'nBXsRgy_EtM', buttonId: '1Ein6VQyTT02rs7swkB5rUQ', title: 'BANK OF DAVE', subtitle: 'El Banco De Dave (2023)', buscar: 'P3L01' }, 
            { id: '1c1IfoP7eePb2lg2CQOjecp0kFLsV1-yQ', youtubeId: 'HgbTi9wSD-4', buttonId: '1TLSyQ-E9FMDiUAF-0Kn13A', title: 'BARNYARD', subtitle: 'La Granja (2006)', buscar: 'P3L01' }, 
            { id: '1GbLDtQ6JyAfBKaxVBYEe1Q38H2b5Bety', youtubeId: 'wZXK-3WxK1o', buttonId: '1h30T83goJiWlglDblxmaQg', title: 'BARRY LYNDON', subtitle: 'Barry Lyndon (1975)', buscar: 'P3L01' }, 

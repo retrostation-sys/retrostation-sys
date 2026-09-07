@@ -12,7 +12,7 @@ const data_peliculasR= [
            { id: '1MWQOAUcSR-jTSevz_RiK2Zp8eyIuQPc3', youtubeId: 'BAVITOn-Usk', buttonId: '12NFjEanCTjOXa2d6eXbW6Q', title: 'RED', subtitle: 'Red (2010)', buscar: 'P3L01' }, 
            { id: '1CrmLqSRqcRQDQUwgymbxEgF5H_NWNhUI', youtubeId: 'ZfB8QwYBPxY', buttonId: '1vqVoZsl7NlC7zCHkR0aeTQ', title: 'RED 2', subtitle: 'Red 2 (2013)', buscar: 'P3L01' }, 
            { id: '1OzGhACbcme9ljAfd1iymijoe37XezRIX', youtubeId: 'yzQYokimcg0', buttonId: '1n7uQ0VJcXbA2TVG-raZK2g', title: 'REIGN OVER ME', subtitle: 'La Esperanza Vive En Mí (2007)', buscar: 'P3L01' }, 
-           { id: '10GriI-JKRp4BI_rc3FaIdG7pf7T8A043', youtubeId: 'To87iNMhedU', buttonId: '1hVHKdirq1Kj-bEabJmUD-g', title: 'RELATIONSHIP GOALS', subtitle: 'La Meta Es El Amor(2026)', buscar: 'peroiz#g' }, 
+           { id: '1ASfTqBSsMycG0bxMBD4DDP86TrOd-kGb', youtubeId: 'To87iNMhedU', buttonId: '1hVHKdirq1Kj-bEabJmUD-g', title: 'RELATIONSHIP GOALS', subtitle: 'La Meta Es El Amor(2026)', buscar: 'peroiz#g' }, 
            { id: '1RPpMFDPnILnuh-zF8XEq6GY1bbFd8t9L', youtubeId: 'NcKWCVb7f6Y', buttonId: '1Qy4X_cR_hxC9s8kg8e4_sw', title: 'RÉMI NOBODY\'S BOY', subtitle: 'Remi El Niño De Nadie (2018)', buscar: 'P3L01G' }, 
            { id: '1jRIT7kbv-H5GU7HEnRDC81VyCjRsJz3c', youtubeId: 'JAHKQPBKSZ8', buttonId: '1_W-_AEoPx2usXOl7j_bwFw', title: 'REPLICAS', subtitle: 'Replicas (2018)', buscar: 'P3L01' }, 
            { id: '1kOJ0lzkQzQkBRp7mwMpXDcOrcIPqcCc6', youtubeId: 'HhBAIDHvRTc', buttonId: '1CBbsQwVJS9X4MC1QatawAw', title: 'RESIDENT EVIL', subtitle: 'Resident Evil: El Huésped Maldito (2002)', buscar: 'P3L02' }, 

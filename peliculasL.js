@@ -35,7 +35,7 @@ const data_peliculasL= [
            { id: '14IQAawgpj9T2Ir7BD5hBcmNi1TjGf1dY', youtubeId: 'm3zbr0s78QM', buttonId: '10pgaUoDSNtQf0A81CTuJGg', title: 'LOS QUE AMAN ODIAN', subtitle: 'Los Que Aman Odian (2017)', buscar: 'P3L01G' }, 
            { id: '1UCx5dLBw18cgIct1IvBKdZmP-lzxFSSS', youtubeId: 'o1M8vDSBLWU', buttonId: '1TcEQTklV3wuM7B1XXrxLMg', title: 'LOS TRES MOSQUETEROS', subtitle: 'Los Tres Mosqueteros (1942)', buscar: 'P3L01G' }, 
            { id: '1rHA8dWJNKTudqRVLJFUeMVXOsMx1bXSH', youtubeId: 'Avsf2fYxIJE', buttonId: '1TQj8iZCyro4KWF_Xz8cIqg', title: 'LOUPS GAROUS', subtitle: 'SUBTITULO', buscar: 'P3L02' }, 
-           { id: '1flxhiKky8_3DnJGTV0gkjIrlQZEd9VGs', youtubeId: 'h6w7Dh-QxzY', buttonId: '1U3DOgpE8B-yoRxVk5TYC7Q', title: 'LOVE & OTHER DRUGS', subtitle: 'De Amor y Otras Adicciones (2010)', buscar: 'peroiz#g' }, 
+           { id: '1yrID0PlQl5JaBApm0axqYjr26q2SeXC8', youtubeId: 'h6w7Dh-QxzY', buttonId: '1U3DOgpE8B-yoRxVk5TYC7Q', title: 'LOVE & OTHER DRUGS', subtitle: 'De Amor y Otras Adicciones (2010)', buscar: 'peroiz#g' }, 
            { id: '1vOnAnwuHZxdzT_wlVkcKLdQm-cN7WUWj', youtubeId: 'wUFwunMKa4E', buttonId: '1iz1Gc78VXk7cVFtoZ6dqXw', title: 'LOVE DEATH & ROBOTS', subtitle: 'Love Death & Robots (2019-24)', subtitle2: '4 Temporadas 44 Episodios', buscar: 'P3L01G' }, 
            { id: '1v8YJt7YF0BIQjqFTvazilUDgbNaXab9I', youtubeId: 'AnMNYz7bxpY', buttonId: '11liosPAljMUA9kgcwQFG6g', title: 'LOVE ROSIE', subtitle: 'Los Imprevistos Del Amor (2014)', buscar: 'P3L01' }, 
            { id: '1YYzUMgwv5X0sF7Hh3bxZLBx5B7CL9udF', youtubeId: 'x6CyqhYsLqo', buttonId: '1nxSwuHczIBxWSfZBB7CtSA', title: 'LOVE WEDDING REPEAT', subtitle: 'Amor, Boda, Azar (2020)', buscar: 'P3L01' }, 

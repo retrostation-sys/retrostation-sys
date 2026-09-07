@@ -16,7 +16,7 @@ const data_peliculasJ= [
            { id: '1NN5p0LThTAfxHjHkpzHs7JmqKk7tmM-a', youtubeId: 'uY6YkhRtNlE', buttonId: '1Q6IATnsHt1yWsAibtC2IUg', title: 'JUAN LUIS GUERRA Y SU 4.40', subtitle: 'Entre Mar y Palmeras (2021)', buscar: 'Conciertos Música P3L01' }, 
            { id: '1nyNO-zD5KVKn2gR5e1vvwVke3w1Tnrdh', youtubeId: '_jKEqDKpJLw', buttonId: '1kra14RlyqFIstc_naRiyhw', title: 'JURASSIC PARK', subtitle: 'Parque Jurásico (1993)', buscar: 'Jurassic World, Mundo Jurasico, P3L01' }, 
            { id: '1jpY34l7_wepKkHZUM566F1FtLQtLHsYl', youtubeId: 'UtxAPXT4174', buttonId: '1N6kUUEDl7iKPdcawCfTCuw', title: 'JURASSIC WORLD DOMINION', subtitle: 'Jurassic World: Dominio (2023)', buscar: 'Jurassic Park, Parque Jurasico, Mundo Jurasico, P3L02' },
-           { id: '1J18m3S6nuFi2VwxewaFQ4tJt1DDFTIsl', youtubeId: 'mks9TGDxIs8', buttonId: '1qS6Gh037i1bDdCkPXdXwiw', title: 'JUST FRIENDS', subtitle: 'Uf Solo Amigos (2026)', buscar: 'peroiz#g' },
+           { id: '1jja1hbv6q3eMCDoRkq8ASPduknUmR6Kh', youtubeId: 'mks9TGDxIs8', buttonId: '1qS6Gh037i1bDdCkPXdXwiw', title: 'JUST FRIENDS', subtitle: 'Uff Solo Amigos (2026)', buscar: 'peroiz#g' },
            { id: '1lYmEzk_73ePjWtnhpKNJ_U_tAvVSafrd', youtubeId: 'fpj7i2CPt8M', buttonId: '14JOpKI144MNuyGK6QiiMGw', title: 'JUST GO WITH IT', subtitle: 'Una Esposa De Mentira (2011)', buscar: 'P3L02' },
             
 

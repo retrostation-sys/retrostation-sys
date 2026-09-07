@@ -3,7 +3,7 @@ const data_peliculasF= [
           { id: '18Gf8k_w-sVkjwicyK6LicpArpTTaobqv', youtubeId: '32RAq6JzY-w', buttonId: '1AAZ-bkAMx4jrxqV1TuxsyA', title: 'FAST X', subtitle: 'Rápidos y Furiosos X (2023)', buscar: 'P3L01' }, 
            { id: '18Sj17k3o2JAsEgVcbsOixzfHTAwLMt4r', youtubeId: '8OYHyMa-oF0', buttonId: '1P8NcxGGCZJurRlVq-Kh9Aw', title: 'FATHER OF THE BRIDE', subtitle: 'El Padre De La Novia (1991)', buscar: 'P3L02' }, 
            { id: '18Ttfx0o8kk_Qu5I8l1HEpICgC1vs_UwO', youtubeId: 'BbvnDlu_Zjc', buttonId: '1qeOhl38mhRXSk_JhVxgF-w', title: 'FATHER OF THE BRIDE PART II', subtitle: 'El Padre De La Novia 2 (1995)', buscar: 'P3L02' }, 
-           { id: '1DHlrciuYLDO5TYokRU3ORisVEVIqCo85', youtubeId: 'pzgtTsBf2cQ', buttonId: '1Lg1p1IthsoPM2Iw4oy7_Gg', title: 'FCK VALENTINE\'S DAY', subtitle: 'Fck Valentine\'s Day (2026) [Ing]', buscar: 'peroiz#g' }, 
+           { id: '1jIcwQg6BJn_UXUKAL9jCgUo8IcdJQCpM', youtubeId: 'pzgtTsBf2cQ', buttonId: '1Lg1p1IthsoPM2Iw4oy7_Gg', title: 'FCK VALENTINE\'S DAY', subtitle: 'Fck Valentine\'s Day (2026) [Ing]', buscar: 'peroiz#g' }, 
            { id: '1V8kzQeRlanCi5lp9KxTiHvOSUdzOu7Si', youtubeId: 'jtW0Q9Rh8d4', buttonId: '1QHse4jlBKMVrzAbY4VI31w', title: 'FEAR THE WALKING DEAD', subtitle: 'Fear The Walking Dead (2015-23)', subtitle2: '8 Temporadas 113 Episodios', buscar: 'P3L02G' }, 
            { id: '1jqxjkQQ0zVDrkdJ9gtEZKhrKoKgU_VfO', youtubeId: 'fNkZjTXeaf4', buttonId: '103jTANdfLIx8Clm8MMEgrg', title: 'FEAR THE NIGHT', subtitle: 'Teme a La Noche (2023)', buscar: 'P3L02' }, 
            { id: '18Zk_03wLstZK4uWb_yTy5EAjKCoLVVHO', youtubeId: 's-XHMNDgre8', buttonId: '1Dt4jpEb52aJF4Vgxj60njA', title: 'FERDINAND', subtitle: 'Olé El Viaje De Ferdinand (2017)', buscar: 'P3L01' }, 

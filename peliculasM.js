@@ -40,7 +40,7 @@ const data_peliculasM= [
            { id: '1SCQj2UW0OpiY2pmIFXDZr9UpHradVcWF', youtubeId: 'vq70brIQP40', buttonId: '16tLiJUaA1KfY4AQ-ubLFKQ', title: 'MONSTER', subtitle: 'Monster Asesina En Serie (2003)', buscar: 'P3L01' }, 
            { id: '1PhihTgDIX-JTwIlzaEVS1okiIm6jp-po', youtubeId: 'rACXzbOoHBI', buttonId: '1-s_Y75lIkr106O2y9f5v1w', title: 'MONSTERS INSIDE THE 24 FACES OF BILLY MILLIGAN', subtitle: 'Las 24 Caras De Billy Milligan(2021)', subtitle2: '1 Temporada 4 Episodios', buscar: 'S3R01' }, 
            { id: '1aomOpuEYZko9Nuh89pHVb82v882rEnej', youtubeId: 'WWq6ios-HmI', buttonId: '1hB6W2hndW0Kn0xwklSa7pA', title: 'MONSTERS UNIVERSITY', subtitle: 'Monsters University (2013)', buscar: 'P3L02' }, 
-           { id: '1ue4eC3haYqRCqMK1ueZ4XHz5p6KKhBXa', youtubeId: 'rqmHSR0bFU8', buttonId: '1nANcvNzj115F7s1aJKyJpA', title: 'MORGAN', subtitle: 'Morgan (2016)', buscar: 'peroiz#g' }, 
+           { id: '11abxkx5lXZ8gV7nvyyAoDTdX4ktkw2zB', youtubeId: 'rqmHSR0bFU8', buttonId: '1nANcvNzj115F7s1aJKyJpA', title: 'MORGAN', subtitle: 'Morgan (2016)', buscar: 'peroiz#g' }, 
            { id: '1Jktvbu6Mk_dui9QJCGgPXZ5kBYqgp5Ep', youtubeId: 'I1vccr3yWBU', buttonId: '1CMx_HscuBpQstWN3Cg4OkA', title: 'MORTAL KOMBAT LEGENDS SCORPION\’S REVENGE', subtitle: 'Mortal Kombat Leyendas La Venganza De Scorpion (2020)', buscar: 'P3L01' }, 
            { id: '1UpThsk_Akztn4IZG_l7uesKq1BMuIHwa', youtubeId: 'ASw47FiEhes', buttonId: '1ZwfkhiIx9KNeka99_tMMHA', title: 'MR. DEEDS', subtitle: 'La Herencia De Mr. Deeds (2002)', buscar: 'P3L01' }, 
            { id: '1rgvLvr2S1slmBuHRhF3nn-Qnm-bR8ut2', youtubeId: 'rmCAg6RbkTE', buttonId: '1vMuor-YzG_fYMazva2_ypw', title: 'MULAN', subtitle: 'Mulan (1998)', buscar: 'P3L02' }, 
