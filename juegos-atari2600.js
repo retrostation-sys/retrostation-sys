@@ -26,7 +26,7 @@ agregarJuegos([
     { system:"atari2600", img:x+"AiOi4McpnTutJgiFO8nEKZsiXJ_QpQHs", title:"COSMIC ARK", src:y+"Cosmic%20Ark%20%28USA%29.zip" },
     { system:"atari2600", img:x+"5KDoc0a-DQPWuGrXHZM_P9egzNnZGRc_", title:"CRYSTAL CASTLES", src:y+"Crystal%20Castles%20%28USA%29.zip" },
     { system:"atari2600", img:x+"EFzFyZpsc5FEgqTpVRO8prCtB3RwETdi", title:"DARK CAVERN" },
-    { system:"atari2600", img:x+"Ld3EiMZORtXc6pg3DlQf9fAYI3ngi1W", title:"DARK CHAMBERS" },
+    { system:"atari2600", img:x+"1Ld3EiMZORtXc6pg3DlQf9fAYI3ngi1W", title:"DARK CHAMBERS" },
     { system:"atari2600", img:x+"PXL4j7Duk2CbIELv7z_a_gFLRiOaCyWM", title:"DEFENDER" },
     { system:"atari2600", img:x+"093I69Hex6DN-T1NNhV0Iwsd4JQmdPLf", title:"DEFENDER 2" },
     { system:"atari2600", img:x+"H64d8lQFRcyxUmy8JFtnjLyqGToPAj2V", title:"DEMOLITION HERBY" },
@@ -36,20 +36,37 @@ agregarJuegos([
     { system:"atari2600", img:x+"sMaw_YvNhZH8WSlybWHYNYvOwVm8wc-x", title:"DODGE EM" },
     { system:"atari2600", img:x+"8FfZnlg5G6yksoXORaX-m2TIBLu45hkg", title:"DONKEY KONG" },
     { system: "atari2600", img: x+ "nwV-UGVmSv1NBlIK_NsEFsE2GmQjOAeg", title:"DRAGONFIRE", src:y+"Dragonfire%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "1IBi5FanKJ1q5gZCZ8eGiB0wt139AtNWO", title: "ELK ATTAK" },
-    { system:"atari2600", img:x+"gAhSVkGkRffBzaHaD0uH3CMjkCP1l6c4", title:"ENDURO", src:y+"Enduro%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "1yTybed_o-IU19-aeQn0iECgeI1ijW6xF", title: "FALLDOWN" },
-    { system: "atari2600", img: x+ "1TM5AD9YGRDufTOwTExGpGap3R-Wrb6fh", title: "FLASH GORDON" },
+    { system:"atari2600", img:x+"1Ld3EiMZORtXc6pg3DlQf9fAYI3ngi1W", title: "ELK ATTAK" },
+    { system:"atari2600", img:x+"_giXMc9J0b8e_V6hIZom6kf7X62ic1yw", title:"ENDURO", src:y+"Enduro%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"j49mxTJ7syGQmtE0VQN8DA-Bw2YfCfiF", title:"FALLDOWN" },
+    { system:"atari2600", img:x+"W94cmQvCLvX4wmjLXVqKVwd3CBzDGyC6", title:"FLASH GORDON" },
     { system:"atari2600", img:x+"H8LAyX9CSt_OUoM6Schw5p6muySbTu1J", title:"FROGGER 1", src:y+"Frogger%20%28USA%29.zip" },
     { system:"atari2600", img:x+"G2x2cI8X2_FzOec3dD_ZThNnQkKRqsqu", title:"FROGGER 2", },
     { system:"atari2600", img:x+"C8XsTBWwM4lDFxz5u1U1sDiMZ7Pviqse", title:"FROGGER" },
     { system:"atari2600", img:x+"fagiuoF4751vtTGwiORXg-7oebqwKjqK", title:"FROGS AND FLIES", src:y+"Frogs%20and%20Flies%20%28USA%29.zip" },
     { system:"atari2600", img:x+"TyUtnzSHMpdommiIFP-kX4EoRsCX2c3T", title:"FROSTBITE", src:y+"Frostbite%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "o_qaceWBTB-qq-REWDf6dYLQYZkpXSp8", title:"GALAXIAN" },
+    { system:"atari2600", img:x+"o_qaceWBTB-qq-REWDf6dYLQYZkpXSp8", title:"GALAXIAN" },
     { system:"atari2600", img:x+"1mlWCnp3ZRpfTrjo6MnA6r0-woL-7RJj", title:"GAS HOG" },
     { system:"atari2600", img:x+"M3noKl-rHDcIqYV7V8DcvLLLl7Mea59V", title:"GRAVITAR", src:y+"Gravitar%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "1_Ms3LJXXbf99a7IKGR5GOceiSRmIGImC", title: "HARBOR SCAPE" },
-    { system: "atari2600", img: x+ "1zlD1YypJgo3EpA0i3blxkqzWaxASOqv8", title: "HERO" },
+    { system: "atari2600", img:x+"kXcTvlchdxBGqiC8XBumLYumKAIozl9w", title:"H. E. R. O.", src:y+"H.E.R.O.%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"1mlWCnp3ZRpfTrjo6MnA6r0-woL-7RJj", title:"HARBOR SCAPE" },
+    { system: "atari2600", img:x+"_7DNBgfvsLyVKD8eFWfDbxUaptyZ2HOJ", title:"HALLOWEEN", src:y+"Halloween%20%28USA%29.zip" },
+    { system: "atari2600", img:x+"rRbalPDXVd-W1ddYv6BqfPLbKVICNNQx", title:"HAUNTED HOUSE", src:y+"Haunted%20House%20%28USA%29.zip" },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     { system: "atari2600", img: x+ "13wGO-2jwA6j5tXBmwh_5Z8XryAWR-4rq", title: "JAWBREAKER" },
     { system: "atari2600", img: x+ "1UnD_iihNU6_CvCGQFpQaZulpi-98iWPs", title: "JOUST" },
     { system: "atari2600", img: x+ "1nb7TSQoUv9wA6XNoGo_7ZYPZX8qhm4BA", title: "JUNGLE HUNT" },
