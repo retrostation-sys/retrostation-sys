@@ -7,10 +7,11 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-    <style>
     
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&family=Space+Grotesk:wght=700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap');
         
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -126,6 +127,31 @@
             transform: translateY(-1px);
         }
 
+        .multiplayer-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 100001;
+            background: rgba(16, 185, 129, 0.9);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .multiplayer-btn:hover {
+            background: rgba(16, 185, 129, 1);
+            transform: translateY(-1px);
+        }
+        .multiplayer-btn.active {
+            background: rgba(245, 158, 11, 0.9);
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
         .ad-block {
             border: 1px solid rgba(244, 63, 94, 0.3);
             border-radius: 12px;
@@ -145,7 +171,6 @@
             font-weight: 600;
         }
         
-        /* 🖼️ Imagen y título debajo */
         .game-image-container {
             width: 100%;
             height: 140px;
@@ -177,7 +202,6 @@
             justify-content: center;
         }
 
-        /* 🔍 MODAL DE BÚSQUEDA */
         .search-modal-overlay {
             position: fixed;
             inset: 0;
@@ -301,6 +325,67 @@
             color: #94a3b8;
             font-size: 0.9rem;
         }
+
+        .room-modal-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+        }
+        .room-input {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .room-input:focus {
+            border-color: #10b981;
+        }
+        .room-btn {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        .room-primary {
+            background: #10b981;
+            color: white;
+        }
+        .room-primary:hover {
+            background: #059669;
+        }
+        .room-secondary {
+            background: #475569;
+            color: white;
+        }
+        .room-secondary:hover {
+            background: #334155;
+        }
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 1px;
+            margin-top: 0.5rem;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+        .status-dot.connected { background: #10b981; }
+        .status-dot.connecting { background: #f59e0b; animation: pulse 1s infinite; }
+        .status-dot.disconnected { background: #ef4444; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row antialiased select-none overflow-hidden">
@@ -309,7 +394,45 @@
         <i data-lucide="maximize-2" class="w-3 h-3"></i>
     </button>
 
-    <!-- 🔍 MODAL DE BÚSQUEDA -->
+    <div id="multiplayer-modal" class="search-modal-overlay">
+        <div class="search-modal" onclick="event.stopPropagation()">
+            <div class="search-modal-header">
+                <h2 class="search-modal-title">🎮 MULTIJUGADOR</h2>
+                <button class="search-modal-close" onclick="closeMultiplayerModal()">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="room-modal-content">
+                <div id="multiplayer-status" class="status-indicator">
+                    <span id="mp-dot" class="status-dot"></span>
+                    <span id="mp-text">Desconectado</span>
+                </div>
+                
+                <div>
+                    <label class="text-xs text-slate-400 mb-1 block">Tu código de sala</label>
+                    <input type="text" id="room-id" class="room-input" readonly placeholder="Generando código...">
+                    <button id="copy-room" class="room-btn room-secondary w-full mt-2 text-sm">📋 Copiar código</button>
+                </div>
+                
+                <div class="text-center text-slate-500 text-sm">— o —</div>
+                
+                <div>
+                    <label class="text-xs text-slate-400 mb-1 block">Unirse con código</label>
+                    <input type="text" id="join-room-id" class="room-input" placeholder="Pega el código aquí">
+                </div>
+                
+                <div class="flex gap-2 mt-1">
+                    <button id="create-room" class="room-btn room-primary flex-1">🏠 Crear Sala</button>
+                    <button id="join-room" class="room-btn room-secondary flex-1">🔗 Unirse</button>
+                </div>
+                
+                <p class="text-[10px] text-slate-400 mt-2">
+                    ⚡ Usa WebRTC: conexión directa entre pares. Si no conecta, revisa tu red o usa el mismo Wi-Fi.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div id="search-modal-overlay" class="search-modal-overlay">
         <div class="search-modal" onclick="event.stopPropagation()">
             <div class="search-modal-header">
@@ -330,7 +453,8 @@
     <div class="portrait-warning fixed inset-0 bg-slate-950 z-[100] hidden flex-col bg-cover bg-center bg-no-repeat">
         <div class="w-full p-3 flex-shrink-0">
             <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
-               <!--PUBLICIDAD--> <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
+                <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script>
+                <script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
             </div>
         </div>
         <div class="flex-1 flex flex-col items-center justify-center p-6 text-center">
@@ -342,7 +466,8 @@
         </div>
         <div class="w-full p-3 flex-shrink-0">
             <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[80px]">
-             <!--PUBLICIDAD--> <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
+                <script>atOptions={'key':'fe97f35db479c23178357ff71b2b8972','format':'iframe','height':250,'width':300,'params':{}};</script>
+                <script src="https://www.highperformanceformat.com/fe97f35db479c23178357ff71b2b8972/invoke.js"></script>
             </div>
         </div>
     </div>
@@ -354,17 +479,17 @@
             </div>
             <div>
                 <h1 class="brand-font text-sm font-black tracking-wider text-rose-500">
-                	RETRO STATION-SYS
+                    RETRO STATION-SYS
                 </h1>
                 <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">
-                	OS V4.0 • MULTIEMULATOR
+                    OS V4.1 • MULTIEMULATOR + MULTIJUGADOR
                 </p>
             </div>
         </div>
 
-        <!-- 📢 PUBLICIDAD -->
         <div class="ad-block p-3 flex flex-col items-center justify-center min-h-[120px]">
- <!--PUBLICIDAD 300X160-->  <script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script><script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script>
+            <script>atOptions={'key':'67aef7a1c6c8b094defe94a70af354bc','format':'iframe','height':300,'width':160,'params':{}};</script>
+            <script src="https://www.highrevenueformat.com/67aef7a1c6c8b094defe94a70af354bc/invoke.js"></script>
         </div>
 
         <div class="ad-block p-3 text-center mt-auto">
@@ -415,6 +540,9 @@
                 <button id="open-search-btn" class="bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-rose-500 text-[10px] rounded px-2 py-1 flex items-center gap-1 font-medium transition-colors">
                     <i data-lucide="search" class="w-3 h-3"></i> BUSCAR
                 </button>
+                <button id="open-multiplayer-btn" class="bg-emerald-900/50 border border-emerald-700/50 text-emerald-300 hover:text-white hover:border-emerald-500 text-[10px] rounded px-2 py-1 flex items-center gap-1 font-medium transition-colors">
+                    <i data-lucide="users" class="w-3 h-3"></i> 
+                </button>
             </div>
         </header>
 
@@ -431,20 +559,256 @@
             </div>
 
             <section id="emulator-section" class="hidden bg-black flex flex-col justify-between">
-                <button id="exit-emulator" class="exit-emulator-btn">SALIR</button>
-                <div class="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
-                    <div id="emulator-container" class="w-full h-full bg-black mx-auto"></div>
-                </div>
-            </section>
+    <div class="absolute top-3 left-3 flex gap-2 z-[100001]">
+        <button id="exit-emulator" class="exit-emulator-btn" style="position:static;">SALIR</button>
+        <button id="mp-toggle" class="multiplayer-btn" onclick="toggleMultiplayerInGame()" style="position:static;">
+            <i data-lucide="users" class="w-3.5 h-3.5"></i> <span id="mp-toggle-text"></span>
+        </button>
+    </div>
+    <div class="flex-1 bg-black flex items-center justify-center relative overflow-hidden">
+        <div id="emulator-container" class="w-full h-full bg-black mx-auto"></div>
+    </div>
+</section>
+
         </div>
 
         <footer class="bg-slate-950 border-t border-slate-900 h-8 px-4 flex items-center justify-between text-[10px] text-slate-500 shrink-0 select-none">
-            <div class="hidden sm:block font-medium tracking-wider"><center>© 2026 RETRO STATION-SYS (Juegos De Dominio Público y Homebrew)</center></div>
+            <div class="hidden sm:block font-medium tracking-wider"><center>© 2026 RETRO STATION-SYS • MULTIJUGADOR WebRTC Activado</center></div>
         </footer>
     </main>
 
 <script>
-// 🟡 Base de datos de juegos
+// ==================== CONFIGURACIÓN MULTIJUGADOR WEBRTC ====================
+const Multiplayer = {
+    socket: null,
+    roomId: null,
+    peerConnection: null,
+    dataChannel: null,
+    isHost: false,
+    isConnected: false,
+    peerConfig: {
+        iceServers: [
+            { urls: 'stun:stun.l.google.com:19302' },
+            { urls: 'stun:stun1.l.google.com:19302' },
+            { urls: 'turn:relay.metered.ca:80', username: 'open', credential: 'open' }
+        ]
+    },
+    
+    init() {
+        // Servidor de señalización — puedes alojar el tuyo o usar uno público
+        this.socket = io('wss://retro-signal.up.railway.app', { 
+            transports: ['websocket'],
+            reconnection: true,
+            reconnectionAttempts: 5
+        });
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        this.socket.on('connect', () => this.updateStatus('connecting', 'Conectado al servidor'));
+        this.socket.on('disconnect', () => {
+            this.isConnected = false;
+            this.updateStatus('disconnected', 'Desconectado');
+        });
+        this.socket.on('offer', async (data) => {
+            if (!this.isHost) await this.handleOffer(data.offer, data.from);
+        });
+        this.socket.on('answer', async (data) => {
+            await this.handleAnswer(data.answer);
+        });
+        this.socket.on('ice-candidate', async (data) => {
+            if (this.peerConnection) {
+                await this.peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate));
+            }
+        });
+        this.socket.on('room-created', (id) => {
+            this.roomId = id;
+            this.isHost = true;
+            document.getElementById('room-id').value = id;
+            this.updateStatus('connected', `Sala creada: ${id}`);
+        });
+        this.socket.on('room-joined', async (id) => {
+            this.roomId = id;
+            this.isHost = false;
+            this.updateStatus('connecting', 'Solicitando conexión...');
+            await this.createOffer();
+        });
+        this.socket.on('error', (msg) => {
+            alert('Error: ' + msg);
+            this.updateStatus('disconnected', msg);
+        });
+    },
+
+    generateRoomId() {
+        return Math.random().toString(36).substring(2, 8).toUpperCase();
+    },
+
+    createRoom() {
+        const id = this.generateRoomId();
+        this.socket.emit('create-room', id);
+    },
+
+    joinRoom(id) {
+        if (!id.trim()) return alert('Escribe un código de sala');
+        this.socket.emit('join-room', id.trim());
+    },
+
+    async setupPeerConnection() {
+        this.peerConnection = new RTCPeerConnection(this.peerConfig);
+        
+        this.dataChannel = this.isHost 
+            ? this.peerConnection.createDataChannel('gamepad') 
+            : null;
+        
+        this.peerConnection.ondatachannel = (e) => {
+            this.dataChannel = e.channel;
+            this.setupDataChannel();
+        };
+
+        this.peerConnection.onicecandidate = (e) => {
+            if (e.candidate && this.roomId) {
+                this.socket.emit('ice-candidate', {
+                    roomId: this.roomId,
+                    candidate: e.candidate
+                });
+            }
+        };
+
+        this.peerConnection.onconnectionstatechange = () => {
+            const state = this.peerConnection.connectionState;
+            if (state === 'connected') {
+                this.isConnected = true;
+                this.updateStatus('connected', '✅ Jugador conectado');
+                document.getElementById('mp-toggle').classList.add('active');
+            } else if (state === 'disconnected' || state === 'failed') {
+                this.isConnected = false;
+                this.updateStatus('disconnected', 'Conexión perdida');
+                document.getElementById('mp-toggle').classList.remove('active');
+            }
+        };
+    },
+
+    setupDataChannel() {
+        this.dataChannel.onopen = () => {
+            console.log('Canal de datos abierto');
+        };
+        this.dataChannel.onmessage = (e) => {
+            // Reenvía entrada del jugador remoto al emulador
+            if (window.EJS_emulator && this.isHost) {
+                try {
+                    const input = JSON.parse(e.data);
+                    // Mapea al jugador 2
+                    this.injectRemoteInput(input);
+                } catch(err) {}
+            }
+        };
+    },
+
+    async createOffer() {
+        await this.setupPeerConnection();
+        const offer = await this.peerConnection.createOffer();
+        await this.peerConnection.setLocalDescription(offer);
+        this.socket.emit('offer', { roomId: this.roomId, offer });
+    },
+
+    async handleOffer(offer, from) {
+        await this.setupPeerConnection();
+        await this.peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+        const answer = await this.peerConnection.createAnswer();
+        await this.peerConnection.setLocalDescription(answer);
+        this.socket.emit('answer', { roomId: this.roomId, answer });
+    },
+
+    async handleAnswer(answer) {
+        await this.peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+    },
+
+    injectRemoteInput(input) {
+        // Inyecta controles del jugador remoto
+        const mapping = {
+            'up': 'ArrowUp', 'down': 'ArrowDown', 'left': 'ArrowLeft', 'right': 'ArrowRight',
+            'a': 'KeyZ', 'b': 'KeyX', 'start': 'Enter', 'select': 'ShiftRight'
+        };
+        if (mapping[input.key]) {
+            const evt = new KeyboardEvent(input.pressed ? 'keydown' : 'keyup', {
+                code: mapping[input.key],
+                key: mapping[input.key],
+                bubbles: true
+            });
+            window.dispatchEvent(evt);
+        }
+    },
+
+    broadcastInput(key, pressed) {
+        if (this.dataChannel && this.dataChannel.readyState === 'open' && this.isHost) {
+            this.dataChannel.send(JSON.stringify({ key, pressed }));
+        }
+    },
+
+    updateStatus(state, text) {
+        const dot = document.getElementById('mp-dot');
+        const txt = document.getElementById('mp-text');
+        dot.className = `status-dot ${state}`;
+        txt.textContent = text;
+    },
+
+    close() {
+        if (this.dataChannel) this.dataChannel.close();
+        if (this.peerConnection) this.peerConnection.close();
+        this.roomId = null;
+        this.isConnected = false;
+        this.isHost = false;
+        this.updateStatus('disconnected', 'Desconectado');
+        document.getElementById('mp-toggle').classList.remove('active');
+    }
+};
+
+// Interceptar controles para retransmitir
+const originalKeyDown = window.onkeydown;
+const originalKeyUp = window.onkeyup;
+
+document.addEventListener('keydown', (e) => {
+    if (Multiplayer.isConnected && Multiplayer.isHost) {
+        const keyMap = {
+            'ArrowUp': 'up', 'ArrowDown': 'down', 'ArrowLeft': 'left', 'ArrowRight': 'right',
+            'KeyZ': 'a', 'KeyX': 'b', 'Enter': 'start', 'ShiftRight': 'select'
+        };
+        if (keyMap[e.code]) {
+            Multiplayer.broadcastInput(keyMap[e.code], true);
+        }
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    if (Multiplayer.isConnected && Multiplayer.isHost) {
+        const keyMap = {
+            'ArrowUp': 'up', 'ArrowDown': 'down', 'ArrowLeft': 'left', 'ArrowRight': 'right',
+            'KeyZ': 'a', 'KeyX': 'b', 'Enter': 'start', 'ShiftRight': 'select'
+        };
+        if (keyMap[e.code]) {
+            Multiplayer.broadcastInput(keyMap[e.code], false);
+        }
+    }
+});
+
+function openMultiplayerModal() {
+    document.getElementById('multiplayer-modal').classList.add('active');
+    if (!Multiplayer.socket) Multiplayer.init();
+}
+function closeMultiplayerModal() {
+    document.getElementById('multiplayer-modal').classList.remove('active');
+}
+function toggleMultiplayerInGame() {
+    if (!Multiplayer.isConnected) {
+        openMultiplayerModal();
+    } else {
+        if (confirm('¿Desconectar multijugador?')) {
+            Multiplayer.close();
+        }
+    }
+}
+
+// ==================== BASE DE DATOS Y JUEGOS ====================
 const juegosDatabase = [];
 function agregarJuegos(lista) { juegosDatabase.push(...lista); }
 
@@ -562,7 +926,6 @@ function performSearch(query) {
     lucide.createIcons();
 }
 
-// 📂 Cargar archivo local
 function handleLocalROM(input, gameTitle, consoleType) {
     if (!input.files || !input.files[0]) return;
     const file = input.files[0];
@@ -575,8 +938,6 @@ function handleLocalROM(input, gameTitle, consoleType) {
     const localRomUrl = URL.createObjectURL(file);
     launchEmulatorJS(localRomUrl, gameTitle, consoleType);
 }
-
-// 📖 Jugar desde caché
 function playCachedROM(gameTitle, consoleType) {
     if (!db) return;
     const transaction = db.transaction(["roms"], "readonly");
@@ -591,7 +952,6 @@ function playCachedROM(gameTitle, consoleType) {
     };
 }
 
-// 🔄 Reiniciar emulador
 function resetEmulator() {
     if (window.EJS_emulator) {
         try { window.EJS_emulator.restart(); }
@@ -621,7 +981,6 @@ function renderGames() {
             const safeTitle = game.title.replace(/'/g, "\\'");
             const inputId = `file-${safeTitle.replace(/\s+/g, '-')}`;
             
-            // Verificar si está en caché
             if (db) {
                 const transaction = db.transaction(["roms"], "readonly");
                 const store = transaction.objectStore("roms");
@@ -701,10 +1060,28 @@ function launchEmulatorJS(romUrl, gameTitle, consoleType) {
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     renderGames();
+    
     document.getElementById('open-search-btn').addEventListener('click', openSearchModal);
     document.getElementById('search-modal-overlay').addEventListener('click', e => e.target === e.currentTarget && closeSearchModal());
     document.getElementById('search-input').addEventListener('input', e => performSearch(e.target.value));
-    document.getElementById('exit-emulator').addEventListener('click', () => location.reload());
+    
+    document.getElementById('open-multiplayer-btn').addEventListener('click', openMultiplayerModal);
+    document.getElementById('create-room').addEventListener('click', () => Multiplayer.createRoom());
+    document.getElementById('join-room').addEventListener('click', () => {
+        const id = document.getElementById('join-room-id').value;
+        Multiplayer.joinRoom(id);
+    });
+    document.getElementById('copy-room').addEventListener('click', () => {
+        const id = document.getElementById('room-id').value;
+        if (id) {
+            navigator.clipboard.writeText(id).then(() => alert('Código copiado ✅'));
+        }
+    });
+    
+    document.getElementById('exit-emulator').addEventListener('click', () => {
+        Multiplayer.close();
+        location.reload();
+    });
     document.getElementById('console-filter').addEventListener('change', e => { activeFilters.console = e.target.value; renderGames(); });
     document.getElementById('fullscreen-toggle').addEventListener('click', () => {
         if (!document.fullscreenElement) { toggleFullscreen(true); document.getElementById('fullscreen-toggle').innerHTML = '<i data-lucide="minimize-2" class="w-6 h-6"></i>'; }
@@ -719,7 +1096,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<!-- 🟡 CARGA DE TUS ARCHIVOS -->
 <script src="juegos-atari2600.js"></script>
 <script src="juegos-nes.js"></script>
 <script src="juegos-snes.js"></script>
