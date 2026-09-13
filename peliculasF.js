@@ -1,5 +1,6 @@
 const data_peliculasF= [
      { id: 'PelículasF', data: [
+          { id: '1Ct276200p6phFQx0nVcOf5fLInSMfjQp', youtubeId: 'b756FPiLlp8', buttonId: '1WrlJ3l_x-O6NaEi6clqK-w', title: 'FANTASIA', subtitle: 'Fantasia (1940)', buscar: 'peroiz#g' }, 
           { id: '18Gf8k_w-sVkjwicyK6LicpArpTTaobqv', youtubeId: '32RAq6JzY-w', buttonId: '1AAZ-bkAMx4jrxqV1TuxsyA', title: 'FAST X', subtitle: 'Rápidos y Furiosos X (2023)', buscar: 'P3L01' }, 
            { id: '18Sj17k3o2JAsEgVcbsOixzfHTAwLMt4r', youtubeId: '8OYHyMa-oF0', buttonId: '1P8NcxGGCZJurRlVq-Kh9Aw', title: 'FATHER OF THE BRIDE', subtitle: 'El Padre De La Novia (1991)', buscar: 'P3L02' }, 
            { id: '18Ttfx0o8kk_Qu5I8l1HEpICgC1vs_UwO', youtubeId: 'BbvnDlu_Zjc', buttonId: '1qeOhl38mhRXSk_JhVxgF-w', title: 'FATHER OF THE BRIDE PART II', subtitle: 'El Padre De La Novia 2 (1995)', buscar: 'P3L02' }, 

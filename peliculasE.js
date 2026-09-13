@@ -59,6 +59,7 @@ const data_peliculasE= [
           { id: '1jbLbo8-NC4IAx0NVzSQFdIcnn096cjHt', youtubeId: 'D3PzxPzpaSQ', buttonId: '1SR-XYR3pmUd53qkXnPE89A', title: 'EXPLORERS', subtitle: 'Exploradores (1985)', buscar: 'P3L01' },
           { id: '1P_qPlL_vmcgv4IwgB9eaVMrAwKibDJxl', youtubeId: 'L6P3nI6VnlY', buttonId: '1e43-i1-EPS-hA7_5MdoWig', title: 'EXTRACTION', subtitle: 'Misión De Rescate (2020)', buscar: 'P3L01' },
           { id: '1Iq3OVwMFPED8t5oIx19q2QjAQrtHLACx', youtubeId: 'mO0OuR26IZM', buttonId: '1TKYvXQnitp_wjX_EGc3MEA', title: 'EXTRACTION 2', subtitle: 'Misión De Rescate 2 (2023)', buscar: 'P3L01' },
+          { id: '1C8KwZvLjUKrl6F2gaBXLva87z8_VrECu', youtubeId: 'jgp8rR2fykU', buttonId: '1GMehf_3xE22nKyI9zK9G0A', title: 'EXTREMELY LOUD, INCREDIBLY CLOSE', subtitle: 'Tan Fuerre, tan cerca (2011)', buscar: '9 11, peroiz#g' },
           { id: '1nyQPpZ_aKQ9gcoN0Ytwt5eIENb-V1zkB', youtubeId: 'k4Oygvz5xj0', buttonId: '1WcG5ITp5BAIuZoYP6027LA', title: 'EXWIFE KILLER', subtitle: 'Divorsio Mortal (2017)', buscar: 'P3L01' },
           { id: '1JazbWoPV6MmFDmj6VYKb4VN22CkzwLaf', youtubeId: 'Hi7NrTs0Wg8', buttonId: '1I56yxoLQM-eVbTdZhE0ZBg', title: 'EYESHIELD 21', subtitle: 'Eyeshield 21 (2005)', subtitle2: '3 Temporadas 145 Episodios 2 OVAS', buscar: 'S3R01' },
           

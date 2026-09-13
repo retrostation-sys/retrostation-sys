@@ -6,6 +6,7 @@ const data_peliculasO= [
 						   		id: '1QH_0PkbmVKl_XGW2_F3Lskok6sEghMIm', youtubeId: 'wQYLp_iftiI', buttonId: '1eGODJFKS86xql-v50dGHqQ', title: 'OH RAMONA', subtitle: 'Oh, Ramona! (2019)', buscar: 'P3L01' }, {
 						   		id: '1rpBd7Thbf956qUU53hF1u81zIXuRlj-D', youtubeId: 'WoiZD_KxLvk', buttonId: '1xQhTzHE8-XF4OC41ZDil7w', title: 'OMEN III THE FINAL CONFLICT', subtitle: 'La Profecía 3 El Conflicto Final (1981)', buscar: 'Damien P3L01G' }, {
 						   		id: '1Uou0XjS8FikEAa4Ldb463L54duxsFoXV', youtubeId: 'PCf03KXyzIg', buttonId: '19GTM21kAPPDtCTQtF0F0UA', title: 'ONCE UPON A DEADPOOL', subtitle: 'Había Una Vez Un Deadpool (2018)', buscar: 'P3L01' }, {
+						   		id: '1X5PteHb7mxYoQ7odqAdyfVRzQw7dLh5l', youtubeId: 'ELeMaP8EPAA', buttonId: '1CMZqkDkxiZ_1V58B4RiZ3A', title: 'ONCE UPON A TIME IN HOLLYWOOD', subtitle: 'Había Una Vez En Hollywood (2019)', buscar: 'peroiz#g' }, {
 						   		id: '1zDBikLr_F8XFHh1HBHzt6GE7l6CLcCkR', youtubeId: '71qTX5Kwcaw', buttonId: '1DVLorVQrpLYgYI8fmtd5nA', title: 'ORION AND THE DARK', subtitle: 'Orión y La Oscuridad (2024)', buscar: 'P3L02' }, {
 						   		id: '1B2bYrvgbROafkOZVRKsH9VALdbKPWl2q', youtubeId: '36mAsVSH_-s', buttonId: '1PdQKsUSluoqtI3srrEF-JA', title: 'OVER THE GARDEN WALL', subtitle: 'Más Allá Del Jardín (2014)', subtitle2: '1 Temporada 10 Episodios', buscar: 'S3R01' },
             

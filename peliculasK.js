@@ -1,7 +1,7 @@
 const data_peliculasK= [
-	{ id: 'PelículasK',
-		data: [
-			{ id: '1VqcUciytuXOuo2MHC7Cq3DRtfyo_V46I', youtubeId: '-d299rICUzU', buttonId: '1FBa9tOxu5PS8WFpkNBZH5A', title: 'KAPPA MIKEY', subtitle: 'Kappa Mikey (2006)', subtitle2: '1 Temporada 26 Episodios, Capitulo piloto', buscar: 'S3R01' }, {
+     { id: 'PelículasK', data: [
+          { id: '1VqcUciytuXOuo2MHC7Cq3DRtfyo_V46I', youtubeId: '-d299rICUzU', buttonId: '1FBa9tOxu5PS8WFpkNBZH5A', title: 'KAPPA MIKEY', subtitle: 'Kappa Mikey (2006)', subtitle2: '1 Temporada 26 Episodios, Capitulo piloto', buscar: 'S3R01' }, {
+          { id: 'lZWq1biHM2ruf0vZKIanNG2d7xuQTC9w', youtubeId: 'i_wI-56g7aI', buttonId: '1jCET-S4GOTT4VTqA_vpIfw', title: 'KAYARA', subtitle: 'Kayara (2025)', buscar: 'peroiz#g' }, {
 						   		id: '1C5WAz2CDDCTu-sPjeRrHjD6rEgbkSPRy', youtubeId: 'k4lH9mHXhpM', buttonId: '1qrBLL7kIhM4bJ3dF2EQxNA', title: 'KENICHI THE MIGHTIEST DISCIPLE', subtitle: 'Kenichi, El Discípulo Más Fuerte (2006)', subtitle2: '1 Temporada 50 Episodios', buscar: 'S3R01' }, {
 						   		id: '1RVFwcAlvwc4y8KTFbUzOBGTYxbGBoKBy', youtubeId: 'Ac5wrM2uYbk', buttonId: '1nWTRouU9zhHXo2IeB_QVQA', title: 'KIN', subtitle: 'Kin El Código Genético (2018)', buscar: 'P3L01' }, {
 						   		id: '1nKvsM4577QDvp58Db4an48ZJvgI10xIE', youtubeId: 'NGOL2_mI9Hw', buttonId: '1AmJJ61IcV1j2-SdXB2Dnxw', title: 'KINDS OF KINDNESS', subtitle: 'Tipos de Gentileza (2024)', buscar: 'P3L01G' }, {

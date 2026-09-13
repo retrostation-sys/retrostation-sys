@@ -1,7 +1,8 @@
 const data_peliculasJ= [ 
      { id: 'PelículasJ', data: [
-          { id: '1iiZzTUitWAJV96z9iKhvJYHWMfVQuT20', youtubeId: 'oJVv3PBoPMc', buttonId: '1UaAIDLlz6g8pSuiOXRHnbg', title: 'JACK AND JILL', subtitle: 'Jack And Jill (2011)', buscar: 'P3L01' }, 
-           { id: '1VJUtQOboCfE_tdPStXEjeicdfNZir7wC', youtubeId: '3lM2_KX2MYY', buttonId: '1usgwSQ-vXdzY64OYF-caLQ', title: 'JASON GOES TO HELL THE FINAL FRIDAY', subtitle: 'Jason Va Al Infierno (1993)', buscar: 'Friday The 13th, Viernes 13, P3L01' }, 
+          { id: '1iiZzTUitWAJV96z9iKhvJYHWMfVQuT20', youtubeId: 'oJVv3PBoPMc', buttonId: '1UaAIDLlz6g8pSuiOXRHnbg', title: 'JACK AND JILL', subtitle: 'Jack And Jill (2011)', buscar: 'P3L01' },
+          { id: '1i4219OAbRfLRfO9VlsaSgfheC-bTXxbH', youtubeId: 'InNrl2-tl58', buttonId: '1H6wcbrBXQCZGrEC2q71pMw', title: 'JAGUN JAGUN', subtitle: 'El Guerrero) (2023)', buscar: 'peroiz#g' },
+          { id: '1VJUtQOboCfE_tdPStXEjeicdfNZir7wC', youtubeId: '3lM2_KX2MYY', buttonId: '1usgwSQ-vXdzY64OYF-caLQ', title: 'JASON GOES TO HELL THE FINAL FRIDAY', subtitle: 'Jason Va Al Infierno (1993)', buscar: 'Friday The 13th, Viernes 13, P3L01' }, 
            { id: '1X_FoHVlJ1wMWpdGmJcCZVDcrrcjZ2r6T', youtubeId: 'XuMNAt7xQa8', buttonId: '1wNzikUjm7KgBx-FaJejrVQ', title: 'JASON X', subtitle: 'Jason X (2001)', buscar: 'Friday The 13th, Viernes 13, P3L01' }, 
            { id: '1e6d3I48l7cEK8F_0PFN8roiXN6KxX9-S', youtubeId: 'HpzzrqJi6ko', buttonId: '1T7OS2b6xBQzuU945fz-y1g', title: 'JEEPERS CREEPERS 3', subtitle: 'Jeepers Creepers 3: El regreso del demonio (2017)', buscar: 'P3L02' }, 
            { id: '1hTBjp1adx6TTW8KoKG2yK37dUEYVapcQ', youtubeId: 'C8azftM5puI', buttonId: '1q6jLqUeGZGeyyBSIiStYRw', title: 'JENNIFER\'S BODY', subtitle: 'Diabólica Tentación (2009)', buscar: 'P3L01G' }, 

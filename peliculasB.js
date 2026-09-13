@@ -13,6 +13,7 @@ const data_peliculasB = [
            { id: '1xwtrJEtjocLAccwQfWPWWHNb9GgQzTMP', youtubeId: '6ldvQ8sv7DU', buttonId: '14NCUvEYLatxOHmZbXN9mPQ', title: 'BAD SISTERS', subtitle: 'Malas hermanas (2022-24)', subtitle2: '2 Temporadas 24 Episodios', buscar: 'P3L01G' }, 
            { id: '1efio-unu1LUz5nSd6iDdLhqR6z7INGFR', youtubeId: 'y7wzBVARwaU', buttonId: '1oNYinw5xoA8xE3jaVi2kyg', title: 'BAD TIMES AT THE EL ROYALE', subtitle: 'Malos Momentos En El Hotel Royale (2018)', buscar: 'P3L01' }, 
            { id: '1Dxj2NbKpWVrkwmSP-5N701S-lSa_AuhO', youtubeId: 'hKbo-ZKdSqw', buttonId: '1wq4ImC7JmgjmdrFnaX_Cdw', title: 'BADLAND HUNTERS', subtitle: 'Cazadores En Tierra Inhóspita (2024)', buscar: 'P3L02' }, 
+           { id: '1VoA3k8KDMrpSqS7EKY3-9AKtHZs3J1CP', youtubeId: 'yDGv4GIR7A4', buttonId: '1tY65agTGGV9qllJ8iQdmPQ', title: 'BAMBI', subtitle: 'Bambi (1942)', buscar: 'peroiz#g' }, 
            { id: '1GBLnna4K0QemZ3iur-Nn6s1KZ5ELxAH5', youtubeId: 'r1DosMJafGk', buttonId: '1wLtbVj_qHwNi-xAOjtdIDQ', title: 'BAND OF BROTHERS', subtitle: 'Hermanos De Sangre (2001)', subtitle2: '1 Temporada 10 Episodios', buscar: 'The Pacific, We Stand Alone Together, S3R01' }, 
            { id: '12pJod3UX1glkFcxRPbRHaIEFGdvBC6cu', youtubeId: 'x19tdyNa-QI', buttonId: '1Rje3J3TQaZH6M71F0p7-Zw', title: 'BANG', subtitle: 'Bang (2025)', buscar: 'peroiz#g' }, 
            { id: '1Z6tvjS6Zqsz1O4NkanXUrZ175jxo05PI', youtubeId: 'nBXsRgy_EtM', buttonId: '1Ein6VQyTT02rs7swkB5rUQ', title: 'BANK OF DAVE', subtitle: 'El Banco De Dave (2023)', buscar: 'P3L01' }, 

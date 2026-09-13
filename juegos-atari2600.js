@@ -52,6 +52,16 @@ agregarJuegos([
     { system:"atari2600", img:x+"1mlWCnp3ZRpfTrjo6MnA6r0-woL-7RJj", title:"HARBOR SCAPE" },
     { system: "atari2600", img:x+"_7DNBgfvsLyVKD8eFWfDbxUaptyZ2HOJ", title:"HALLOWEEN", src:y+"Halloween%20%28USA%29.zip" },
     { system: "atari2600", img:x+"rRbalPDXVd-W1ddYv6BqfPLbKVICNNQx", title:"HAUNTED HOUSE", src:y+"Haunted%20House%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"jysn-wYLq5bJrEP-oBO5BVNHtq4VdBnK", title:"JAWBREAKER" },
+    { system: "atari2600", img:x+"xFqymUd9hYV1jK2eek4pz97aNSDSJfAI", title:"JOUST", src:y+"Joust%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"cSU_ocZGSJjbSyiyI5UPjoC1CyZzidRC", title:"JUNGLE HUNT", src:y+"Jungle%20Hunt%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"sL4J9I1C9u0arqqWZNBRpTZTXbyDSQWn", title:"KABOOM!", src:y+"Kaboom%21%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"Sq_POkplEkAGpN6CtDlQA8B8bUaDokBE", title:"KANGAROO", src:y+"Kangaroo%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"Au1GIjjUk7XHR22ZwCyzlDoeC0-s7D6-", title:"KEYSTONE KAPERS", src:y+"Keystone%20Kapers%20%28USA%29.zip" },
+    { system:"atari2600", img:x+"CzdaHrS_NuyrvHd9V6qAaBSj0EvtBga3", title: "KING KONG" },
+    { system:"atari2600", img:x+"JCmi-sFEj6pBsN6lKjcbba5iiTO5crmQ", title:"LASER GATES" },
+    { system:"atari2600", img:x+"rfGFdHaP_537n6rbbW2ZXJsxUdoWK-5d", title:"LOCK\'N CHASE" },
+    { system:"atari2600", img:x+"aSOuMnct302JuNncmUTN4Y5CvIo9K3et", title: "MEGAMANIA" },
     
     
     
@@ -64,17 +74,6 @@ agregarJuegos([
     
     
     
-    
-    { system: "atari2600", img: x+ "13wGO-2jwA6j5tXBmwh_5Z8XryAWR-4rq", title: "JAWBREAKER" },
-    { system: "atari2600", img: x+ "1UnD_iihNU6_CvCGQFpQaZulpi-98iWPs", title: "JOUST", src:y+"Joust%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "1nb7TSQoUv9wA6XNoGo_7ZYPZX8qhm4BA", title: "JUNGLE HUNT", src:y+"Jungle%20Hunt%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "1YPRXTkS-DiQeL6iEB-Wqj_8CC0lmn1T5", title: "KABOOM!", src:y+"Kaboom%21%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "10vNI6IJ3hCxoxGdmhqCEWuArfr12Vq33", title: "KANGAROO", src:y+"Kangaroo%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "175Ab8X7RBuzXtLN2604YcdtwdS6ypUn1", title: "KEYSTONE KAPERS", src:y+"Keystone%20Kapers%20%28USA%29.zip" },
-    { system: "atari2600", img: x+ "1FS8Fc6Ad5PXRIdQ2DJv_KS99H6J4OJbu", title: "KING KONG" },
-    { system: "atari2600", img: x+ "1FS8Fc6Ad5PXRIdQ2DJv_KS99H6J4OJbu", title: "LASER GATES" },
-    { system: "atari2600", img: x+ "1zn60bJa6uRnij4jgVvA2UIsUqxWdKJbQ", title: "LOCK\'N CHASE" },
-    { system: "atari2600", img: x+ "1Y-4vfuxUi3tSMqTpkbxdkq2bDiDHlWjD", title: "MEGAMANIA" },
     { system: "atari2600", img: x+ "1i7W7n1jaeCdA4vxEURm6XF4-w9kYmG5j", title: "MILLIPEDE", src:y+"Millipede%20%28USA%29.zip" },
     { system: "atari2600", img: x+ "1CadKMiCM8PNRLu_-XMODBJWI7QxP8S3q", title: "MINESWEEPER" },
     { system: "atari2600", img: x+ "1C7D7fvtUmbWYGSm12_aZsHXE7kwAlTRi", title: "MISSILE COMMAND", src:y+"Missile%20Command%20%28USA%29.zip" },
