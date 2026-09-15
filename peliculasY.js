@@ -2,7 +2,7 @@ const data_peliculasY= [
 	{ id: 'PelículasY',
 		data: [
 			{ id: '1WONs90wzZyzgtXiWCSw99Dh7havHdsDj', youtubeId: 'R87R7HA4zNc', buttonId: '1tns4NV6qqqkjaYzReAL88w', title: 'YA VEREMOS', subtitle: 'Ya Veremos (2018)', buscar: 'P3L01' }, {
-						   		id: '1j6Dtho1AQf32KbivdV4kxWVjmyjezIeL', youtubeId: 'uGq0S9dGKj0', buttonId: '1wC0zhCmq7_EdBrtE1RDJSA', title: 'YOH! BESTIE', subtitle: '¡Uf! Mi Mejor Amigo (2026)', buscar: 'PEROIZG' }, {
+						   		 id: '1jja1hbv6q3eMCDoRkq8ASPduknUmR6Kh', youtubeId: 'mks9TGDxIs8', buttonId: '1qS6Gh037i1bDdCkPXdXwiw', title: 'YOH! BESTIE', subtitle: '¡Uf! ¿Solo Amigos? (2026)', buscar: 'peroiz#g' }, {
 						   		id: '1vm-Z65jtoTdz1tv-NnqxBxjBOGu6Pimo', youtubeId: 'ucmnTmYpGhI', buttonId: '1hjwcoKc3OHkVkxwGsGXUJQ', title: 'YOU DON\'T MESS WITH THE ZOHAN', subtitle: 'No Te Metas Con Zohan (2008)', buscar: 'P3L01' }, {
 						   		id: '1_yE7hVLqoHzqDgarNLtLxaCn1B85pjmJ', youtubeId: 'rR1SzALB8IU', buttonId: '1Koqs_H1WYvt_KEfkV2bF0Q', title: 'YOU, ME AND DUPREE', subtitle: 'Tú, Yo y Ahora Dupree (2006)', buscar: 'S3R01' }, {
 						   		id: '1mfVPNIP3M1W9ipPdf5lm_E5YhaE_CyUh', youtubeId: 'QWvMK5j-fXU', buttonId: '1d5DKgxMz49OdxDbp3sbtFA', title: 'YOUNG SHERLOCK HOLMES', subtitle: 'El Secreto De La Pirámide (1985)', buscar: 'P3L01' }, {
