@@ -3,6 +3,11 @@
 function atari2600(imgId, titulo, archivo, Y= true) {
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://archive.org/download/ultimate-rom-collection/Atari%20-%202600.zip/";
+     
+     if (!archivo || archivo.trim() === "") {
+          Y= false;
+          archivo = "";
+     } 
      return {
           system: "atari2600", img: x + imgId, title: titulo, src: Y ? y + archivo : archivo
      };
@@ -11,7 +16,7 @@ function atari2600(imgId, titulo, archivo, Y= true) {
 agregarJuegos([
      atari2600("K42axvcoK9pbt6bG31wmHL6_91TCNcq_", "PAC MAN", "pacman4k(atari2600).bin", false),
      atari2600("99Vs_j99i0pbLiDoME8tYz2V2wWxvgzf", "ADVENTURE", "Adventure%20%28USA%29.zip"),
-     atari2600("XrOeJYS66dkVvkY0szs9uSwIrlR2m0-J", "ALIEN", "", false),
+     atari2600("XrOeJYS66dkVvkY0szs9uSwIrlR2m0-J", "ALIEN"),
      atari2600("K0gLURhqeg86VKE_4k1f_JxEaj2hDHJ_", "AMIDAR"),
      atari2600("csFo9A1hPddaGtjXrVpdlkmOFc7zStqg", "ASSAULT"),
      atari2600("Vy_w1wtsS2MNWPUlXMwe1xxszjDkDWkF", "ASTEROIDS", "Asteroids%20%28Japan%2C%20USA%29.zip"),
