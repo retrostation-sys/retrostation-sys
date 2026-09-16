@@ -83,7 +83,7 @@ agregarJuegos([
      atari2600("mICkKcge9PEhMdinhPPkg1ino3A1XJx-", "PHOENIX", "Phoenix%20%28USA%29.zip"),
      atari2600("stDJgbK4iVEOSeOKAKdbU8kpk3o3IMFc", "PITFALL", "Pitfall%21%20-%20Pitfall%20Harry%27s%20Jungle%20Adventure%20%28USA%29.zip"),
      atari2600("784sXR16dvoYvFGYKUUiGbc38Cv1uEq3", "PITFALL 2", "Pitfall%20II%20-%20Lost%20Caverns%20%28USA%29.zip"),
-     atari2600("gSyD40cVqVcqS5ypW9XmdBTwv0ycIMA0", "PLANET PATROL"),
+     atari2600("gSyD40cVqVcqS5ypW9XmdBTwv0ycIMA0", "PLANET PATROL", ""),
      atari2600("umcTFBT2d8YiZIZjU-2EngdNmirrQr-_", "PLAQUE ATTACK"),
      atari2600("M1wFH_mO4a8neDJk5eGnlrzpby69_4h-", "POLE POSITION"),
      atari2600("hbNrjZlhf0RWIC9efkEdS0Gtgz_v_6F0", "POOYAN"),
