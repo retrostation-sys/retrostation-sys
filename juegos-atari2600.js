@@ -11,7 +11,7 @@ function atari2600(imgId, titulo, archivo, Y= true) {
 agregarJuegos([
      atari2600("K42axvcoK9pbt6bG31wmHL6_91TCNcq_", "PAC MAN", "pacman4k(atari2600).bin", false),
      atari2600("99Vs_j99i0pbLiDoME8tYz2V2wWxvgzf", "ADVENTURE", "Adventure%20%28USA%29.zip"),
-     atari2600("XrOeJYS66dkVvkY0szs9uSwIrlR2m0-J", "ALIEN"),
+     atari2600("XrOeJYS66dkVvkY0szs9uSwIrlR2m0-J", "ALIEN", "", false),
      atari2600("K0gLURhqeg86VKE_4k1f_JxEaj2hDHJ_", "AMIDAR"),
      atari2600("csFo9A1hPddaGtjXrVpdlkmOFc7zStqg", "ASSAULT"),
      atari2600("Vy_w1wtsS2MNWPUlXMwe1xxszjDkDWkF", "ASTEROIDS", "Asteroids%20%28Japan%2C%20USA%29.zip"),
@@ -83,7 +83,7 @@ agregarJuegos([
      atari2600("mICkKcge9PEhMdinhPPkg1ino3A1XJx-", "PHOENIX", "Phoenix%20%28USA%29.zip"),
      atari2600("stDJgbK4iVEOSeOKAKdbU8kpk3o3IMFc", "PITFALL", "Pitfall%21%20-%20Pitfall%20Harry%27s%20Jungle%20Adventure%20%28USA%29.zip"),
      atari2600("784sXR16dvoYvFGYKUUiGbc38Cv1uEq3", "PITFALL 2", "Pitfall%20II%20-%20Lost%20Caverns%20%28USA%29.zip"),
-     atari2600("gSyD40cVqVcqS5ypW9XmdBTwv0ycIMA0", "PLANET PATROL", ""),
+     atari2600("gSyD40cVqVcqS5ypW9XmdBTwv0ycIMA0", "PLANET PATROL"),
      atari2600("umcTFBT2d8YiZIZjU-2EngdNmirrQr-_", "PLAQUE ATTACK"),
      atari2600("M1wFH_mO4a8neDJk5eGnlrzpby69_4h-", "POLE POSITION"),
      atari2600("hbNrjZlhf0RWIC9efkEdS0Gtgz_v_6F0", "POOYAN"),
