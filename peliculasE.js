@@ -32,7 +32,8 @@ const data_peliculasE= [
           { id: '10xyoKLoTWACBQv-n285V-VaReV-fXrj1', youtubeId: 'FJbJSAkY5zc', buttonId: '1We5q_sIlA5PdHtHvonYsSA', title: 'EL POTRO LO MEJOR DEL AMOR', subtitle: 'El Potro Lo Mejor Del Amor (2018)', buscar: 'P3L01' },
           { id: '11Q4XA6UTN3fXEsXqJqYB3EnjnVtpAQ7N', youtubeId: 'NjZ4l3z37VE', buttonId: '1yY_LVL2ZAuDK34nqrjaBAA', title: 'EL PROFE', subtitle: 'El Profe (1971)', buscar: 'P3L01G' },
           { id: '18gngTuDLs8QmqqdsDQ2NXKlKtfVHWVCk', youtubeId: 'AaE5J9-CCdo', buttonId: '1Wm3EKfHpAPm-khXLE0VP1w', title: 'EL REY DEL BARRIO', subtitle: 'El Rey Del Barrio (1950)', buscar: 'P3L01' },
-          { id: '15yixngaN4dNqysiRjHtFT2ktOR7vVFLM', youtubeId: 'v5gZM8Ou16A', buttonId: '1Cept_XzQX1voC3aOI_t6Jg', title: 'EL SEÑOR DE LOS CIELOS', subtitle: 'El Señor de los Cielos (2024)', subtitle2: '9 Temporadas 790 Episodios', buscar: 'Dinastía Casillas, S3R01G' },
+          { id: '15yixngaN4dNqysiRjHtFT2ktOR7vVFLM', youtubeId: 'v5gZM8Ou16A', buttonId: '1Cept_XzQX1voC3aOI_t6Jg', title: 'EL SEÑOR DE LOS CIELOS', subtitle: 'El Señor de los Cielos (2024)', subtitle2: '9 Temporadas 790 Episodios', buscar: 
+          'dinastía casillas, S3R01G' },
           { id: '1gneoj2Uvqnmmx20OArqkB3S-SSo2jSl9', youtubeId: 'P-PakNu4I5A', buttonId: '1irid50QpgZ0tmDG0mdLW9g', title: 'EL SEÑOR DOCTOR', subtitle: 'El Señor Doctor (1965)', buscar: 'P3L01G' },
           { id: '1HO2k8qgXe8BQhNKAMBLAUrFFx5xO4g3H', youtubeId: 'nNCouonJmNc', buttonId: '1GASwO9xtmrG0QIm78JGdzA', title: 'EL SEÑOR FOTÓGRAFO', subtitle: 'El Señor Fotógrafo (1953)', buscar: 'P3L01G' },
           { id: '1mbSMeqeG6deESApFTGddDAij5SktpHML', youtubeId: 'tITzpbnYYEM', buttonId: '1W4kevaqBINEBGNc8qfv__g', title: 'EL SIETE MACHOS', subtitle: 'El Siete Machos (1951)', buscar: 'P3L01G' },

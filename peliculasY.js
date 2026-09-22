@@ -1,15 +1,23 @@
-const data_peliculasY= [
-	{ id: 'PelículasY',
-		data: [
-			{ id: '1WONs90wzZyzgtXiWCSw99Dh7havHdsDj', youtubeId: 'R87R7HA4zNc', buttonId: '1tns4NV6qqqkjaYzReAL88w', title: 'YA VEREMOS', subtitle: 'Ya Veremos (2018)', buscar: 'P3L01' }, {
-						   		 id: '1jja1hbv6q3eMCDoRkq8ASPduknUmR6Kh', youtubeId: 'mks9TGDxIs8', buttonId: '1qS6Gh037i1bDdCkPXdXwiw', title: 'YOH! BESTIE', subtitle: '¡Uf! ¿Solo Amigos? (2026)', buscar: 'peroiz#g' }, {
-						   		id: '1vm-Z65jtoTdz1tv-NnqxBxjBOGu6Pimo', youtubeId: 'ucmnTmYpGhI', buttonId: '1hjwcoKc3OHkVkxwGsGXUJQ', title: 'YOU DON\'T MESS WITH THE ZOHAN', subtitle: 'No Te Metas Con Zohan (2008)', buscar: 'P3L01' }, {
-						   		id: '1_yE7hVLqoHzqDgarNLtLxaCn1B85pjmJ', youtubeId: 'rR1SzALB8IU', buttonId: '1Koqs_H1WYvt_KEfkV2bF0Q', title: 'YOU, ME AND DUPREE', subtitle: 'Tú, Yo y Ahora Dupree (2006)', buscar: 'S3R01' }, {
-						   		id: '1mfVPNIP3M1W9ipPdf5lm_E5YhaE_CyUh', youtubeId: 'QWvMK5j-fXU', buttonId: '1d5DKgxMz49OdxDbp3sbtFA', title: 'YOUNG SHERLOCK HOLMES', subtitle: 'El Secreto De La Pirámide (1985)', buscar: 'P3L01' }, {
-						   		id: '1rTAl_poAbKMI4luIquq3wwJbaj4kus-O', youtubeId: 'kDruG4M5R2A', buttonId: '11WmZEnddfYcY7gGeHH3Fuw', title: 'YUYU HAKUSHO', subtitle: 'YuYu Hakusho (2023)', subtitle2: '1 Temporada 5 Episodios', buscar: 'S3R01' }, {
-						   		id: '1XNsjGaz99I-CdSrGtaoINVsoru8b3CPx', youtubeId: 'swH_nJUC5bo', buttonId: '1mQ3ntU1sJfWDKyEX4AqAmA', title: 'YUYU HAKUSHO GHOST FILES', subtitle: 'Yu Yu Hakusho Los Guerreros Del Más Allá (1992-94)', subtitle2: '4 Temporadas 112 Episodios + 1 OVA', buscar: 'S3R01' },
+function py(a, b, c, d, e, f, g) {
+     x= "https://drive.google.com/thumbnail?id=1";
+     y= "https://1024terabox.com/s/1";   
+     return {
+          image: x + a, youtube: b, terabox: y + c, title: d, subtitle: e, subtitle2: f, search: g
+     };
+};
 
-            // ... TODOS los demás elementos de este carrusel
-        ]
-    }
+const data_peliculasY= [
+     { id: "PelículasY", data: [
+          py("WONs90wzZyzgtXiWCSw99Dh7havHdsDj","R87R7HA4zNc","tns4NV6qqqkjaYzReAL88w","YA VEREMOS","Ya Veremos (2018)","","P3L01"), 
+          py("0B1xSWin7f28vmeq_Xu0F43AHkD04i-L","NkooyShJwYE","yXbbcccDCE7EWgA90zvARA","YES, GOD, YES","Si, Dios, Si (2019)","ing[esp]","peroiz#g"), 
+          py("jja1hbv6q3eMCDoRkq8ASPduknUmR6Kh","mks9TGDxIs8","qS6Gh037i1bDdCkPXdXwiw","YOH! BESTIE","¡Uf! ¿Solo Amigos? (2026)","","peroiz#g"), 
+          py("vm-Z65jtoTdz1tv-NnqxBxjBOGu6Pimo","ucmnTmYpGhI","hjwcoKc3OHkVkxwGsGXUJQ","YOU DON\'T MESS WITH THE ZOHAN","No Te Metas Con Zohan (2008)","","P3L01"), 
+          py("_yE7hVLqoHzqDgarNLtLxaCn1B85pjmJ","rR1SzALB8IU","Koqs_H1WYvt_KEfkV2bF0Q","YOU, ME AND DUPREE","Tú, Yo y Ahora Dupree (2006)","","S3R01"), 
+          py("mfVPNIP3M1W9ipPdf5lm_E5YhaE_CyUh","QWvMK5j-fXU","d5DKgxMz49OdxDbp3sbtFA","YOUNG SHERLOCK HOLMES","El Secreto De La Pirámide (1985)","","P3L01"), 
+          py("rTAl_poAbKMI4luIquq3wwJbaj4kus-O","kDruG4M5R2A","1WmZEnddfYcY7gGeHH3Fuw","YUYU HAKUSHO","YuYu Hakusho (2023)","1 Temporada 5 Episodios","S3R01"), 
+          py("XNsjGaz99I-CdSrGtaoINVsoru8b3CPx","swH_nJUC5bo","mQ3ntU1sJfWDKyEX4AqAmA","YUYU HAKUSHO GHOST FILES","Yu Yu Hakusho Los Guerreros Del Más Allá (1992-94)","4 Temporadas 112 Episodios + 1 OVA","S3R01"),
+     
+     
+     
+     ]}
 ];

@@ -29,6 +29,7 @@ const data_peliculasM= [
            { id: '1QjjwrJDuENkysfT8zvhvvSOU4YcJoKbf', youtubeId: 'AM5I9N1OzTc', buttonId: '1a6gjap_XwmNq4emoWsnzoQ', title: 'MIDNIGHT FAMILY', subtitle: 'Familia De Media Noche (2024) [Ing T+Esp]', subtitle2: '1 Temporada 10 Episodios', buscar: 'P3L01G' }, 
            { id: '14-RlNe_2MrHzKaqmX7e7WOr19e2n1qFs', youtubeId: 'l9laReRAYFk', buttonId: '1ewj9UGJsthASkm0gSuI53Q', title: 'MIDWAY', subtitle: 'Batalla En El Pacífico (2019)', buscar: 'P3L01' }, 
            { id: '1dCVqWHjnp6s7XDM_hjYMP3iPOINHXhN2', youtubeId: 'eJU6S5KOsNI', buttonId: '1xJybg5uziEXriM-siopZcg', title: 'MILE 22', subtitle: 'Milla 22 El Rescate (2018)', buscar: 'P3L01' }, 
+           { id: '1nJUEEjAsZjDxHu3wHvHhhT_QwYtALBXV', youtubeId: 'O1Qb3_7mauw', buttonId: '14Hcs5tCZZJmII6cGuVGmmQ', title: 'MISS MEADOWS', subtitle: 'Miss Meadows (2014)', buscar: 'peroiz#g' }, 
            { id: '1abrlQBv0zrFwIfbGR9HHvqY1oQDuVZmT', youtubeId: 'L8Pbjh4EZRk', buttonId: '1Alurve131HQVoNpAz8oL6A', title: 'MISSION IMPOSSIBLE', subtitle: 'Misión Imposible (1996)', buscar: 'P3L02' }, 
            { id: '1yWo9Uuk25lhvOTf-1sxLJ0OV7i2lB4VI', youtubeId: 'HwXbmwTvoT4', buttonId: '1HBKnp-7jksxE9LwjBrXTpg', title: 'MISSION IMPOSSIBLE II', subtitle: 'Misión: Imposible 2 (2000)', buscar: 'P3L02' }, 
            { id: '1MSXewhi2kp4kt-WQPbTyOWpHR6AL70kQ', youtubeId: '4oVva0muTE8', buttonId: '1fjNiFjGeO1PmpN539-Z5xg', title: 'MISSION IMPOSSIBLE III', subtitle: 'Mision Imposible 3 (2006)', buscar: 'P3L02' }, 
