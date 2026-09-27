@@ -163,9 +163,9 @@ const data_peliculasA= [
           pa("Emd7526pHZPKtjJ7rcKqGqVA7eONTEBx","d9MyW72ELq0","8cPK68YoSkk5dfZPAaLSxQ","AVATAR THE WAY OF WATER","","","avatar el camino del agua, 2022"), 
           pa("05-MaYFXw6w5EU_G21IhmPxNd-IzrSgY","ByAn8DF8Ykk","HZFWdAq1BTjFx_bIxaTF0g","AVATAR THE LAST AIRBENDER","TEMPORADA 1","","avatar la leyenda de aang, 2024"),
           pa("s5Hk6Jkj21DByT2yaItv9p104vO9XRQw","T0-uoVFBtv0","6QDcfywIWfs0tuCWFyLv0Q","THE AVENGERS","","","los vengadores, 2012, the avengers, avengers age of ultron, avengers infinity war, avengers end game"), 
-          pa("Lje4Z8XWkeQBJZuqBI0JZRSbYR3K2emh","DMFBm_lp4rU","LQcdXKz_WBBYD7e-gBhcog","AVENGERS AGE OF ULTRON","Vengadores La Era De Ultrón (2015)","","the avengers, avengers age of ultron, avengers infinity war, avengers end game, P3L01"), 
-         pa("ssa3Ra85zKahHh8XRq2gNU-ILHpn3DEs","6ZfuNTqbHE8","SP3Zv4zGYVE7Fb9W8-29ag","AVENGERS INFINITY WAR","Vengadores Infinity War (2018)","","the avengers, avengers age of ultron, avengers infinity war, avengers end game, peroiz#g"),
-         pa("Z5lIcnqNypHTSa00kOET7z-aoLZypOC8","TcMBFSGVi1c","6KcHET5-POpS3oRCBrLvTA","AVENGERS END GAME","Vengadores Endgame (2019)","","the avengers, avengers age of ultron, avengers infinity war, avengers end game, P3L01"), 
+          pa("Z2M7e6QpvhUZgZ4v19ZtFHik4DHPUIUJ","DMFBm_lp4rU","LQcdXKz_WBBYD7e-gBhcog","AVENGERS AGE OF ULTRON","","","los vengadores la era de ultron, 2015, the avengers, avengers age of ultron, avengers infinity war, avengers end game"), 
+         pa("ssa3Ra85zKahHh8XRq2gNU-ILHpn3DEs","6ZfuNTqbHE8","SP3Zv4zGYVE7Fb9W8-29ag","AVENGERS INFINITY WAR","","","los vengadores infinity wat, 2018, the avengers, avengers age of ultron, avengers infinity war, avengers end game, peroiz#g"),
+         pa("Bm1_KvOjh6fWT8BsuXEEGpEAwfTzTUhR","TcMBFSGVi1c","6KcHET5-POpS3oRCBrLvTA","AVENGERS END GAME","","","los vengadores end game, 2019, the avengers, avengers age of ultron, avengers infinity war, avengers end game"), 
           
      
      
