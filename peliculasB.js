@@ -90,7 +90,7 @@ const data_peliculasB= [
           pb("bUtkmHA2Um6GlUmp7_iHJCCIj5GOFVY4","5wt1FuMWVjs","0pPsfY2lFsnXh1iDY2zEQg","BLACK CAT","TEMPORADA 1","","gato negro, 2005"), 
           pb("VgEzYXejrGeebHG1SOtPjY4ml4ZbZ5Ol","7wnRi3Sclm8","WRfoj9oBqKrw-ksYiu3EGg","BLACK MIRROR BANDERSNATCH","","","2018"), 
           pb("op1sT8HRK0XDToF-k6AIVd8L0YXI1beq","xjDjIWPwcPU","-1tqUVuZwN2M6NN-l9_77Q","BLACK PANTHER","","","2018, black panther, black panther wakanda forever"), 
-          pb("dAtXAISHvrzgKd8ahJdFrjvzLXxrQQKk","_Z3QKkl1WyM","x0Hyl2yRkLn_9QC78ale9Q","BLACK PANTHER WAKANDA FOREVER","","","black panther wakanda por siempre, 2022, black panther, black panther wakanda forever"), 
+          pb("QsgJesTg29X-sh5_7LlI8KN59c44wAnI","_Z3QKkl1WyM","x0Hyl2yRkLn_9QC78ale9Q","BLACK PANTHER WAKANDA FOREVER","","","black panther wakanda por siempre, 2022, black panther, black panther wakanda forever"), 
           pb("rioGDTy_mNKIXNtOdZonsaPpA9XAXfnK","8EoCHTK7xPw","KWpk0uLV1_fes8YKZ8amTg","BLACK SABBATH BIRMINGHAM","THE END","BIRMINGHAM INGLATERRA","2017"),
           pb("Wf-TCebcXqwIHT3-h5SXRMUaF1ml3F0S","Cy_znrsuXic","B6ClPRx4Iafj6UoULVBruA","BLACK WIDOW","","","viuda negra, 2021"), 
           pb("84lNHfdd7n2y1TDP8wABlPxXL9ICFvig","BauB7D4yZiE","aQeKhn2BPnno5eB9AD6p6w","BLEACH","","","2018"), 
