@@ -123,7 +123,7 @@ const data_peliculasB= [
           pb("CdidKQV0pm4COZ52ugOCtpI4E-B9MmoD","V-daIHTY4NQ","MIeVe_JmaUsZRrX-M3Y8lw","BUFFY THE VAMPIRE SLAYER","","","buffy la caza vampiros, 1992"), 
           pb("NDKX--8JWH4Ci_6xY7BD4KvTs1XKXJvz","5PAbRpzoEX8","5kTrDBlIsynYR1o57qsiDw","BURST ANGEL","TEMPORADA 1","","2004"),
           pb("-IYr8RjXOqBmahGXpgIc1bOTvkfmYCR4","5PAbRpzoEX8","5kTrDBlIsynYR1o57qsiDw","BURST ANGEL","OVA (2007)'","","2007"), 
-          pb("iYIDeIz0IegU1xVeNX3fIvWtiyW_qKIL","yJEOJbSuOvI","pT9yqdUwQ1shGbrnP37DeQ","BUTCHER\'S CROSSING","El Cazador De Búfalos","","nicolas cage, el cazador de bufalos, 2022"),
+          pb("iYIDeIz0IegU1xVeNX3fIvWtiyW_qKIL","yJEOJbSuOvI","pT9yqdUwQ1shGbrnP37DeQ","BUTCHER\'S CROSSING","","","nicolas cage, el cazador de bufalos, 2022"),
             
      ]}
 ];
