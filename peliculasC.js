@@ -3,7 +3,8 @@
 
 function pc(a, b, c, d, e, f, g) {
      x= "https://drive.google.com/thumbnail?id=1";
-     y= "https://1024terabox.com/s/1";   
+     y= "https://1024terabox.com/s/1";
+     z= "<span style='color:red'>";  
      return {
           image: x + a, youtube: b, terabox: y + c, title: d, subtitle: e, subtitle2: f, search: g
      };
@@ -58,8 +59,8 @@ const data_peliculasC= [
            pc("CM784ieu4HjmaJGXY9zG1XyonQQMGqf8","zcA6xt2IJ0s","bZ0ePkrnjEXMV_Jb3WH82Q","CODE 8","","","codigo 8 renegados, 2019, code 8 part 2, peroiz#g"), 
            pc("EEiQPtCRaqHymMW3TmTeeYKVJlkvkxTM","omBi2KxEcRk","lYSsvRDhqC--oTt4NcOroA","CODE 8 PART 2","","","codigo 8 parte 2, 2024, code 8"), 
            pc("kIOy2UNnRllXTAHaln3brnHWJd-1BMW9","wWsf65ddJ8g","Xi9WVqZntL6yIe2uZAL7gQ","CODE KARIM","","[ ARABE || ESPAÑOL ]","karim el infiltrado, 2021"), 
-           pc("mtB4jltLaEGwYN582lsZ85lt-heqCClv","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","<span style='color:red'>COMBAT!</span>","TEMPORADA 1","","Combate, 1962"),
-           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","<span style='color:red;'>COMBAT!","TEMPORADA 2</span>","","Combate, 1963"), 
+           pc("mtB4jltLaEGwYN582lsZ85lt-heqCClv","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 1","","Combate, 1962"),
+           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w", z+"COMBAT!",z+"TEMPORADA 2","","Combate, 1963"), 
            pc("B-mfv8Z4TcUU8rGvTsGiHlXszfbnzyB7","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 3","","Combate, 1964"),
            pc("jf8LgSqSPQYf3upAKJDIw4N1k1w9aNYh","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 4","","Combate, 1965"),
            pc("mn8HG9Ls9k-006yFQJ91PMSuQuKRX0Pm","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 5","","Combate, 1966"), 
