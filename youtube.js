@@ -1,6 +1,7 @@
 const data_youtube= [
      { id: 'youtube', data: [
           { id: '1gk1e6pmniIIv5TzCFnTMUwva702fT1Ap', youtubeId: '4INwx_tmTKw', title: 'CUERDAS', subtitle: 'Cuerdas (2014)', subtitle2: 'CORTOMETRAJE', buscar: 'youtube' },
+          { id: 'sg1KnMR9Pqbn42MMDFxa-9jNdyRiO8vi', youtubeId: 'mts1AOifmzE', title: 'ADVENTURES OF A MATHEMATICIAN', subtitle: '', subtitle2: '', buscar: 'el matematico, 0000, youtube' },
           { id: '1sfbeaOe9wuWvI9f2WQC8sgweFxgTi1LS', youtubeId: 'OipO8AN4FK0', title: 'NOSOTROS LOS POBRES', subtitle: 'Nosotros los pobres (1948)', buscar: 'youtube' },
           { id: '1r_ZT626Io9089qhUJWVRs8Urn9mBJ-jj', youtubeId: 'MzXk-PklDcM', title: 'SNOW WHITE AND THE SEVEN DWARFS', subtitle: 'Blanca Nieves y Los Siete Enanos (1937)', buscar: 'youtube' },
           { id:  '1ctGgCqltabZAzoyPxmDsJyFSW3z-xcjQ', youtubeId: 'ZqzOq1EJBEA', title: 'THE LEGEND OF ZORRO', subtitle: 'La Leyenda Del Zorro (2005)', buscar: 'youtube' },

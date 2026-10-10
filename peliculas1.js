@@ -25,7 +25,7 @@ const data_peliculas1= [
           p1("AZgjgigPDcLmd_XJgOO-YYrA7Dz36Cs2","3ZaMk8t98H8","e4csR_FUe1QUpFK0OHn7lA","10x10","","","una verdad inquietante, 2018"), 
           p1("_96HVBV0SKJpPSD0fq8wM5bM_444uP_n","9PoWpBQq2PY","5q7LzWGZSMmxW8OUaAFSmQ","12 ROUNDS 2 RELOADED","","","12 asaltos 2, 2013"), 
           p1("fjMPzh5sl9TOHaWU8vCzUMWa2KcAJQOa","Zxag9p-63RU","0WLYf4-wngTlcNmJB7VlDQ","12 STRONG","","","12 valientes, 2018"), 
-          p1("NbCZ3gus6EQy1jVB4yyY39s-bClKDVul","dQnmrtIHdxI","3nflLMYwYB7QDJVRTqWM9g","13 DAYS, 13 NIGHTS IN THE HELL OF KABUL","","","13 noches en el infierno de kabul, 2023, peroiz#g"), 
+          p1("NbCZ3gus6EQy1jVB4yyY39s-bClKDVul","dQnmrtIHdxI","3nflLMYwYB7QDJVRTqWM9g","13 DAYS, 13 NIGHTS IN THE HELL OF KABUL","","","Lyna Khoudri, Sidse Babett Knudsen, 13 noches en el infierno de kabul, 2023, peroiz#g"), 
           p1("0ru51am6kJ4brf4W4VxnvsyB9scHCT-V","ewlcRK99w78","JexspDCa-QDX9aW7I0ZzXg","13 HOURS THE SECRET SOLDIERS OF BENGHAZI","","","13 horas los soldados secretos de benghazi, 2016"), 
           p1("UnLmT-6G6nXGY-unwThFIOsTAgW_JF7U","mHARRn9TtL0","aHgEpkM2kyBRNYHb1Nmejg","16 BLOCKS","","","muerte subita, 2006"), 
           p1("UM2_hkTMc3keuMUJjM2SCjCSdfph5bUr","IKRwXsCUjfI","DRQ4I2Kl3M-Zj8FHTxAHnQ","30 NOCHES CON MI EX","","","30 noches con mi ex, 2022"),
