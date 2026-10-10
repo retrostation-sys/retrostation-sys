@@ -1,3 +1,4 @@
+// yqWX86uT5jM
 function p1(a, b, c, d, e, f, g) {
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";

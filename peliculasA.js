@@ -1,3 +1,4 @@
+// yqWX86uT5jM
 function pa(a, b, c, d, e, f, g) {
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";   
@@ -118,7 +119,7 @@ const data_peliculasA= [
           pa("2RjgxSQM3m7PMs9sBXo9KM4UdAO9bUPu","3fKNf5dLA_M","NgYB8Y5Rp5qXvYgWMYwcLQ","AMERICAN DAD!","TEMPORADA 19","","un agente de familia, 2022"),
           pa("I8R1Ff2N-M0e8B0w6Nxr2gvphdb2D3wL","3fKNf5dLA_M","NgYB8Y5Rp5qXvYgWMYwcLQ","AMERICAN DAD!","TEMPORADA 20","","un agente de familia, 2023"),
           pa("MUiRGgAmYhZDP2mobMNnUwvQJNiIaJKG","3fKNf5dLA_M","NgYB8Y5Rp5qXvYgWMYwcLQ","AMERICAN DAD!","TEMPORADA 21","","un agente de familia, 2024"),
-          pa("U04Nc1Tsbbu4NEJkkmLnWz0VOGOUCo6J","Ugkxe_b2OPOdCmrPXVgU2-kagcBMvX4aunhk","NgYB8Y5Rp5qXvYgWMYwcLQ","AMERICAN DAD!","TEMPORADA 22","","un agente de familia, 2026"), 
+          pa("U04Nc1Tsbbu4NEJkkmLnWz0VOGOUCo6J","yqWX86uT5jM","NgYB8Y5Rp5qXvYgWMYwcLQ","AMERICAN DAD!","TEMPORADA 22","","un agente de familia, 2026"), 
           pa("j1Y_8vqUuTIZqJB3zc8YlaGBs604k46S","Nr9csFWtFts","ja1dPj8RFHNxJfgL59hkNw","AMERICAN GIGOLO","","","Richard gere, gigolo americano, 1990"), 
           pa("Vafl9s7AKAsegYWAwYBJl5RLVAdGSpXR","hqJtG7XNSmw","g_tt3KLfh9eOBN2e46ndlQ","AMERICAN GODS","TEMPORADA 1","","dioses americanos, 2017"),
           pa("vC3JrdWctgHDDL0j9k9s3Y9RmCLhuRNk","hqJtG7XNSmw","g_tt3KLfh9eOBN2e46ndlQ","AMERICAN GODS","TEMPORADA 2","","dioses americanos, 2019"),

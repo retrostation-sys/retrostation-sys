@@ -1,3 +1,4 @@
+// yqWX86uT5jM
 function pb(a, b, c, d, e, f, g) {
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";   
@@ -41,10 +42,10 @@ const data_peliculasB= [
           pb("VtFy0fMLPMwdliIYCdhD-5o2OxL6vLu9","99zxToEGoOo","fWSCEolzREm2oeluJTlo-Q","BATTLE FOR SEVASTOPOL","","","batalla por sebastopol, 2015, peroiz#g"), 
           pb("hQjBCMp0zAUiQPee4hqcg6ULLUlmOvPq","yg_cSD2VnE8","Qb6hJn81aeayk0OHIuEgnQ","BATTLE FOR THE PLANET OF THE APES","","","la batalla por el planeta de los simios, 1973, the planet of the apes, battle for the planet of the apes, beneath the planet of the apes"), 
           pb("ZjdGEDCpQm9uOI4LviuSvTdLoteOcsPq","okOsyezoR7s","Dl2f6Ox4a2J4bTdlf_KSOA","BATTLESHIP","","","batalla naval, 2012"), 
-          pb("8VFuSGLwYA-JmsZ_NqqpVrqUMNP5UYuL","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 1","","el mundo de beakman, 1992"),
-          pb("yFnPv1O0AoxD2-KmAF_87Td9Y6B1p9uB","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 2","","el mundo de beakman, 1993"),
-          pb("phiIxHn2D-WlXtRSAyK49jrRPNUq0Hma","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 3","","el mundo de beakman, 1994"),
-          pb("4v1k2U_hGHEl-URLX9yOchDpQgbqZpkR","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 4","","el mundo de beakman, 1996"), 
+          pb("N2bai3ReZkbWRT-E4qi6eR_5ZqUhpYEB","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 1","","el mundo de beakman, 1992"),
+          pb("yW4psdCRonRsn7jaqDz-cQBAjgSMNPdf","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 2","","el mundo de beakman, 1993"),
+          pb("f9Vi-sX-fb2qtGflZjGeLTK7CPFNNguL","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 3","","el mundo de beakman, 1994"),
+          pb("k-79b3_jO4PRFaGa79c4sXhzZDOgmUuu","yUESncu-AH0","d1k6_DMm712mT5EHZopXjg","BEAKMAN\'S WORLD","TEMPORADA 4","","el mundo de beakman, 1996"),
           pb("rtqMXhh8U1Qh5IqgrJLoqkENRtaDEBj6","G-Jnz-ZMtD4","w2Jq6UoUm8wyzOWJFkfGgg","BEASTS OF NO NATION","","","bestias sin patria, 2015"),
           pb("GMEeN2o2aKB_rcdzfE8za4kMiQiXCfGm","Auta2lagtw4","FrR8LT_t7Yg8jY2JgfWqEQ","THE BEATLES GET BACK","TEMPORADA 1","[ INGLES || ESPAÑOL ]","2021"),
           pb("xA9Yx5TlCxAPEPs9dGSmccZpi2qLIKaW","Ccx-MW5Fg6I","8442_xxonqYz9O_kOAK9Bg","BEAUTY AND THE BEAST","","","la bella y la bestia, 2017"), 
