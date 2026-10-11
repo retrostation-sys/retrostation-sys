@@ -5,7 +5,6 @@ function pc(a, b, c, d, e, f, g) {
      mudo= "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' width='20' height='20' fill='none' stroke='currentColor' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' style='display:inline-block; vertical-align:middle;'><circle cx='64' cy='64' r='56' /><path d='M36 52v24h20l16 16V36L56 52H36z' /><path d='M92 36L36 92' /></svg>";
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";
-     z= "<span style='color:red'>";  
      return {
           image: x + a, youtube: b, terabox: y + c, title: d, subtitle: e, subtitle2: f, search: g
      };
@@ -63,10 +62,10 @@ const data_peliculasC= [
            pc("EEiQPtCRaqHymMW3TmTeeYKVJlkvkxTM","omBi2KxEcRk","lYSsvRDhqC--oTt4NcOroA","CODE 8 PART 2","","","codigo 8 parte 2, 2024, code 8"), 
            pc("kIOy2UNnRllXTAHaln3brnHWJd-1BMW9","wWsf65ddJ8g","Xi9WVqZntL6yIe2uZAL7gQ","CODE KARIM","","[ ARABE || ESPAÑOL ]","karim el infiltrado, 2021"), 
            pc("mtB4jltLaEGwYN582lsZ85lt-heqCClv","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 1","","Combate, 1962"),
-           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","yqWX86uT5jM","TERABOX", "COMBAT!","TEMPORADA 2",z+"PROXIMAMENTE","Combate, 1963"), 
-           pc("B-mfv8Z4TcUU8rGvTsGiHlXszfbnzyB7","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 3",z+"PROXIMAMENTE","Combate, 1964"),
-           pc("jf8LgSqSPQYf3upAKJDIw4N1k1w9aNYh","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 4",z+"PROXIMAMENTE","Combate, 1965"),
-           pc("mn8HG9Ls9k-006yFQJ91PMSuQuKRX0Pm","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 5",z+"PRIXIMAMENTE","Combate, 1966"), 
+           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","yqWX86uT5jM","TERABOX", "COMBAT!","TEMPORADA 2",prox+" ","Combate, 1963"), 
+           pc("B-mfv8Z4TcUU8rGvTsGiHlXszfbnzyB7","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 3",prox+" ","Combate, 1964"),
+           pc("jf8LgSqSPQYf3upAKJDIw4N1k1w9aNYh","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 4",prox+" ","Combate, 1965"),
+           pc("mn8HG9Ls9k-006yFQJ91PMSuQuKRX0Pm","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 5",prox+" ","Combate, 1966"), 
            pc("j6LIgKBepYwaF0V-2h3nFoPGRW9NArSk","3T0m9nvGws0","nT7NMwKH8N7ROhMMned_UA","CON AIR","","","riesgo en el aire, 1997"), 
            pc("EvE_k01zw93btoPZHxLLs8gGo6pYT9QX","rE2kdVpLRM0","CaF6D72wBLaxGh1N6F5Adg","CONEHEADS","","","adam sandler, los coneheads, 1993"), 
            pc("VQfr9Io0MvHsvVHDtPjjrsWjMtPP1jTC","CWIbQqbivVc","nKrTPdD_tR6Iqk46ZOjZDw","CONQUEST OF THE PLANET OF THE APES","","","la conquista del planeta de los simios, 1972, the planet of the apes, battle for the planet of the apes, beneath the planet of the apes, conquest of the planet of the apes,"), 
