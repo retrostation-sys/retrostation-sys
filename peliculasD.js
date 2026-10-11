@@ -21,7 +21,7 @@ const data_peliculasD= [
           pd("P9NQmFrU1Gz351LJQPWittysH7l4jPMn","VrdRyYPggfI","pgxTKHVwarjnBmvu-m6HOg","DAMSEL","","","damisela, 2024"),
           pd("TQZiYe4lmCmQdGwMwtGPYq9aUPcAweYD","gpVMON-BFog","fuG-_p2KGRewy-mjAffGXQ","DANCE IN THE VAMPIRE BUND","TEMPORADA 1","","bailando con vampiros, 2010"),
           pd("W2zGX3VOyNuvLAalGrbxPNf46Ibs9UPR","j6ucGt_Xp14","FTMjT2yj2-1vS1tT-nCt9A","DARK MATTER","TEMPORADA 1","","materia oscura, 2024"),
-          pd("Th3x7qxUtDKpiOb5hjrDDMizUJBNtzYq","IAtpxqajFak', buttonId: 'cl-ED7qJp6vLXb49Tyd9Rg","DAS CABINET DES DR. CALIGARI","","[ "+mudo+" || ESPAÑOL ]","el gabinete del dr caligari, 1920. peroiz#g"),
+          pd("Th3x7qxUtDKpiOb5hjrDDMizUJBNtzYq","IAtpxqajFak', buttonId: 'cl-ED7qJp6vLXb49Tyd9Rg","DAS CABINET DES DR. CALIGARI","","[  || ESPAÑOL ]","el gabinete del dr caligari, 1920. peroiz#g"),
           pd("1luIQLOqW95VMA2yV1mnSdRveVZzdnIW8","naWkpWL3CoU","G6gtb4vjZADUOssMtkDgmw","DAWN OF THE DEAD (1978)","El Amanecer De Los Muertos (1978)","Inglés sub: Español, Inglés","P1"),
           pd("1im5J3U53b4wCMMIXOPf0gzxkSR9E7TOo","wf8-9AXQGfM","aqcuEk0fauVIFHXOezsxIA","DAWN OF THE DEAD","El Amanecer De Los Muertos (2004)","P1"),
           pd("1tR_PmnL-8_5BS2Fkh3iVPxI2nLcxLPXZ","3sHMCRaS3ao","bcdPu2lpuNV0KcK7G6m0JA","DAWN OF THE PLANET OF THE APES","El Planeta De Los Simios Confrontación (2014)","P1"),
