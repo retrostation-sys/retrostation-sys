@@ -55,6 +55,7 @@ const data_peliculasC= [
            pc("U6gCW__8nDxna4QLrwNh5gB6wIbU4V-Q","fwnb0m0MUhs","ZNnj-KhYsCWceoU5HvVIgQ","CIRCUS OF HORRORS","","","el circo del terror, 1960"), 
            pc("toDOeANdCiRxCSUlaK6OqNJ2zgTH4JMC","w1Nhd78zLl4","MLOk79rduj9VilcppF2_GQ","CLEVELAND ABDUCTION","","","secuestro en cleveland, 2015"), 
            pc("-6AebPL7GtuNLAmTWvtHryxeEVc7cUg_","zZNC5emNyEQ","U64qNO09HVHu7IzfjmHfBA","CLICK","","","adam sandler, click perdiendo el control, 2006"),
+           pc("ejlRxnLwdNhWlmj85wdE4MuGgO4s-WKw","28Honaz1R5M","tKXp-tA1vRNQNyOBcv4fRg","THE CLOSET","","","la habitacion del horror, 2020"),
            pc("FFGBFJHCzN20G4frisQbkPtNf1IAA8DY","rijFy92E8Uc","lqc8FJnEA_W9gV58M_2LSQ","CLOVERFIELD","","","cloverfield monstruo, 2008"), 
            pc("3Lr7sp1mXVs1mfWeib-ev862ytzTdtaz","awzWdtCezDo","odpM7oHtWfj3ok2t6KBsYw","COCO","","","2017"),
            pc("CM784ieu4HjmaJGXY9zG1XyonQQMGqf8","zcA6xt2IJ0s","bZ0ePkrnjEXMV_Jb3WH82Q","CODE 8","","","codigo 8 renegados, 2019, code 8 part 2, peroiz#g"), 
@@ -85,7 +86,7 @@ const data_peliculasC= [
            pc("mMzhJ3_-PA75m8aAVSbp6Ozg7Pp2Jr_S","YEBU6m7toSg","yxgr3v7AEXrLkSqdfqINOA","CURSE OF CHUCKY","La Maldición De Chucky (2013)","","la maldicion de chucky, 2013, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"), 
            pc("FfT1CXQXckAxHjlpmZWU90YFrSswvhNb","SW6U8D1CtbQ","r4MhWM7CgSmH8AkYQRWv9g","CUT OFF","","","aislados, 2018"), 
            pc("tcPf0QWx6NDEECm0ZkDnFHnu8_9w_qe_","mSLEXav6mIE","CYMAJ9WWWpmu8TU5Z0HJ1w","CYBORG X","","","2016"),
-           pc("ejlRxnLwdNhWlmj85wdE4MuGgO4s-WKw","28Honaz1R5M","tKXp-tA1vRNQNyOBcv4fRg","THE CLOSET","","","la habitacion del horror, 2020"),
+           
            
      
            

@@ -9,7 +9,7 @@ function pa(a, b, c, d, e, f, g) {
 
 const data_peliculasA= [
      { id: "PelículasA", data: [
-          pa("nF3N6Fhq5HyNXm84T9RlU1rkEq6_8jk9","6MzJkz7lzg8","qiik6TSH3IhOBZ-J4AqXJA","A BOY NAMED CHARLIE BROWN","","","charlie brown, snoopy, un niño llamado charlie brown, 1969"),
+          pa("nF3N6Fhq5HyNXm84T9RlU1rkEq6_8jk9","6MzJkz7lzg8","qiik6TSH3IhOBZ-J4AqXJA","A BOY NAMED CHARLIE BROWN","","","un niño llamado charlie brown, 1969, snoppy, charlie brown, peanuts, a boy named charlie brown, the charlie brown and snoopy show"),
           pa("HZznjYYXmwaOdcZHx6JSAXpXRRd4ELiE","yPPycZo8H7c","3V_JEGPsj-7PKvBpZKjvew","A BRIDGE TOO FAR","","","un puente muy lejano, 1960, peroiz#g"),
           pa("RHgNLG2JE43LkaKNVNSgjXSXPqFbucPO","z50PjmZYS4A","UxP8gLvCCz28xiB8kyPrJw","A BRONX TALE","","","una historia del bronx, 1993, peroiz#g"),
           pa("RNTRI4twVd75Shysh4NbciAP8L66GMqi","v3TCRX9TDXE","ZnOviSPaNhZ_rziOC_13Zg","A CURE FOR WELLNESS","","","la cura siniestra, 2016"),
