@@ -5,6 +5,7 @@ function pc(a, b, c, d, e, f, g) {
      mudo= "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' width='20' height='20' fill='none' stroke='currentColor' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' style='display:inline-block; vertical-align:middle;'><circle cx='64' cy='64' r='56' /><path d='M36 52v24h20l16 16V36L56 52H36z' /><path d='M92 36L36 92' /></svg>";
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";
+     z= "<span style='color:red'>";  
      return {
           image: x + a, youtube: b, terabox: y + c, title: d, subtitle: e, subtitle2: f, search: g
      };
@@ -37,7 +38,7 @@ const data_peliculasC= [
            pc("f_FWK5UYU3xblauZv_eg1dl0K_k4Phd1","m3jNb7IdJHQ","3wK0c7hVbNcjMi1-VIRlyQ","CASTLEVANIA","TEMPORADA 1","","2017"),
            pc("KtTE6uFIX_IQ573EvDmEC5dLuoYE-eyA","RvklXMXjsrI","3wK0c7hVbNcjMi1-VIRlyQ","CASTLEVANIA","TEMPORADA 2","","2018"),
            pc("zpDP7_Sd0lA4x5Ft8LvdYVQSoaPb0ntY","cYNGDUIBUhE","3wK0c7hVbNcjMi1-VIRlyQ","CASTLEVANIA","TEMPORADA 3","","2020"),
-           pc("8aVcfpbLnCAcZjzrcUdFYDOiijCkRnWy","L7iWXfZzEMc","TERABOX","CASTLEVANIA","TEMPORADA 4",prox,"2021"), 
+           pc("8aVcfpbLnCAcZjzrcUdFYDOiijCkRnWy","L7iWXfZzEMc","TERABOX","CASTLEVANIA","TEMPORADA 4",prox+"","2021"), 
            pc("GD7efuSN4rVYEiZXG7TpvxaCCdl4TMsi","s-7pyIxz8Qg","JoWajkyjwwmOqKAzudrDPw","CATCH ME IF YOU CAN","","","atrapame si puedes, 2002. peroiz#g"), 
            pc("UVWKz9UCld63JXEHx-YJEvWAQIXfhwBE","d1n552v1ng0","8tjMJUGG-M8DNGphus5EZg","CHAINSAW MAN THE MOVIE: REZE ARC","","","Chainsaw Man La Película Arco de Reze, 2025, peroiz#g"),
            pc("s8F9lN90c9OXJ3VmDC3KSVDY6LohphXm","_AswL5MxigI","z6OpsbX4oWV8ITtX5E-qrA","THE CHARLIE BROWN AND SNOOPY SHOW","TEMPORADA 1","","el show de charlie brown y snoopy, 1983, snoppy, charlie brown, peanuts, a boy named charlie brown, the charlie brown and snoopy show"),
