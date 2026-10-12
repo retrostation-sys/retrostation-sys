@@ -30,6 +30,7 @@ const sinonimos= {
           adventure time distant lands, 
           adventure time frog seasons minisodes.
           adventure time graybles allsorts,
+          diamonds and lemons,
           
           
           
@@ -78,8 +79,26 @@ const sinonimos= {
           
           
           
+     brendam fraser,
+          bedazzled,
+          
+          
+          
      bruce willis,
           air strike,
+          die hard,
+          die hard 2 die harder,
+          die hard 3 die hard with a vengeance,
+          die hard 4 live free or die hard,
+          die hard 5 a good day for die hard,
+          
+          
+          
+     captain america,
+          captain america the first avenger,
+          captain america the winter soldier,
+          captain america civil war,
+          captain america brave new world,
           
           
           
@@ -88,21 +107,32 @@ const sinonimos= {
           
           
           
-     charlie brown, snoppy,
-          a boy named charlie brown,
-          
-          
           
      chucky,
           childs play,
           childs play 2,
           childs play 3,
           bride of chucky,
+          cult of chucky,
+          curse of chucky,
+          
+          
+          
+     cinderella,
+          cinderellas revenge,
           
           
           
      Colleen Haskell, 
           the animal,
+          
+          
+          
+     die hard,
+          die hard 2 die harder,
+          die hard 3 die hard with a vengeance,
+          die hard 4 live free or die hard,
+          die hard 5 a good day for die hard,
           
           
           
@@ -139,6 +169,11 @@ const sinonimos= {
      jackie chan,
           36 crazzy fists,
           around the world in 80 days,
+          
+          
+          
+     jet li,
+          cradle 2 the grave,
           
           
      jim carrey
@@ -205,6 +240,7 @@ const sinonimos= {
           battle for the planet of the apes,
           beneath the planet of the apes,
           conquest of the planet of the apes,
+          dawn of the planet of the apes,
      
      
      
@@ -229,6 +265,14 @@ const sinonimos= {
           
           
           
+     snoppy,
+          charlie brown,
+          peanuts,
+          a boy named charlie brown,
+          the charlie brown and snoopy show,
+          
+          
+          
      steve coogan,
           around the world in 80 days,
           
@@ -236,7 +280,12 @@ const sinonimos= {
           
      sylvester stalone,
           armor,
+          demolition man,
           
+          
+          
+     Vince Vaughn,
+          delivery man,
           
      will smith,
           aladdin,
