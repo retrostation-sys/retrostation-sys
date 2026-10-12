@@ -46,7 +46,20 @@ const data_peliculasC= [
            pc("I-TJ95HmPrhYtAI7jf9xGohkLd_dhVDE","qDbMsaJjp3c","WaF7Wtn_oKkV2NATjQOvRA","CHILD\’S PLAY","","","chucky el muñeco diabolico, 1988, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"),
            pc("JShwz1DLK3n6w5FBzGZcQhnYAwwlYx4p","QQ578YDz-sQ","4K6P7Sc1vLaAWOonjzoSIA","CHILD\’S PLAY 2","","","chucky el muñeco diabolico 2, 1990, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"),
            pc("cTvBi0yfFiYgNEFmNn1pvM0z06zsJ57c","CQGEYF3XkY0","9mYnC9sQUWRFtJ7H7D1qMA","CHILD\’S PLAY 3","","","chucky el muñeco diabolico 3, 1991, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"), 
-           pc("RSyY0Geo1Ies2K47VrEmTsLOybvv5ANT","1A_YOUfPJpg","Tp1CpHWctzaP5h5ysK94zg","CHILD\’S PLAY","","","el muñeco diabolico, 2019, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"),
+           pc("gu1icF1UqBReA9aYFo9EYLMDCgnlkC0W","1A_YOUfPJpg","Tp1CpHWctzaP5h5ysK94zg","CHILD\’S PLAY","","","el muñeco diabolico, 2019, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"),
+           pc("sGU5cxDlVwqRhlwUp16ozKPsH0w366Sq","VhZBGuh7uu4","feUJHyqtn15YKHRj_NfYEQ","CHINAS","","","2023"),
+           pc("in8Cys3H3MDTh3nADT6qq_oyUcsl1Obo","6iNlg_y9VDA","T_3yg6kUv_XxmfMQp-q0hQ","CINDERELLA","","","la cenicienta, 1950, cinderella, cinderellas revenge, peroiz#g"), 
+           pc("e_Dy43VKYo5BfpOQMB4_7ewjBKIuQHuS","IY_X9-La8CE","LsJSL1MTO8zpetJDW0E5Ig","CINDERELLA","","","la cenicienta, 2015, cinderella, cinderellas revenge"), 
+           pc("qFmailH1onWXVsRMpjvGNR7mf2Q5IbqG","O813BSLAasQ","X0BdqgN39nYi1NriyrvtMg","CINDERELLA\'S REVENGE","","","la venganza de cenicienta, 2024, cinderella, cinderellas revenge"), 
+           pc("U6gCW__8nDxna4QLrwNh5gB6wIbU4V-Q","fwnb0m0MUhs","ZNnj-KhYsCWceoU5HvVIgQ","CIRCUS OF HORRORS","","","el circo del terror, 1960"), 
+           pc("toDOeANdCiRxCSUlaK6OqNJ2zgTH4JMC","w1Nhd78zLl4","MLOk79rduj9VilcppF2_GQ","CLEVELAND ABDUCTION","","","secuestro en cleveland, 2015"), 
+           pc("-6AebPL7GtuNLAmTWvtHryxeEVc7cUg_","zZNC5emNyEQ","U64qNO09HVHu7IzfjmHfBA","CLICK","","","adam sandler, click perdiendo el control, 2006"),
+           pc("ejlRxnLwdNhWlmj85wdE4MuGgO4s-WKw","28Honaz1R5M","tKXp-tA1vRNQNyOBcv4fRg","THE CLOSET","","","la habitacion del horror, 2020"),
+           pc("FFGBFJHCzN20G4frisQbkPtNf1IAA8DY","rijFy92E8Uc","lqc8FJnEA_W9gV58M_2LSQ","CLOVERFIELD","","","cloverfield monstruo, 2008"), 
+           pc("3Lr7sp1mXVs1mfWeib-ev862ytzTdtaz","awzWdtCezDo","odpM7oHtWfj3ok2t6KBsYw","COCO","","","2017"),
+           pc("CM784ieu4HjmaJGXY9zG1XyonQQMGqf8","zcA6xt2IJ0s","bZ0ePkrnjEXMV_Jb3WH82Q","CODE 8","","","codigo 8 renegados, 2019, code 8 part 2, peroiz#g"), 
+           pc("EEiQPtCRaqHymMW3TmTeeYKVJlkvkxTM","omBi2KxEcRk","lYSsvRDhqC--oTt4NcOroA","CODE 8 PART 2","","","codigo 8 parte 2, 2024, code 8"), 
+           pc("kIOy2UNnRllXTAHaln3brnHWJd-1BMW9","wWsf65ddJ8g","Xi9WVqZntL6yIe2uZAL7gQ","CODE KARIM","","[ ARABE || ESPAÑOL ]","karim el infiltrado, 2021"), 
            
      
            
