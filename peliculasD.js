@@ -38,11 +38,7 @@ const data_peliculasD= [
           pd("XCDO8Gg7IPqHctdqipPmjDexsoAx3HxF","PMd1at7OwiE","z0GA6WBJr7V2j2HPZOCUXQ","THE DEVIL WEARS PRADA 2","","","el diablo viste a la moda 2, 2026, peroiz#g"),
           pd("vzt7d2QxvDqRiN-niNsJ04bH7lcIsxep","ww06yGPM7Kc","1s7TcN095Nilo9X9-ZBFAA","DEVILMAN CRYBABY","TEMPORADA 1","","2018"), 
           pd("JwN6yi17IN6nU5mm1cYdOVBNqbF8ELA9","jlhNDyBDhWY","P14g7KpGSzx4P5Xjv9x9dA","DEXTER\'S LABORATORY EGO TRIP","","","el laboratorio de dexter el viaje de dexter, 1999"),
-          pd("NyN_WgyOwkkB3AvyMjA5ujvfgKG-rNiy","jaJuwKCmJbY","Tt6IdWzgkczRzLeMMbx_vg","DIE HARD","","","bruce willis, duro de matar, 1988, die hard, die hard 2 die harder, die hard 3 die hard with a vengeance, die hard 4 live free or die hard, die hard 5 a good day for die hard"),
-          pd("2g9jeqfkpB_8Z_wVTGvbAqHIqAvuwLoN","CvHp7xJZ4_U","mW1My4MQD2mnIRKSr5mkfQ","DIE HARD 2 DIE HARDER","","","bruce willis, duro de matar 2, 1990, die hard, die hard 2 die harder, die hard 3 die hard with a vengeance, die hard 4 live free or die hard, die hard 5 a good day for die hard"),
-          pd("ygLC505OLJ4f4i_y3_XYl79Ijrp2roqU","ZqmqXiteqVw","TERABOX","DIE HARD 3 DIE HARD WITH A VENGEANCE","",prox,"bruce willis, duro de matar 3, 1995, die hard, die hard 2 die harder, die hard 3 die hard with a vengeance, die hard 4 live free or die hard, die hard 5 a good day for die hard"),
-          pd("g3dURQCtAN0FeYik0slJNYK0G0RdLhdD","JoJd1G7m9ZY","TERABOX","DIE HARD 4 LIVE FREE OR DIE HARD","",prox,"bruce willis, duro de matar 4, 2007, die hard, die hard 2 die harder, die hard 3 die hard with a vengeance, die hard 4 live free or die hard, die hard 5 a good day for die hard"),
-          pd("GmF2HP3Jk_-XHB_9FrgPbmPhgg-SFUyB","0_0K7ZfU2e0","TERABOX","DIE HARD 5 A GOOD DAY FOR DIE HARD","",prox,"bruce willis, duro de matar 5, 2013, die hard, die hard 2 die harder, die hard 3 die hard with a vengeance, die hard 4 live free or die hard, die hard 5 a good day for die hard"), 
+          
           pd("1RZvGGEp7rntIzqQe_n8nCsMt_fs63cVp","Z2H3KY3Wnr4","7xICzxXra3T6Fn-0MIkXmQ","DINASTIA CASILLAS","Dinastía Casillas (2025)","TEMPORADA 1","peroiz#g"), 
           pd("1wQxBGpo5ieKHn6FqUarXArZes8bW9k7p","CpSEG64Tq6o","Yv6NYSTjYugjWuCegXj7KA","DINOSAURS","Dinosaurs (1991-94)","4 Temporadas 65 Episodios","P0"), 
           pd("1BeviUV2p5iAXGgboZIQZbdW1deO5zFEF","so6XoqZgbVM","0eMyKUAdKr9ipLcI_mq7bg","DISCLAIMER","Desprecio (2024)","1 Temporada 7 Episodios","P1G"),
