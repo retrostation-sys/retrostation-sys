@@ -1,4 +1,5 @@
 function p1(a, b, c, d, e, f, g) {
+     prox= "<style>@keyframes ondaProximamente {0%   { transform: scale(0.95); opacity: 0.7; } 50%  { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.7; } } .proximamente-onda { display: inline-block; font-weight: 700; font-size: 15px; color: #ff7a00; animation: ondaProximamente 2s ease-in-out infinite; } </style><span class='proximamente-onda'>PROXIMAMENTE</span>";
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";
      return {
