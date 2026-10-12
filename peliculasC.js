@@ -32,8 +32,12 @@ const data_peliculasC= [
            pc("pcVynvBIfpdyoFug-rFeyyWxzhMo5VKB","i_HHpJdS2o8","eQrs8eQFQGIfr49KydilHw","CARS","","","2006"), 
            pc("X9jQatXUufHom1yotKxfiKEsqi6-FAtg","PiMXLiNINJ8","eQrs8eQFQGIfr49KydilHw","CARS 2","","","2011"), 
            pc("EOEduGrhFLeIkxuTtAI9N9RqaOePo667","A2gSaAT7X3g","NzzTUM9j-4FHR9mS8zayuQ","CARS 3","","","2017"), 
+           pc("HMs_O_QX6xbkxESjdNsv6Rxfi4Kz6jcQ","rSt1NFGgVUs","DtNU2Q_0uIj-9p7IF414oQ","CASANOVA","","","2005"), 
+           pc("f_FWK5UYU3xblauZv_eg1dl0K_k4Phd1","m3jNb7IdJHQ","3wK0c7hVbNcjMi1-VIRlyQ","CASTLEVANIA","TEMPORADA 1","","2017"),
+           pc("KtTE6uFIX_IQ573EvDmEC5dLuoYE-eyA","RvklXMXjsrI","3wK0c7hVbNcjMi1-VIRlyQ","CASTLEVANIA","TEMPORADA 2","","2018"),
+           pc("zpDP7_Sd0lA4x5Ft8LvdYVQSoaPb0ntY","cYNGDUIBUhE","3wK0c7hVbNcjMi1-VIRlyQ","CASTLEVANIA","TEMPORADA 3","","2020"),
+           pc("8aVcfpbLnCAcZjzrcUdFYDOiijCkRnWy","L7iWXfZzEMc","TERABOX","CASTLEVANIA","TEMPORADA 4",prox,"2021"), 
            
-     
            
            
       ]}
