@@ -1,5 +1,6 @@
 function p1(a, b, c, d, e, f, g) {
      prox= "<style>@keyframes ondaProximamente {0%   { transform: scale(0.95); opacity: 0.7; } 50%  { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.7; } } .proximamente-onda { display: inline-block; font-weight: 700; font-size: 15px; color: #ff7a00; animation: ondaProximamente 2s ease-in-out infinite; } </style><span class='proximamente-onda'>PROXIMAMENTE</span>";
+     mudo= "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' width='20' height='20' fill='none' stroke='currentColor' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' style='display:inline-block; vertical-align:middle;'><circle cx='64' cy='64' r='56' /><path d='M36 52v24h20l16 16V36L56 52H36z' /><path d='M92 36L36 92' /></svg>";
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";
      return {
@@ -9,7 +10,7 @@ function p1(a, b, c, d, e, f, g) {
 
 const data_peliculas1= [
      { id: "Películas1", data: [
-          p1("ZRRTLCXRrbWDd47ez3zGUj_0yP231AXe","jla6YMfkS9Q","s6tLdgWei_vbp1i3CoQ4TQ","2 BROKE GIRLS","TEMPORADA 1","","2 chicas quebradas, 2011"),
+          p1("ZRRTLCXRrbWDd47ez3zGUj_0yP231AXe","jla6YMfkS9Q","s6tLdgWei_vbp1i3CoQ4TQ","25 BROKE GIRLS","TEMPORADA 1","","2 chicas quebradas, 2011"),
           p1("vRPCjV2mHHaOAgvWtdC3D3XHjxWFAeIJ","jla6YMfkS9Q","DRhKJXSh0Y70oKzWNCMeQQ","2 BROKE GIRLS","TEMPORADA 2","","2 chicas quebradas, 2012"), 
           p1("oJy86X58WFN0bn3zNOUsUWN3_0lKlxd7","jla6YMfkS9Q","m6Ax-wcfh7scdX5lEh2GfQ","2 BROKE GIRLS","TEMPORADA 3","","2 chicas quebradas, 2013"), 
           p1("5QiWdPQsFs85UZO_eN7CboaZJ_REUDMC","jla6YMfkS9Q","IdgThuUwh87TlIZL6fUArg","2 BROKE GIRLS","TEMPORADA 4","","2 chicas quebradas, 2014"), 
