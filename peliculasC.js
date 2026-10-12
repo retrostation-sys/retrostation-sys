@@ -60,6 +60,18 @@ const data_peliculasC= [
            pc("CM784ieu4HjmaJGXY9zG1XyonQQMGqf8","zcA6xt2IJ0s","bZ0ePkrnjEXMV_Jb3WH82Q","CODE 8","","","codigo 8 renegados, 2019, code 8 part 2, peroiz#g"), 
            pc("EEiQPtCRaqHymMW3TmTeeYKVJlkvkxTM","omBi2KxEcRk","lYSsvRDhqC--oTt4NcOroA","CODE 8 PART 2","","","codigo 8 parte 2, 2024, code 8"), 
            pc("kIOy2UNnRllXTAHaln3brnHWJd-1BMW9","wWsf65ddJ8g","Xi9WVqZntL6yIe2uZAL7gQ","CODE KARIM","","[ ARABE || ESPAÑOL ]","karim el infiltrado, 2021"), 
+           pc("mtB4jltLaEGwYN582lsZ85lt-heqCClv","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 1","","Combate, 1962"),
+           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","yqWX86uT5jM","TERABOX", "COMBAT!","TEMPORADA 2",prox,"Combate, 1963"), 
+           pc("B-mfv8Z4TcUU8rGvTsGiHlXszfbnzyB7","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 3","","Combate, 1964"),
+           pc("jf8LgSqSPQYf3upAKJDIw4N1k1w9aNYh","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 4","","Combate, 1965"),
+           pc("mn8HG9Ls9k-006yFQJ91PMSuQuKRX0Pm","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 5","","Combate, 1966"), 
+           pc("j6LIgKBepYwaF0V-2h3nFoPGRW9NArSk","3T0m9nvGws0","nT7NMwKH8N7ROhMMned_UA","CON AIR","","","riesgo en el aire, 1997"), 
+           pc("EvE_k01zw93btoPZHxLLs8gGo6pYT9QX","rE2kdVpLRM0","CaF6D72wBLaxGh1N6F5Adg","CONEHEADS","","","adam sandler, los coneheads, 1993"), 
+           pc("VQfr9Io0MvHsvVHDtPjjrsWjMtPP1jTC","CWIbQqbivVc","nKrTPdD_tR6Iqk46ZOjZDw","CONQUEST OF THE PLANET OF THE APES","","","la conquista del planeta de los simios, 1972, the planet of the apes, battle for the planet of the apes, beneath the planet of the apes, conquest of the planet of the apes,"), 
+           pc("Ebjtpk_mXSwkhUZUwqigjHSkKkpKlnx3","819JCbGfZpg","W23aSv8o31mPwY7UGTDung","CONSTANTINE","","","2005"), 
+           pc("7-h6hVcfk-gVSm2vP_4VQKzZVhdZu0qn","n3YkEva36gs","bQE_9vKhD2U5Ugvt8Atykg","CONTRAATAQUE","","","contraataque, 2025"),
+           pc("a3BhbGVrz1-xdwzwSJifhp1H376ZN_fQ","SvbCmpo-luk","Gv1Wq4GJyxuj84C09U3PDg","CORINA","","","2024"), 
+           pc("imVjI60aLMUKkLrz7teuBkEW9_VQmy7i","9Go4J1RaeuM","JxhqCIUkiZQlGBQBFevk_w","COWBOY BEBOP","TEMPORADA 1","","1998"), 
            
      
            
