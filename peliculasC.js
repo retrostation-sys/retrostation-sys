@@ -21,7 +21,19 @@ const data_peliculasC= [
           pc("AcHgJURQih1SoCK4elYbFezK9dAkoNbW","OweVx8k5rwc","_OYQlzY-zYth3vNVGOqmeg","CANDYMAN 3 DAY OF THE DEAD","","","candyman 3 el dia de los muertos, 1999"), 
           pc("Nj8aJr0-0XxU6qp-eo-_SDVDAIr9JBJt","S5rfKQXpEWA","Wz4gQ26d5-JmwfRUYNNDkg","CANDYMAN","","","2021"),
           pc("ohpLjkksPFaKOAuz-WU4QsojkEyNwVqN","Yeto0LbpRSQ","YUrSbwLxaY6DB0sZtj4ntw","CANNIBAL FEROX","","[ INGLES || ESPAÑOL ]","canibal feroz, 1981"), 
+           pc("ql7FJFePhb8-La3NpYFSAAun3MkDYUnD","Q9xOE7KmAPw","CLzOBM6v7GqkPk1207TzrQ","CANNIBAL HOLOCAUST","","[ ESPAÑOL ITALIANO || ESPAÑOL ]","holocausto canibal, 1980"), 
+           pc("EtpQbJoOwcDz0AyKlCk4dw8a4d8nEgQQ","AweQtRxWqoE","-aOXeKzKwpVi97Y99e-Suw","CANTINFLAS BOXEADOR","","","mario moreno cantinflas boxeador, 1940"),
+           pc("lOSMK5h95uUGi_j3CJNIovGcgJYEby4s","6GAPmn8subI","qhXObyZSwec9Dy6Yg35yDA","CAPITAN TRUENO Y EL SANTO GRIAL","","","2011"),
+           pc("m1MyWSyPP6RFfuCQJlSkTH1n3flVx-Ri","B96CZzcM1CA","79zvsO4lX8s6opUcHe3MPQ","CAPTAIN AMERICA THE FIRST AVENGER","","","capitan america el primer vengador, 2011, captain america, captain america the first avenger, captain america the winter soldier, captain america civil war, captain america brave new world"),
+           pc("ixbnWjxTfHO1C4CfzsXzJkOfl6eXoQuR","GpP3kd1a0Yk","aNyv5XVSO10YaTD4sCb7Ww","CAPTAIN AMERICA THE WINTER SOLDIER","","","capitan america y el soldado del invierno, 2014, captain america, captain america the first avenger, captain america the winter soldier, captain america civil war, captain america brave new world"),  
+           pc("CzXOrXLAVSwb4Fucco-F2Otm108DogF8","-ByYxIjmLsI","LmDO61-aWNa-YNpVYYR29A","CAPTAIN AMERICA CIVIL WAR","","","capitan america civil war, 2016, captain america, captain america the first avenger, captain america the winter soldier, captain america civil war, captain america brave new world"), 
+								pc("SnWxPEfqapwqtdd5ZzFGnVOM3lj5953O","BFWLxcv2RzI","9AW1o7Hj_AYR1_7WlOK5XA","CAPTAIN AMERICA BRAVE NEW WORLD","","","capitan america un nuevo mundo, 2025, captain america, captain america the first avenger, captain america the winter soldier, captain america civil war, captain america brave new world"),
+								pc("9pqFdYxS2dCPfnA0t1hXrrscKko4rfB4","6XkN-MFNZpI","I_xHTpbaYfaN8a-m05ZQbg","CAPTAIN MARVEL","","","capitana marvel, 2019"), 
+           pc("pcVynvBIfpdyoFug-rFeyyWxzhMo5VKB","i_HHpJdS2o8","eQrs8eQFQGIfr49KydilHw","CARS","","","2006"), 
+           pc("X9jQatXUufHom1yotKxfiKEsqi6-FAtg","PiMXLiNINJ8","eQrs8eQFQGIfr49KydilHw","CARS 2","","","2011"), 
+           pc("EOEduGrhFLeIkxuTtAI9N9RqaOePo667","A2gSaAT7X3g","NzzTUM9j-4FHR9mS8zayuQ","CARS 3","","","2017"), 
            
+     
            
            
       ]}
