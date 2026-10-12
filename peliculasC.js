@@ -61,19 +61,22 @@ const data_peliculasC= [
            pc("EEiQPtCRaqHymMW3TmTeeYKVJlkvkxTM","omBi2KxEcRk","lYSsvRDhqC--oTt4NcOroA","CODE 8 PART 2","","","codigo 8 parte 2, 2024, code 8"), 
            pc("kIOy2UNnRllXTAHaln3brnHWJd-1BMW9","wWsf65ddJ8g","Xi9WVqZntL6yIe2uZAL7gQ","CODE KARIM","","[ ARABE || ESPAÑOL ]","karim el infiltrado, 2021"), 
            pc("mtB4jltLaEGwYN582lsZ85lt-heqCClv","TP5Dhz1LXUg","OG3dAIacyMYX4wkiRR1j5w","COMBAT!","TEMPORADA 1","","Combate, 1962"),
-           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","yqWX86uT5jM","TERABOX", "COMBAT!","TEMPORADA 2",prox,"Combate, 1963"), 
-           pc("B-mfv8Z4TcUU8rGvTsGiHlXszfbnzyB7","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 3","","Combate, 1964"),
-           pc("jf8LgSqSPQYf3upAKJDIw4N1k1w9aNYh","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 4","","Combate, 1965"),
-           pc("mn8HG9Ls9k-006yFQJ91PMSuQuKRX0Pm","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 5","","Combate, 1966"), 
+           pc("zOS-DM2nlUB31brYpxEknoB9Bej_ynjo","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 2",prox,"Combate, 1963"), 
+           pc("B-mfv8Z4TcUU8rGvTsGiHlXszfbnzyB7","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 3",prox,"Combate, 1964"),
+           pc("jf8LgSqSPQYf3upAKJDIw4N1k1w9aNYh","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 4",prox,"Combate, 1965"),
+           pc("mn8HG9Ls9k-006yFQJ91PMSuQuKRX0Pm","yqWX86uT5jM","TERABOX","COMBAT!","TEMPORADA 5",prox,"Combate, 1966"), 
            pc("j6LIgKBepYwaF0V-2h3nFoPGRW9NArSk","3T0m9nvGws0","nT7NMwKH8N7ROhMMned_UA","CON AIR","","","riesgo en el aire, 1997"), 
            pc("EvE_k01zw93btoPZHxLLs8gGo6pYT9QX","rE2kdVpLRM0","CaF6D72wBLaxGh1N6F5Adg","CONEHEADS","","","adam sandler, los coneheads, 1993"), 
            pc("VQfr9Io0MvHsvVHDtPjjrsWjMtPP1jTC","CWIbQqbivVc","nKrTPdD_tR6Iqk46ZOjZDw","CONQUEST OF THE PLANET OF THE APES","","","la conquista del planeta de los simios, 1972, the planet of the apes, battle for the planet of the apes, beneath the planet of the apes, conquest of the planet of the apes,"), 
            pc("Ebjtpk_mXSwkhUZUwqigjHSkKkpKlnx3","819JCbGfZpg","W23aSv8o31mPwY7UGTDung","CONSTANTINE","","","2005"), 
            pc("7-h6hVcfk-gVSm2vP_4VQKzZVhdZu0qn","n3YkEva36gs","bQE_9vKhD2U5Ugvt8Atykg","CONTRAATAQUE","","","contraataque, 2025"),
            pc("a3BhbGVrz1-xdwzwSJifhp1H376ZN_fQ","SvbCmpo-luk","Gv1Wq4GJyxuj84C09U3PDg","CORINA","","","2024"), 
-           pc("imVjI60aLMUKkLrz7teuBkEW9_VQmy7i","9Go4J1RaeuM","JxhqCIUkiZQlGBQBFevk_w","COWBOY BEBOP","TEMPORADA 1","","1998"), 
+           pc("imVjI60aLMUKkLrz7teuBkEW9_VQmy7i","9Go4J1RaeuM","JxhqCIUkiZQlGBQBFevk_w","COWBOY BEBOP","TEMPORADA 1","","1998, cowboy bebop the movie"),
+           pc("96OYFxvTeTJoKgJQcwUdnON6x2cpfJza","fgmZvLgVS24","7saBfdLmWWuoUQqJMf8_ag","COWBOY BEBOP THE MOVIE","","","cowboy bebop la pelicula, 2001"),
+           pc("eeCyTf2VBbpcQ-fJCM0N0ejxaA7iMVya","9b43CLIHcPo","GykoSfJhu94eq8YNGkxRag","CRADLE 2 THE GRAVE","","","jet li, contra reloj, 2003"),
+           pc("C4IfXsj1UzMzoW5Mv-_YjhQSj8IUzkIe","flvz5RMRx7E","1y3FeCvWYVHRRMxbluU-hg","CRAZY, STUPID, LOVE","","","loco y estupido amor, 2011"), 
+           pc("BcGBDMFMADiZuWqauBOoSM6ifGIWtD0a","S0PXMi9_yf8","LGZ2vCno1mAG_hWEpFWo9Q","CRIMINAL RECORD","TEMPORADA 1","[ INGLES || ESPAÑOL ]","2024"),
            
-     
            
            
       ]}
