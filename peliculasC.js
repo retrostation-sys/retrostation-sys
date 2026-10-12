@@ -76,7 +76,19 @@ const data_peliculasC= [
            pc("eeCyTf2VBbpcQ-fJCM0N0ejxaA7iMVya","9b43CLIHcPo","GykoSfJhu94eq8YNGkxRag","CRADLE 2 THE GRAVE","","","jet li, contra reloj, 2003"),
            pc("C4IfXsj1UzMzoW5Mv-_YjhQSj8IUzkIe","flvz5RMRx7E","1y3FeCvWYVHRRMxbluU-hg","CRAZY, STUPID, LOVE","","","loco y estupido amor, 2011"), 
            pc("BcGBDMFMADiZuWqauBOoSM6ifGIWtD0a","S0PXMi9_yf8","LGZ2vCno1mAG_hWEpFWo9Q","CRIMINAL RECORD","TEMPORADA 1","[ INGLES || ESPAÑOL ]","2024"),
+           pc("BcGBDMFMADiZuWqauBOoSM6ifGIWtD0a","buvyfKvVWbM","","CRIMINAL RECORD","TEMPORADA 2",prox,"2026"),
+           pc("uFCTz55f25jwU51slhfQn_otAbbs0-3Q","lNk1XIejGRA","6-CIHqHVoNDCLi9CWbNqDA","THE CROODS","","","2013, the croods, the croods 2 a new age"),
+           pc("55nhxBquM1HxW1c8DASK_ON8486x723h","XUN5EEDwHcI","ujNuFeD7OshzMfkPQQwyoA","THE CROODS 2 A NEW AGE","","","los croods 2 una nueva era, 2020, the croods, the croods 2 a new age"), 
+           pc("bB1y8LVu3ipn-rxeGibmB5ld0coAqEUb","Esjc0rPj3K4","JdwcmeLsW180kDtbaIBHaw","CUBE","","","el cubo, 1997"), 
+           pc("arXF7NQgX0X7aJuT3w1jY8qJm52o80C9","AqKpA_3KQRc","4ZezLFwmrAxW6I6A26Tpsw","CULT MASSACRE ONE DAY IN JONESTOWN","TEMPORADA 1","","Jonestown Masacre en la secta, 2024, peroiz#g"), 
+           pc("Jkxj2UszxJSBNFZKysyt6vBUtTbSde1q","RuIlzy7QPeM","AmkkeT1QhjbV6_K9nDzLpg","CULT OF CHUCKY","","","el culto de chucky, 2017, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"),
+           pc("mMzhJ3_-PA75m8aAVSbp6Ozg7Pp2Jr_S","YEBU6m7toSg","yxgr3v7AEXrLkSqdfqINOA","CURSE OF CHUCKY","La Maldición De Chucky (2013)","","la maldicion de chucky, 2013, chucky, childs play, childs play 2, childs play 3, bride of chucky, cult of chucky, curse of chucky"), 
+           pc("FfT1CXQXckAxHjlpmZWU90YFrSswvhNb","SW6U8D1CtbQ","r4MhWM7CgSmH8AkYQRWv9g","CUT OFF","","","aislados, 2018"), 
+           pc("tcPf0QWx6NDEECm0ZkDnFHnu8_9w_qe_","mSLEXav6mIE","CYMAJ9WWWpmu8TU5Z0HJ1w","CYBORG X","","","2016"),
            
+           
+           
+     
            
            
       ]}
