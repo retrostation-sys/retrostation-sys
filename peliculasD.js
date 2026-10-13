@@ -66,7 +66,7 @@ const data_peliculasD= [
            pd("YzWKg47ROZQ6SO9UOpb5ndQ2pvj5pRor","M3Ia3LPVblo","dutiL-OoVhrkRZbNpdJKVA","DRAGON BALL CURSE OF THE BLOOD RUBIES","","","dragon ball la leyenda de shen long, 1986"),
            pd("4NILPnumUSekPZPNs8GYtU7G6sucFRF9","vQ4rEd3Kggs","lgg-OX5FNQJ_zcUjYLAnTQ","DRAGON BALL SLEEPING PRINCESS IN DEVIL\'S CASTLE","","","dragon ball la princesa durmiente del castillo embrujado, 1987"),
            pd("QBEALThutWpfICKlWM5d41Guqf7Aohai","p_OYTInBmUI","C8ACBy4K8nACtNUWsLVkVw","DRAGON BALL MYSTICAL ADVENTURE","","","dragon ball una aventura mistica, 1988"),
-           pd("nuFMEFLFY8gAFQGUoPr5RSob5VDm21c3","TM9evLkbPf96DnyMi_U04Q","DRAGON BALL SUPER BROLY","","","dragon ball super broly, 2018"),
+           pd("nuFMEFLFY8gAFQGUoPr5RSob5VDm21c3","dl3w10VVQj8","TM9evLkbPf96DnyMi_U04Q","DRAGON BALL SUPER BROLY","","","dragon ball super broly, 2018"),
            pd("0FrG9ZbGIWN-t2YlhIw5ku9NHJyM3MCC","zFQPp-jrS7A","UrIXBJdVegvFKmB-zlx3hA","DRAGON BALL SUPER: SUPER HERO","","","dragon ball super super heroe, 2022"), 
            
            
