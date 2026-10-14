@@ -60,23 +60,33 @@ const data_peliculasD= [
            pd("7UcKlP-TgRYFpIrBE4KZjXPp_vGtC0nw","9Dda63FuCNk","9UAP-o3c805AtTIWqEYgBg","DON\'T LOOK AT DEMON","","","no mires al demonio, 2022"), 
            pd("3-PPdQmkyDbt_HJ9n8rVoFidQreuFZfy","ilpr8PsNNQM","qhTTZyWl-wQfT3yzyJJY1A","DOS CRIADOS MALCRIADOS","","","marco antonio campos viruta, Gaspar henaine capulina, 1960"), 
            pd("0lNV0UKSleCoUzdlbyoapz2VDFkZ7MWP","9Hbd1QeI1Og","0qi9MKFxNSvsIsuQHTJFmg","DRAGON BALL","TEMPORADA 1","","1986"),
+           pd("RS7CFJ6Zc9IX04GdS2Q1W0K26YR1B554","arEKVepnmEI","mYyZN3txUyr2W9hbaiiAKQ","DRAGON BALL Z","TEMPORADA 1","","dragon ball z, 1989"), 
            pd("M5LYiNL-acVNtFhz73-DqCCEe4gQ9Cfp","wgZ-ATUGXDw","3_gS37ejwiqrO7-fALr4rg","DRAGON BALL GT","TEMPORADA 1","","dragon ball gt, 1996"),
            pd("s-Q9moM26L0mLG1jxa9ad5NScLYsmhp8","_37jJAl1c0g","Q0sKDIeqiDhiHEvJ6tDpOA","DRAGON BALL SUPER","TEMPORADA 1","","dragon ball super, 2015"), 
            pd("G_l8FrfEdmtrUiZyXzh88SjSeymd1Yjc","YUDbl9qBihk","V4XOXvy9bTMP9LYgPurF3w","DRAGON BALL DAIMA","TEMPORADA 1","","2024"), 
-           pd("YzWKg47ROZQ6SO9UOpb5ndQ2pvj5pRor","M3Ia3LPVblo","dutiL-OoVhrkRZbNpdJKVA","DRAGON BALL CURSE OF THE BLOOD RUBIES","","","dragon ball la leyenda de shen long, 1986"),
-           pd("4NILPnumUSekPZPNs8GYtU7G6sucFRF9","vQ4rEd3Kggs","lgg-OX5FNQJ_zcUjYLAnTQ","DRAGON BALL SLEEPING PRINCESS IN DEVIL\'S CASTLE","","","dragon ball la princesa durmiente del castillo embrujado, 1987"),
-           pd("QBEALThutWpfICKlWM5d41Guqf7Aohai","p_OYTInBmUI","C8ACBy4K8nACtNUWsLVkVw","DRAGON BALL MYSTICAL ADVENTURE","","","dragon ball una aventura mistica, 1988"),
-           pd("nuFMEFLFY8gAFQGUoPr5RSob5VDm21c3","dl3w10VVQj8","TM9evLkbPf96DnyMi_U04Q","DRAGON BALL SUPER BROLY","","","dragon ball super broly, 2018"),
+           pd("YzWKg47ROZQ6SO9UOpb5ndQ2pvj5pRor","M3Ia3LPVblo","dutiL-OoVhrkRZbNpdJKVA","DRAGON BALL: CURSE OF THE BLOOD RUBIES","","","dragon ball la leyenda de shen long, 1986"),
+           pd("4NILPnumUSekPZPNs8GYtU7G6sucFRF9","vQ4rEd3Kggs","lgg-OX5FNQJ_zcUjYLAnTQ","DRAGON BALL: SLEEPING PRINCESS IN DEVIL\'S CASTLE","","","dragon ball la princesa durmiente del castillo embrujado, 1987"),
+           pd("QBEALThutWpfICKlWM5d41Guqf7Aohai","p_OYTInBmUI","C8ACBy4K8nACtNUWsLVkVw","DRAGON BALL: MYSTICAL ADVENTURE","","","dragon ball una aventura mistica, 1988"),
+           pd("s_gHtwzvmA9XE3D92AxQk5M-qREXsfbP","T7Hf8jxPFAM","TERABOX","DRAGON BALL Z: BARDOCK THE FATHER OF GOKU","TV SPECIAL","","dragon ball z el padre de goku, 1990"),
+           pd("OwF9iaVfx0P2_fBk6EzD2YJJ6CEi6VUz","GbHrTpQTNOw","g7np-OaLBcTBO4SCRLPZNQ","DRAGON BALL Z: BOJACK UNBOUND","","","dragon ball z la galaxia corre peligro, 1993"), 
+           pd("D5f9MsTxIZKz26eYJqlb8L5WavMvZ127","C6dJO_8jLUA","YgAUiOb8vYRfWCA9Vt-yiw","DRAGON BALL Z: BIO BROLY","","","dragon ball z el combate final, 1994"),
+           pd("q9gMKSTzCmipq0ON91qDvrVBshfzhVtL","tSXc0yOMyOs","NFSESxWoOA5QYa7UZCaK_Q","DRAGON BALL Z: BROLY SECOND COMING","","","dragon ball z el regreso del guerrero legendario, 1994"), 
+           pd("gB6RXNk87NyByOmCDaw0PRDjvTUm5C3q","hBELlIg54E8","Oq0FNM4nihhOPdDPnN4Wyg","DRAGON BALL: THE PATH TO POWER","","","dragon ball el camino hacia el poder, 1996"),
+           pd("fT-1ttMDesRZ2PsXCH890pl7qREP9wyz","S533hu8yuo8","TERABOX","DRAGON BALL: YO! SON GoOKU AND HIS FRIENDS RETRMURN!!","OVA 2008","","dragon ball goku y sus amigos regresan 2008"),
+           pd("86mMfj19AzI72xuBaIKhanj_06WyY4KX","jn9X0rdDRSc","qhJRrIA-g72GatqYVDHwtg","DRAGON BALL Z: BATTLE OF THE GODS","","","dragon ball z la batalla de los dioses, 2013"), 
+           pd("nuFMEFLFY8gAFQGUoPr5RSob5VDm21c3","dl3w10VVQj8","TM9evLkbPf96DnyMi_U04Q","DRAGON BALL: SUPER BROLY","","","dragon ball super broly, 2018"),
            pd("0FrG9ZbGIWN-t2YlhIw5ku9NHJyM3MCC","zFQPp-jrS7A","UrIXBJdVegvFKmB-zlx3hA","DRAGON BALL SUPER: SUPER HERO","","","dragon ball super super heroe, 2022"), 
            
            
            
-           pd("1uKLPpszwZ_bKLp8XD2MZvCgvXvYDuEEQ","hBELlIg54E8","Oq0FNM4nihhOPdDPnN4Wyg","DRAGON BALL: THE PATH TO POWER","Dragon Ball El Camino Hacia El Poder (1996)","S3R01"), 
-           pd("1FMNlR1xd4cN_bjCwXBjTTZv5opGOU2zC","arEKVepnmEI","mYyZN3txUyr2W9hbaiiAKQ","DRAGON BALL Z","Dragon Ball Z (1989)","1 Temporada 291 Episodios 5 OVAS","S3R01"), 
-           pd("13C3TJyXnlV8GQN6mSOoPoVI6wctyIH9_","jn9X0rdDRSc","qhJRrIA-g72GatqYVDHwtg","DRAGON BALL Z: BATTLE OF THE GODS","Dragon Ball Z La Batalla De Los Dioses (2013)","S3R01"), 
-           pd("1Pl6axJv9tTiJRTwrdnGrg1Vp2w6N3t1a","C6dJO_8jLUA","YgAUiOb8vYRfWCA9Vt-yiw","DRAGON BALL Z: BIO BROLY","Dragon Ball Z El Combate Final (1994)","S3R01"),
-           pd("jmtxWXQjbwiiRtaEQ6EItFMej_251zd8","GbHrTpQTNOw","g7np-OaLBcTBO4SCRLPZNQ","DRAGON BALL Z: BOJACK UNBOUND","Dragon Ball Z La Halaxia Corre Peligro(1993)","S3R01"), 
-           pd("1y5aF1vJO_8jUWNluhuaRcZkX93g-7Xg0","tSXc0yOMyOs","NFSESxWoOA5QYa7UZCaK_Q","DRAGON BALL Z: BROLY SECOND COMING","Dragon Ball Z El Regreso Del Guerrero Legendario (1994)","S3R01"), 
+           
+           
+           
+      
+           
+           
+           
+           
            pd("12R6PXRzrXcQryCYyWQU8i4HYT0Bq7S78","ROCnm2Dh_ck","nJw1_sQJltPSJRlHxnLirA","DRAGON BALL Z: BROLY THE LEGENDARY SUPER SAIYAN","Dragon Ball Z El Poder Invencible (1993)","S3R01"), 
            pd("12GMohkqwyIHc6o_1gJlGS4b6jXe15qUz","nqT9HQma79A","ktdt83zRzR7-VqzSG_1uxA","DRAGON BALL Z: COOLER\'S REVENGE","Dragon Ball Z Los Rivales Mas Podetosos (1991)","S3R01"), 
            pd("1iNFddW5TnCD4YwFheDCGz7V527GQu8yK","1Yf2CySEtEk","NKNMCukfwhg2_fRa2z7zrQ","DRAGON BALL Z: DEAD ZONE","Dragon Ball Z Devuelveme a Mi Gohan! (1989)","S3R01"), 
