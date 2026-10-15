@@ -68,11 +68,16 @@ const data_peliculasD= [
            pd("4NILPnumUSekPZPNs8GYtU7G6sucFRF9","vQ4rEd3Kggs","lgg-OX5FNQJ_zcUjYLAnTQ","DRAGON BALL: SLEEPING PRINCESS IN DEVIL\'S CASTLE","","","dragon ball la princesa durmiente del castillo embrujado, 1987"),
            pd("QBEALThutWpfICKlWM5d41Guqf7Aohai","p_OYTInBmUI","C8ACBy4K8nACtNUWsLVkVw","DRAGON BALL: MYSTICAL ADVENTURE","","","dragon ball una aventura mistica, 1988"),
            pd("s_gHtwzvmA9XE3D92AxQk5M-qREXsfbP","T7Hf8jxPFAM","TERABOX","DRAGON BALL Z: BARDOCK THE FATHER OF GOKU","TV SPECIAL","","dragon ball z el padre de goku, 1990"),
-           pd("OwF9iaVfx0P2_fBk6EzD2YJJ6CEi6VUz","GbHrTpQTNOw","g7np-OaLBcTBO4SCRLPZNQ","DRAGON BALL Z: BOJACK UNBOUND","","","dragon ball z la galaxia corre peligro, 1993"), 
+           pd("uqu5rOEPOpnytpPHnge_FHG6txGNUoX1","oAPlArjH3zU","HYGsHf7xkfHVkm7atdswAg","DRAGON BALL Z SIDE STORY PLAN TO ERADICATE THE SAIYANS","OVA 1993","","dragon ball z el plan para erradicar a los saiyajin, 1993, peroiz#g"),
+           pd("OwF9iaVfx0P2_fBk6EzD2YJJ6CEi6VUz","GbHrTpQTNOw","g7np-OaLBcTBO4SCRLPZNQ","DRAGON BALL Z: BOJACK UNBOUND","","","dragon ball z la galaxia corre peligro, 1993"),
+           pd("vcPgkwzBaIKP-jWu4CH0kT60YRIjuDse","hHif6rX0Aak","TERABOX","DRAGON BALL Z THE HISTORY OF TRUNKS","SPECIAL TV","","dragon ball z la historia de trunks, 1993"),
+           pd("xYq4QPeZGjkELCxZI1HcHhfeKnH4JmK1","ROCnm2Dh_ck","nJw1_sQJltPSJRlHxnLirA","DRAGON BALL Z: BROLY THE LEGENDARY SUPER SAIYAN","","dragon ball z broly el legendario super saiyajin, 1993"), 
            pd("D5f9MsTxIZKz26eYJqlb8L5WavMvZ127","C6dJO_8jLUA","YgAUiOb8vYRfWCA9Vt-yiw","DRAGON BALL Z: BIO BROLY","","","dragon ball z el combate final, 1994"),
            pd("q9gMKSTzCmipq0ON91qDvrVBshfzhVtL","tSXc0yOMyOs","NFSESxWoOA5QYa7UZCaK_Q","DRAGON BALL Z: BROLY SECOND COMING","","","dragon ball z el regreso del guerrero legendario, 1994"), 
            pd("gB6RXNk87NyByOmCDaw0PRDjvTUm5C3q","hBELlIg54E8","Oq0FNM4nihhOPdDPnN4Wyg","DRAGON BALL: THE PATH TO POWER","","","dragon ball el camino hacia el poder, 1996"),
            pd("fT-1ttMDesRZ2PsXCH890pl7qREP9wyz","S533hu8yuo8","TERABOX","DRAGON BALL: YO! SON GoOKU AND HIS FRIENDS RETRMURN!!","OVA 2008","","dragon ball goku y sus amigos regresan 2008"),
+           pd("ytc5RTmOp0qxzrsRck0AkWkAUQjGmgeA","EQR3OVS_PTo","TERABOX","DRAGON BALL Z PLAN TO ERADICATE THE SAIYANS","OVA (Remake) 2010","","dragon ball z el plan para erradicar a los saiyajin, 2010"),
+           pd("swQkN5T482ZhvOGPy7nutBf1OtFXMtTy","0VXF8tVecfU","TERABOX","DRAGON BALL: EPISODE OF BARDOCK","OVA 2011","","dragon ball episodio de bardock, 2011"),
            pd("86mMfj19AzI72xuBaIKhanj_06WyY4KX","jn9X0rdDRSc","qhJRrIA-g72GatqYVDHwtg","DRAGON BALL Z: BATTLE OF THE GODS","","","dragon ball z la batalla de los dioses, 2013"), 
            pd("nuFMEFLFY8gAFQGUoPr5RSob5VDm21c3","dl3w10VVQj8","TM9evLkbPf96DnyMi_U04Q","DRAGON BALL: SUPER BROLY","","","dragon ball super broly, 2018"),
            pd("0FrG9ZbGIWN-t2YlhIw5ku9NHJyM3MCC","zFQPp-jrS7A","UrIXBJdVegvFKmB-zlx3hA","DRAGON BALL SUPER: SUPER HERO","","","dragon ball super super heroe, 2022"), 
@@ -87,7 +92,7 @@ const data_peliculasD= [
            
            
            
-           pd("12R6PXRzrXcQryCYyWQU8i4HYT0Bq7S78","ROCnm2Dh_ck","nJw1_sQJltPSJRlHxnLirA","DRAGON BALL Z: BROLY THE LEGENDARY SUPER SAIYAN","Dragon Ball Z El Poder Invencible (1993)","S3R01"), 
+           
            pd("12GMohkqwyIHc6o_1gJlGS4b6jXe15qUz","nqT9HQma79A","ktdt83zRzR7-VqzSG_1uxA","DRAGON BALL Z: COOLER\'S REVENGE","Dragon Ball Z Los Rivales Mas Podetosos (1991)","S3R01"), 
            pd("1iNFddW5TnCD4YwFheDCGz7V527GQu8yK","1Yf2CySEtEk","NKNMCukfwhg2_fRa2z7zrQ","DRAGON BALL Z: DEAD ZONE","Dragon Ball Z Devuelveme a Mi Gohan! (1989)","S3R01"), 
            pd("12jT8Vvm6rf99nJu_v-Mku0X5BiKygEqa","DdSBIiKKdkY","VIDHPUPfxXCH4yl9frLPmg","DRAGON BALL Z: FUSION REBORN","Dragon Ball Z La Fusión De Goku y Vegeta (1995)","S3R01"), 
