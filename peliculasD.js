@@ -67,56 +67,44 @@ const data_peliculasD= [
            pd("YzWKg47ROZQ6SO9UOpb5ndQ2pvj5pRor","M3Ia3LPVblo","dutiL-OoVhrkRZbNpdJKVA","DRAGON BALL: CURSE OF THE BLOOD RUBIES","","","dragon ball la leyenda de shen long, 1986"),
            pd("4NILPnumUSekPZPNs8GYtU7G6sucFRF9","vQ4rEd3Kggs","lgg-OX5FNQJ_zcUjYLAnTQ","DRAGON BALL: SLEEPING PRINCESS IN DEVIL\'S CASTLE","","","dragon ball la princesa durmiente del castillo embrujado, 1987"),
            pd("QBEALThutWpfICKlWM5d41Guqf7Aohai","p_OYTInBmUI","C8ACBy4K8nACtNUWsLVkVw","DRAGON BALL: MYSTICAL ADVENTURE","","","dragon ball una aventura mistica, 1988"),
+           pd("QRG0MczhAopUeQCUuJV3o5ubt2eSt7Xr","1Yf2CySEtEk","NKNMCukfwhg2_fRa2z7zrQ","DRAGON BALL Z: DEAD ZONE","","","dragon ball z devuelveme a mi gohan, 1989"),
+           pd("mud5ZoRo0xShgBFycDhzaWMEkbgNgaCc","wO4u20cwh7E","BvsYu9UAHmYju0hc9e9-pA","DRAGON BALL Z: THE WORLD\'S STRONGEST","","","dragon ball z el hombre mas fuerte del mundo, 1990"),
+           pd("1ac9XilQdjGH30cPwnTbpY762X00zaHxu","bA9IkNSBDk0","mFxKH9GaGSAUP5pWmi6OjA","DRAGON BALL Z: TREE OF MIGHT","","","dragon ball z el arbol del poder, 1990"), 
            pd("s_gHtwzvmA9XE3D92AxQk5M-qREXsfbP","T7Hf8jxPFAM","TERABOX","DRAGON BALL Z: BARDOCK THE FATHER OF GOKU","TV SPECIAL","","dragon ball z el padre de goku, 1990"),
+           pd("UeiugMbDKSJRMGeQeSOv6rN3yePag4K4","slbjUJbPx1E","nZI5IadX08xnbs18fO0-rw","DRAGON BALL Z: LORD SLUG","","","dragon ball z el siper saiyajin son goku, 1991"), 
+           pd("lOYAQQT84T5Nkh7lOIFzVZ5YmW0Gt0qQ","nqT9HQma79A","ktdt83zRzR7-VqzSG_1uxA","DRAGON BALL Z: COOLER\'S REVENGE","","","dragon ball z los rivales mas poderosos, 1991"),
+           pd("l8411BAHfNyo3P79mdwJV8DtEh-7SYKR","nagXC8gnwj0","jux1pnokjPnZpg76l4kX8Q","DRAGON BALL Z: THE RETURN OF COOLER","","","dragon ball z los guerreros mas poderosos, 1992"), 
+           pd("J9iX3xzTCp1KxwfLXuNgHRZwz7i19khq","8BIqAQf9Fds","v5AX9duFrLnYWSa0lEbNNQ","DRAGON BALL Z: SUPER ANDROID 13!","","","dragon ball z la pelea de los tres super saiyajin, 1992"), 
            pd("uqu5rOEPOpnytpPHnge_FHG6txGNUoX1","oAPlArjH3zU","HYGsHf7xkfHVkm7atdswAg","DRAGON BALL Z SIDE STORY PLAN TO ERADICATE THE SAIYANS","OVA 1993","","dragon ball z el plan para erradicar a los saiyajin, 1993, peroiz#g"),
            pd("OwF9iaVfx0P2_fBk6EzD2YJJ6CEi6VUz","GbHrTpQTNOw","g7np-OaLBcTBO4SCRLPZNQ","DRAGON BALL Z: BOJACK UNBOUND","","","dragon ball z la galaxia corre peligro, 1993"),
            pd("vcPgkwzBaIKP-jWu4CH0kT60YRIjuDse","hHif6rX0Aak","TERABOX","DRAGON BALL Z THE HISTORY OF TRUNKS","SPECIAL TV","","dragon ball z la historia de trunks, 1993"),
            pd("xYq4QPeZGjkELCxZI1HcHhfeKnH4JmK1","ROCnm2Dh_ck","nJw1_sQJltPSJRlHxnLirA","DRAGON BALL Z: BROLY THE LEGENDARY SUPER SAIYAN","","dragon ball z broly el legendario super saiyajin, 1993"), 
            pd("D5f9MsTxIZKz26eYJqlb8L5WavMvZ127","C6dJO_8jLUA","YgAUiOb8vYRfWCA9Vt-yiw","DRAGON BALL Z: BIO BROLY","","","dragon ball z el combate final, 1994"),
-           pd("q9gMKSTzCmipq0ON91qDvrVBshfzhVtL","tSXc0yOMyOs","NFSESxWoOA5QYa7UZCaK_Q","DRAGON BALL Z: BROLY SECOND COMING","","","dragon ball z el regreso del guerrero legendario, 1994"), 
+           pd("q9gMKSTzCmipq0ON91qDvrVBshfzhVtL","tSXc0yOMyOs","NFSESxWoOA5QYa7UZCaK_Q","DRAGON BALL Z: BROLY SECOND COMING","","","dragon ball z el regreso del guerrero legendario, 1994"),
+           pd("mP0POGuMNfeP33hh4i7H45cNny2SawB8","DdSBIiKKdkY","VIDHPUPfxXCH4yl9frLPmg","DRAGON BALL Z: FUSION REBORN","Dragon Ball Z La Fusión De Goku y Vegeta (1995)","dragon ball z la fusion de goku y vegeta, 1995"),
+           pd("nwW4dKW7fEHhNpbSockKeMZMACqoXQ00","DDiZWQ0wHvA","9PJX6UEZo200W-hjWIgIrA","DRAGON BALL Z: WRATH OF THE DRAGON","","","dragon ball z el ataque del dragon, 1995"),
            pd("gB6RXNk87NyByOmCDaw0PRDjvTUm5C3q","hBELlIg54E8","Oq0FNM4nihhOPdDPnN4Wyg","DRAGON BALL: THE PATH TO POWER","","","dragon ball el camino hacia el poder, 1996"),
+           pd("0d4F-8NCgkOyrvBBURUl4rfHj0plpu6k","ZqPkquzY-rY","","DRAGON BALL GT A HERO\'S LEGACY","","","dragon ball gt 100 años despues, 1997"), 
            pd("fT-1ttMDesRZ2PsXCH890pl7qREP9wyz","S533hu8yuo8","TERABOX","DRAGON BALL: YO! SON GoOKU AND HIS FRIENDS RETRMURN!!","OVA 2008","","dragon ball goku y sus amigos regresan 2008"),
            pd("ytc5RTmOp0qxzrsRck0AkWkAUQjGmgeA","EQR3OVS_PTo","TERABOX","DRAGON BALL Z PLAN TO ERADICATE THE SAIYANS","OVA (Remake) 2010","","dragon ball z el plan para erradicar a los saiyajin, 2010"),
            pd("swQkN5T482ZhvOGPy7nutBf1OtFXMtTy","0VXF8tVecfU","TERABOX","DRAGON BALL: EPISODE OF BARDOCK","OVA 2011","","dragon ball episodio de bardock, 2011"),
-           pd("86mMfj19AzI72xuBaIKhanj_06WyY4KX","jn9X0rdDRSc","qhJRrIA-g72GatqYVDHwtg","DRAGON BALL Z: BATTLE OF THE GODS","","","dragon ball z la batalla de los dioses, 2013"), 
+           pd("86mMfj19AzI72xuBaIKhanj_06WyY4KX","jn9X0rdDRSc","qhJRrIA-g72GatqYVDHwtg","DRAGON BALL Z: BATTLE OF THE GODS","","","dragon ball z la batalla de los dioses, 2013"),
+           pd("uhXWGCZ1mqP1EkMGRblW71x8PkTDksCj","J-Go4Rzk9i4","Grr8qFb7J1RTK7NoH2c3zg","DRAGON BALL Z: RESURRECTION \'F\'","","","la resureccion de freezer, 2015"), 
            pd("nuFMEFLFY8gAFQGUoPr5RSob5VDm21c3","dl3w10VVQj8","TM9evLkbPf96DnyMi_U04Q","DRAGON BALL: SUPER BROLY","","","dragon ball super broly, 2018"),
-           pd("0FrG9ZbGIWN-t2YlhIw5ku9NHJyM3MCC","zFQPp-jrS7A","UrIXBJdVegvFKmB-zlx3hA","DRAGON BALL SUPER: SUPER HERO","","","dragon ball super super heroe, 2022"), 
-           
-           
-           
-           
-           
-           
-      
-           
-           
-           
-           
-           
-           pd("12GMohkqwyIHc6o_1gJlGS4b6jXe15qUz","nqT9HQma79A","ktdt83zRzR7-VqzSG_1uxA","DRAGON BALL Z: COOLER\'S REVENGE","Dragon Ball Z Los Rivales Mas Podetosos (1991)","S3R01"), 
-           pd("1iNFddW5TnCD4YwFheDCGz7V527GQu8yK","1Yf2CySEtEk","NKNMCukfwhg2_fRa2z7zrQ","DRAGON BALL Z: DEAD ZONE","Dragon Ball Z Devuelveme a Mi Gohan! (1989)","S3R01"), 
-           pd("12jT8Vvm6rf99nJu_v-Mku0X5BiKygEqa","DdSBIiKKdkY","VIDHPUPfxXCH4yl9frLPmg","DRAGON BALL Z: FUSION REBORN","Dragon Ball Z La Fusión De Goku y Vegeta (1995)","S3R01"), 
-           pd("13B5AwAYvRl_9mDJ9KiKKjynMnmlIYd4p","slbjUJbPx1E","nZI5IadX08xnbs18fO0-rw","DRAGON BALL Z: LORD SLUG","Dragon Ball Z El Super Saiyajin Son Goku (1991)","S3R01"), 
-           pd("144riMr_wc53Gi4RzxSyxfF5t_bEnxVJt","J-Go4Rzk9i4","Grr8qFb7J1RTK7NoH2c3zg","DRAGON BALL Z: RESURRECTION \'F\'","Dragon Ball Z La La Resurreción De Freezer (2015)","S3R01"), 
-           pd("13bqB_42qfZymie6WoWEDkfE9NY351G_f","8BIqAQf9Fds","v5AX9duFrLnYWSa0lEbNNQ","DRAGON BALL Z: SUPER ANDROID 13!","Dragon Ball Z La Pelea De Los Tres Super Saiyajin (1992)","S3R01"), 
-           pd("12KhsBLA0W2oqOeYXK19f8r9oJlVOPuBZ","nagXC8gnwj0","jux1pnokjPnZpg76l4kX8Q","DRAGON BALL Z: THE RETURN OF COOLER","Los Guerreros Más Poderosos (1992)","S1"), 
-           pd("18rN7dY50kf4hc-30Mih1jUnRKS8SZMLt","wO4u20cwh7E","BvsYu9UAHmYju0hc9e9-pA","DRAGON BALL Z: THE WORLD\'S STRONGEST","Dragon Ball Z El Hombre Mas Fuerte Del Mundo (1990)","S1"), 
-           pd("1ac9XilQdjGH30cPwnTbpY762X00zaHxu","bA9IkNSBDk0","mFxKH9GaGSAUP5pWmi6OjA","DRAGON BALL Z: TREE OF MIGHT","Dragon Ball Z El Arbol Del Poder (1990)","S1"), 
-           pd("1QaaiRZ5ctHdE-tmpgQvFdLvbtPq_diVM","DDiZWQ0wHvA","9PJX6UEZo200W-hjWIgIrA","DRAGON BALL Z: WRATH OF THE DRAGON","Dragon Ball Z El Ataque Del Dragón (1995)","P1"),
-           pd("0d4F-8NCgkOyrvBBURUl4rfHj0plpu6k","ZqPkquzY-rY","","DRAGON BALL GT A HERO\'S LEGACY","","","dragon ball gt 100 años despues, 1997"), 
-           pd("1f3dvNV72pSwoXsPIWVf0IDEvNXPThZuk","KEfDi7XH-O8","cIlbmsKsTF6RHCGSWN9LhQ","DRAGON FIST","El Puño Del Dragón (1979)","P1"), 
-           pd("14ay5OtemdjK2E-Z9UJ-h97IXSvmtYYJq","ANB1TBs6RRA","p2vjufaCMM1PO-09jkRCDA","DRAGON QUEST: YOUR STORY","Dragon Quest Tu Historia (2019)","P1"), 
-           pd("14dEFvi0F0uGMoc61TGOhjcFQVzpyljya","eofQZuBE-EE","78LFrUzNy7-LiUcbgA6TqA","DRAGONS FOREVER","Los Tres Dragones (1988)","P2"), 
-           pd("1JT5uZ2Gtzv6G3il_CaonyM88vL_MmEUt","NRLwyqbYIJo","K6th_4AadVV8DeTNdNa80A","DRUNKEN MASTER","El Maestro Borracho (1978)","P1"), 
-           pd("1SS-o54k63xtoz0b7s8HSsu_5DZeqAapd","1p3NnJ_oiE0","K_GbYm_2gm50UCU5F9Z0bg","DUE DATE","Todo Un Parto (2010)","S1"), 
-           pd("1UF-12_x1plnb5bxXLfefW3AMUW4NZOUR","OFNRmu2xRKU","gUeGbpyU-1TJw-NKbCqfIw","DUMBO","Dumbo (1941)","P1G"), 
-           pd("14f9zmBdtMDQG-ecdddr5_XGnuLRtf8VA","A5niYB9jfvA","v0cmAhfnlbNjn8iUAA2-XQ","DUMBO","Dumbo (2019)","P1"), 
-           pd("14odY5ZrAmY1xT0uCk3qwK5LpAT51rBrN","n9xhJrPXop4","v0cmAhfnlbNjn8iUAA2-XQ","DUNE","Duna (2021)","P2"),
-								pd("1Ua7JgNZcLfEMX6U00Aj3vXC_WdsMmx4y","Zd69FfhBmSc","aq6Hq6UM5vqR0qcwa2yIgA","DUNKI","Dunki (2023) P2"),
-            
-            
-
-            
-        ]
-    }
+           pd("0FrG9ZbGIWN-t2YlhIw5ku9NHJyM3MCC","zFQPp-jrS7A","UrIXBJdVegvFKmB-zlx3hA","DRAGON BALL SUPER: SUPER HERO","","","dragon ball super super heroe, 2022"),
+           pd("TFx8-A-FjWe_gOoRYJAXmbc1W5DorM8h","KEfDi7XH-O8","cIlbmsKsTF6RHCGSWN9LhQ","DRAGON FIST","","","jackie chan, el puño del dragon, 1979"), 
+           pd("z_VTSzC4PLGZUBPvizTkJR8bc4UbtIc_","ANB1TBs6RRA","p2vjufaCMM1PO-09jkRCDA","DRAGON QUEST: YOUR STORY","","dragon quest tu historia, 2019"), 
+           pd("hTCVodWZd6LApdBeFl95VGVMgsxGGWjI","eofQZuBE-EE","78LFrUzNy7-LiUcbgA6TqA","DRAGONS FOREVER","","","jackie chan, el gran dragon, 1988"), 
+           pd("yaQFsqDwaycXUKAvs0KvDgwMgdAf_Hxp","NRLwyqbYIJo","K6th_4AadVV8DeTNdNa80A","DRUNKEN MASTER","","","jackie chan, el maestro borracho, 1978"),
+           pd("uy4LL73HWoDTtOvJk1Sml297M6NSXpQ-","IOu-7HU9waI","HGIAQiFUyhd2iCDS2nRahg","DRUNKEN MASTER 2","","","jackie chan, la leyenda del maestro borracho, 1994, peroiz#g"), 
+           pd("6MkYKmK-C-JmZ_XaRddDtJsLRs25C8M0","1p3NnJ_oiE0","K_GbYm_2gm50UCU5F9Z0bg","DUE DATE","","","todo un parto, 2010"), 
+           pd("PAS6sIwnI4tNvmFI6u39YIWUxFS63m9k","OFNRmu2xRKU","gUeGbpyU-1TJw-NKbCqfIw","DUMBO","","","dumbo, 1941"), 
+           pd("_XdG_vOtbMGjb3GFmqpaoOld8NlRfPaq","A5niYB9jfvA","v0cmAhfnlbNjn8iUAA2-XQ","DUMBO","","","dumbo, 2019"), 
+           pd("BiX6aboJc5sur1epK9hQCwJwYwhVS9dy","n9xhJrPXop4","v0cmAhfnlbNjn8iUAA2-XQ","DUNE","","","duna, 2021"),
+           pd("1nlDJFKSkTqTkUh0jDc31FX6AyW6QJV7","ni55SHApxhA","TERABOX","DUNE 2","",prox,"duna 2, 2024"),
+								pd("uHOvzX0jZgWFKTTx0cvZeZ-xKdF3lOcG","Zd69FfhBmSc","aq6Hq6UM5vqR0qcwa2yIgA","DUNKI","2023, "),
+								
+								
+								
+			]}
 ];
