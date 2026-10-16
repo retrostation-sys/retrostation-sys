@@ -69,7 +69,7 @@ const data_peliculasD= [
            pd("QBEALThutWpfICKlWM5d41Guqf7Aohai","p_OYTInBmUI","C8ACBy4K8nACtNUWsLVkVw","DRAGON BALL: MYSTICAL ADVENTURE","","","dragon ball una aventura mistica, 1988"),
            pd("QRG0MczhAopUeQCUuJV3o5ubt2eSt7Xr","1Yf2CySEtEk","NKNMCukfwhg2_fRa2z7zrQ","DRAGON BALL Z: DEAD ZONE","","","dragon ball z devuelveme a mi gohan, 1989"),
            pd("mud5ZoRo0xShgBFycDhzaWMEkbgNgaCc","wO4u20cwh7E","BvsYu9UAHmYju0hc9e9-pA","DRAGON BALL Z: THE WORLD\'S STRONGEST","","","dragon ball z el hombre mas fuerte del mundo, 1990"),
-           pd("1ac9XilQdjGH30cPwnTbpY762X00zaHxu","bA9IkNSBDk0","mFxKH9GaGSAUP5pWmi6OjA","DRAGON BALL Z: TREE OF MIGHT","","","dragon ball z el arbol del poder, 1990"), 
+           pd("qG-3x6mO6b1UQOeAjUJpTINMK1uvmhjG","bA9IkNSBDk0","mFxKH9GaGSAUP5pWmi6OjA","DRAGON BALL Z: TREE OF MIGHT","","","dragon ball z el arbol del poder, 1990"), 
            pd("s_gHtwzvmA9XE3D92AxQk5M-qREXsfbP","T7Hf8jxPFAM","TERABOX","DRAGON BALL Z: BARDOCK THE FATHER OF GOKU","TV SPECIAL","","dragon ball z el padre de goku, 1990"),
            pd("UeiugMbDKSJRMGeQeSOv6rN3yePag4K4","slbjUJbPx1E","nZI5IadX08xnbs18fO0-rw","DRAGON BALL Z: LORD SLUG","","","dragon ball z el siper saiyajin son goku, 1991"), 
            pd("lOYAQQT84T5Nkh7lOIFzVZ5YmW0Gt0qQ","nqT9HQma79A","ktdt83zRzR7-VqzSG_1uxA","DRAGON BALL Z: COOLER\'S REVENGE","","","dragon ball z los rivales mas poderosos, 1991"),
