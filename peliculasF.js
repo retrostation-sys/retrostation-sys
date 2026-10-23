@@ -5,14 +5,14 @@ function pf(a, b, c, d, e, f, g) {
      x= "https://drive.google.com/thumbnail?id=1";
      y= "https://1024terabox.com/s/1";
      return {
-          image: x + a, youtube: b, terabox: y + c, title: d, subtitle: e, subtitle2: f, search: g
+          image: x + a, youtube: b, terabox: y + c, title: d, subtitle: e, subtitle2: f, search: g,
      };
 };
 
 const data_peliculasF= [
- id: "PelículasF", data: [
+     { id: "PelículasF", data: [
  
-pf("FVIneeIf_L0pNkpVrcKXI7pTWw2R80P4","-LD0SUdJfeU","GF8m5Ona_AgrkKE5loYMUg","FIGHTING SPIRIT","Espiritu De Lucha (2000-14)","3 Temporadas 127 Episodios 1 OVA","Hajime No Ippo, S3R01"),
+pf("FVIneeIf_L0pNkpVrcKXI7pTWw2R80P4","-LD0SUdJfeU","GF8m5Ona_AgrkKE5loYMUg","FIGHTING SPIRIT","","","Hajime No Ippo"),
         ]
     }
 ];
