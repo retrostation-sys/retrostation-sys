@@ -13,6 +13,7 @@ const data_peliculasF= [
      { id: "PelículasF", data: [
  
 pf("FVIneeIf_L0pNkpVrcKXI7pTWw2R80P4","-LD0SUdJfeU","GF8m5Ona_AgrkKE5loYMUg","FIGHTING SPIRIT","","","Hajime No Ippo"),
+pf("Rq8M0VyuIkzCa9wQZvPDf35oSTrzU5NC","8jVuOheTNGQ","zde4jq1pP-CFaIFNDx6pkw","PALMER","","","2021"), 
         ]
     }
 ];
