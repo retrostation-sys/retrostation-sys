@@ -14,6 +14,7 @@ const data_peliculasF= [
  
 pf("FVIneeIf_L0pNkpVrcKXI7pTWw2R80P4","-LD0SUdJfeU","GF8m5Ona_AgrkKE5loYMUg","FIGHTING SPIRIT","","","Hajime No Ippo"),
 pf("Rq8M0VyuIkzCa9wQZvPDf35oSTrzU5NC","8jVuOheTNGQ","zde4jq1pP-CFaIFNDx6pkw","PALMER","","","2021"), 
+ pf("MEV9QgUKu-42VbQdcfmXGD0K1YzRc6Ly","s2-1hz1juBI","fRz6D7ZKffbZEV8eES7oNg","HACKSAW RIDGE","","","hasta el ultimo hombre, 2016"), 
         ]
     }
 ];
