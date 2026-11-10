@@ -68,27 +68,29 @@ const data_peliculasF= [
            pf("VSRTPilo8SygYbypKGni1j_VLKvAHLZt","u1vomXv42Sc","aK4L9oCO0rvyME_cU-PZ2Q","FRIDAY THE 13TH 6 JASON LIVES","","","viernes 13 6 jason vive, 1986, friday the 13th, friday the 13th 2, friday the 13th 3, friday the 13th 4 the final chapter, friday the 13th 5 a new beginning, friday the 13th 6 jason lives, friday the 13th 7 the new blood, friday the 13th 8 jason takes manhattan, freddy vs jason"),
            pf("4kflh58wXl_rwWaMvEGegrstQ0si5Auo","7AyRUWJriuY","dPp21_oNrB9uuyac_a4Img","FRIDAY THE 13TH 7 THE NEW BLOOD","","","viernes 13 7 la nueva sangre, 1988, friday the 13th, friday the 13th 2, friday the 13th 3, friday the 13th 4 the final chapter, friday the 13th 5 a new beginning, friday the 13th 6 jason lives, friday the 13th 7 the new blood, friday the 13th 8 jason takes manhattan, freddy vs jason"),
            pf("CQq--RD755NEiFdv3wjvBHzoxU_qfJO-","Pvdrit6ij04","EJ5a9RcQyW51kY6rP-IY4A","FRIDAY THE 13TH 8 JASON TAKES MANHATTAN","","","viernes 13 8 jason toma manhattan, 1989, friday the 13th, friday the 13th 2, friday the 13th 3, friday the 13th 4 the final chapter, friday the 13th 5 a new beginning, friday the 13th 6 jason lives, friday the 13th 7 the new blood, friday the 13th 8 jason takes manhattan, freddy vs jason"), 
-           pf("zDIqnH5QehRq0JLvtajOR3ppTMEg0b5x","J-gx4AHReGs","23zu6WXintyVxMYBA3t-9Q","FRIDAY THE 13TH","","","viernes 13, 2009, friday the 13th, friday the 13th 2, friday the 13th 3, friday the 13th 4 the final chapter, friday the 13th 5 a new beginning, friday the 13th 6 jason lives, friday the 13th 7 the new blood, friday the 13th 8 jason takes manhattan, freddy vs jason"), 
-           
-           
-           
-           
-           
-           
-           
-           pf("BS6zKJVio6hBg-dzOj1-R9LizpwrhdTx","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS' , subtitle: 'Friends (1994)', subtitle2: '10 Temporadas 235 Episodios","","S3R01"), 
-           pf("2XaZkmckTTo7GQYSLZnFGmpzQcxjDqzG","BclT-pJdoBo","ev1JxhL9W1rPoUQiLYjc0A","FRIGHT KREWE","Fright Krewe (2023)', subtitle2: '1 Temporada 10 Episodios","","S3R01"), 
-           pf("Y8mlg6xML11JQq4hG7StkgR4hQqhsaUW","PMRH0RIEjnc","Ipu27JlVjVzVp1Vu-XiuKQ","FRIGHT NIGHT","Noche Del Espanto (1985)","","P3L01G"), 
-           pf("wL1IGsror6p9x9hTIzL_M8XAsj3BwXWK","8-UL3V15E8s","n17bRse9ghCvG23iJjUxtg","FROM HELL","Desde El Infierno (2001)","","P3L01G"), 
-           pf("nO_ypKGf3z9a67xDZDPv0upk5vVNMhJ4","nrcej3bN8QA","XbxUV8C09aEybUr8pThRWw","FROM PARIS WITH LOVE","Desde París Con Amor (2010)","","S3R01G"), 
-           pf("4kEd9AlK9gBCMMfZSbs6Fn7v47OLnzub","tBsdM5-ZQbU","r7LpBnCMg2Q7bZQNAIiCtw","FROM THE ASHES","From The Ashes (2024)","","P3L02"), 
-           pf("pf3LrcD5L72lOLXKIxhuCsadrZ6FsBNZ","u4UuOIIR19I","_JmqJEfrLRORy1gXEYrjdQ","FROM THE TERRACE","Desde La Terraza (1960)","","P3L01G"), 
-           pf("BgNZ74FcBXmWZkbGtfbZvRVvpSwhs8Tq","V2RQx6aI0Eg","kPft-ljA6XVhQ6wkzefWQg","FRONT OF THE CLASS","Al frente de la clase (2008)","","P3L01"), 
-           pf("BidQbH8IYDOerMpK1o4Ot6IKkZdrdA5i","SRRRrCNTVJA","aqZ_lGopmLPj3-gOxHTI1w","FROZEN","Frozen Una aventura congelada (2013)","","P3L02"), 
-           pf("Jl5LrqwDqw7-SMHzqsJ5hSUaz9ep1FDG","VqP64AyJNTQ","Quj_KPm_SEx2fbHx9d9HIg","FUN SIZE","El Tamaño Sí Importa (2012) (Esp)","","P3L01"), 
-           pf("l7ZYYXwF2ixojV9QWrR-bVdnAbkc2w8G","TrYJGh2tXhU","pX4WpvpTOn90fWTWlACA2A","FUNNY PEOPLE","Siempre Hay Un Lugar (2009)","","P3L01"), 
-           pf("sHdX33TrqDUW6FIdSAvY313_eEDn1FLJ","B521Z9IXkOw","7Uhob_c9sNM4d71ii1w51A","FURY","Corazones De Hierro (2014)","","P3L01"), 
-           pf("UhksVu2q-66-RTQORfoFWrSKG8iJ6M9U","uljtvXrkdbc","bCcMFIlxAL3qd4jPAav3eg","FUTURE WORLD","Guerreros Del Futuro (2018)","","P3L01"),
+           pf("zDIqnH5QehRq0JLvtajOR3ppTMEg0b5x","J-gx4AHReGs","23zu6WXintyVxMYBA3t-9Q","FRIDAY THE 13TH","","","viernes 13, 2009, friday the 13th, friday the 13th 2, friday the 13th 3, friday the 13th 4 the final chapter, friday the 13th 5 a new beginning, friday the 13th 6 jason lives, friday the 13th 7 the new blood, friday the 13th 8 jason takes manhattan, freddy vs jason"),
+           pf("vS_VIprCI2GhPOl2MeIQl1yvjOGvg7iS","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 1","","Jennifer Aniston, amigos, 1994"),
+           pf("dWfPSz7Ig7tQ3XNxXtMO12nPK3d6gf53","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 2","","Jennifer Aniston, amigos, 1995"),
+           pf("TJ-oMxL0wRsNBMh9wdspD3MTJuglOjlq","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 3","","Jennifer Aniston, amigos, 1996"),
+           pf("awMM0ox8VXCZCiur-d4HWAKu5wRnN1HX","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 4","","Jennifer Aniston, amigos, 1997"),
+           pf("OvQB9YeVPt_rNwrCV4HhZVtLqNM6SfbA","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 5","","Jennifer Aniston, amigos, 1998"),
+           pf("IHNuqTyS5CWVoWMNuW10QyJzY6KyE0ys","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 6","","Jennifer Aniston, amigos, 1999"),
+           pf("Uh07loNv0B9weNTKnbzhQDAw0KsrPN1S","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 7","","Jennifer Aniston, amigos, 2000"),
+           pf("tzYUePI9RRrWH6Hx72-lcwdzvVad3p-E","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 8","","Jennifer Aniston, amigos, 2001"),
+           pf("dk80XlOZyQl_Q0ybEVqh4azQ-FiAOWlD","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 9","","Jennifer Aniston, amigos, 2002"),
+           pf("W_YruHadC5BgjvriOvpmgCu2iYSTFAAK","sLisEEwYZvw","OZpMH9hk2vF1hXNmCNRKBw","FRIENDS'","TEMPORADA 10","","Jennifer Aniston, amigos, 2003"), 
+           pf("j3CAGzWW49UXeAtz8KwPqdnqVYxN8nRr","BclT-pJdoBo","ev1JxhL9W1rPoUQiLYjc0A","FRIGHT KREWE","TEMPORADA 1","","2023"), 
+           pf("3mCR1BR-nA8TQYrY7YpKdxUMoBZeGF-l","PMRH0RIEjnc","Ipu27JlVjVzVp1Vu-XiuKQ","FRIGHT NIGHT","","","noche del espanto, 1985"), 
+           pf("yyG5k2XmLSGUgNSynxVTmubIViNUDtCM","8-UL3V15E8s","n17bRse9ghCvG23iJjUxtg","FROM HELL","","","Johnny Depp, desde el infierno, 2001"), 
+           pf("C_KJ4O388AXuF81TikpKhYB9Ogao92_Y","nrcej3bN8QA","XbxUV8C09aEybUr8pThRWw","FROM PARIS WITH LOVE","","","John Travolta, desde paris con amor, 2010"), 
+           pf("TVWhU9i7qu-N8UWp8s-LdFNTLFnczsQk","tBsdM5-ZQbU","r7LpBnCMg2Q7bZQNAIiCtw","FROM THE ASHES","","","desde las cenizas, 2024"), 
+           pf("kMGucVG2cxHJhGuW09FSLxJqNT9RCwjF","u4UuOIIR19I","_JmqJEfrLRORy1gXEYrjdQ","FROM THE TERRACE","","","Barbara Eden, Paul Newman, desde la terraza, 1960"), 
+           pf("Mbau2bu-g_yvtRWYTwkqPPP8DlQ3cp-e","V2RQx6aI0Eg","kPft-ljA6XVhQ6wkzefWQg","FRONT OF THE CLASS","","","al frente de la clase, 2008"), 
+           pf("PE3H9fb69augmk1d5kQyshgrYoARDt_t","SRRRrCNTVJA","aqZ_lGopmLPj3-gOxHTI1w","FROZEN","","","2013"), 
+           pf("T-Ne2xkwkKocy8lyolLNTsoKcoKsM0y5","VqP64AyJNTQ","Quj_KPm_SEx2fbHx9d9HIg","FUN SIZE","","ESPAÑOL","el tamaño si importa, 2012"), 
+           pf("Uc77Jz8pMoigomkyDxoToXfNmO0fEuh-","TrYJGh2tXhU","pX4WpvpTOn90fWTWlACA2A","FUNNY PEOPLE","","","adam sandler, siempre hay un tiempo para reir, 2009"), 
+           pf("f9Pb-KjRaFRVUBOGWSCLHWujToVYwrU9","B521Z9IXkOw","7Uhob_c9sNM4d71ii1w51A","FURY","","","brad pitt, corazones de hierro, 2014"), 
+           pf("wITgw4OHgQxS94w90gkRrfiRbD5hiYD0","uljtvXrkdbc","bCcMFIlxAL3qd4jPAav3eg","FUTURE WORLD","","","Milla Jovovich, guerreros del futuro, 2018"),
             
 
           
